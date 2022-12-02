@@ -4,6 +4,8 @@ _Hei og velkommen til Pythonkurs for viderekomne! Som en myk start, skal vi se l
 
 Hei på deg Python
 -----------------
+**💡 Læringsmål:** _I dette avsnittet skal du lære deg å kjøre Python-programmer i terminalen._
+
 Når man lærer seg et programmeringsspåk, er ofte det første programmet man skrivet et ["Hallo verden"-program](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program). Dette er helt enkelt et program som skriver ut teksten "Hallo verden". La oss skrive et sånt program sammen!
 
 ### Filer og mapper
@@ -36,20 +38,162 @@ _Hvis du bruker Linux, kan det være at du må kjøre kommandoen `python3` i ste
 Gratulerer! Du har nå kjørt ditt første Pythonprogram.
 
 ### Sånn printer du til terminalen
-I programmet over brukte vi kommandoen `print(...)` til å ...
+I programmet over brukte vi funksjonen `print(...)` til å ...
+
+_Her forklarer vi litt hvordan print fungerer, og en veldig kort forklaring på hva en funksjon er og gjør._
+
+✍️ **Oppgave:** _Kan du utvide `hallo_verden.py`, sånn at den printer ut en tekst til?_
 
 
+Kommentarer
+-----------
+**💡 Læringsmål:** _I dette avsnittet skal du lære deg å skrive forklaringer som kan ligge sammen med koden._
 
-Denne språkfunksjonaliteten ønsker vi å dekke:
-- Sånn kjørere man Pythonkode
-- Nyttige tips til editering av Pythonkode i VS Code
-- Print til konsollen
+_Her forklarer vi at du kan kommentere med forklarende tekst, og at du kan "kommentere ut" kodelinjer og kanskje også multiline-kommentarer_
+
+✍️ **Oppgave:** _Kan du skrive en kommentar på hva du prøver å få til med en `print`-linje i `hallo_verden.py`_
+<!-- TODO: Kanskje dette kan være eksemplet vårt? -->
+
+✍️ **Oppgave:** _Kan du kommentere ut en `print`-linje i `hallo_verden.py`, og observere hva som da skjer når du kjører programmet?_
+
+
+Enkle datastrukturer og variabler
+---------------------------------
+**💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke enkle datastrukturer som tall, tekst og boolske verdier. I tillegg skal vi se litt på variabler._
+
+### Tall
+- Operasjoner som `+`, `-`, `*`, `%`, `**`, `/` og `//`. 
+- Typer tall `int`, `float`.
+
+### Variabler
+- Tilegne verdier til en variabel
+- Gyldige variabelnavn
+  - Inkludert æøå?
+- gode variabel navn `sesong_nummer = 4`
+    - tips om finne gode variabelnavn ved å se det variabelen skal brukes til
+- Bruke en variabel
+- `i = 2` `i +=1 `
+
+```python
+i = 14
+print(i)
+i = 45
+print(i)
+a = 2
+b = 3
+c = a + b
+```
+
+### Strenger
+- Hvordan lager du de? `"`
+- Kunne escape enkelte tegn
+- Multiline-strenger `'''`
+- Hvordan gjør
+- `contains`, `split`, `in`
+- Bruke programID som eksempel
+- Bruke medvirkende som eksempel
+    - Sørge for stor forbokstav osv.
+- Vise hvordan man bruker f-strenger
+    - _Du kan også bruke `+` for å konkatinere strenger, men f-strenger er anbefalt_
+- https://docs.python.org/3/library/string.html
+
+### Boolske verdier
+- `True`, `False`, and or not, hvordan parenteser kan påvirke ting
+
+| `a`     | `b`     | `a and b` |
+| ------- | ------- | --------- |
+| `True`  | `False` | `False`   |
+| `False` | `True`  | `False`   |
+| `False` | `False` | `False`   |
+| `True`  | `True`  | `True`    |
+
+| `a`     | `b`     | `a or b` |
+| ------- | ------- | -------- |
+| `True`  | `False` | `True`   |
+| `False` | `True`  | `True`   |
+| `False` | `False` | `False`  |
+| `True`  | `True`  | `True`   |
+
+| `a`     | `not a` |
+| ------- | ------- |
+| `True`  | `False` |
+| `False` | `True`  |
+
+- Faske og sanne verdier f.eks. `not 0`
+- Kortslutning av boolske uttrykk
+
+```python
+a = True
+c = a or b
+print(c)
+```
+
+```python
+a = ""
+b = "hei igjen"
+c = a or b
+```
+
+Input
+-----
+**💡 Læringsmål:** _I dette avsnittet skal du lære deg å få inn data fra omverdenen._
+
+- Vise hvordan du kan hente tekst fra bruker
+
+```python
+navn = input("Hva heter du?> ")
+print(f"Hei {navn}!")
+alder = input("Hvor gammel er du?> ")
+neste_alder = alder + 1 
+# Se at dette kræsjer, forklare problemet og hvordan det kan løses med int. 
+# Hva skjer om bruker taster inn noe som ikke er tall? hvordan løse det? 
+# motivasjon til hvis omatte å sjekke hva input er før man prøver å caste string.isnumeric()
+print(f"Så fint, da er du {neste_alder} om et år!")
+```
+
+Hvis, omatte og ellers
+----------------------
+**💡 Læringsmål:** _I dette avsnittet skal du lære deg å skrive kode som gjør valg._
+
 - Hvis/omatte/ellers
-- Løkker
+- if, else, elif
+- forklare kolon/inntrykk
+
+```
+if 
+```
+
+```python
+a = ""
+c = "hei igjen"
+if a:
+    c = a
+```
+
+```python
+d = "a er sann" if a else "a var usann"
+```
+
+Samlinger
+---------
+**💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke datastrukturer som samler flere forskjellige ting._
+
 - Datastrukturer og operasjoner på de:
     - Lister
     - Oppslagstabeller
-    - Strenger
-    - Tall
-    - Boolske verdier
-- Funksjoner
+- Enkle generatorer som `range`
+- dictionary .get 
+    - `None`
+
+Løkker
+------
+**💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke ..._
+
+- `for element in samling:`
+- `while`
+
+Funksjoner
+----------
+**💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke ..._
+
+snakke om scope/ unngå shadowing

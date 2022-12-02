@@ -13,6 +13,11 @@ I dette kurset skal du bruke programmeringsspråket Python til å lage små appl
 ## Tentativ agenda
 
 ### Dag 0: Intro til python - oppfriskning
+Dette ønsker vi å dekke i intro-foredrag:
+- Nyttige tips til editering av Pythonkode i VS Code
+- Minne på at dokumentasjon finnes, og at vi har lenket til den der det er relevant
+
+
 Denne språkfunksjonaliteten ønsker vi å dekke:
 - Sånn kjørere man Pythonkode
 - Nyttige tips til editering av Pythonkode i VS Code
