@@ -45,7 +45,7 @@ _Her forklarer vi litt hvordan print fungerer, og en veldig kort forklaring på 
 ✍️ **Oppgave:** _Kan du utvide `hallo_verden.py`, sånn at den printer ut en tekst til?_
 
 
-Kommentarer
+Kommentarer (Teodor)
 -----------
 **💡 Læringsmål:** _I dette avsnittet skal du lære deg å skrive forklaringer som kan ligge sammen med koden._
 
@@ -57,12 +57,12 @@ _Her forklarer vi at du kan kommentere med forklarende tekst, og at du kan "komm
 ✍️ **Oppgave:** _Kan du kommentere ut en `print`-linje i `hallo_verden.py`, og observere hva som da skjer når du kjører programmet?_
 
 
-Enkle datastrukturer og variabler
+Enkle datastrukturer og variabler (Teodor)
 ---------------------------------
 **💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke enkle datastrukturer som tall, tekst og boolske verdier. I tillegg skal vi se litt på variabler._
 
 ### Tall
-- Operasjoner som `+`, `-`, `*`, `%`, `**`, `/` og `//`. 
+- Operasjoner som `+`, `-`, `*`, `%`, `**`, `/` og `//`.
 - Typer tall `int`, `float`.
 
 ### Variabler
@@ -134,7 +134,7 @@ b = "hei igjen"
 c = a or b
 ```
 
-Input
+Input (Thorben)
 -----
 **💡 Læringsmål:** _I dette avsnittet skal du lære deg å få inn data fra omverdenen._
 
@@ -144,14 +144,14 @@ Input
 navn = input("Hva heter du?> ")
 print(f"Hei {navn}!")
 alder = input("Hvor gammel er du?> ")
-neste_alder = alder + 1 
-# Se at dette kræsjer, forklare problemet og hvordan det kan løses med int. 
-# Hva skjer om bruker taster inn noe som ikke er tall? hvordan løse det? 
+neste_alder = alder + 1
+# Se at dette kræsjer, forklare problemet og hvordan det kan løses med int.
+# Hva skjer om bruker taster inn noe som ikke er tall? hvordan løse det?
 # motivasjon til hvis omatte å sjekke hva input er før man prøver å caste string.isnumeric()
 print(f"Så fint, da er du {neste_alder} om et år!")
 ```
 
-Hvis, omatte og ellers
+Hvis, omatte og ellers (Thorben)
 ----------------------
 **💡 Læringsmål:** _I dette avsnittet skal du lære deg å skrive kode som gjør valg._
 
@@ -160,7 +160,7 @@ Hvis, omatte og ellers
 - forklare kolon/inntrykk
 
 ```
-if 
+if
 ```
 
 ```python
@@ -174,26 +174,53 @@ if a:
 d = "a er sann" if a else "a var usann"
 ```
 
-Samlinger
+Samlinger (Per Edvard)
 ---------
 **💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke datastrukturer som samler flere forskjellige ting._
 
 - Datastrukturer og operasjoner på de:
+    - Tupler
     - Lister
     - Oppslagstabeller
 - Enkle generatorer som `range`
-- dictionary .get 
+- dictionary .get
     - `None`
+- Eksempler man kan dekke:
+    - Lage liste / oppslagstabell
+        - Lage tom liste + sette inn elementer.
+        - Lage en liste med innhold i med en gang.
+    - Hente element
+    - Metadata om et program kan f.eks. ligge i en oppslagstabell.
+    - Utsnitt av lister.
 
-Løkker
+Løkker (Per Edvard)
 ------
-**💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke ..._
+**💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke løkker for å gjøre ting flere ganger._
 
 - `for element in samling:`
+    - Vi kan f.eks. printe ut alle elementene i en samling til terminalen.
+
 - `while`
+    - Vi kan også bygge opp en liste med programkoder fra bunnen
+        - Bygge opp input fra consol
 
-Funksjoner
+
+
+Funksjoner (Heidi)
 ----------
-**💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke ..._
+**💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke funksjoner for dele opp og gjenbruke kode._
 
-snakke om scope/ unngå shadowing
+- Analogier
+    - Matematiske funksjoner
+    - Ting som er «abstrahert bort», f. eks. hvordan vannkoking ikke forklares i oppskrift
+- `def print_hjelp():`
+    - Definerer en funksjon
+    - Starter med en ingen argument
+    - Tar med `return None`
+
+- `def lag_bærer(programkode, bærer_type):`
+    - Definerer en funksjon som tar to argumenter som input
+    - Returnerer resultatet (ingen sideeffekter)
+
+- `def del_opp_bærer(bærer):`
+    - Returnere flere verdier (implisitt tuppel)

@@ -40,6 +40,7 @@ Denne språkfunksjonaliteten ønsker vi å dekke:
 ### Dag 2: kommandolinje dag 2
 * pip - (venv?)
 * kalle api
+* Moduler?
 
 ### Dag 3: Api - lage api
 * flask? FastAPI?
