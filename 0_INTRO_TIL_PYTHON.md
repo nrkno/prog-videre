@@ -208,11 +208,52 @@ Løkker (Per Edvard)
 
 Funksjoner (Heidi)
 ----------
-**💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke funksjoner for dele opp og gjenbruke kode._
+**💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke funksjoner for dele opp koden i mindre biter og for å kunne bruke samme kodebit flere steder._
 
-- Analogier
-    - Matematiske funksjoner
-    - Ting som er «abstrahert bort», f. eks. hvordan vannkoking ikke forklares i oppskrift
+Funksjoner i programmering ligner på funksjoner man lærte om i matematikken på skolen. Matematiske funksjoner tar inn en verdi og gir en verdi tilbake. 
+
+| `x`     | `f(x) = x - 2` |
+| ------- | -------------- |
+| `4`     | `4 - 2 = 2`    |
+| `2`     | `2 - 2 = 0`    |
+| `0`     | `0 - 2 = -2`   |
+
+Funksjoner brukes til å abstrahere vekk detaljer så man i lengre programmer ikke behøver å forholde seg til alle ting hele tiden. I stedet kan man dele koden opp i flere funksjoner, og trenger bare å  vite navnet på funksjonen og verdiene den eventuelt trenger som input, på det stedet der man vi bruke funksjonen. Det er litt på samme måte som i en matoppskrift, det er ikke alle detaljer som forklares hele tiden. Om det for eksempel står "kok opp 2 liter vann" i oppskriften er det vanligvis ikke forklart hvordan man koker vann.
+
+Funksjoner gjør at man ikke trenger å gjenta kodelinjer som skal gjøre neste det samme. Da er det bedre å ha denne samme funksjonaliteten ett sted: Man trenger man bare å forsikre seg ett sted om at funksjonaliteten er som forventet, og om man trenger å endre funksjonaliteten senere en gang, er det bare ett sted man trenger å oppdatere.
+
+En funksjon i Python ser ut på følgende måte:
+
+```python
+def lag_hilsen(navn):
+    hilsen = f"Hei {navn}!"
+    return hilsen
+```
+Første linje i funksjonen består av nøkkelordet `def` som angir at her starter definisjonen av funksjonen. Teksten som kommer etterpå er navnet på selve funksjonen, deretter kommer parametrene inni parentesen, før linja avsluttes med `:`. Hvis funksjonen ikke skal ta inn noen verdier er det tomt mellom parentesene `()`, hvis funksjonen har flere parametre er de separert med med komma `(fornavn, etternavn)`. Parametrene brukes som variable inni funksjonen og en parameter vil inneholde verdien som angis når man bruker funksjonen, det som sendes inn som argument til funksjonen.
+
+Selve innholdet i funksjonen kommer på linja etter `:`, og alt som skal være inni funksjonen må ha et innrykk. Til sist i funksjonen returneres verdien man vi ha tilbake fra funksjonen ved å skrive `return` etterfulgt av det man vil returnere. Funksjoner i Python må ikke ha en eksplisitt returverdi, om det ikke er noen linje med `return` til slutt, vil funksjonen implisitt returnere verdien `None`.
+
+Lag en ny Python-fil, f.eks med navn `funksjoner.py`, og kopier funksjonen over inn i fila. Deretter kan du i fila kalle funksjonen og lagre resultatet i en variabel, og så printe resultatet:
+
+```python
+hilsen = lag_hilsen("Jens")
+print(hilsen)
+```
+
+Bytt ut navnet med ditt eget navn, og prøve å kalle funksjonen flere ganger med forskjellige navn. 
+
+Når man skal sende inn argument til en funksjon kan man eksplitt navngi parameteren. Det er spesielt nyttig når man har flere argumenter, så man er sikker på at riktig parameter får riktig verdi. I eksempelet kan man derfor skrive:
+
+```python
+hilsen = lag_hilsen(navn = "Jens")
+```
+
+I eksempelet er  `navn` en parameter og `Jens` er et argument.
+
+Test å legge til eller endre noe i funksjonen du har i skriptet. Klarer du å endre funksjonen så programmet feiler når du kjører det? Hvorfor feiler det?
+
+
+
 - `def print_hjelp():`
     - Definerer en funksjon
     - Starter med en ingen argument
