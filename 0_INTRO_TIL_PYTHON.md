@@ -208,11 +208,25 @@ Løkker (Per Edvard)
 
 Funksjoner (Heidi)
 ----------
-**💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke funksjoner for dele opp og gjenbruke kode._
+**💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke funksjoner for dele opp koden i mindre biter og for å kunne bruke samme kodebit flere steder._
 
-- Analogier
-    - Matematiske funksjoner
-    - Ting som er «abstrahert bort», f. eks. hvordan vannkoking ikke forklares i oppskrift
+Funksjoner i programmering ligner på funksjoner man lærte om i matematikken på skolen. Matematiske funksjoner tar inn en verdi og gir en verdi tilbake. 
+
+| `x`     | `f(x) = x - 2` |
+| ------- | -------------- |
+| `4`     | `4 - 2 = 2`    |
+| `2`     | `2 - 2 = 0`    |
+| `0`     | `0 - 2 = -2`   |
+
+Funksjoner brukes til å abstrahere vekk detaljer så man i lengre programmer ikke behøver å forholde seg til alle ting hele tiden. I stedet kan man dele koden opp i flere funksjoner, og trenger bare å  vite navnet på funksjonen og verdiene den eventuelt trenger som input, på det stedet der man vi bruke funksjonen. Det er litt på samme måte som i en matoppskrift, det er ikke alle detaljer som forklares hele tiden. Om det for eksempel står "kok opp 2 liter vann" i oppskriften er det vanligvis ikke forklart hvordan man koker vann.
+
+Funksjoner gjør at man ikke trenger å gjenta kodelinjer som skal gjøre neste det samme. Da er det bedre å ha denne samme funksjonaliteten ett sted: Man trenger man bare å forsikre seg ett sted om at funksjonaliteten er som forventet, og om man trenger å endre funksjonaliteten senere en gang, er det bare ett sted man trenger å oppdatere.
+
+En funksjon i Python ser ut på følgende måte:
+
+```python
+```
+
 - `def print_hjelp():`
     - Definerer en funksjon
     - Starter med en ingen argument
