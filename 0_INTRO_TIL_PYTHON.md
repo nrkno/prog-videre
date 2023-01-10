@@ -248,20 +248,27 @@ Når man skal sende inn argument til en funksjon kan man eksplitt navngi paramet
 hilsen = lag_hilsen(navn = "Jens")
 ```
 
-I eksempelet er  `navn` en parameter og `Jens` er et argument.
+I eksempelet er  `navn` en parameter og `Jens` er et argument for funksjonen `lag_hilsen`.
 
 Test å legge til eller endre noe i funksjonen du har i skriptet. Klarer du å endre funksjonen så programmet feiler når du kjører det? Hvorfor feiler det?
 
+✍️ **Oppgave:** _Lag en funksjon som skriver ut hjelp til terminalen_
 
+1. Lag funksjonen `print_hjelp()` som ikke tar inn noe argument og som ikke returnerer noen verdi. Bruk `print()`-funksjonen til å skrive ut en valgfri setning om hjelp til terminal.
+2. Kall funksjonen i programmet, og se at hjelpeteksten skrives ut når programmet kjører.
+3. Lagre returnverdien fra funksjonen i en variabel, for eksempel `hjelp = print_hjelp()`, og print ut denne variabelen. Hva skrives ut?
+4. Prøv å legge inn en eksplisitt `return None` i slutten av programmet, hva skrives ut fra variabelen nå?
 
-- `def print_hjelp():`
-    - Definerer en funksjon
-    - Starter med en ingen argument
-    - Tar med `return None`
+✍️ **Oppgave:** _Lag en funksjon som setter lager bærer fra programkode og type_
+ Tv- og radioprogram har en programkode (eller programid) består av fire bokstaver og åtte tall, for eksempel `KMNO10010922`. En type bærer består av to bokstaver, for eksempel `AH`, og et program sin bærer består av programkoden til programmet satt sammen med bærertypen.
 
-- `def lag_bærer(programkode, bærer_type):`
-    - Definerer en funksjon som tar to argumenter som input
-    - Returnerer resultatet (ingen sideeffekter)
+1. Lag funksjonen `lag_bærer(programkode, bærertype)`. Denne har to parametere, `programkode` og `bærertype`, og skal returnere en streng der programkode og bærertype er satt sammen.
+2. Kall funksjonen i programmet og se at verdien som returneres er som du forventer.
 
-- `def del_opp_bærer(bærer):`
-    - Returnere flere verdier (implisitt tuppel)
+✍️ **Oppgave:** _Lag en funksjon som splitter opp en bærer_
+
+1. Lag funksjonen  `del_opp_bærer(bærer)` som er motsatt av `lag_bærer(programkode, bærertype)`. Den skal ta inn en bærer, og dele denne opp i `programkode` og `bærertype`, og returnere disse to verdiene. Funksjoner kan bare returnere en ting, så en måte å returnere flere ting på er å sette de sammen til et tuppel.
+2. Kall funksjonen i programmet og se at verdien som returneres er som du forventer.
+3. Prøv å kombinere de to bærer funksjonene, kall først `lag_bærer` og  bruk resultatet herfra som argument til `del_opp_bærer`, og motsatt, kall `del_opp_bærer` og  bruk resultatet herfra som argument til `lag_bærer`. Hvordan forventer du at disse funksjonene fungerer sammen?
+
+✍️ **Oppgave:** _Lag funksjonen `del_opp_bærer(bærer)`_
