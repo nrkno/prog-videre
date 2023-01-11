@@ -271,4 +271,39 @@ Test å legge til eller endre noe i funksjonen du har i skriptet. Klarer du å e
 2. Kall funksjonen i programmet og se at verdien som returneres er som du forventer.
 3. Prøv å kombinere de to bærer funksjonene, kall først `lag_bærer` og  bruk resultatet herfra som argument til `del_opp_bærer`, og motsatt, kall `del_opp_bærer` og  bruk resultatet herfra som argument til `lag_bærer`. Hvordan forventer du at disse funksjonene fungerer sammen?
 
-✍️ **Oppgave:** _Lag funksjonen `del_opp_bærer(bærer)`_
+✍️ **Oppgave:** _Rydd opp i programmet_
+
+Rydd opp i programmet slik at man unngår at samme funksjonalitet kodes på ulik måte, og ikke har funksjonalitet duplisert i koden. Bruk minst én av bærer-funksjonene over, du kan også lage nye funksjoner der du synes det passer.
+
+```python
+program1_kode = "DVFJ60000121"
+program1_bærertype = "AH"
+program1_bærer = program1_kode + program1_bærertype
+
+program2_kode = "ODRP20002101"
+program2_bærertype = "AB"
+program2_bærer = "ODRP20002101AB"
+
+program3_kode = program1_kode
+program3_bærer = program3_kode + "AA"
+
+programmer = [
+    {
+        "kode": program1_kode,
+        "bærertype": program1_bærertype,
+        "bærer": program1_bærer
+    },
+     {
+        "kode": program2_kode,
+        "bærertype": program2_bærertype,
+        "bærer": program2_bærer
+    },
+     {
+        "kode": program3_kode,
+        "bærertype": program3_bærer[-2:],
+        "bærer": program3_bærer
+    }
+]
+
+print(programmer)
+```
