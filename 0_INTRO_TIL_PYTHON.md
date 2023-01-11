@@ -510,24 +510,235 @@ Hvis, omatte og ellers (Thorben)
 ----------------------
 **💡 Læringsmål:** _I dette avsnittet skal du lære deg å skrive kode som gjør valg._
 
-- Hvis/omatte/ellers
-- if, else, elif
-- forklare kolon/inntrykk
+Hittil har programmene våre kjørt fra topp til bunn:
+Så snart det har gjort seg ferdig med én instruks,
+har programmet fortsatt med neste.
+Det øyeblikket du begynner å få spesialtilfeller som skal behandles på forskjellige måter,
+får du behov for å variere hva koden gjør.
 
+De aller fleste programmeringsspråk har det som kalles for betingelser (conditionals).
+De består av flere deler:
+
+* Ett nøkkelord som sier fra at vi starter på en betingelse
+* Ett boolsk uttrykk (betingelsen)
+* Én blokk med kode som skal kjøre hvis det boolske uttrykket er sant
+* (Frivillig) Et eller flere nye boolske uttrykk (alternative betingelser) med tilhørende kodeblokker som skal kjøres
+  hvis ingen tidligere blokker med kode ble valgt, og det nye boolske uttrykket er sant
+* (Frivillig) Én blokk med kode som skal kjøre hvis ingen tidligere blokker med kode har blitt valgt
+
+Koden før og etter betingelsen kjører som normalt fra topp til bunn.
+
+Format:
+```python
+if <betingelse 1>:
+    <kode som skal eksekveres hvis
+    betingelsen er oppfylt>
+elif <betingelse 2>:
+    <Kode som skal eksekveres hvis
+    betingelse 1 ikke er oppfylt,
+    men betingelse 2 er det>
+elif <betingelse 3>:
+    <Kode som skal eksekveres hvis
+    verken betingelse 1 eller 2 er oppfylt,
+    men 3 er det>
+# og så videre
+else:
+    <Kode som skal eksekveres hvis
+    ingen av betingelsene er oppfylt>
+<Kode som eksekveres uansett>
 ```
-if
-```
+
+Ordet _kodeblokk_ er nytt.
+Det refererer til en samling med kode som hører sammen og blir eksekvert sammen.
+I Python bruker vi et kolon på slutten av ei linje til å indikere at det straks kommer ei kodeblokk.
+Hver linje som inngår i kodeblokken må ha et innrykk, for eksempel på fire mellomrom.
+Den første linja som har mindre innrykk avslutter kodeblokken og vil ikke inngå i den.
+
+Nøkkelordene vi bruker i Python er `if` på starten,
+`elif` for hver alternative betingelse,
+og `else` for betingelsen som oppfylles når ingen andre betingelser slår til.
+
+Her er en illustrasjon på hvordan betingelser er satt sammen:
 
 ```python
-a = ""
-c = "hei igjen"
-if a:
-    c = a
+if boolsk_uttrykk_her:
+    print("Denne koden kjøres hvis betingelsen er sann")
+elif alternativt_boolsk_uttrykk_her:
+    print("Denne koden kjøres hvis boolsk_uttrykk_her var usann,")
+    print("og alternativt_boolsk_uttrykk_her er sann")
+else:
+    print("Denne koden kjøres hvis ingen av betingelsene er oppfylt")
 ```
 
+Du kan droppe `elif` og/eller `else` med tilhørende kodeblokker hvis du ikke trenger dem.
+Oftest bruker du `if` alene, kanskje med `else`.
+
+
+### Eksempel: Hilsen
+
+Vi kan bygge videre på hilsenen vi lagde oss i forrige seksjon.
+Klarer vi å reagere på det brukeren skriver?
+
 ```python
-d = "a er sann" if a else "a var usann"
+# hilsen_med_if.py
+navn = input("Hei! Hva heter du? ")
+if navn == "Vibeke Fürst Haugen":
+    print("Oi! God dag, ærede kringkastingssjef!")
+    print("Hva kan jeg hjelpe deg med i dag?")
+elif navn:
+    print(f"Hyggelig å hilse på deg, {navn}!")
+else:
+    print("Feil: Du må oppgi et navn")
 ```
+
+Eksempel på kjøring:
+
+```shell-session
+kurs $> python hilsen_med_if.py
+Hei! Hva heter du? Vibeke Fürst Haugen
+Oi! God dag, ærede kringkastingssjef!
+Hva kan jeg hjelpe deg med i dag?
+kurs $> python hilsen_med_if.py
+Hei! Hva heter du? 
+Feil: Du må oppgi et navn
+kurs $> python hilsen_med_if.py
+Hei! Hva heter du? Thorben
+Hyggelig å hilse på deg, Thorben!
+```
+
+### Eksempel: Avslutte programmet tidlig
+
+Nå som vi kan gjøre forskjellige ting avhengig av hva brukeren skriver,
+kan vi også få til å gjøre noe bare hvis brukeren ønsker det.
+For eksempel kan vi avslutte programmet vårt tidlig
+hvis brukeren ikke ønsker å fortsette.
+
+For å få til å avslutte programmet tidlig, må vi _importere_ en modul, i tilfellet her `sys`.
+Ved å importere `sys` får vi tilgang til alle funksjonene som ligger i [`sys`-modulen][doc-sys].
+En av disse funksjonene er [`sys.exit()`][doc-sys.exit], som kan brukes til å avslutte programmet.
+Hvis du sender en streng inn til `sys.exit(arg)` vil strengen printes til konsoll,
+før programmet avsluttes med feilkode `1`.
+
+```python
+# prompt_fortsett.py
+import sys
+
+print("La oss late som at programmet ønsker å slette ei fil.")
+vil_fortsette = input("Vil du fortsette (y/N)? ").lower()[:1] == "y"
+if not vil_fortsette:
+    sys.exit("Avslutter...")
+print("Sletter fila...")
+```
+
+Her har du et eksempel på `if` uten `elif` eller `else`.
+Vanligvis ville programmet ha fortsatt til linja `print("Sletter fila...")` uansett,
+men `sys.exit` setter en stopper for det.
+En mer naiv løsning hadde vært:
+
+```python
+if vil_fortsette:
+    print("Sletter fila...")
+else:
+    print("Avslutter")
+```
+
+Svakheten med dette alternativet er at det blir uoversiktlig hvis det er
+hundrevis av ting som må gjøres mellom `if` og `else`.
+Da blir det ryddigere hvis du heller bare rydder ut av veien tilfellet hvor brukeren vil avbryte,
+og kan skrive resten av programmet uten innrykk.
+Dette er en vanlig teknikk for å unngå at det blir for mange innrykk til slutt.
+Du kan se for deg hvor langt inn du måtte ha rykket koden hvis du skulle spurt om
+brukeren vil fortsette et par-tre ganger til.
+
+Eksempel på kjøring:
+
+```shell-session
+kurs $> python prompt_fortsett.py
+La oss late som at programmet ønsker å slette ei fil.
+Vil du fortsette (y/N)? 
+Avslutter...
+kurs $> python prompt_fortsett.py
+La oss late som at programmet ønsker å slette ei fil.
+Vil du fortsette (y/N)? yes
+Sletter fila...
+```
+
+### Eksempel: Bruke forvalgt verdi for input()
+
+Si at du vil ha tak i brukerens navn,
+men vil falle tilbake på brukernavnet hvis brukeren ikke skriver noe.
+Da kan du _først_ lage en variabel med navnet du vil falle tilbake på,
+og så spørre brukeren om navnet.
+Hvis brukeren oppga et navn kan vi overskrive variabelen som vi allerede skrev et navn til,
+men hvis brukeren ikke oppga noenting, kan vi bare la variabelen være som den er.
+
+For å hente brukernavnet til den innloggede brukeren,
+kan vi importere [modulen `getpass`][doc-getpass].
+Den har [en funksjon kalt `getpass.getuser()`][doc-getpass.getuser] som forsøker å hente brukernavnet fra systemet.
+
+```python
+import getpass
+
+# Bruk brukernavnet som forvalg
+navn = getpass.getuser()
+
+oppgitt_navn = input(f"Navn: [{navn}] ").strip()
+if oppgitt_navn:
+    navn = oppgitt_navn
+
+print(f"Hei, {navn}")
+```
+
+En fordel med denne løsninga er at du kan stole på at `navn` har en verdi,
+uansett hva brukeren gjør.
+
+PS: Her brukte vi [`str.strip()`][doc-str.strip] til å fjerne mellomrom fra starten og slutten på strengen.
+En bieffekt av dette er at du vil få en tom streng, selv hvis du skriver inn mange mellomrom.
+På den måten får vi falt tilbake til brukernavnet i tilfellet hvor vi ellers ville brukt strengen
+(siden betingelsen `if oppgitt_navn` ville vært oppfylt når `oppgitt_navn == "    "`, med andre ord en ikke-tom streng).
+
+
+### Tilegne ulik verdi basert på boolsk uttrykk
+
+Det finnes en snarvei du kan bruke alle de gangene du har en variabel som enten skal være det ene eller det andre.
+For eksempel når du vil bruke riktig av entall og flertall,
+og ikke vet på forhånd hvor mange det er snakk om.
+
+Formatet er:
+
+```python
+<verdi hvis sann> if <betingelse> else <verdi hvis usann>
+```
+
+Du kan selvfølgelig skrive noe sånt som «Endret 3 fil(er)» og ta høyde for entall og flertall på den måten.
+Men du kan også velge å være perfeksjonist:
+
+```python
+# entall_flertall.py
+antall_filer = int(input("Hvor mange filer vil du endre? "))
+
+# Vi endrer ingenting, det er bare på liksom
+fil_substantiv = "fil" if antall_filer == 1 else "filer"
+print(f"Endret {antall_filer} {fil_substantiv}")
+```
+
+Eksempel på kjøring:
+
+```shell-session
+kode $> python entall_flertall.py
+Hvor mange filer vil du endre? 9000
+Endret 9000 filer
+kode $> python entall_flertall.py
+Hvor mange filer vil du endre? 1
+Endret 1 fil
+```
+
+[doc-sys]: https://docs.python.org/3/library/sys.html
+[doc-sys.exit]: https://docs.python.org/3/library/sys.html#sys.exit
+[doc-getpass]: https://docs.python.org/3/library/getpass.html
+[doc-getpass.getuser]: https://docs.python.org/3/library/getpass.html#getpass.getuser
+[doc-str.strip]: https://docs.python.org/3/library/stdtypes.html#str.strip
+
 
 Samlinger (Per Edvard)
 ---------
