@@ -48,7 +48,9 @@ Vi leser nå hele filen til en stor streng, men for å oppnå målet vårt med �
     for linje in linjer:
         print(linje)
 ```
-Men fortsatt er vi ikke helt i mål, nå printer vi hele linja, ikke bare tittelen. For å få tak i tittelen kan vi bruke  `split`-metoden til string, som deler en streng for hver gang den finner den angitt skille-strengen. Kan du fullføre programmet slik at det bare skriver ut tittelen?
+Men fortsatt er vi ikke helt i mål, nå printer vi hele linja, ikke bare tittelen. For å få tak i tittelen kan vi bruke  `split`-metoden til string, som deler en streng for hver gang den finner den angitt skille-strengen.
+ 
+✍️ **Oppgave:** _Kan du fullføre programmet slik at det bare skriver ut tittelen?_
 ```python
     for linje in linjer:
         deler = linje.split(",")
