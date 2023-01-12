@@ -208,9 +208,9 @@ Løkker (Per Edvard)
 
 Funksjoner (Heidi)
 ----------
-**💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke funksjoner for dele opp koden i mindre biter og for å kunne bruke samme kodebit flere steder._
+**💡 Læringsmål:** _I dette avsnittet skal du lære å lage funksjoner slik at du kan dele opp koden i mindre biter og kan bruke samme kodebit flere steder._
 
-Funksjoner i programmering ligner på funksjoner man lærte om i matematikken på skolen. Matematiske funksjoner tar inn en verdi og gir en verdi tilbake. 
+Funksjoner i programmering ligner mistenkelig på funksjoner man lærte om i matematikken på skolen. Som eksempelet i tabellen under viser, tar matematiske funksjoner inn en verdi og gir en verdi tilbake. 
 
 | `x`     | `f(x) = x - 2` |
 | ------- | -------------- |
@@ -218,9 +218,9 @@ Funksjoner i programmering ligner på funksjoner man lærte om i matematikken p�
 | `2`     | `2 - 2 = 0`    |
 | `0`     | `0 - 2 = -2`   |
 
-Funksjoner brukes til å abstrahere vekk detaljer så man i lengre programmer ikke behøver å forholde seg til alle ting hele tiden. I stedet kan man dele koden opp i flere funksjoner, og trenger bare å  vite navnet på funksjonen og verdiene den eventuelt trenger som input, på det stedet der man vi bruke funksjonen. Det er litt på samme måte som i en matoppskrift, det er ikke alle detaljer som forklares hele tiden. Om det for eksempel står "kok opp 2 liter vann" i oppskriften er det vanligvis ikke forklart hvordan man koker vann.
+I programmering brukes funksjoner til å abstrahere vekk detaljer slik at man i lange programmer ikke behøver å forholde seg til alle ting hele tiden. I stedet kan man dele koden opp mindre deler, funksjoner, og man trenger bare å  vite navnet på funksjonen og verdiene den eventuelt trenger som input, på det stedet der man vi bruke funksjonen. Det er litt på samme måte som i en matoppskrift, det er ikke alle detaljer som forklares hele tiden. Om det for eksempel står "kok opp 2 liter vann" i oppskriften er det vanligvis ikke forklart hvordan man koker vann.
 
-Funksjoner gjør at man ikke trenger å gjenta kodelinjer som skal gjøre neste det samme. Da er det bedre å ha denne samme funksjonaliteten ett sted: Man trenger man bare å forsikre seg ett sted om at funksjonaliteten er som forventet, og om man trenger å endre funksjonaliteten senere en gang, er det bare ett sted man trenger å oppdatere.
+Funksjoner gjør også at man ikke trenger å gjenta kodelinjer som skal gjøre (neste) det samme. Det bedre å ha denne samme funksjonaliteten ett sted i koden. Da er det bare ett sted det er nødvendig å forsikre seg om at funksjonaliteten er kodet riktig, og om man trenger å endre funksjonaliteten senere en gang, er det bare ett sted man trenger å oppdatere.
 
 En funksjon i Python ser ut på følgende måte:
 
@@ -248,7 +248,7 @@ Når man skal sende inn argument til en funksjon kan man eksplitt navngi paramet
 hilsen = lag_hilsen(navn = "Jens")
 ```
 
-I eksempelet er  `navn` en parameter og `Jens` er et argument for funksjonen `lag_hilsen`.
+I eksempelet er  `navn` parameter og `Jens` argument for funksjonen `lag_hilsen`.
 
 Test å legge til eller endre noe i funksjonen du har i skriptet. Klarer du å endre funksjonen så programmet feiler når du kjører det? Hvorfor feiler det?
 
@@ -259,17 +259,17 @@ Test å legge til eller endre noe i funksjonen du har i skriptet. Klarer du å e
 3. Lagre returnverdien fra funksjonen i en variabel, for eksempel `hjelp = print_hjelp()`, og print ut denne variabelen. Hva skrives ut?
 4. Prøv å legge inn en eksplisitt `return None` i slutten av programmet, hva skrives ut fra variabelen nå?
 
-✍️ **Oppgave:** _Lag en funksjon som setter lager bærer fra programkode og type_
- Tv- og radioprogram har en programkode (eller programid) består av fire bokstaver og åtte tall, for eksempel `KMNO10010922`. En type bærer består av to bokstaver, for eksempel `AH`, og et program sin bærer består av programkoden til programmet satt sammen med bærertypen.
+✍️ **Oppgave:** _Lag en funksjon som lager bærer fra programkode og type_
+ Tv- og radioprogram har en programkode (eller programid) består av fire bokstaver og åtte tall, for eksempel `KMNO10010922`. En type bærer består av to bokstaver, for eksempel `AH`, og et program sin bærer består av programkoden til programmet satt sammen med bærertypen, `KMNO10010922AH`.
 
 1. Lag funksjonen `lag_bærer(programkode, bærertype)`. Denne har to parametere, `programkode` og `bærertype`, og skal returnere en streng der programkode og bærertype er satt sammen.
 2. Kall funksjonen i programmet og se at verdien som returneres er som du forventer.
 
-✍️ **Oppgave:** _Lag en funksjon som splitter opp en bærer_
+✍️ **Oppgave:** _Lag en funksjon som splitter opp bæreren_
 
-1. Lag funksjonen  `del_opp_bærer(bærer)` som er motsatt av `lag_bærer(programkode, bærertype)`. Den skal ta inn en bærer, og dele denne opp i `programkode` og `bærertype`, og returnere disse to verdiene. Funksjoner kan bare returnere en ting, så en måte å returnere flere ting på er å sette de sammen til et tuppel.
+1. Lag funksjonen  `del_opp_bærer(bærer)` som er motsatt av `lag_bærer(programkode, bærertype)`. Den skal ta inn en bærer, og dele denne opp i `programkode` og `bærertype`, og returnere disse to verdiene. Funksjoner kan bare returnere én ting, så en måte å returnere flere ting på er å sette de sammen til et tuppel.
 2. Kall funksjonen i programmet og se at verdien som returneres er som du forventer.
-3. Prøv å kombinere de to bærer funksjonene, kall først `lag_bærer` og  bruk resultatet herfra som argument til `del_opp_bærer`, og motsatt, kall `del_opp_bærer` og  bruk resultatet herfra som argument til `lag_bærer`. Hvordan forventer du at disse funksjonene fungerer sammen?
+3. Prøv å kombinere de to bærer-funksjonene, kall først `lag_bærer` og  bruk resultatet herfra som argument til `del_opp_bærer`, og motsatt, kall `del_opp_bærer` og  bruk resultatet herfra som argument til `lag_bærer`. Hvordan forventer du at disse funksjonene fungerer sammen?
 
 ✍️ **Oppgave:** _Rydd opp i programmet_
 
