@@ -599,6 +599,7 @@ flowchart TD
 Her er en illustrasjon på hvordan betingelser ser ut i Python:
 
 ```python
+# illustrasjon_if_else.py
 print("Start")
 if 2 + 2 == 4:
     print("Denne koden kjøres hvis betingelsen er sann")
@@ -610,6 +611,16 @@ else:
 print("Slutt")
 ```
 
+Eksempel på kjøring:
+
+```shell-session
+kurs $> python illustrasjon_if_else.py
+Start
+Denne koden kjøres hvis betingelsen er sann
+Du kan ha flere kodelinjer
+Slutt
+```
+
 Hvordan klarer Python å skille mellom koden som skal kjøre avhengig av betingelsen,
 og resten av koden?
 Svaret er _kodeblokker_.
@@ -618,6 +629,89 @@ I Python bruker vi et kolon på slutten av ei linje til å indikere at «her kom
 Hver linje som inngår i kodeblokken må ha et større innrykk enn koden rundt, for eksempel fire mellomrom.
 Den første linja som har mindre innrykk avslutter kodeblokken og vil ikke inngå i den.
 (Blanke linjer er tillatt.)
+
+### Innrykk er viktig i Python
+
+Du vil som oftest få hjelp av editoren din,
+for eksempel vil den legge på innrykk når du skriver `if:[ENTER]`.
+Utenom automatikken kan du som oftest bruke `[TAB]`-tasten til å lage et passelig stort innrykk,
+men husk på at en tabulator er noe annet enn et mellomrom.
+Mange editorer vil sette inn mellomrom når du trykker `[TAB]`
+i stedet for å sette inn et tabulator-tegn,
+men hvis den ikke gjør det og du blander tabulator med mellomrom får du trøbbel:
+
+```python
+# feil_innrykk.py
+if 2 + 2 == 4:
+        print("Hei")
+	print("Hallo")
+```
+
+Du kan ikke se det med det blotte øye,
+men her har vi brukt mellomrom på «Hei» og tabulator på «Hallo».
+Prøver du å kjøre dette, får du feil:
+
+```shell-session
+kurs $> python feil_innrykk.py
+  File "/home/n123456/kurs/feil_innrykk.py", line 3
+    print("Hallo")
+TabError: inconsistent use of tabs and spaces in indentation
+```
+Det finnes en måte du kan åpne opp øynene dine for ulike typer mellomrom.
+I Visual Studio Code kan du velge View, Appearance og Render Whitespace.
+Vanlig mellomrom blir vist som prikker,
+mens en tabulator blir vist som ei pil.
+Feilen ovenfor løser du ved å bare bruke det ene eller det andre,
+aldri en blanding.
+
+I Visual Studio Code kan du velge hva slags innrykk den skal bruke.
+Du må se nederst til høyre i vinduet, der hvor det står «Ln #, Col #» (med tall i stedet for #).
+Dette er linja og kolonna markøren din står i.
+Etter denne står det hva slags innrykk editoren bruker, for eksempel «Spaces: 4».
+Trykk på denne for å endre typen innrykk og størrelsen på innrykket.
+
+Det er utkjempet kriger på internett over hva som er riktig av mellomrom og tabulator,
+så vi nøyer oss med å si at mellomrom gjør at koden ser lik ut for alle,
+mens tabulator lar ulike personer justere hvor mange «mellomrom» en tabulator skal tilsvare visuelt.
+Det viktigste er at du bruker én av de konsekvent i hele prosjektet;
+hvilken du bruker er underordnet.
+
+### Du kan droppe `else`
+
+Noen ganger har du ikke noe du vil gjøre i `else`.
+Da kan du bare droppe den, og ha en `if` med tilhørende kodeblokk.
+
+Som flytdiagram:
+
+```mermaid
+flowchart TD
+    Start((Start))
+    Hvis{Er betingelsen sann?}
+    Sann[Kode som skal kjøres <br/>når betingelsen er sann]
+    Slutt((Slutt))
+    Start-->Hvis
+    Hvis -- Ja --> Sann --> Slutt
+    Hvis -- Nei --> Slutt
+```
+
+Som Python-kode:
+
+```python
+# illustrasjon_if.py
+print("Start")
+if 2 + 2 == 5:
+    print("Denne koden kjøres hvis betingelsen er sann")
+    print("Du kan ha flere kodelinjer")
+print("Slutt")
+```
+
+Eksempel på kjøring:
+
+```shell-session
+kurs $> python illustrasjon_if.py
+Start
+Slutt
+```
 
 
 ### Eksempel: Hilsen
@@ -640,7 +734,9 @@ print("Takk for nå!")
 ```
 
 Her har vi brukt `if` og `else` inni `else`.
-Det går helt fint an å kombinere dem på denne måten.
+Det går helt fint an å kombinere dem på denne måten,
+i så mange lag bortover som du ønsker.
+Hvor praktisk det blir, er et annet spørsmål...
 
 Eksempel på kjøring:
 
@@ -685,15 +781,15 @@ flowchart TD
 ### Snarvei: Kombinere `else` og `if`
 
 Python har en snarvei du kan bruke til å kombinere `else` og `if`.
-Denne snarveien heter naturlig nok `elif`.
+Denne snarveien heter selvfølgelig `elif`.
 
 I forrige seksjon hadde vi en `if` inne i kodeblokken som hørte til en `else`.
-Det går kanskje greit når du bare har én sånn if/else-struktur inne i en annen,
-men du får fort veldig lang venstremargin når du får tre eller flere spesialtilfeller.
+Det går kanskje greit når du bare har én sånn if/else-struktur inni i en annen,
+men du får fort en veldig lang venstremargin når du får tre eller flere spesialtilfeller.
 
 For å konvertere det forrige eksemplet til å bruke `elif`,
 kan du trekke sammen `else:` med `if:` og
-redusere innrykket med ett nivå:
+redusere innrykket med ett hakk:
 
 ```python
 # hilsen_med_elif.py
