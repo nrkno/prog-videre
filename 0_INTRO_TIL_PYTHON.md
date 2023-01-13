@@ -136,13 +136,14 @@ c = a or b
 
 Input (Thorben)
 -----
-**💡 Læringsmål:** _I dette avsnittet skal du lære deg å få inn data fra omverdenen._
+**💡 Læringsmål:** _I dette avsnittet skal du lære deg å få inn data fra brukeren._
 
 Fram til nå har vi skrevet tekst fra programmet til terminalen.
-Men hvis du ville endre hvilke verdier programmet ditt opererte på,
+Men hvis du har villet endre hvilke verdier programmet ditt opererte på,
 så har du måttet gå inn i koden og gjøre endringene der.
+
 Hadde det ikke vært mer praktisk hvis du kunne latt koden være den samme,
-og heller _lest inn_ verdier fra terminalen til programmet?
+og heller _spurt brukeren_ om hvilke verdier du skal bruke?
 Da kan du kjøre programmet ditt flere ganger, men brukt ulike verdier hver gang.
 
 [Funksjonen `input()`][doc-input] stopper programmet ditt,
@@ -185,7 +186,7 @@ men den vil ikke avslutte med linjeskift.
 Resultatet er at når brukeren begynner å skrive,
 vil svaret stå på samme linje som spørsmålet.
 
-Grunnen til at du helst bør oppgi en prompt,
+Grunnen til at du helst bør bruke en prompt,
 er at det lar brukerne av programmet ditt vite at programmet venter på dem.
 Det trenger ikke alltid være så åpenbart hvorvidt programmet bare har tatt seg en tenkepause,
 eller om det venter på brukeren.
@@ -224,7 +225,7 @@ La oss si at vi vil lese inn brukerens alder, i tillegg til navn.
 Her er første utkast:
 
 ```python
-# input_alder.py
+# input_alder_feil.py
 print("Hva heter du?")
 navn = input("> ")
 
@@ -239,7 +240,7 @@ print(f"Du vil være {neste_alder} år om et år!")
 
 ✍️ **Oppgave:**
 _Skriv av eksemplet ovenfor og kjør det i terminalen.
-Hva skjer? Kan du gjette hvorfor?_
+Hva skjer? Kan du se hvorfor?_
 
 Hvis du vil lese inn noe annet enn tekst fra brukeren, for eksempel et tall,
 så må du selv gjøre jobben med å konvertere brukerens svar til den riktige datatypen.
@@ -288,6 +289,9 @@ I tillegg til `int(x)` kan du også konvertere til flyttall med [`float(x)`][doc
 Du kan ofte ha behov for å stille kontrollspørsmål til brukeren.
 Det kan for eksempel være at du vil spørre om bekreftelse før du overskriver ei fil.
 
+
+#### Hvorfor ikke `bool(x)`?
+
 Ovenfor så vi at du kan bruke `int(x)` og `float(x)` til å konvertere en streng til typen `int` eller `float`.
 Hva så med boolske verdier — kan vi konvertere dem med `bool(x)`?
 Vi kan teste det ut i en interaktiv Python-sesjon:
@@ -334,6 +338,8 @@ får du den implisitte verdien til objektet som du sender inn.
 Derfor blir `"False"` tolket til `True`:
 Det er en ikke-tom streng, så da er den `True`.
 
+#### Eksempel på problemløsing: Tolke ja/nei-svar
+
 Hvis vi skal få til å tolke svaret på ja/nei-spørsmål,
 må vi i grunn gjøre en god del arbeid.
 La oss starte med å lage en liste med krav:
@@ -343,7 +349,11 @@ La oss starte med å lage en liste med krav:
 * Hvis du bare trykker `[ENTER]` skal du bruke en forvalgt verdi
 
 Dette er ganske mange krav...
+I stedet for å skulle løse alt på én gang,
+er det enklere å bare starte med én bit.
 La oss starte med å bare godta `"y"` for `True`, og anta alt annet som `False`.
+
+##### Runde 1: Godta kun y som «ja»
 
 ```python
 # input_ja_nei_v1.py
@@ -354,41 +364,61 @@ print(f"{vil_fortsette_tolket=}")
 ```
 
 I spørsmålet har vi skrevet `(Y/n)`.
-Dette sier to ting:
+Dette kommuniserer to ting til brukeren:
 
 1. Vi stiller et yes/no-spørsmål
 2. Hvis du bare trykker `[ENTER]`, vil programmet anta svaret er `"yes"`
 
-Hvis vi derimot hadde skrevet `(y/N)` ville forvalget vært `"no"`.
+Hvis vi derimot hadde skrevet `(y/N)` ville vi kommunisert at forvalget hadde vært `"no"`.
 (Legg merke til hvilken bokstav som er stor.)
+
+En annen teknikk vi har brukt,
+er å sette likhetstegn etter uttrykket som vi ønsker å vise frem i f-strengen:
+
+```python
+f"{vil_fortsette_tolket=}"
+```
+
+Dette er en snarvei som vil vise _både_ uttrykket du har brukt _og_
+resultatet av uttrykket.
+For eksempel vil det stå `vil_fortsette_tolket=True` hvis du svarte `y`.
 
 Hvis du prøvekjører dette programmet i terminalen,
 vil du fort nok oppdage tre feil:
-* `"Y"` (en y som majuskel) blir tolket som `False`
+* `"Y"` (en stor y) blir tolket som `False`
 * `"yes"` blir tolket som `False`
 * Hvis du bare trykker `[ENTER]` får du `False`, selv om forvalget er `True`.
 
 La oss prøve å løse det første problemet først.
-Hvis vi konverterer til [minuskler][minuskel] først,
+
+
+##### Runde 2: Ignorer store/små bokstaver
+
+Hvis vi konverterer til [minuskler][minuskel] (små bokstaver) først,
 kan vi beholde sammenlikningen som den er.
 
 ```python
 # input_ja_nei_v2.py
 print("La oss late som at programmet ønsker å opprette ei fil.")
 vil_fortsette = input("Vil du fortsette (Y/n)? ")
+# Ignorer forskjellen på store og små bokstaver ved å
+# normalisere til små bokstaver
 vil_fortsette_minuskler = vil_fortsette.lower()
 vil_fortsette_tolket = vil_fortsette_minuskler == "y"
 print(f"{vil_fortsette_tolket=}")
 ```
 
 Nå gjenstår kun to problemer.
-La oss gå løs på problemet med at `"yes"` blir tolket som `False`:
+La oss gå løs på problemet med at `"yes"` blir tolket som `False`.
+
+##### Runde 3: Godta yes som «ja»
 
 ```python
 # input_ja_nei_v3.py
 print("La oss late som at programmet ønsker å opprette ei fil.")
 vil_fortsette = input("Vil du fortsette (Y/n)? ")
 vil_fortsette_minuskler = vil_fortsette.lower()
+# Ignorer alle bokstaver etter den første
 vil_fortsette_forbokstav = vil_fortsette_minuskler[0]
 vil_fortsette_tolket = vil_fortsette_forbokstav == "y"
 print(f"{vil_fortsette_tolket=}")
@@ -411,6 +441,8 @@ IndexError: string index out of range
 Når vi gjør `vil_fortsette_minuskler[0]`,
 antar vi at det er minst ett tegn i strengen.
 Den antakelsen holder ikke når du ikke skriver inn noe før du trykker `[ENTER]`.
+
+##### Runde 4: Ikke krasj ved tom verdi
 
 Kan vi tilpasse koden så den ikke gjør noen antakelser om strengen,
 men heller aksepterer at den kan være tom?
@@ -442,6 +474,8 @@ kan det bli seende sånn her ut:
 print("La oss late som at programmet ønsker å opprette ei fil.")
 vil_fortsette = input("Vil du fortsette (Y/n)? ")
 vil_fortsette_minuskler = vil_fortsette.lower()
+# Fortsett med å ignorere alle tegn etter det første,
+# men la en tom streng forbli tom
 vil_fortsette_forbokstav = vil_fortsette_minuskler[0:1]
 vil_fortsette_tolket = vil_fortsette_forbokstav == "y"
 print(f"{vil_fortsette_tolket=}")
@@ -452,7 +486,9 @@ Legg merke til at `[0:1]` kan forkortes til `[:1]`, siden starten er `0`.
 `vil_fortsette_forbokstav` vil bli satt til det første tegnet hvis det finnes,
 ellers en tom streng.
 
-Det siste problemet som gjenstår er å få `True` som forvalg:
+Det siste problemet som gjenstår er å få `True` som forvalg.
+
+##### Runde 5: Godta tom verdi som «ja»
 
 ```python
 # input_ja_nei_v5.py
@@ -460,9 +496,21 @@ print("La oss late som at programmet ønsker å opprette ei fil.")
 vil_fortsette = input("Vil du fortsette (Y/n)? ")
 vil_fortsette_minuskler = vil_fortsette.lower()
 vil_fortsette_forbokstav = vil_fortsette_minuskler[:1]
-vil_fortsette_tolket = vil_fortsette_forbokstav == "y" or vil_fortsette_forbokstav == ""
+# Aksepter tom streng, i tillegg til "y", som sann
+vil_fortsette_tolket = (
+    vil_fortsette_forbokstav == "y"
+    or vil_fortsette_forbokstav == ""
+)
 print(f"{vil_fortsette_tolket=}")
 ```
+
+Det er fortsatt en svakhet her:
+Du kan skrive hva som helst,
+og det vil bli tolket som «nei» så lenge det ikke starter på bokstaven y.
+Vi kunne valgt å kjefte på brukeren hvis de gjorde noe så tullete,
+men for enkelthetens skyld antar vi heller at brukeren ikke vil fortsette.
+
+##### Runde 6: Trekk sammen til ei linje
 
 Nå har vi gjort én ting av gangen i dette eksemplet,
 men du kan ta noen snarveier og få til det samme i færre kodelinjer:
@@ -473,6 +521,23 @@ print("La oss late som at programmet ønsker å opprette ei fil.")
 vil_fortsette = input("Vil du fortsette (Y/n)? ").lower()[:1] in ("y", "")
 print(f"{vil_fortsette=}")
 ```
+
+Her har vi gjort alle mellomstegene samtidig.
+Vi har også brukt `in`-operatoren til å sjekke om uttrykket på venstre hånd
+(den første bokstaven til brukeren som minuskel)
+er å finne i tuplen av verdier på høyre hånd (`"y"` eller `""`).
+
+Programmet oppfører seg helt likt som versjon 5,
+det er bare litt vanskeligere å lese,
+men desto kortere.
+Balansegangen mellom «lettforståelig, men langt» og «kort, men vanskelig å lese»
+kan være vanskelig å få rett.
+I dette tilfellet hadde nok den beste løsninga vært å bruke den lange varianten,
+men gjemt den bort som en gjenbrukbar funksjon.
+Da tar den liten plass der hvor du spør brukeren om hen vil fortsette,
+samtidig som du kan gå til den lange versjonen
+når du trenger å tilpasse den eller se hvordan den funker.
+Du lærer deg hvordan du kan lage slike funksjoner helt i slutten av denne delen.
 
 Når du kjører eksemplet, kan det se sånn her ut:
 
@@ -517,61 +582,42 @@ Det øyeblikket du begynner å få spesialtilfeller som skal behandles på forsk
 får du behov for å variere hva koden gjør.
 
 De aller fleste programmeringsspråk har det som kalles for betingelser (conditionals).
-De består av flere deler:
+De kan sammenliknes med flytdiagram som du kanskje har støtt på i andre tilfeller:
 
-* Ett nøkkelord som sier fra at vi starter på en betingelse
-* Ett boolsk uttrykk (betingelsen)
-* Én blokk med kode som skal kjøre hvis det boolske uttrykket er sant
-* (Frivillig) Et eller flere nye boolske uttrykk (alternative betingelser) med tilhørende kodeblokker som skal kjøres
-  hvis ingen tidligere blokker med kode ble valgt, og det nye boolske uttrykket er sant
-* (Frivillig) Én blokk med kode som skal kjøre hvis ingen tidligere blokker med kode har blitt valgt
-
-Koden før og etter betingelsen kjører som normalt fra topp til bunn.
-
-Format:
-```python
-if <betingelse 1>:
-    <kode som skal eksekveres hvis
-    betingelsen er oppfylt>
-elif <betingelse 2>:
-    <Kode som skal eksekveres hvis
-    betingelse 1 ikke er oppfylt,
-    men betingelse 2 er det>
-elif <betingelse 3>:
-    <Kode som skal eksekveres hvis
-    verken betingelse 1 eller 2 er oppfylt,
-    men 3 er det>
-# og så videre
-else:
-    <Kode som skal eksekveres hvis
-    ingen av betingelsene er oppfylt>
-<Kode som eksekveres uansett>
+```mermaid
+flowchart TD
+    Start((Start))
+    Hvis{Er betingelsen sann?}
+    Sann[Kode som skal kjøres <br/>når betingelsen er sann]
+    Usann[Kode som skal kjøres <br/>når betingelsen er usann]
+    Slutt((Slutt))
+    Start-->Hvis
+    Hvis -- Ja --> Sann --> Slutt
+    Hvis -- Nei --> Usann --> Slutt
 ```
 
-Ordet _kodeblokk_ er nytt.
-Det refererer til en samling med kode som hører sammen og blir eksekvert sammen.
-I Python bruker vi et kolon på slutten av ei linje til å indikere at det straks kommer ei kodeblokk.
-Hver linje som inngår i kodeblokken må ha et innrykk, for eksempel på fire mellomrom.
-Den første linja som har mindre innrykk avslutter kodeblokken og vil ikke inngå i den.
-
-Nøkkelordene vi bruker i Python er `if` på starten,
-`elif` for hver alternative betingelse,
-og `else` for betingelsen som oppfylles når ingen andre betingelser slår til.
-
-Her er en illustrasjon på hvordan betingelser er satt sammen:
+Her er en illustrasjon på hvordan betingelser ser ut i Python:
 
 ```python
-if boolsk_uttrykk_her:
+print("Start")
+if 2 + 2 == 4:
     print("Denne koden kjøres hvis betingelsen er sann")
-elif alternativt_boolsk_uttrykk_her:
-    print("Denne koden kjøres hvis boolsk_uttrykk_her var usann,")
-    print("og alternativt_boolsk_uttrykk_her er sann")
+    print("Du kan ha flere kodelinjer")
 else:
-    print("Denne koden kjøres hvis ingen av betingelsene er oppfylt")
+    print("Denne koden kjøres hvis betingelsen er usann")
+    
+    print("Du kan ha flere kodelinjer her også")
+print("Slutt")
 ```
 
-Du kan droppe `elif` og/eller `else` med tilhørende kodeblokker hvis du ikke trenger dem.
-Oftest bruker du `if` alene, kanskje med `else`.
+Hvordan klarer Python å skille mellom koden som skal kjøre avhengig av betingelsen,
+og resten av koden?
+Svaret er _kodeblokker_.
+Ei kodeblokk er ei samling med kode som hører sammen og blir eksekvert sammen.
+I Python bruker vi et kolon på slutten av ei linje til å indikere at «her kommer ei kodeblokk!».
+Hver linje som inngår i kodeblokken må ha et større innrykk enn koden rundt, for eksempel fire mellomrom.
+Den første linja som har mindre innrykk avslutter kodeblokken og vil ikke inngå i den.
+(Blanke linjer er tillatt.)
 
 
 ### Eksempel: Hilsen
@@ -585,11 +631,16 @@ navn = input("Hei! Hva heter du? ")
 if navn == "Vibeke Fürst Haugen":
     print("Oi! God dag, ærede kringkastingssjef!")
     print("Hva kan jeg hjelpe deg med i dag?")
-elif navn:
-    print(f"Hyggelig å hilse på deg, {navn}!")
 else:
-    print("Feil: Du må oppgi et navn")
+    if navn:
+        print(f"Hyggelig å hilse på deg, {navn}!")
+    else:
+        print("Feil: Du må oppgi et navn")
+print("Takk for nå!")
 ```
+
+Her har vi brukt `if` og `else` inni `else`.
+Det går helt fint an å kombinere dem på denne måten.
 
 Eksempel på kjøring:
 
@@ -598,13 +649,68 @@ kurs $> python hilsen_med_if.py
 Hei! Hva heter du? Vibeke Fürst Haugen
 Oi! God dag, ærede kringkastingssjef!
 Hva kan jeg hjelpe deg med i dag?
+Takk for nå!
 kurs $> python hilsen_med_if.py
 Hei! Hva heter du? 
 Feil: Du må oppgi et navn
+Takk for nå!
 kurs $> python hilsen_med_if.py
 Hei! Hva heter du? Thorben
 Hyggelig å hilse på deg, Thorben!
+Takk for nå!
 ```
+
+Hvordan ville dette sett ut som flytdiagram?
+
+```mermaid
+flowchart TD
+    Start((Start))
+    Input["navn = input('Hei! Hva heter du? ')"]
+    If{Er navn == 'Vibeke Fürst Haugen' sant?}
+    PrintHeiKsjef["print('Oi! God dag, ærede kringkastingssjef!')"]
+    PrintHvaKanJegHjelpeDegMed["print('Hva kan jeg hjelpe deg med i dag?')"]
+    Elif{Er navn en ikke-tom streng?}
+    PrintHilsen["print(f'Hyggelig å hilse på deg, {navn}!')"]
+    PrintFeil["print('Feil: Du må oppgi et navn')"]
+    PrintTakk["print('Takk for nå!')"]
+    Slutt((Slutt))
+    Start-->Input-->If
+    If -- Ja --> PrintHeiKsjef --> PrintHvaKanJegHjelpeDegMed --> PrintTakk
+    If -- Nei --> Elif
+    Elif -- Ja --> PrintHilsen --> PrintTakk
+    Elif -- Nei --> PrintFeil --> PrintTakk
+    PrintTakk --> Slutt
+```
+
+### Snarvei: Kombinere `else` og `if`
+
+Python har en snarvei du kan bruke til å kombinere `else` og `if`.
+Denne snarveien heter naturlig nok `elif`.
+
+I forrige seksjon hadde vi en `if` inne i kodeblokken som hørte til en `else`.
+Det går kanskje greit når du bare har én sånn if/else-struktur inne i en annen,
+men du får fort veldig lang venstremargin når du får tre eller flere spesialtilfeller.
+
+For å konvertere det forrige eksemplet til å bruke `elif`,
+kan du trekke sammen `else:` med `if:` og
+redusere innrykket med ett nivå:
+
+```python
+# hilsen_med_elif.py
+navn = input("Hei! Hva heter du? ")
+if navn == "Vibeke Fürst Haugen":
+    print("Oi! God dag, ærede kringkastingssjef!")
+    print("Hva kan jeg hjelpe deg med i dag?")
+elif navn:
+    print(f"Hyggelig å hilse på deg, {navn}!")
+else:
+    print("Feil: Du må oppgi et navn")
+print("Takk for nå!")
+```
+
+Koden oppfører seg helt likt som før,
+den har bare blitt litt lettere å forholde seg til.
+
 
 ### Eksempel: Avslutte programmet tidlig
 
