@@ -2,6 +2,7 @@
 title = "Programmeringskurs for viderekomne"
 authors = ["Thorben Werner Sjøstrøm Dahl", "Teodor Ande Elstad", "Heidi Mork", "Per Edvard Volla"]
 description = "Innføring i mer avanserte programmeringskonsepter som kan monne i hverdagen"
+src = "innhold"
 language = "nb"
 
 [build]
