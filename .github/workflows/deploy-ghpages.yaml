@@ -1,3 +1,4 @@
+name: Build and maybe deploy GitHub Pages
 on:
   push: {}
   workflow_dispatch: {}
