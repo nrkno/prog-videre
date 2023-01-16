@@ -1,0 +1,23 @@
+[book]
+title = "Programmeringskurs for viderekomne"
+authors = ["Thorben Werner Sjøstrøm Dahl", "Teodor Ande Elstad", "Heidi Mork", "Per Edvard Volla"]
+description = "Innføring i mer avanserte programmeringskonsepter som kan monne i hverdagen"
+src = "innhold"
+language = "nb"
+
+[build]
+build-dir = "build"
+create-missing = false
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
+[output.html]
+git-repository-url = "https://github.com/nrkno/prog-videre"
+edit-url-template = "https://github.com/nrkno/prog-videre/edit/main/{path}"
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
+
+[output.html.fold]
+enable = true
+
+
