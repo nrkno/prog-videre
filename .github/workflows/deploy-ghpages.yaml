@@ -51,14 +51,14 @@ jobs:
           mdbook build
 
       - name: Upload GitHub Pages content
-        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/setup-mdbook
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/setup-mdbook'
         uses: actions/upload-pages-artifact@v1
         with:
           path: "./build/"
 
   deploy-ghpages:
     name: Deploy to GitHub Pages
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/setup-mdbook
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/setup-mdbook'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
