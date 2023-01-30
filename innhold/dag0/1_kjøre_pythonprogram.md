@@ -39,6 +39,6 @@ I programmet over brukte vi funksjonen `print(...)` til å skrive tekst til term
 `print(...)` er et eksempel på en innebygget funksjon i Python. Funksjoner skal vi lære mer om senere i kurset, blant annet hvordan du kan lage dine egne funksjoner, men nå i første omgang kan vi notere oss tre ting:
 1. Funksjonen har ett navn, `print`, og dette navnet står først, sånn at Python forstår hvilken funksjon vi ønsker å bruke.
 2. Parentesene etter funksjonsnavnet, står rundt teksten vi sender inn til funksjonen, sånn at Python vet hvilke tekst vi ønsker å skrive til terminalen.
-3. Selve teksten er skrevet med anførselstegn `"`. Dette forteller Python at det her er snakk om tekst, og ikke mer programkode.
+3. Selve teksten er skrevet med anførselstegn (`"`). Dette forteller Python at det her er snakk om tekst, og ikke mer programkode.
 
 ✍️ **Oppgave:** _Kan du utvide `hallo_verden.py`, sånn at den printer ut en tekst til?_
