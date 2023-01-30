@@ -1,4 +1,4 @@
-Kommentarer (Teodor)
+Kommentarer
 ===========
 **💡 Læringsmål:** _I dette avsnittet skal du lære deg å skrive forklaringer som kan ligge sammen med koden._
 
@@ -36,7 +36,6 @@ kan det være nyttig
 
 Kommentere ut kode
 ------------------
-
 I tillegg til å være forklaringer, kan man bruke kommentarer til å fjerne deler av koden mens man utvikler et program. Dette kan være nyttig når man kjapt vil sjekke hva som skjer hvis bare deler av koden kjører. Når man bruker kommentarer på denne måten, sier man gjerne at man "kommenterer ut kode".
 
 ```python
