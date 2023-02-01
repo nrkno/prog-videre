@@ -6,7 +6,7 @@ Datastrukturer regnes som noe av det mest grunnleggende innenfor programmering. 
 Mye av styrken kommer av mulighetene man har til å utføre bestemte opreasjoner på den lagrede dataen, på en veldig effektiv måte; _gjør X operasjon på alle elementene i lista_
 Det finnes en rekke datastrukturer hvor alle har egne regler, styrker og begrensninger. I denne korte introduksjonen skal vi se på tre datastrukturer som alle er mye brukt i Python.
 
-### Lister
+## Lister
 
 Lister er en samling av elementer i en bestemt rekkefølge. Lister kan inneholde «hva som helst»; strenger, tall, variabler, eller til og med andre datastrukturer.
 Det er heller ingen krav til at elementene i lista har en viss tilhørighet til de andre elementene.
@@ -57,7 +57,7 @@ slettet_kanal = kanaler.pop()   # pop() fjerner det siste elementet i lista og l
 ```
 
 
-### Tupler
+## Tupler
 
 Tupler er også en samling av elementer i en bestemt rekkefølge, men skiller seg fra lister ved å være «immutable. Man kan altså ikke endre elementene, fjerne eller legge til nye.
 
@@ -79,7 +79,7 @@ For å hente ut elementer fra en tuppel benytter man indeks:
 print(kanaler[0])
 ```
 
-### Oppslagstabeller
+## Oppslagstabeller
 
 Oppslagstabeller, eller _dictionaries_ er en datastruktur som baserer seg på nøkler med bestemte verdier, istedet for en indeks. 
 

@@ -1,11 +1,12 @@
 Løkker (Per Edvard)
-------
+=======
+
 **💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke løkker for å gjøre ting flere ganger._
 
 Løkker lar deg gjøre handlinger og operasjoner flere ganger, for eksempel ved å itere over alle elementene i en samling og slette elementene som matcher et spesifikt kriterie.
 Vi skal se på to typer løkker, nemlig for-løkker og while-løkker.
 
-### for-løkker
+## for-løkker
 
 For løkker benyttes for det meste for å itere over en gitt samling for å utføre handlinger og operasjoner for hvert enkelt element. Løkka utfører altså én handling for hvert element i lista, uavhengig av hvor mange elementer som finnes i lista.
 Variablen for hvert enkelt element endres ved hver iterasjon, og eksisterer kun i «scopet» til for-løkka. I eksemplet under benytter vi kanal-lista vi tidligere så på, og hvis denne inneholder NRK1, NRK2, og NRK3 vil løkka kjøre tre ganger.
@@ -18,7 +19,7 @@ for kanal in kanaler:
     print(kanal)                # Gjør noe med elementent, eller utfør andre handlinger
 ```
 
-### Generators
+##  Generators
 
 Man kan også benytte «genererings-funksjoner», eller «generators», i Python for å iterere over en en sekvens av verdier, i likhet med samlinger, men da uten at Python lagrer selve sekvensen i minnet slik som med en definert samling.
 Og siden sekvensen ikke lagres i minnet og heller kun genereres «på sparket» så kan man kun iterere over disse én gang. Fordelen med «generators» er at de er veldig nyttige når man jobber med veldig store mengder data, eller bokstavelig talt uendelige sekvenser. 
@@ -39,7 +40,7 @@ for i in range(2, 10, 2):
     print(i)
 ```
 
-### while-løkker
+## while-løkker
 
 While-løkker benyttes for å utføre handlinger og operasjoner så lenge et bestemt kriteriet er gitt. Det betyr at disse løkkene i teorien kan kjøre «for alltid» så lenge kriteriet for hva som skal stoppe løkka ikke gis, og dette må man være forsiktig med.
 

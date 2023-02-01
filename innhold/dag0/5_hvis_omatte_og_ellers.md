@@ -1,6 +1,7 @@
 
 Hvis, omatte og ellers (Thorben)
-----------------------
+=======================
+
 **💡 Læringsmål:** _I dette avsnittet skal du lære deg å skrive kode som gjør valg._
 
 Hittil har programmene våre kjørt fra topp til bunn:
@@ -58,7 +59,7 @@ Hver linje som inngår i kodeblokken må ha et større innrykk enn koden rundt, 
 Den første linja som har mindre innrykk avslutter kodeblokken og vil ikke inngå i den.
 (Blanke linjer er tillatt.)
 
-### Innrykk er viktig i Python
+## Innrykk er viktig i Python
 
 Du vil som oftest få hjelp av editoren din,
 for eksempel vil den legge på innrykk når du skriver `if:[ENTER]`.
@@ -104,7 +105,7 @@ mens tabulator lar ulike personer justere hvor mange «mellomrom» en tabulator 
 Det viktigste er at du bruker én av de konsekvent i hele prosjektet;
 hvilken du bruker er underordnet.
 
-### Du kan droppe `else`
+## Du kan droppe `else`
 
 Noen ganger har du ikke noe du vil gjøre i `else`.
 Da kan du bare droppe den, og ha en `if` med tilhørende kodeblokk.
@@ -142,7 +143,7 @@ Slutt
 ```
 
 
-### Eksempel: Hilsen
+## Eksempel: Hilsen
 
 Vi kan bygge videre på hilsenen vi lagde oss i forrige seksjon.
 Klarer vi å reagere på det brukeren skriver?
@@ -206,7 +207,7 @@ flowchart TD
     PrintTakk --> Slutt
 ```
 
-### Snarvei: Kombinere `else` og `if`
+## Snarvei: Kombinere `else` og `if`
 
 Python har en snarvei du kan bruke til å kombinere `else` og `if`.
 Denne snarveien heter selvfølgelig `elif`.
@@ -236,7 +237,7 @@ Koden oppfører seg helt likt som før,
 den har bare blitt litt lettere å forholde seg til.
 
 
-### Eksempel: Avslutte programmet tidlig
+## Eksempel: Avslutte programmet tidlig
 
 Nå som vi kan gjøre forskjellige ting avhengig av hva brukeren skriver,
 kan vi også få til å gjøre noe bare hvis brukeren ønsker det.
@@ -293,7 +294,7 @@ Vil du fortsette (y/N)? yes
 Sletter fila...
 ```
 
-### Eksempel: Bruke forvalgt verdi for input()
+## Eksempel: Bruke forvalgt verdi for input()
 
 Si at du vil ha tak i brukerens navn,
 men vil falle tilbake på brukernavnet hvis brukeren ikke skriver noe.
@@ -328,7 +329,7 @@ På den måten får vi falt tilbake til brukernavnet i tilfellet hvor vi ellers 
 (siden betingelsen `if oppgitt_navn` ville vært oppfylt når `oppgitt_navn == "    "`, med andre ord en ikke-tom streng).
 
 
-### Tilegne ulik verdi basert på boolsk uttrykk
+## Tilegne ulik verdi basert på boolsk uttrykk
 
 Det finnes en snarvei du kan bruke alle de gangene du har en variabel som enten skal være det ene eller det andre.
 For eksempel når du vil bruke riktig av entall og flertall,
