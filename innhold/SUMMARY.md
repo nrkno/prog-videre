@@ -18,6 +18,6 @@
   - [Json](dag1/4_json.md)
   - [Et helt program](dag1/5_oppgave.md)
 
-- [Dag 2: ](dag2/README.md)
+- [Dag 2: Hente data fra API](dag2/README.md)
 
 - [Ekstra: valgfritt innhold](ekstra/README.md)
