@@ -14,7 +14,10 @@
 - [Dag 1: Kommandolinje-applikasjon](dag1/README.md)
   - [Lese fra fil](dag1/1_lese_fil.md)
   - [Skrive til fil](dag1/2_skrive_fil.md)
-  - [Programargumenter](dag1/3_programargumenter.md)
-  - [Feilhåndtering](dag1/4_feilhåndtering.md)
-  - [Json](dag1/5_json.md)
-  - [Et helt program](dag1/6_oppsummering.md)
+  - [Feilhåndtering](dag1/3_feilhåndtering.md)
+  - [Json](dag1/4_json.md)
+  - [Et helt program](dag1/5_oppgave.md)
+
+- [Dag 2: ](dag2/README.md)
+
+- [Ekstra: valgfritt innhold](ekstra/README.md)

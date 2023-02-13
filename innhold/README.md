@@ -44,6 +44,9 @@ Denne språkfunksjonaliteten ønsker vi å dekke:
 
 ### Dag 3: Api - lage api
 * flask? FastAPI?
+* valgfrie seksjoner (ligger på øverste nivå, lenkes inn fra dagene)
+  * objektorientering (dataklasser) 
+  * decorators
 * Lærer verktøy for å lage egne apier (godt utgangspunkt for githubactions/kuberneteskurs)
 
 ### Dag 4: Gui

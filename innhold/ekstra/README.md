@@ -1,0 +1,4 @@
+# Ekstramateriale
+
+* objektorientering (dataklasser) 
+* dekoratører
