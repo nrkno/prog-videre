@@ -1,6 +1,13 @@
 Programargumenter (Thorben)
 =================
 
+* Det er et bibliotek som heter click
+* Her kommer det inn dekoratører, men det gjør vi veldig kort.
+* Her er oppgaven på slutten av avsnittet at man skal skrive om programmet fra dag 1 til å bruke programargumenter.
+
+Programargumenter uten click (to be flytta)
+===========================================
+
 **💡 Læringsmål:**
 _I dette kapitlet skal du bli kjent med hvordan du kan gi brukeren kontroll
 over hva applikasjonen skal gjøre, uten at applikasjonen stopper opp underveis._
@@ -213,12 +220,12 @@ import sys
 if len(sys.argv) != 2:
     pythonnavn = sys.orig_argv[0]
     skriptnavn = sys.argv[0]
-    
+
     print("Feil: Du må gi nøyaktig ett argument til skriptet.")
     print("Eksempel:")
     print(f"{pythonnavn} {skriptnavn} navn_på_fil.txt")
     sys.exit(2)
-   
+
 valgt_fil = sys.argv[1]
 print(f"Vil jobbe på fila {valgt_fil}")
 ```
