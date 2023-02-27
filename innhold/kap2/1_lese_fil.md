@@ -1,6 +1,9 @@
 Vi leser data fra en fil (Heidi)
 ========================
 
+**💡 Læringsmål:** _I dette avsnittet lærer du hvordan du leser data fra en fil._
+
+
 Vi skal starte med å se på hvordan vi kan lese fra fil, det er jo nyttig til mange slags ting. Lag deg en `.py`-fil som du vil skrive programmet ditt i. Vi skal lese fila `serier.txt` som på hver linje inneholder `serieId` og `tittel` for en tv-serie, separert med `,`. Vi skal lese fila, splitte innholdet og printe ut alle titlene i fila.
 
 For å lese en fil må vi først åpne fila, deretter leser vi innholdet. For å åpne fila brukes funksjonen `open`, du kan lese mer om denne funksjonen i [Python-dokumentasjonen](https://docs.python.org/3/library/functions.html?highlight=open#open).

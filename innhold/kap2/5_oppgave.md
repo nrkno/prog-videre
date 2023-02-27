@@ -1,7 +1,7 @@
-Lek og Morro med Elektronisk Program-Guide!
-===========================================
+Lek og Morro med Elektronisk Program-Guide! (Heidi)
+====================================================
 
-
+**💡 Læringsmål:** _I dette avsnittet lærer du hvordan enkeltdelene i dag 1 kan settes sammen og bli til et nyttig program_
 
 Lag et program som:
 1. Leser inn Elektronisk Program-Guide (EPG) for flere kanaler fra en JSON-fil. Navnet på JSON-filen skal hentes fra programargumentene.
