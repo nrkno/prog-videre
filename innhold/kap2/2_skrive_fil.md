@@ -1,6 +1,8 @@
 Vi skriver data til en fil (Heidi)
 ===========================
 
+**💡 Læringsmål:** _I dette avsnittet lærer du hvordan du leser data til en fil._
+
 Å skrive til fil ligner mye på å lese fra fil, men når vi åpner fila må vi bruke riktig modus, enten `w` (_write_) eller `a` (_append_). Forskjellen på dem er at når fila åpnes med `w` vil det eksisterende innholdet i fila slettes, mens `a` beholder innholdet, slik at nye ting som skrives legges til på slutten. Og i stedet for å bruke `read()` for å lese fila, må vil bruke `write()` for å skrive.
 ```python
 with open("adresser.txt", "w", encoding="utf-8") as fil:
