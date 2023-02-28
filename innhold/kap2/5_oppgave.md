@@ -1,7 +1,18 @@
-Lek og Morro med Elektronisk Program-Guide! (Heidi)
-====================================================
+Lek og Moro med Elektronisk Program-Guide! (Heidi)
+===================================================
 
 **💡 Læringsmål:** _I dette avsnittet lærer du hvordan enkeltdelene i dag 1 kan settes sammen og bli til et nyttig program_
+
+Vi skal i korte trekk lage et program som:
+1. Leser inn Elektronisk Program-Guide (EPG) for flere kanaler fra en JSON-fil.
+2. Teller opp hvor mange programmer som finnes i hver kategori.
+3. Skriver ut antall programmer per kategori, i synkende rekkefølge, til terminalen.
+
+Vi har også mange andre ideer til ting du kan eksperimentere med når du er ferdig med listen over, i tillegg får du kanskje ideer selv underveis til ting du vil teste ut.
+
+## Hva er Elektronisk Program Guide (EPG)?
+
+## 
 
 Lag et program som:
 1. Leser inn Elektronisk Program-Guide (EPG) for flere kanaler fra en JSON-fil. Navnet på JSON-filen skal hentes fra programargumentene.
