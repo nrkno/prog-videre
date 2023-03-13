@@ -1,4 +1,4 @@
-Applikasjonsprogrammeringsgrensesnitt (API) (Up for grabs - skriv navnet ditt her)
+Applikasjonsprogrammeringsgrensesnitt (API) (Per Edvard)
 ==================================================================================
 * Her installerer vi bibliotekspakken som heter requests.
 * Først bruker vi requests til å kalle morsomme API som:
