@@ -1,4 +1,4 @@
-Organisering med moduler og pakker (Up for grabs - skriv navnet ditt her)
+Organisering med moduler og pakker (Heidi)
 =========================================================================
 * skriv noe om moduler og pakker (modul = fil, pakke = mappe med `__init__` fil)
 * trekk leseren gjennom et eksempel for moduler og pakker
