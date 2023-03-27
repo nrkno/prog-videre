@@ -73,7 +73,7 @@ I stedet for å skrive ut jsonen til terminalen må vi hente ut kategorien for h
 ```
 For å få til dette må vi iterere over listen av kanaler, og for hver kanal interere gjennom programmene, og til sist, for hvert program må vi hente ut katogorien. Dette kan for eksempel løses med to `for`-løkker inni hverandre. Når man har fått tak i kategorien må oppslagstabellen oppdateres. Om man bruker kategoriens `id` som nøkkel må man sjekke iden finnes finnes i oppslagstabellen fra før, i såfall må man øke verdien med 1. Hvis ikke, må den nye nøkkelen legges til i tabellen.
 
-__Gratulerer, du har et fiks ferdig program! 🎉__
+__Gratulerer, du har en fiks ferdig kommandolinjeapplikasjon! 🎉__
 
 ## Lag mer gøy! 🎨
 

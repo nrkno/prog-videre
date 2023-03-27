@@ -1,5 +1,5 @@
-Dag 0: Introduksjon til Python
-==============================
+# Introduksjon til Python
+
 _Hei og velkommen til Pythonkurs for viderekomne! Som en myk start, skal vi se litt på hvordan man bruker Python, og de helt enkle verktøyene som finnes i dette programmeringsspråket._
 
 1. [Kjøre Python-program](1_kjøre_pythonprogram.md)

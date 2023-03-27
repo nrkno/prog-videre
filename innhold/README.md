@@ -10,10 +10,12 @@ I dette kurset skal du bruke programmeringsspråket Python til å lage små appl
 2. Installere et verktøy som kan brukes til å skrive pythonkode. Om du ikke har noen preferanser anbefaler vi [VS Code](https://code.visualstudio.com/), med [Python plugin](https://marketplace.visualstudio.com/items?itemName=ms-python.python) installert. Hvis du vil vite mer om redigering av pythonkode i VS Code, kan du ta en titt på [denne guiden](https://code.visualstudio.com/docs/languages/python).
 
 
-## Tentativ agenda
+## Innhold
 
-### Dag 0: Intro til python - oppfriskning
-Dette ønsker vi å dekke i intro-foredrag:
+{{#include SUMMARY.md}}
+
+### [Kapittel 1: Introduksjon til Python](kap1/README.md)
+Dette ønsker vi å dekke i dette kapittelet:
 - Nyttige tips til editering av Pythonkode i VS Code
 - Minne på at dokumentasjon finnes, og at vi har lenket til den der det er relevant
 
@@ -32,7 +34,7 @@ Denne språkfunksjonaliteten ønsker vi å dekke:
     - Boolske verdier
 - Funksjoner
 
-### Dag 1: kommandolinje applikasjon
+### Kapittel 2: Kommandolinjeapplikasjon
 - Unntak og feilhåndtering
 * enkel sak med filbaserte ting
 * fil med json feks
@@ -46,7 +48,10 @@ Denne språkfunksjonaliteten ønsker vi å dekke:
 * (webapp (javascript, html templates))
 * tykk-klient gui
 
-### Dag 4: Api - lage api (ekstra, et annet kurs)
+
+## For senere?
+
+### Api - lage api (ekstra, et annet kurs)
 * flask? FastAPI?
 * valgfrie seksjoner (ligger på øverste nivå, lenkes inn fra dagene)
   * objektorientering (dataklasser) 

@@ -1,5 +1,4 @@
-Noe med GUI
-===========
+# Applikasjon med grafisk brukergrensesnitt (GUI)
 
 - klasser og objekter (guien bruker objekter)
 - @dataclasses.dataclass
@@ -12,6 +11,14 @@ Noe med GUI
     - skrive resultater til fil
     - vise fram bilde feks for en serie
     - spille av tv/radio program (sjekke om dette er greit)
+
+## Plan
+
+1. [Objektorientering](1_objektorientering.md)
+2. [Dataklasser](2_dataklasser.md)
+3. [Installasjon av PySimpleGUI](3_simplegui.md)
+4. [Eksempelapplikasjon i PySimpleGUI](4_simplegui_demo.md)
+5. [Prosjektapplikasjon](5_prosjekt_app.md)
 
 
 
