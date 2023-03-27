@@ -20,3 +20,15 @@ Hvordan hjelpe folk med å velge om de trenger dag 0:
 ## Diplom
 
 lages ved å bruke nrk logo generator - burde oversettes til Python
+
+## For senere?
+
+### Api - lage api (ekstra, et annet kurs)
+* flask? FastAPI?
+* valgfrie seksjoner (ligger på øverste nivå, lenkes inn fra dagene)
+  * objektorientering (dataklasser) 
+  * decorators
+* Lærer verktøy for å lage egne apier (godt utgangspunkt for githubactions/kuberneteskurs)
+
+## Ekspert-temaer
+* venv

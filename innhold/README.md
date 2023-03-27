@@ -12,51 +12,11 @@ I dette kurset skal du bruke programmeringsspråket Python til å lage små appl
 
 ## Innhold
 
-{{#include SUMMARY.md}}
+1. [Introduksjon til Python](kap1/)
+2. [Kommandolinjeapplikasjon](kap2/)
+3. [Hente data fra API](kap3/)
+4. [Applikasjon med grafisk brukergrensesnitt (GUI)](kap4/)
+ 
+Kurset er bygd opp slik at et kapittel bygger videre på det man har lært i foregående kapitler.
 
-### [Kapittel 1: Introduksjon til Python](kap1/README.md)
-Dette ønsker vi å dekke i dette kapittelet:
-- Nyttige tips til editering av Pythonkode i VS Code
-- Minne på at dokumentasjon finnes, og at vi har lenket til den der det er relevant
-
-
-Denne språkfunksjonaliteten ønsker vi å dekke:
-- Sånn kjørere man Pythonkode
-- Nyttige tips til editering av Pythonkode i VS Code
-- Print til konsollen
-- Hvis/omatte/ellers
-- Løkker
-- Datastrukturer og operasjoner på de:
-    - Lister
-    - Oppslagstabeller
-    - Strenger
-    - Tall
-    - Boolske verdier
-- Funksjoner
-
-### Kapittel 2: Kommandolinjeapplikasjon
-- Unntak og feilhåndtering
-* enkel sak med filbaserte ting
-* fil med json feks
-
-### Dag 2: kommandolinje dag 2
-* pip - (venv?)
-* kalle api
-* Moduler?
-
-### Dag 3: Gui
-* (webapp (javascript, html templates))
-* tykk-klient gui
-
-
-## For senere?
-
-### Api - lage api (ekstra, et annet kurs)
-* flask? FastAPI?
-* valgfrie seksjoner (ligger på øverste nivå, lenkes inn fra dagene)
-  * objektorientering (dataklasser) 
-  * decorators
-* Lærer verktøy for å lage egne apier (godt utgangspunkt for githubactions/kuberneteskurs)
-
-## Ekspert-temaer
-* venv
+Det første kapittelet er en oppfriskning av grunnleggende Python, så om du allerede har dette i fingrene, kan du gå rett videre til kapittel 2.
