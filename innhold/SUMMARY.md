@@ -27,5 +27,10 @@
   - [Oppgaver](kap3/5_oppgaver.md)
 
 - [Noe med GUI](kap4/README.md)
+  - [Objektorientering](kap4/1_objektorientering.md)
+  - [Dataklasser](kap4/2_dataklasser.md)
+  - [Installasjon av PySimpleGUI](kap4/3_simplegui.md)
+  - [Eksempelapplikasjon i PySimpleGUI](kap4/4_simplegui_demo.md)
+  - [Prosjektapplikasjon](kap4/5_prosjekt_app.md)
 
 - [Ekstra: valgfritt innhold](ekstra/README.md)

@@ -42,16 +42,16 @@ Denne språkfunksjonaliteten ønsker vi å dekke:
 * kalle api
 * Moduler?
 
-### Dag 3: Api - lage api
+### Dag 3: Gui
+* (webapp (javascript, html templates))
+* tykk-klient gui
+
+### Dag 4: Api - lage api (ekstra, et annet kurs)
 * flask? FastAPI?
 * valgfrie seksjoner (ligger på øverste nivå, lenkes inn fra dagene)
   * objektorientering (dataklasser) 
   * decorators
 * Lærer verktøy for å lage egne apier (godt utgangspunkt for githubactions/kuberneteskurs)
-
-### Dag 4: Gui
-* (webapp (javascript, html templates))
-* tykk-klient gui
 
 ## Ekspert-temaer
 * venv

@@ -1,4 +1,4 @@
 # Ekstramateriale
 
-* objektorientering (dataklasser) 
 * dekoratører
+* Testing
