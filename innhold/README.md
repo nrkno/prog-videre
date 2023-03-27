@@ -12,8 +12,6 @@ I dette kurset skal du bruke programmeringsspråket Python til å lage små appl
 
 ## Innhold
 
-{{#include SUMMARY.md}}
-
 ### [Kapittel 1: Introduksjon til Python](kap1/README.md)
 Dette ønsker vi å dekke i dette kapittelet:
 - Nyttige tips til editering av Pythonkode i VS Code
