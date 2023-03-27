@@ -23,7 +23,7 @@ Du kan dog inngå en avtale med forfatteren som slår fast at du har lov til å 
 
 ### Lisenser: Avtaler som gir deg lov til å bruke kode
 
-I praksis blir denne gjenbrukbare koden gjort tilgjengelig under en _«åpen kildekode»-lisens_.
+Kode som er publisert på nettet for å gjenbrukes, blir som regel gjort tilgjengelig under en _«åpen kildekode»-lisens_.
 En _lisens_ er en avtale som du kan velge å følge for å få visse rettigheter under bestemte vilkår,
 uten at du må kontakte forfatteren, besøke et advokatkontor og signere en avtale i tre eksemplarer.
 Lisenser for «åpen kildekode» vil som regel gi deg rett til å gjenbruke kildekoden,
@@ -199,6 +199,8 @@ Package operations: 1 install, 0 updates, 0 removals
 kurs $>
 ```
 
+[cowsay]: https://pypi.org/project/cowsay/
+
 
 ## Hvordan kjøre program med Poetry?
 
@@ -219,7 +221,7 @@ Du har to alternativer for å tre inn i Python-prosjektet:
   Da kan du kjøre flere kommandoer uten å bruke `poetry run` foran.
   Når du er ferdig kjører du `exit`.
 
-Eksempel på å kjøre én kommando:
+Eksempel på å kjøre én kommando med `poetry run`:
 
 ```shell
 kurs $> poetry run python -m cowsay Dette er kuuuuult
@@ -234,3 +236,61 @@ kurs $> poetry run python -m cowsay Dette er kuuuuult
                         ||----w |
                         ||     ||
 ```
+
+Eksempel på å kjøre flere kommandoer med `poetry shell`:
+
+```shell
+kurs $> poetry shell
+Spawning shell within /home/n123456/.cache/pypoetry/virtualenvs/epg-innleser-ZMuqz6FV-py3.8
+. /home/n123456/.cache/pypoetry/virtualenvs/epg-innleser-ZMuqz6FV-py3.8/bin/activate
+(epg-innleser-py3.8) kurs $> cowsay Dette var litt møøøøe
+  _____________________
+| Dette var litt møøøøe |
+  =====================
+                     \
+                      \
+                        ^__^
+                        (oo)\_______
+                        (__)\       )\/\
+                            ||----w |
+                            ||     ||
+(epg-innleser-py3.8) kurs $> exit
+exit
+kurs $> 
+```
+
+## Andre ting du kan gjøre
+
+Vi har sett på disse Poetry-kommandoene allerede:
+
+* [`poetry init`][poetry-init]: Sett opp et Python-prosjekt fra scratch
+* [`poetry add <pakkenavn>...`][poetry-add]: Legg til avhengighetene med pakkenavnene du har oppgitt
+* [`poetry run <kommando>`][poetry-run]: Kjør én kommando inni prosjektet
+* [`poetry shell`][poetry-shell]: Åpne en ny terminalsesjon inni prosjektet (for å kjøre flere kommandoer)
+
+Her er et par andre Poetry-kommandoer du kan bruke:
+
+* [`poetry install`][poetry-install]: Installer alle avhengighetene i `poetry.lock`.
+  Nyttig hvis du har kopiert koden til en ny datamaskin og trenger å få på plass alle avhengighetene igjen.
+* [`poetry remove <pakkenavn>...`][poetry-remove]: Fjern avhengighetene med pakkenavnene du har oppgitt
+* [`poetry show <pakkenavn>`][poetry-show]: Vis informasjon om den installerte pakka med det angitte pakkenavnet
+* [`poetry update`][poetry-update]: Oppdater avhengighetene
+* [`poetry self update`][poetry-self-update]: Oppdater Poetry
+* [`poetry list`][poetry-list]: List opp _alle_ Poetry-kommandoene som er tilgjengelige
+
+[poetry-init]: https://python-poetry.org/docs/cli#init
+[poetry-add]: https://python-poetry.org/docs/cli#add
+[poetry-run]: https://python-poetry.org/docs/cli#run
+[poetry-shell]: https://python-poetry.org/docs/cli#shell
+[poetry-install]: https://python-poetry.org/docs/cli#install
+[poetry-remove]: https://python-poetry.org/docs/cli#remove
+[poetry-show]: https://python-poetry.org/docs/cli#show
+[poetry-update]: https://python-poetry.org/docs/cli#update
+[poetry-self-update]: https://python-poetry.org/docs/cli#self-update
+[poetry-list]: https://python-poetry.org/docs/cli#list
+
+
+## Videre lesning
+
+* [Poetry sin dokumentasjon](https://python-poetry.org/docs/basic-usage/)
+* [Introduksjon til den innebygde pakkebehandleren Pip](https://packaging.python.org/en/latest/tutorials/installing-packages/)
