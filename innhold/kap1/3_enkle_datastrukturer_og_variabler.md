@@ -96,23 +96,97 @@ En annen funksjon som stadig vekk er nyttig når man programmerer, er `abs(...)`
 
 Variabler
 ---------
-- Tilegne verdier til en variabel
-- Gyldige variabelnavn
-  - Inkludert æøå?
-- gode variabel navn `sesong_nummer = 4`
-    - tips om finne gode variabelnavn ved å se det variabelen skal brukes til
-- Bruke en variabel
-- `i = 2` `i +=1 `
+Når man programmerer, skiller man gjerne mellom variabler og verdier. Verdier er ofte det som representerer data i et program, og er gjerne noe spesifikt, som tallet `3`, eller teksten `"hei alle sammen"`. Når vi lært om tall i seksjonen over, var alle tallene vi brukte eksempel på verdier.
+
+Variabler lar oss gi verdier et navn. Ved å gi verdier navn, kan vi bedre kommunisere hva en verdi representerer. Med variabler kan vi skrive kode som regner med `antall_epler` og `antall_appelsiner`, i stede for tall som `3` og `5`. Da slipper vi å huske hva hvert tall representerer.
+
+Variabler gir oss også muligheten til å skrive kode som fungerer for mange forskjellige verdier. Man kan f.eks. lage to variabler, `et_tall` og `et_annet_tall`, som inneholder to tallverdier som en bruker har skrevet inn. Så kan man bruke disse variablene til å printe ut summen av tallene med `print(et_tall + et_annet_tall)`. Denne koden vil da fungere uansett hvilke tall brukeren har skrevet inn.
+
+### Livet til en variabel
+Livet til en variabel består av fire faser:
+1. Variabelen oppstår når vi gir den et navn.
+2. Når variabelen har et navn, kan vi gi den en verdi.
+3. Når variabelen har en verdi, kan vi bruke variabelnavnet til å hente verdien i koden vår.
+4. Når det ikke lenger er behov for variabelen lenger, kan programmet fjerne den.
+
+#### Variabelen oppstår og får sin første verdi
+I Python gjennomgår variabler alltid livets to første faser samtidig. Det betyr at vi alltid må gi variabler en verdi samtidig som vi gir de navn. Dette gjør vi ved å skrive navnet på variabelen vi ønsker å lage, et likhetstegn `=`, etterfulgt av verdien vi vil at variabelen skal ha. Kodelinjen `en_variabel = 3` forteller dermed Python at vi ønsker å opprette en variabel med navnet `en_variabel`, og at vi ønsker at den skal få verdien `3`.
+```python
+en_variabel = 3
+print(en_variabel)
+```
+
+_**Hvorfor kan jeg ikke lage en variabel uten en verdi i Python?** Variabler er stort sett bare nyttig når de inneholder en verdi. Derfor krever Python at man gir en variabel en verdi når man lager den. Dette gjør at en del feil er litt mindre vanlige i Python, enn i andre programmeringsspråk hvor man kan lage variabler som ikke inneholder verdier._
+
+Som variabelnavn kan man bruke kombinasjoner av små og store bokstaver, tall og understrek (`_`). Det eneste begrensningen er at eventuelle tall ikke kan være det første tegnet i variabelnavnet. Hvis man har variabelnavn som består av flere ord, bruker man gjerne understrek for å skille hvert ord, f.eks. `et_stort_tall`. Tall brukes gjerne der man har flere variabler med lignende navn, som f.eks. `heltall_1` og `heltall_2`.
+
+✍️ **Oppgave:** _Hvilke variabelnavn er gyldige? Under er det en liste med variabelnavn. Klarer du å finne ut av hvilke variabelnavn som er gyldige i Python? Hvis du er i tvil, kan du skrive litt kode i `datastrukturer.py` som forsøker å lage en variabel med det variabelnavnet du lurer på er gyldig._
+
+Variabelnavn:
+- `en_annen_variabel`
+- `en-variabel`
+- `3_variabler`
+- `variabel_3`
+- `enVariabel`
+- `EnVariabel`
+- `en variabel`
+- `nå_er_det_nok`
+
+#### Vi bruker variabelen
+Når man har laget en variabel, og gitt den en verdi, kan man bruke variabelen akkurat som om den var verdien. Det betyr at hvis man har to variabler som inneholder tall-verdier, så kan man bruke de variablene akkurat som om de var tall.
+```python
+print(3 + 7)
+
+et_tall = 3
+et_annet_tall = 7
+print(et_tall + et_annet_tall)
+```
+
+Man kan også gi variabler en verdi som er hentet fra andre variabler, eller er resultatet av en funksjon som bruker andre variabler eller verdier.
+```python
+et_tall = 3
+et_annet_tall = 7
+summen_av_to_tall = et_tall + et_annet_tall
+print(summen_av_to_tall)
+```
+
+✍️ **Oppgave:** _Kan du skrive litt kode i `datastrukturer.py` som bruker de matematiske funksjonene vi har lært om, men bruker variabler til å ta vare på de tallene man regner med, og resultatene man får?_
+
+#### Kan variabler endre verdi?
+I Python kan man gi en variabel en verdi flere ganger. Det betyr at en variabel kan starte med å inneholde tallet `3`, og senere i koden kan inneholde et annet tall som `7`.
 
 ```python
-i = 14
-print(i)
-i = 45
-print(i)
-a = 2
-b = 3
-c = a + b
+en_variabel = 3
+print(en_variabel)
+
+en_variabel = 7
+print(en_variabel)
 ```
+
+En variabel kan også inneholde helt forskjellige typer verdier. Man kan f.eks. starte med å la variabelen inneholde et tall `3`, og så la den inneholde teksten `"hei igjen"`.
+
+```python
+en_variabel = 3
+print(en_variabel)
+
+en_variabel = "hei igjen"
+print(en_variabel)
+```
+
+Selv om det kan være nyttig å endre verdien til en variabel, kan det også være veldig forvirrende. Spesielt forvirrende kan det være om man lar variabelen endre seg fra helt to forskjellige typer verdier. Derfor kan det være lurt å ha disse to tommelfingerreglene i bakhodet:
+1. Hvis det ikke er en spesiell grunn til å endre verdien på en variabel, bruk heller to eller flere variabler.
+2. Hvis man må endre på verdien til en variabel, forsøk å skriv koden sånn at man ikke trenger å endre på hvilken type verdi variabelen inneholder.
+
+_Alle regler er til for å brytes, og reglene over er intet unntak. Det finnes mange tilfeller hvor det kan være nyttig å endre verdien til en variabel, og du kommer til å støte på flere eksempler på kode som gjøre det i dette kurset._
+
+#### Når det ikke lenger er behov for en variabel
+Python er et eksempel på et programmeringsspråk hvor man i liten grad trenger å skrive kode som forteller programmet at det ikke lenger er behov for en variabel. Dette klarer Python i stor grad å finne ut selv.
+
+Grunnen til at det er viktig for programmeringsspråk å vite at variabler ikke lenger er i bruk, er fordi det lar programmet rydde opp mens det kjører. Da kan programmet f.eks. slutte å bruke minne til å huske på et stort tall, eller "låse opp" en fil, sånn at andre deler av programmet kan skrive til den.
+
+Når man starter å programmere, er det ikke så viktig å tenke på at ting ryddes opp, men etter hvert som man skriver mer avanserte programmer, som f.eks. skal jobbe med filer som er større enn RAM-minnet til datamaskinen, må man i større grad ta hensyn til sånne ting.
+
+I senere kapitler, kommer du også til å bli kjent med Python-kode hvor man forteller Python hvor lenge det er behov for en variabel. Da bruker man typisk syntaksen `with verdi as variabelnavn:`, som forteller Python at denne variabelen bare skal leve innenfor skopet til den blokken `with`-uttrykket omfavner. Ikke fortvil om dette ikke gir så mye mening nå, da vi kommer til å jobbe mer med det senere.
 
 Strenger
 --------
