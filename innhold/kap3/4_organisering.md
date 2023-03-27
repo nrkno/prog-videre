@@ -14,9 +14,11 @@ kalkulator
 tid
 
 
-En modul i Python er en fil med python-kode, altså slike vi kjenner til som slutter på `.py`.
+En modul i Python er ikke noe annet enn en fil med python-kode, altså slike filer vi allerede kjenner til, som slutter på `.py`.
 
 ## Pakker
+
+
 
 ## Eksempel
 
