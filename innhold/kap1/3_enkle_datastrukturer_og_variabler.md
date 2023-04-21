@@ -66,7 +66,7 @@ print(math.sqrt(9))
 ```
 
 ### Regnerekkefølge
-De matematiske funksjonene i Python, evalueres i utgangspunktet i [en bestemt rekkefølge](https://docs.python.org/3/reference/expressions.html#operator-precedence). Dette er grunnen til at `3 + 2 * 6` blir `15` (`2 * 6` blir `12`, og legger men til `3` får man `15`).
+De matematiske funksjonene i Python, evalueres i utgangspunktet i [en bestemt rekkefølge](https://docs.python.org/3/reference/expressions.html#operator-precedence). Dette er grunnen til at `3 + 2 * 6` blir `15` (`2 * 6` blir `12`, og legger man til `3` får man `15`).
 
 For å styre rekkefølgen uttrykk evalueres i, kan man bruke parenteser (`(` og `)`). Da kan man eksempelvis skrive `(3 + 2) * 6`, sånn at tallene `3` og `2` legges sammen først, før man multipliserer med `6`.
 
@@ -92,7 +92,6 @@ Når man skal oversette et flyttall til et heltall, er det flere funksjoner som 
 Modulus er nyttig for å f.eks. finne ut om et tall er et partall. Vi vet at partall kan deles på 2, så derfor må er partall sin `% 2` være lik `0`.
 
 En annen funksjon som stadig vekk er nyttig når man programmerer, er `abs(...)`, som finner [absoluttverdien](https://no.wikipedia.org/wiki/Absoluttverdi) til et tall. Absoluttverdien er kort fortalt hvor stort tallet er, hvis vi ser bort ifra om det er positivt eller negativt. Eksempelvis er både `abs(3)` og `abs(-3)` tallet `3`.
-
 
 Variabler
 ---------
@@ -177,7 +176,7 @@ Selv om det kan være nyttig å endre verdien til en variabel, kan det også væ
 1. Hvis det ikke er en spesiell grunn til å endre verdien på en variabel, bruk heller to eller flere variabler.
 2. Hvis man må endre på verdien til en variabel, forsøk å skriv koden sånn at man ikke trenger å endre på hvilken type verdi variabelen inneholder.
 
-_Alle regler er til for å brytes, og reglene over er intet unntak. Det finnes mange tilfeller hvor det kan være nyttig å endre verdien til en variabel, og du kommer til å støte på flere eksempler på kode som gjøre det i dette kurset._
+_**Tips:** Alle regler er til for å brytes, og reglene over er intet unntak. Det finnes mange tilfeller hvor det kan være nyttig å endre verdien til en variabel, og du kommer til å støte på flere eksempler på kode som gjøre det i dette kurset._
 
 #### Når det ikke lenger er behov for en variabel
 Python er et eksempel på et programmeringsspråk hvor man i liten grad trenger å skrive kode som forteller programmet at det ikke lenger er behov for en variabel. Dette klarer Python i stor grad å finne ut selv.
@@ -190,17 +189,72 @@ I senere kapitler, kommer du også til å bli kjent med Python-kode hvor man for
 
 Strenger
 --------
-- Hvordan lager du de? `"`
-- Kunne escape enkelte tegn
-- Multiline-strenger `'''`
+Skal man jobbe med tekst, er [strenger](https://docs.python.org/3/library/string.html) en fin datastruktur. Kort forklart er en streng en sekvens av tegn (bokstaver eller andre skrifttegn som punktum og komma).
+
+Den enkleste måten å lage en streng på, er ofte å bruke anførselstegn (`"`) eller apostrof (`'`):
+
+```python
+en_streng = "Hallo verden"
+print(en_streng)
+
+en_annen_streng = 'Hei igjen'
+print(en_annen_streng)
+```
+
+### Anførselstegn og apostrof
+Når man lager en streng på denne måten, er det viktig at teksten man omslutter med anførselstegn eller apostrof, ikke selv inneholder anførselstegn eller apostrof. Hvis man gjør det, blir Python forvirret og tror at teksten slutter før den egentlig gjør det.
+
+```python
+# Dette fungerer ikke
+funker_ikke = 'Snurp igjen smella di, du maser jo som et lok'motiv'
+funker_heller_ikke = "Fra filmen "Lasse & Geir" av Wam og Vennerød"
+```
+
+For å få til dette, kan man passe på at man omslutter tekst som inneholder anførselstegn med apostrof, og vice versa.
+
+```python
+# Dette fungerer helt fint
+funker_fint = "Snurp igjen smella di, du maser jo som et lok'motiv"
+funker_også_fint = 'Fra filmen "Lasse & Geir" av Wam og Vennerød'
+```
+
+Hvis det ikke holder å bytte mellom anførselstegn og apostrof, kan man også bruke bakstrek (`\`) for å fortelle Python at et enkelt tegn skal tolkes som en del av strengen.
+
+```python
+# Her bruker vi bakstrek (\) som rømningskarakter (escape character)
+funker_fint = "Snurp igjen smella di, du maser jo som et lok\'motiv. Fra filmen \"Lasse & Geir\" av Wam og Vennerød"
+```
+
+### Strenger med flere linjer tekst
+Noen ganger har man lyst på en tekst som inneholder linjeskift. For å få til dette, må man legge inn et eget tegn for linjeskift (`\n`) der man ønsker det i teksten.
+
+```python
+flere_linjer = "Hva brast så høyt der?\nNorge av di hand, konge."
+print(flere_linjer)
+```
+
+Et annet alternativ er å omslutte teksten med tre apostrofer (`'''`). Da kan man skrive inn linjeskift som vanlig i teksten.
+
+```python
+flere_linjer = '''Hva brast så høyt der?
+Norge av di hand, konge.'''
+print(flere_linjer)
+```
+
+### Vanlige strenge-funksjoner
 - Hvordan gjør
 - `contains`, `split`, `in`
 - Bruke programID som eksempel
 - Bruke medvirkende som eksempel
     - Sørge for stor forbokstav osv.
+
+### Funksjoner som bygger strenger
 - Vise hvordan man bruker f-strenger
-    - _Du kan også bruke `+` for å konkatinere strenger, men f-strenger er anbefalt_
-- https://docs.python.org/3/library/string.html
+    - Du kan også bruke `+` for å konkatinere strenger, men f-strenger er anbefalt
+
+
+_**Tips:** Strenger er en veldig nyttig og fleksibel datastruktur, men siden den kan brukes til nesten hva som helst, er den også lett å misbruke. Ender du opp med å gjøre mange avanserte operasjoner på strenger, kan det være lurt å tenke på om man heller skulle brukt en annen datatype._
+
 
 Boolske verdier
 ---------------
