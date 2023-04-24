@@ -255,6 +255,8 @@ svar = f"Summen av {et_tall} og {et_annet_tall} er {et_tall + et_annet_tall}"
 print(svar)
 ```
 
+✍️ **Oppgave:** _Kan lage en egen formatert streng i `datastrukturer.py` som setter sammen noen variabler og printer de til terminalen?_
+
 Når man fletter inn en verdi eller variabel i en formatert streng, vil Python forsøke å gjøre om verdien man fletter inn til en streng. For enkle datastrukturer som tall, vil man typisk få en passende streng ut av boksen, men for mer avanserte datastrukturer, kan det være man må gjøre konverteringen selv, eller bruke en av [konverteringsfunksjonene](https://docs.python.org/3/reference/lexical_analysis.html#formatted-string-literals) som er bygget inn i f-strenger.
 
 _Formaterte strenger er litt nyere funksjonalitet i Python. Før dette var tilgjengelig, brukte man gjerne funksjonen `+` for å slå sammen strenger og verdier. Dette er typisk litt mer kronglete enn å bruke f-strenger, men kommer du over gammel kode, kan det være du ser denne måten å bygge strenger på._
@@ -306,10 +308,40 @@ print(en_streng.split("r")) # Skriver ut ['Hallo ve', 'den']
 
 _**Tips:** Strenger er en veldig nyttig og fleksibel datastruktur, men siden den kan brukes til nesten hva som helst, er den også lett å misbruke. Ender du opp med å gjøre mange avanserte operasjoner på strenger, kan det være lurt å tenke på om man heller skulle brukt en annen datatype._
 
-
 Boolske verdier
 ---------------
-- `True`, `False`, and or not, hvordan parenteser kan påvirke ting
+Boolske verdier, er verdier som enten kan være sant (`True`) eller falskt (`False`). De brukes gjerne der man ønsker at et dataprogram skal velge mellom å gjøre to forskjellige ting. Hvordan man får programmer til å velge mellom forskjellige ting, basert på en boolsk verdi, er noe vi skal se på i et senere kapittel. I første omgang skal vi bare se litt på hva boolske verdier er, og hvordan man kan bruke ulike boolske funksjoner til å lage boolske uttrykk, som igjen regner ut nye boolske verdier.
+
+### Sant og falskt
+En boolsk verdi kan bare være en av to ting. Enten er den sant (`True`), eller så er den falskt (`False`).
+
+```python
+sant = True
+falskt = False
+print(f"Noen ting er {sant} og noen ting er {falskt}")
+```
+
+Dette kan virke ganske begrenset, men som vi skal se senere i kurset, er det overraskende mange ting man kan få til med en verdi som bare kan være `True` eller `False`.
+
+### Ikke
+Hvis man ønsker å "snu om" på en boolsk verdi, kan man bruke funksjonen `not`. Denne funksjonen tar inn en boolsk verdi, og gir tilbake det motsatte.
+
+For å forstå hvordan `not` fungerer, kan vi sette opp en [sannhetstabell](https://no.wikipedia.org/wiki/Sannhetstabell). Denne tabellen har forskjellige kolonner som inneholder forskjellige boolske verdier, og boolske uttrykk som bruker de forskjellige verdiene. Hver rad i tabellen viser hva det boolske uttrykket blir, hvis de boolske verdiene er satt til en spesiell kombinasjon av `True` eller `False`.
+
+| `a`     | `not a` |
+| ------- | ------- |
+| `True`  | `False` |
+| `False` | `True`  |
+
+Tabellen over, viser at hvis variabelen `a` er satt til `False`, vil det boolske utrykket `not a` bli verdien `True`.
+
+```python
+sant = True
+print(f"Noen ting er {sant} og noen ting er {not falskt}")
+```
+
+### Og
+Hvis man ønsker å finne ut av om to variabler er sanne samtidig, kan man bruke funksjonen `and`. Denne funksjonen tar inn to boolske verdier, og gir tilbake `True` hvis begge verdiene den tok inn er `True`.
 
 | `a`     | `b`     | `a and b` |
 | ------- | ------- | --------- |
@@ -318,6 +350,15 @@ Boolske verdier
 | `False` | `False` | `False`   |
 | `True`  | `True`  | `True`    |
 
+```python
+a = True
+b = False
+print(f"Kommer jeg til å bli sant eller falskt? {a and b}")
+```
+
+### Eller
+Hvis man bare er opptatt av å finne ut om en av to variabler er sanne, kan man bruke funksjonen `or`. Denne funksjonen tar inn to boolske verdier, og gir tilbake `True` hvis en, eller begge, verdiene er `True`.
+
 | `a`     | `b`     | `a or b` |
 | ------- | ------- | -------- |
 | `True`  | `False` | `True`   |
@@ -325,22 +366,13 @@ Boolske verdier
 | `False` | `False` | `False`  |
 | `True`  | `True`  | `True`   |
 
-| `a`     | `not a` |
-| ------- | ------- |
-| `True`  | `False` |
-| `False` | `True`  |
-
-- Falske og sanne verdier f.eks. `not 0`
-- Kortslutning av boolske uttrykk
-
 ```python
 a = True
-c = a or b
-print(c)
+b = False
+print(f"Kommer jeg til å bli sant eller falskt? {a or b}")
 ```
 
-```python
-a = ""
-b = "hei igjen"
-c = a or b
-```
+### Gruppering av boolske uttrykk
+Akkurat som det kan være vanskelig å finne ut hvilken del av et matematisk uttrykk som evalueres først, kan det være vanskelig å vite hvilken del av et boolsk uttrykk som evalueres først. For å gjøre dette tydeligere, kan man bruke parenteser (`(` og `)`) for å gruppere utrykket.
+
+✍️ **Oppgave:** _Kan du skrive ned sannhetstabellen for uttrykket `a and (b or c)`? Det kan være en fordel å bruke en egen kolonne for del-uttrykket `b or c`. Kan du skrive litt kode som beregner dette boolske uttrykket?_
