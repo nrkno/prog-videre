@@ -241,17 +241,68 @@ Norge av di hand, konge.'''
 print(flere_linjer)
 ```
 
-### Vanlige strenge-funksjoner
-- Hvordan gjør
-- `contains`, `split`, `in`
-- Bruke programID som eksempel
-- Bruke medvirkende som eksempel
-    - Sørge for stor forbokstav osv.
+### Formaterte strenger
+Strenger i seg selv er ganske nyttig, men de blir enda nyttigere når vi fyller de med data fra andre variabler. Den mest praktiske måten å gjøre dette på, er å bruke [formaterte strenger](https://docs.python.org/3/reference/lexical_analysis.html#formatted-string-literals).
 
-### Funksjoner som bygger strenger
-- Vise hvordan man bruker f-strenger
-    - Du kan også bruke `+` for å konkatinere strenger, men f-strenger er anbefalt
+Formaterte strenger, eller f-strenger som de ofte kalles, skiller seg fra vanlige strenger på to måter:
+1. De starter med bokstaven `f` før det første anførselstegnet eller apostrofen.
+2. Inne i strengen kan man bruke krøllparenteser (`{` og `}`) for å omslutte variabler eller kode som man vil flette inn verdien av.
 
+```python
+et_tall = 3
+et_annet_tall = 7
+svar = f"Summen av {et_tall} og {et_annet_tall} er {et_tall + et_annet_tall}"
+print(svar)
+```
+
+Når man fletter inn en verdi eller variabel i en formatert streng, vil Python forsøke å gjøre om verdien man fletter inn til en streng. For enkle datastrukturer som tall, vil man typisk få en passende streng ut av boksen, men for mer avanserte datastrukturer, kan det være man må gjøre konverteringen selv, eller bruke en av [konverteringsfunksjonene](https://docs.python.org/3/reference/lexical_analysis.html#formatted-string-literals) som er bygget inn i f-strenger.
+
+_Formaterte strenger er litt nyere funksjonalitet i Python. Før dette var tilgjengelig, brukte man gjerne funksjonen `+` for å slå sammen strenger og verdier. Dette er typisk litt mer kronglete enn å bruke f-strenger, men kommer du over gammel kode, kan det være du ser denne måten å bygge strenger på._
+
+
+### Andre nyttige strenge-funksjoner
+Det finnes veldig [mange nyttige funksjoner](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) som kan brukes til å behandle strenger i Python. Vi rekker ikke å dekke alle her, men lurer du på hvordan man kan gjøre noe spesielt med en streng, er det ofte verdt å ta en titt i dokumentasjonen. Under har vi trukket frem tre funksjoner som er nyttig å vite om.
+
+Noen ganger lurer man på om en streng inneholder en spesiell tekst. For å finne ut av dette, kan man bruke funksjonene `in` og `not in`.
+
+```python
+en_streng = "Hallo verden"
+print("Hallo" in en_streng) # Skriver ut True
+print("Hei" in en_streng) # Skriver ut False
+print("Hei" not in en_streng) # Skriver ut True
+```
+
+For funksjonene `in` og `not in`, gjør store og små bokstaver en forskjell. Ordet `Hallo` er f.eks. ikke det samme som `hallo`.
+
+```python
+en_streng = "Hallo verden"
+print("hallo" in en_streng) # Skriver ut False
+```
+
+Hvis man ønsker å se bort ifra store og små bokstaver når man sammenligner strenger, kan man bruke funksjonen [casefold](https://docs.python.org/3/library/stdtypes.html#str.casefold). Denne gjør om bokstavene i strengen til små bokstaver, så man kan sammenligne den med andre strenger uten å tenke på om den inneholder store og små bokstaver.
+
+```python
+en_streng = "Hallo verden"
+print("hallo" in en_streng.casefold()) # Skriver ut True
+```
+
+_Verdiene `True` og `False` i koden over, er eksempler på boolske verdier. Dette skal vi lære om i neste seksjon._
+
+Det kan også være nyttig å dele opp en streng i flere biter. For å gjøre dette, kan man bruke funksjonen [split](https://docs.python.org/3/library/stdtypes.html#str.split).
+
+```python
+en_streng = "Hallo verden"
+print(en_streng.split()) # Skriver ut ['Hallo', 'verden']
+```
+
+I grove trekk, deler split opp strengen basert på mellomrom. Dette kan ofte være et greit utgangspunkt hvis man forsøker å dele en tekst opp i flere ord.
+
+Hvis man heller ønsker å dele opp strengen basert på et annet tegn, kan man gjøre dette ved å sende tegnet inn om et argument til split-funksjonen.
+
+```python
+en_streng = "Hallo verden"
+print(en_streng.split("r")) # Skriver ut ['Hallo ve', 'den']
+```
 
 _**Tips:** Strenger er en veldig nyttig og fleksibel datastruktur, men siden den kan brukes til nesten hva som helst, er den også lett å misbruke. Ender du opp med å gjøre mange avanserte operasjoner på strenger, kan det være lurt å tenke på om man heller skulle brukt en annen datatype._
 
