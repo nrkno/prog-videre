@@ -10,7 +10,7 @@ Etterhvert som programmet vokser og man skriver stadig mer kode kan det fort opp
 
 En modul i Python er ikke noe annet enn en fil med python-kode, altså slike filer vi allerede kjenner til, som slutter på `.py`.
 
-La oss si at vi vil lage et program som konverterer en tekststreng som brukeren angir til å være på [røverspråk]https://no.wikipedia.org/wiki/R%C3%B8verspr%C3%A5ket), for deretter å teksten ut på røverspråk i terminalen.
+La oss si at vi vil lage et program som tar som input en tekststreng som brukeren oppgir, og skriver denne teksten transformert til å være på [røverspråk]https://no.wikipedia.org/wiki/R%C3%B8verspr%C3%A5ket) tilbake i terminalen.
 
 Hittil ville vi ha skrevet all kode i samme fil, men så skal vi lage en røverspråk-modul. Start med å lage en fil som heter `røverspråk.py`. I denne filen vil ha funksjonen `til_røverspråk` som tar inn en streng, og returnerer røverspråk strengen. Lim inn koden under i `røverspråk.py`.
 
@@ -71,17 +71,81 @@ nonrorkok eror voverordodenonsos bobesostote arorbobeidodsospoplolasossos
 Hva vil du si på røverspråk?> 
 ```
 
-Så nå har endringen vi gjorde i `røverspråk.py` ødelagt funksjonaliteten i programmet vårt. Det er fordi Python kjører koden i modulen `røverspråk.py` når den importeres! Det er derfor viktig å tenke på at man ikke har kode på rotnivå i filen som har sideffekter, som for eksempel `print` som skriver ut.
+Så nå har endringen vi gjorde i `røverspråk.py` ødelagt funksjonaliteten i programmet vårt. Det er fordi Python kjører koden i modulen `røverspråk.py` når den importeres! Det er derfor viktig å tenke på at man ikke har kode på rotnivå i filen som gjør ting, det kaller sideeffekt, nettopp som funksjonen `print` som skriver ut.
 
+Men det er heldigvis mulig å få til begge deler, både å unngå å ødelegge for programmet som bruker modulen og samtidig kunne kjøre modulen som et program som gjør noe. Måten man løser dette på er ved å bruke at moduler har navn. I python finnes det en global variable `__name__` som inneholder navnet på modulen. Modulen `røverspråk.py` vil ha navnet `røverspråk`, men når `røverspråk.py` kjøres som program vil den få navnet `__main__`. Derfor kan vi løse problemet vårt ved å legge til en if-test i `røverspråk.py`, vi vil bare skrive ut `nrk er verdens beste arbeidsplass` når navnet er `__main__`. Gjør derfor om `røverspråk` til å inneholde en if-test:
 
+```python
+if __name__ == "__main__":
+    røverspråk = til_røverspråk("nrk er verdens beste arbeidsplass")
+    print(røverspråk)
+```
+
+Test å kjøre både `program.py` og `røverspråk.py`, og se at begge programmene nå fungerer som de skal.
 
 ## Pakker
 
-## Oppgaver
+Når man har flere moduler som inneholder lignende funksjonalitet eller er relatert til hverandre kan det noen ganger være fint å samle de i en pakke, slik at de importeres med `<pakkenavn>.<modulnavn>`. For eksempel om vi lager en ny modul med språket [Leet](https://no.wikipedia.org/wiki/Leet), kunne det være fint å samle røverspråk og leet i en pakke, la oss kalle den språk.
+
+En pakke i Python er en filmappe som inneholder en fil som heter `__init__.py`. Det er den litt mystiske Python-filen forteller Python at denne mappen er en modul. Så i mappen der du har filene dine kan du nå lage mappen `språk`, med filen `__init__.py`, og så flytter `røverspråk.py` inn hit. Da har følgende struktur i filene dine:
+
+```txt
+språk/
+    __init__.py
+    røverspråk.py
+program.py
+<eventuelt andre filer>
+```
+
+Om man nå skal importere `røverspråk`-modulen i `program.py` må man prefikse med `språk`, så det blir `språk.røverspråk`.
 
 ✍️ **Oppgave:**
-_Skriv om programmet der du jobber med EPG-er til å bruke moduler og eventuelt pakker der du synes det passer slik at koden blir ryddigere_
+_Fiks programmet `program.py`slik at det fungerer nå som røverspråk er i en pakke_
 
-## Videre lesning
+Nå vil vi gjøre om tekst til leet også. Lag en fil som heter `leet.py` i mappa `språk`, og kopier inn følgende kode:
+
+```python
+erstatninger = {
+    'o': '0',
+    'i': '1',
+    'z': '2',
+    'e': '3',
+    'a': '4',
+    's': '5',
+    'g': '6',
+    't': '7',
+    'B': '8',
+    'p': '9'
+}
+
+def til_leet(tekst): 
+    str = ""
+    for bokstav in tekst:
+        str += erstatninger.get(bokstav, bokstav)
+    return str
+```
+
+✍️ **Oppgave:**
+_Oppdater `program.py` så den også bruker funksjonen `til_leet`. Du velger selv hvordan du ta i bruk funksjonen, om brukeren må velge om teksten skal oversettes til røverspråk eller leet, eller om du bare skriver ut begge oversettelsene._
+
+## EPG-programmet
+
+✍️ **Oppgave:**
+_Skriv om programmet der du jobber med EPG-er slik at det bruker moduler og eventuelt pakker der du synes det passer for at koden skal bli ryddigere_
+
+## Ekstraoppgaver
+
+Her er et par ekstraoppgaver hvis du har litt ekstra tid og vil leke mer med språk.
+
+✍️ **Oppgave:**
+_Oversettelsen til røverspråk har den svakheten at den bare støtter små bokstaver. Skriv om `til_røverspråk` slik at den også håndterer store bokstaver, og erstatter for eksempel `B`med `BOB`_
+
+✍️ **Oppgave:**
+_sdfsdf_
+
+✍️ **Oppgave:**
+_sdfsdf_
+
+## Les mer
 
 [Moduler i Python tutorial](https://docs.python.org/3/tutorial/modules.html)
