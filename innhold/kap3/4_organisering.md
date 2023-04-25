@@ -1,7 +1,6 @@
 Organisering med moduler og pakker (Heidi)
 =========================================================================
 
-
 **💡 Læringsmål:** _I dette avsnittet lærer du hvordan du kan organisere koden på en strukturert måte så det blir lettere å finne fram_
 
 ## Moduler
@@ -141,10 +140,7 @@ Her er et par ekstraoppgaver hvis du har litt ekstra tid og vil leke mer med spr
 _Oversettelsen til røverspråk har den svakheten at den bare støtter små bokstaver. Skriv om `til_røverspråk` slik at den også håndterer store bokstaver, og erstatter for eksempel `B`med `BOB`_
 
 ✍️ **Oppgave:**
-_sdfsdf_
-
-✍️ **Oppgave:**
-_sdfsdf_
+_Les mer på om [Leet på den engelske wikipedia-siden](https://en.wikipedia.org/wiki/Leet), og legg til noen nye erstatninger av bokstaver, for eksempel `K = |<`, `D = |)`._
 
 ## Les mer
 
