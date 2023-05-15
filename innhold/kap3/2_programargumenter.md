@@ -5,20 +5,237 @@ Programargumenter
 _I dette kapitlet skal du bli kjent med hvordan du kan gi brukeren kontroll
 over hva applikasjonen skal gjøre, uten at applikasjonen stopper opp underveis._
 
+
+## Hvordan kan du la brukeren bestemme ting?
+
 Hvordan kan applikasjonen din vite hvilken fil den skal lese fra?
 Eller hvilken fil den skal skrive til?
 Eller hva den i det hele tatt skal gjøre med innholdet i fila?
 
+```mermaid
+flowchart
+  user[fa:fa-user]
+  prg["filnavn = ???\nwith open(filnavn):\n..."]
+  style prg text-align:left
+  user-- python les_fil.py -->prg
+```
+
+
+### Hardkode verdien i koden
+
 Den enkleste løsningen er å bestemme alt dette inni applikasjonen, såkalt *[hardkoding][wiki-hardcoding]*.
 For eksempel kan du skrive filstien direkte i koden.
+
+```mermaid
+flowchart
+  user[fa:fa-user]
+  prg["filnavn = 'filer/min_fil.json'\nwith open(filnavn):\n..."]
+  style prg text-align:left
+  user-- python les_fil.py -->prg
+```
+
 Dette kan fungere helt greit når du tester,
 men det blir fort veldig upraktisk å måtte endre programmet hver gang du vil endre et parameter.
 
+
+### Spørre underveis med `input()`
+
 I del 0 av kurset var vi innom [`input()`-funksjonen][doc-input],
 som lar deg stille brukeren et spørsmål som hen må svare på før programmet fortsetter.
+
+```mermaid
+sequenceDiagram
+  actor user as Bruker
+  participant prg as filnavn = input('Hvilken fil? ') <br/>with open(filnavn) as fil:<br/>...
+  autonumber
+  user->>+prg: python les_fil.py
+  prg->>+user: Hvilken fil?
+  user->>-prg: filer/min_fil.json
+  prg->>-user: Ferdig
+```
+
 Dette fungerer bra for interaktive applikasjoner der brukeren skal sitte parat ved tastaturet hele veien,
 men det er ofte mye mer praktisk for brukeren å kunne bestemme alt dette helt i starten,
 og så gjøre noe annet mens det kjører.
+
+
+### Gi verdien samtidig som du starter programmet
+
+I resten av dette kapitlet skal vi se på _programargumenter_.
+Dette er verdier som brukeren skriver samtidig som hen starter programmet ditt.
+For eksempel:
+
+```mermaid
+flowchart
+  user[fa:fa-user]
+  prg["import sys\nfilnavn = sys.argv[1]\nwith open(filnavn):\n..."]
+  style prg text-align:left
+  user-- python les_fil.py filer/min_fil.json -->prg
+```
+
+Kort fortalt kan brukeren legge til argumenter _etter_ navnet på skriptet hen vil kjøre,
+her `les_fil.py`.
+Disse argumentene kan programmet få tak,
+i dette eksemplet ved å lese verdien som ligger i `sys.argv[1]`.
+
+
+
+## Vi skriver et program som tar inn argumenter
+
+For å gjøre dette litt mer konkret, så kan vi starte med et konvertere et eksempel fra `input()` til å bruke programargumenter.
+
+Dette er originalprogrammet, hentet fra [kapittel 1.4: Input](../kap1/4_input.md):
+
+```python
+# hilsen.py
+print("Hei! Hva heter du?")
+navn = input()
+print(f"Så hyggelig å hilse på deg, {navn}!")
+```
+
+Når du kjører dette programmet, kan det se sånn her ut:
+
+```shell-session
+kurs $> python hilsen.py
+Hei! Hva heter du?
+Vibeke
+Så hyggelig å hilse på deg, Vibeke!
+```
+
+Hvordan vil det bli hvis vi går over til å bruke programargumenter?
+
+```shell-session
+kurs $> python hilsen_arg.py Vibeke
+Så hyggelig å hilse på deg, Vibeke!
+```
+
+Frem til nå har vi alltid skrevet `python` etterfulgt av et mellomrom og navnet på programmet vi ville kjøre.
+Men du kan alltids legge til flere argumenter _etter_ navnet på skriptet.
+Dette er argumenter til programmet ditt, som det kan lese ut og nyttiggjøre seg av.
+
+Du kjenner kanskje igjen ordet _argument_ fra funksjoner.
+Hvis vi skulle skrevet dette som en Python-funksjon som tok inn navnet som et _funksjonsargument_, ville det kanskje sett sånn her ut:
+
+```python
+# hilsen_func.py
+def hils(navn):
+  print(f"Så hyggelig å hilse på deg, {navn}!")
+
+hils("Vibeke")
+```
+
+Funksjonsargumenter og programargumenter handler begge to om å sende informasjon inn til koden.
+Forskjellen ligger i om det er en funksjon eller om det er hele programmet som får argumentet.
+
+### Lese programargumenter manuelt
+
+La oss starte med den innebygde måten du kan lese argumenter på.
+
+For å nyttiggjøre deg av de ekstra argumentene brukeren skriver,
+kan du importere [`sys`-modulen][doc-sys].
+Deretter kan du lese argumentene fra [lista `sys.argv`][doc-sys.argv].
+
+Lista i `sys.argv` har alltid navnet på skriptet i posisjon 0.
+Eventuelle programargumenter ligger i posisjon 1 og utover.
+
+Nå kan vi endelig skrive programmet `hilsen_arg.py` som ble demonstrert ovenfor:
+
+```python
+# hilsen_arg.py
+import sys
+
+def hils(navn):
+  print(f"Så hyggelig å hilse på deg, {navn}!")
+
+hils(sys.argv[1])
+```
+
+
+✍️ **Oppgave:**
+_Hva skjer hvis du bare kjører `python hilsen_arg.py`, uten at du oppgir noe navn etterpå?
+Lag deg en teori og test det deretter ut. Skjedde det du forventa?_
+
+
+### Bruke `click` til å tolke programargumenter
+
+Selv om det er greit å vite om `sys.argv`, så blir det fort mye arbeid å bruke den direkte.
+Vi skal derfor bruke et verktøy som sparer oss for det arbeidet.
+Under panseret vil vi fortsatt bruke `sys.argv`,
+men verktøyet leser fra lista selv og gir oss "gratis" feilhåndtering og mye mer.
+
+Et sånt verktøy er inkludert i Python og heter [`argparse`][argparse],
+men i dette kurset skal vi bruke et tredjepartsbibliotek kalt [`click`][click].
+
+[argparse]: https://docs.python.org/3/howto/argparse.html#id1
+[click]: https://click.palletsprojects.com/en/8.1.x/
+
+Start med å installere click:
+
+```shell-session
+kurs $> poetry add click
+Using version ^8.1.3 for click
+
+Updating dependencies
+Resolving dependencies... (0.2s)
+
+Writing lock file
+
+Package operations: 1 install, 0 updates, 0 removals
+
+  • Installing click (8.1.3)
+```
+
+Versjonsnummeret (8.1.3) vil sannsynligvis være høyere hos deg, men det gjør ikke noe.
+
+Vi kan starte med å konvertere hilse-skriptet vårt til å bruke `click`:
+
+```python
+# hilsen_click.py
+import click
+
+
+@click.command()
+@click.argument("navn")
+def hils(navn):
+  print(f"Så hyggelig å hilse på deg, {navn}!")
+
+hils()
+```
+
+Dette ser umiddelbart litt rart ut.
+Hvorfor sender vi ingen argumenter til `hils()`-funksjonen?
+
+Svaret er at _dekoratørene_ vi har lagt til -- `@click.command()` og `@click.argument("navn")` -- gjør om på hvordan funksjonen virker.
+Den forventer derfor ikke å få noe argument når du kjører den.
+Click vil i stedet lese `sys.argv` og sende inn det første _program_argumentet til brukeren som _funksjons_argumentet `navn`.
+
+Når du kjører dette i terminalen, oppfører det seg ganske likt med `hilsen_arg.py`.
+Men det øyeblikket du skriver flere eller færre programargumenter enn programmet forventer,
+vil du se at vi har fått en del ny funksjonalitet.
+
+```shell-session
+kurs $> poetry run python hilsen_click.py Vibeke
+Så hyggelig å hilse på deg, Vibeke!
+kurs $> poetry run python hilsen_click.py Fantorangen
+Så hyggelig å hilse på deg, Fantorangen!
+kurs $> poetry run python hilsen_click.py Vibeke Fantorangen
+Usage: hilsen_click.py [OPTIONS] NAVN
+Try 'hilsen_click.py --help' for help.
+
+Error: Got unexpected extra argument (Fantorangen)
+kurs $> poetry run python hilsen_click.py
+Usage: hilsen_click.py [OPTIONS] NAVN
+Try 'hilsen_click.py --help' for help.
+
+Error: Missing argument 'NAVN'.
+kurs $> poetry run python hilsen_click.py --help
+Usage: hilsen_click.py [OPTIONS] NAVN
+
+Options:
+  --help  Show this message and exit.
+```
+
+Før vi fortsetter, kan det være lurt å lære litt mer om hvordan kommandoer er strukturert.
 
 
 ## Anatomien til en kommando
@@ -28,16 +245,17 @@ men har du tenkt over hvordan disse kommandoene er bygd opp?
 
 Vi kan starte med kommandoen du bruker for å kjøre et Python-skript:
 
-<!-- skriv_til_fil.py her er ment å være samme navn som er brukt i eksemplet ovenfor -->
+<!-- hilsen_arg.py her er ment å være samme navn som er brukt i eksemplet ovenfor -->
 
 ```shell-session
-kurs $> python skriv_til_fil.py
+kurs $> python hilsen_arg.py Vibeke
 ```
 
-Denne består av to deler som er atskilt med mellomrom:
+Denne består av tre deler som er atskilt med mellomrom:
 
 * `python`: Dette er navnet på, eller filstien til, programmet vi ønsker å kjøre
-* `skriv_til_fil.py`: Dette er argumentet som blir gitt til `python`-kommandoen
+* `hilsen_arg.py`: Dette er det første argumentet som blir gitt til `python`-kommandoen
+* `Vibeke`: Dette er det andre argumentet som blir gitt til `python`-kommandoen
 
 **Mellomrom er meningsbærende**: De skiller mellom de ulike delene av en kommando.
 Hvis du lager ei fil der navnet inneholder et mellomrom,
@@ -47,64 +265,37 @@ men i stedet inngår i ett og samme argument.
 Her er en kommando som vil bli tolket feil:
 
 ```shell-session
-kurs $> python skriv til fil.py
-python3.10: can't open file '/home/n123456/kurs/skriv': [Errno 2] No such file or directory
+kurs $> python hilsen arg.py Vibeke
+python3.10: can't open file '/home/n123456/kurs/hilsen': [Errno 2] No such file or directory
 ```
 
 Denne kommandoen består av fire deler:
 
 * `python`: Programmet vi ønsker å kjøre
-* `skriv`: Dette er det første argumentet som blir gitt til `python`-programmet.
+* `hilsen`: Dette er det første argumentet som blir gitt til `python`-programmet.
   Python-programmet vil tolke det første argumentet som en filsti til skriptet som skal kjøres.
-* `til`: Dette er det andre argumentet som blir gitt til `python`-programmet.
-  Python vil sende dette argumentet videre til skriptet som heter `skriv`.
-* `fil.py`: Dette er det tredje argumentet som blir gitt til `python`-programmet.
-  Python vil sende dette argumentet videre til skriptet som heter `skriv`.
+* `arg.py`: Dette er det andre argumentet som blir gitt til `python`-programmet.
+  Python vil sende dette argumentet videre til skriptet som heter `hilsen`.
+* `Vibeke`: Dette er det tredje argumentet som blir gitt til `python`-programmet.
+  Python vil sende dette argumentet videre til skriptet som heter `hilsen`.
 
-Selvfølgelig finnes det ikke noe skript som heter `skriv`,
+Selvfølgelig finnes det ikke noe skript som heter `hilsen`,
 så derfor feiler `python` med en feilmelding om at fila ikke finnes.
 
-La oss bruke hermetegn rundt filstien:
+La oss bruke hermetegn rundt filstien, og utvide navnet litt:
 
 ```shell-session
-kurs $> python "skriv til fil.py"
+kurs $> python "hilsen arg.py" "Vibeke Fürst Haugen"
 ```
 
-Denne kommandoen består av to deler:
+Denne kommandoen består av tre deler:
 
 * `python`: Programmet som vi ønsker å kjøre
-* `skriv til fil.py`: Dette er det første argumentet som blir gitt til `python`-programmet,
+* `hilsen arg.py`: Dette er det første argumentet som blir gitt til `python`-programmet,
   og er skriptet som vi ønsker at `python`-programmet skal kjøre
+* `Vibeke Fürst Haugen`: Dette er det andre argumentet som blir gitt til `python`-programmet.
+  Python vil sende dette argumentet videre til skriptet som heter `hilsen arg.py`.
 
-
-## Hvordan gi argumenter til et Python-program?
-
-Så langt har vi kun spesifisert at vi vil kjøre `python`,
-og gitt `python`-programmet ett argument.
-Men du kan faktisk fortsette å skrive på kommandoen og legge til flere argumenter.
-
-For eksempel kan du helt fint kjøre denne kommandoen:
-
-```shell-session
-kurs $> python skriv_til_fil.py "dette er en test" testefil.txt
-```
-
-Du vil ikke få noen feil, men programmet vil ikke akkurat bruke de ekstra argumentene til noe helt ennå.
-
-✍️ **Oppgave:**
-_Hvor mange argumenter inneholder kommandoen ovenfor? Hva er verdien til hvert argument?_
-
-<details>
-<summary>Fasit</summary>
-
-Kommandoen består av fire deler, hvorav ett er programmet vi skal kjøre (`python`) og **tre** av dem er argumenter.
-
-Argumentene er:
-1. `skriv_til_fil.py`
-2. `dette er en test`
-3. `testefil.txt`
-
-</details>
 
 ## Tips og triks når du skriver kommandoer i terminalen
 
@@ -125,106 +316,93 @@ Du kan også endre på kommandoen etter at du har bladd deg opp til den,
 for eksempel hvis du vil kjøre det samme med en liten endring.
 
 
-## Lese argumentene til Python-skriptet
+## Hjelp til selvhjelp
 
-La oss starte med den innebygde måten du kan lese argumenter på.
+Det er god kotyme å gi brukeren en kort oppsummering over hvordan du skal bruke programmet hvis brukeren ikke skriver noe programargument,
+i de tilfellene hvor det er påkrevd.
+Sånne korte oppsummeringer pleier ikke å være lengre enn 2-3 linjer,
+og tar med en mal på hvordan kjøringer av programmet kan se ut.
 
-For å nyttiggjøre deg av de ekstra argumentene brukeren skriver,
-kan du importere [`sys`-modulen][doc-sys].
-Deretter kan du lese argumentene fra [lista `sys.argv`][doc-sys.argv].
+I tillegg er det et standard valg som alle programmer bør støtte:
+`--help`, gjerne med kortvalget `-h`.
+Hvis brukeren spesifiserer dette valget, så skal ikke programmet gjøre noe likevel.
+Det skal i stedet printe en hjelpetekst til terminalen og så avslutte.
+Hjelpeteksten skal forklare hva programmet gjør, hvilke argumenter du må oppgi og hvilke valg du kan bruke.
 
-La oss lage et lite testeverktøy som forteller oss hvilke argumenter som finnes:
-
-```python
-# print_argumenter.py
-import sys
-
-print(sys.argv)
-```
-
-Eksempel på kjøring:
-
-```shell-session
-kurs $> python print_argumenter.py
-['print_argumenter.py']
-kurs $> python print_argumenter.py "dette er en test" testefil.txt
-['print_argumenter.py', 'dette er en test', 'testefil.txt']
-```
-
-Var resultatet sånn som du forventet?
-De ekstra argumentene som du skriver starter alltid på plass nummer 1.
-Navnet på skriptet ligger alltid som argument nummer 0.
-
-_**Sidespor**: Det kan virke litt rart at navnet på skriptet alltid er argument nummer 0,
-men det kan være nyttig å ha.
-La oss si at du har laget et skript som du har sendt til andre,
-og at du vil skrive hjelp til terminalen for hvordan det skal brukes.
-Da kan du ikke vite hvilket navn brukeren har gitt skriptet ditt.
-Ved hjelp av argument nummer 0 kan du likevel bruke riktig navn på skriptet
-i eksemplene du skriver til terminalen, i stedet for å hardkode navnet._
+Tanken er at du skal få den hjelpen du trenger,
+uten at du må lese deg opp på et dokument som ligger et eller annet sted
+eller lese deg opp på hvordan skriptet er skrevet.
 
 
-## Eksempel: Bruke `sys.argv` til å lese filnavn fra programargumentene
+### Lage hjelpetekst til Click
 
-La oss si at vi vil lage et program som leser innholdet av ei fil,
-og skriver innholdet av fila til terminalen.
-Men i stedet for å hardkode navnet på fila vi skal lese fra,
-eller bruke `input()` til å lese navnet fra terminalen,
-så ønsker vi at brukeren skal kunne skrive filnavnet etter skriptnavnet
-når hen kjører skriptet.
-For eksempel:
+Click gir automatisk applikasjonen din støtte for `-h` og `--help`.
 
-```shell-session
-kurs $> python print_fil.py NAVN_PÅ_FIL.py
-```
+Click leser automatisk _doc-strengen_ som du skriver først i funksjonen.
+Her bør du skrive en oppsummering på hva skriptet ditt gjør.
+(Posisjonelle) argumenter som skriptet forventer må også beskrives her.
 
-`NAVN_PÅ_FIL.py` her vil ligge på plass nummer 1 i `sys.argv`,
-siden det er det første argumentet.
-Her er et rett frem eksempel på hvordan vi kan lese det inn:
+Det vanlige er å lage en kort oppsummering på én linje,
+etterfulgt av ei blank linje og så ei lengre forklaring som godt kan vare flere linjer.
+
+La oss gi hilsen-skriptet vårt en egen introduksjon:
 
 ```python
-# print_fil.py
-import sys
+# hilsen_click_v2.py
+import click
 
-valgt_fil = sys.argv[1]
-with open(valgt_fil) as fil:
-  for linje in fil:
-    print(linje, end='')
+
+@click.command()
+@click.argument("navn")
+def hils(navn):
+  """
+  Ta imot hilsen fra NAVN.
+  
+  Skriver en hilsen tilbake til den navngitte personen, i terminalen.
+  """
+  print(f"Så hyggelig å hilse på deg, {navn}!")
+
+hils()
 ```
 
-Eksempel på kjøring:
+Nå vil hjelpeteksten være enda mer hjelpsom:
 
-```shell-session
-kurs $> python print_fil.py print_fil.py
-import sys
+```shell
+kurs $> poetry run python hilsen_click_v2.py --help
+Usage: hilsen_click_v2.py [OPTIONS] NAVN
 
-valgt_fil = sys.argv[1]
-with open(valgt_fil) as fil:
-    for linje in fil:
-        print(linje, end='')
+  Ta imot hilsen fra NAVN.
+
+  Skriver en hilsen tilbake til den navngitte personen, i terminalen.
+
+Options:
+  --help  Show this message and exit.
 ```
 
-PS: Du kan allerede gjøre dette i terminalen ved å bruke det innebygde programmet `cat`,
-for eksempel ved å kjøre `cat print_fil.py`.
 
-Men hva skjer hvis du glemmer å gi navnet på ei fil?
+## Signalisering av feil
 
-```shell-session
-kurs $> python print_fil.py
-Traceback (most recent call last):
-  File "/home/n123456/kurs/print_fil.py", line 4, in <module>
-    valgt_fil = sys.argv[1]
-IndexError: list index out of range
-```
+Alle program har en avslutningskode, _exit code_ på engelsk, som blir satt når programmet avslutter.
+Denne blir brukt for å kommunisere hvordan det gikk med programmet.
+For eksempel kan et skript som består av flere andre skript velge å avbryte kjøringa hvis et av programmene flagger at noe gikk galt.
 
-Å bruke `sys.argv` rett ute av boksen går greit hvis du aksepterer skjønnhetsfeil som dette,
-for eksempel hvis det bare er du som skal kjøre skriptet.
-Men det er vanlig etikette å gi brukeren litt mer hjelp på veien.
+Hvis alt gikk bra, så skal programmet avslutte med avslutningskode `0`.
+
+Alle andre avslutningskoder indikerer at noe gikk galt.
+Du vil typisk bruke `1` til å indikere at noe galt har skjedd.
+
+Python-programmer trenger som regel ikke tenke på dette.
+Hvis skriptet kjører ferdig uten at det krasjer, vil det avslutte med avslutningskode lik `0`.
+Hvis skriptet derimot krasjer, avslutter det med avslutningskode lik `1`.
+Det eneste måtte være hvis du avslutter skriptet tidlig med [`sys.exit`][sys.exit],
+som tar inn avslutningskoden som et argument.
+
+[sys.exit]: https://docs.python.org/3/library/sys.html#sys.exit
 
 
-## Bestepraksis for kommandolinjeprogram
+## Ulike typer programargumenter
 
-Som du så ovenfor, så er det i prinsippet ingen regler for hvordan programmet ditt håndterer programargumenter.
+Det er i prinsippet ingen regler for hvordan programmet ditt håndterer programargumenter.
 Men det har utviklet seg en bestepraksis over tid for hvordan kommandolinjeprogram bør oppføre seg.
 
 For det første kan du dele programargumenter i to typer:
@@ -234,21 +412,53 @@ For det første kan du dele programargumenter i to typer:
 For det andre er det noen uskrevne regler for hvordan programmet ditt dokumenterer seg selv,
 og hvordan det håndterer manglende eller ugyldige data fra brukeren.
 
+
 ### Posisjonelle argumenter
 
 Den mest grunnleggende formen for programargument er argument
-som får sin mening ene og alene basert på _hvor_ det står.
+som får sin mening ene og alene basert på _hvor_ det står -- altså posisjonen.
 
 For eksempel har vi kommandoen `cp` (kort for _copy_) som lager en kopi av ei fil.
 Den tar inn to posisjonelle argumenter: Kildefila, og den nye kopien du vil lage:
 
 ```shell
-kurs $> cp print_fil.py print_fil_v2.py
+kurs $> cp hilsen_click_v2.py hilsen_click_v3.py
 ```
 
-At `print_fil.py` er kildefila, er bestemt ene og alene av at den er satt først.
-Tilsvarende vet vi at `print_fil_v2.py` er navnet på kopien,
+At `hilsen_click_v2.py` er kildefila, er bestemt ene og alene av at den er satt først.
+Tilsvarende vet vi at `hilsen_click_v3.py` er navnet på kopien,
 siden det er det andre posisjonelle argumentet.
+
+Med `click` så definerer du nye argumenter ved å bruke `@click.argument("argumentnavn")` rett før funksjonsdefinisjonen.
+Posisjonen til `@click.argument(...)` er den samme som den forventede posisjonen til programargumentet når brukeren kjører skriptet.
+
+Vi kan legge til flere argumenter til hilsen-skriptet vårt, for eksempel for å ta inn en tittel i tillegg til navnet:
+
+```python
+# hilsen_tittel.py
+
+@click.command()
+@click.argument("tittel")
+@click.argument("navn")
+def hils(tittel, navn):
+  """
+  Ta i mot hilsen fra NAVN med TITTEL.
+  
+  Skriv en hilsen tilbake til den navngitte personen
+  med den angitte tittelen, i terminalen.
+  """
+  print(f"Så hyggelig å få hilst på vår kjære {tittel}, {navn}!")
+  
+hils()
+```
+
+Eksempel på kjøring:
+
+```shell
+kurs $> poetry run python hilsen_tittel.py kringkastingssjef Vibeke
+Så hyggelig å få hilst på vår kjære kringkastingssjef, Vibeke!
+```
+
 
 ### Frivillige tilvalg
 
@@ -297,44 +507,6 @@ Alternativt med likhetstegn i stedet for mellomrom mellom tilvalg og tilhørende
 ```shell
 kurs $> ls --format=long --all --reverse --sort=time --human-readable
 ```
-
-### Hjelp til selvhjelp
-
-Det er god kotyme å gi brukeren en kort oppsummering over hvordan du skal bruke programmet hvis brukeren ikke skriver noe programargument,
-i de tilfellene hvor det er påkrevd.
-Sånne korte oppsummeringer pleier ikke å være lengre enn 2-3 linjer,
-og tar med en mal på hvordan kjøringer av programmet kan se ut.
-
-I tillegg er det et standard valg som alle programmer bør støtte:
-`--help`, gjerne med kortvalget `-h`.
-Hvis brukeren spesifiserer dette valget, så skal ikke programmet gjøre noe likevel.
-Det skal i stedet printe en hjelpetekst til terminalen og så avslutte.
-Hjelpeteksten skal forklare hva programmet gjør, hvilke argumenter du må oppgi og hvilke valg du kan bruke.
-
-Tanken er at du skal få den hjelpen du trenger,
-uten at du må lese deg opp på et dokument som ligger et eller annet sted
-eller lese deg opp på hvordan skriptet er skrevet.
-
-
-### Signalisering av feil
-
-Alle program har en avslutningskode, _exit code_ på engelsk, som blir satt når programmet avslutter.
-Denne blir brukt for å kommunisere hvordan det gikk med programmet.
-For eksempel kan et skript som består av flere andre skript velge å avbryte kjøringa hvis et av programmene flagger at noe gikk galt.
-
-Hvis alt gikk bra, så skal programmet avslutte med avslutningskode `0`.
-
-Alle andre avslutningskoder indikerer at noe gikk galt.
-Du vil typisk bruke `1` til å indikere at noe galt har skjedd.
-
-Python-programmer trenger som regel ikke tenke på dette.
-Hvis skriptet kjører ferdig uten at det krasjer, vil det avslutte med avslutningskode lik `0`.
-Hvis skriptet derimot krasjer, avslutter det med avslutningskode lik `1`.
-Det eneste måtte være hvis du avslutter skriptet tidlig med [`sys.exit`][sys.exit],
-som tar inn avslutningskoden som et argument.
-
-[sys.exit]: https://docs.python.org/3/library/sys.html#sys.exit
-
 
 ## Bruke `click` til å tolke programargumenter
 
