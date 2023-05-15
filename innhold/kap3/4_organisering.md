@@ -5,13 +5,15 @@ Organisering med moduler og pakker (Heidi)
 
 ## Moduler
 
-Etterhvert som programmet vokser og man skriver stadig mer kode kan det fort oppleves rotete og uoversiktlig om all kode er i samme fil. For å få det mer ryddig kan man derfor strukturere koden i flere filer, der funksjonalitet som hører sammen eller handler om det samme er i samme modul. 
+Etterhvert som programmet vokser, og man skriver stadig mer kode, kan det fort oppleves rotete og uoversiktlig om all kode er i samme fil. For å programmet mer ryddig kan man derfor strukturere koden i flere filer, der funksjonalitet som hører sammen eller handler om det samme er i samme modul. 
 
 En modul i Python er ikke noe annet enn en fil med python-kode, altså slike filer vi allerede kjenner til, som slutter på `.py`.
 
-La oss si at vi vil lage et program som tar som input en tekststreng som brukeren oppgir, og skriver denne teksten transformert til å være på [røverspråk]https://no.wikipedia.org/wiki/R%C3%B8verspr%C3%A5ket) tilbake i terminalen.
+La oss si at vi vil lage et program som tar som input en tekststreng som brukeren oppgir, og skriver denne teksten, gjort om til å være på [røverspråk](https://no.wikipedia.org/wiki/R%C3%B8verspr%C3%A5ket), tilbake i terminalen. 
 
-Hittil ville vi ha skrevet all kode i samme fil, men så skal vi lage en røverspråk-modul. Start med å lage en fil som heter `røverspråk.py`. I denne filen vil ha funksjonen `til_røverspråk` som tar inn en streng, og returnerer røverspråk strengen. Lim inn koden under i `røverspråk.py`.
+Hittil har vi skrevet all kode i samme fil, men nå skal vi lage en røverspråk-modul. 
+
+Start med å lage en fil som heter `røverspråk.py`. I denne filen vil ha funksjonen `til_røverspråk` som tar inn en tekststreng, og returnerer denne teksten omgjort til røverspråk. Lim inn koden under i `røverspråk.py`.
 
 ```python
 konsonanter = "bcdfghjklmnpqrstvwxz"
@@ -36,16 +38,16 @@ tekst = input("Hva vil du si på røverspråk?> ")
 print(røverspråk.til_røverspråk(tekst))
 ```
 
-I koden er det et par ting vi kan merke oss. Den første linja `import røverspråk` trenger vi for å få tilgang til funksjonen `til_røverspråk` som er i `røverspråk.py`. Da kan vil på den fjerde linja kalle funksjonen ved å skrive `røverspråk.til_røverspråk`. Dette er god måte å importere på, for vi ser også modulnavnet `røverspråk` så vi skjønner med en gang hvor funksjonen `til_røverspråk` kommer fra. 
+I koden er det et par ting vi kan merke oss. Den første linja, `import røverspråk`, trenger vi for å få tilgang til funksjonen `til_røverspråk` som er i modulen `røverspråk.py`. Da kan vil på den fjerde linja kalle funksjonen ved å skrive `røverspråk.til_røverspråk`. Dette er god måte å importere modulen på, for når vi ser modulnavnet `røverspråk` skjønner med en gang hvor funksjonen `til_røverspråk` kommer fra. 
 
 Kjør programmet og se at det fungerer som du forventer!
 
 ### Andre måter å importere på
 
 Det finnes også andre måter i importere moduler på i filen der man vil bruke modulen.
-* `import røverspråk as rs` med `rs.til_røverspråk` der man kaller funksjonen. Dette er nyttig hvis navnet på modulen er litt langt, `rs` kortere å skrive enn `røverspråk`.
-* Man kan unngå helt å ha modulnavn som prefiks ved å importere med `from røverspråk import til_røverspråk`. Da bruker man bare funksjonsnavnet `til_røverspråk` der funksjonen kalle. Det blir mindre å skrive, men kan være litt vanskeligere å vite hvor funksjonen kommer fra om man har mange imports.
-* En siste variant er å importere med `from røverspråk import *`, da har man importert alle navnene fra `røverspråk` inn i program-modulen. Det som er skummelt med denne varianten er at man lett kan miste kontroll over hva som er importert, og man kan ved uhell overskrive navn som allerede er tatt i bruk. Det er derfor anbefalt å unngå denne måten å importere på.
+* `import røverspråk as rs` med `rs.til_røverspråk` der man kaller funksjonen. Dette er nyttig hvis navnet på modulen er litt langt, `rs` er kortere å skrive enn `røverspråk`.
+* Man kan unngå helt å ha modulnavn som prefiks ved å importere med `from røverspråk import til_røverspråk`. Da bruker man bare funksjonsnavnet `til_røverspråk` der funksjonen kalles. Det blir mindre å skrive, men det kan være vanskeligere å vite hvor funksjonen kommer fra om man har mange importeringer.
+* En siste variant er å importere med `from røverspråk import *`. Da har man importert alle navnene fra `røverspråk` inn i program-modulen. Det som er skummelt med denne varianten er at man lett kan miste kontroll over hva som er importert, og man kan ved uhell overskrive navn som allerede er tatt i bruk. Det er derfor anbefalt å unngå denne måten å importere på.
 
 ### Kjøre modul som et program
 
@@ -63,6 +65,7 @@ nonrorkok eror voverordodenonsos bobesostote arorbobeidodsospoplolasossos
 ```
 
 Men gå tilbake til `program.py` og kjør programmet på nytt. Hva skjer nå?
+
 Der vil det nå skrives ut følgende til terminalen:
 
 ```
@@ -70,9 +73,11 @@ nonrorkok eror voverordodenonsos bobesostote arorbobeidodsospoplolasossos
 Hva vil du si på røverspråk?> 
 ```
 
-Så nå har endringen vi gjorde i `røverspråk.py` ødelagt funksjonaliteten i programmet vårt. Det er fordi Python kjører koden i modulen `røverspråk.py` når den importeres! Det er derfor viktig å tenke på at man ikke har kode på rotnivå i filen som gjør ting, det kaller sideeffekt, nettopp som funksjonen `print` som skriver ut.
+Så nå har endringen vi gjorde i `røverspråk.py` ødelagt funksjonaliteten i programmet vårt. Det er fordi Python kjører koden i modulen `røverspråk.py` når den importeres! Det er derfor viktig å tenke på at man ikke har kode på rotnivå i filen som gjør ting, det som kaller sideeffekt, nettopp som funksjonen `print` som skriver ut.
 
-Men det er heldigvis mulig å få til begge deler, både å unngå å ødelegge for programmet som bruker modulen og samtidig kunne kjøre modulen som et program som gjør noe. Måten man løser dette på er ved å bruke at moduler har navn. I python finnes det en global variable `__name__` som inneholder navnet på modulen. Modulen `røverspråk.py` vil ha navnet `røverspråk`, men når `røverspråk.py` kjøres som program vil den få navnet `__main__`. Derfor kan vi løse problemet vårt ved å legge til en if-test i `røverspråk.py`, vi vil bare skrive ut `nrk er verdens beste arbeidsplass` når navnet er `__main__`. Gjør derfor om `røverspråk` til å inneholde en if-test:
+Men det er heldigvis mulig å få til begge deler, både å unngå å ødelegge for programmet som bruker modulen, og samtidig kunne kjøre modulen som et program som gjør noe. Måten man løser dette på å bruke det at moduler har navn. 
+
+I python finnes det en global variabel `__name__` som inneholder navnet på modulen. Modulen `røverspråk.py` vil ha navnet `røverspråk`, men når `røverspråk.py` kjøres som program vil den få navnet `__main__`. Derfor kan vi løse problemet vårt ved å legge til en if-test i `røverspråk.py`. Vi vil bare skrive ut `nrk er verdens beste arbeidsplass` når navnet er `__main__`. Gjør derfor om `røverspråk` til å inneholde en if-test:
 
 ```python
 if __name__ == "__main__":
@@ -144,4 +149,4 @@ _Les mer på om [Leet på den engelske wikipedia-siden](https://en.wikipedia.org
 
 ## Les mer
 
-[Moduler i Python tutorial](https://docs.python.org/3/tutorial/modules.html)
+[Moduler i Python - tutorial](https://docs.python.org/3/tutorial/modules.html)

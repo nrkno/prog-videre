@@ -1,4 +1,4 @@
-Feilhåndtering (Up for grabs)
+Feilhåndtering (Heidi)
 ==============
 - Hva gjør vi hvis det ikke finnes en fil?
     - Hva kan gå feil: fila finnes ikke, feil filnavn, feil tillatelser, et annet program holder i filhåndtaket.

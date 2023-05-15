@@ -26,7 +26,7 @@
   - [Organisere kode](kap3/4_organisering.md)
   - [Oppgaver](kap3/5_oppgaver.md)
 
-- [Noe med GUI](kap4/README.md)
+- [Desktop-applikasjon](kap4/README.md)
   - [Objektorientering](kap4/1_objektorientering.md)
   - [Dataklasser](kap4/2_dataklasser.md)
   - [Installasjon av PySimpleGUI](kap4/3_simplegui.md)
