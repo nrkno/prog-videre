@@ -15,10 +15,12 @@ Eller hva den i det hele tatt skal gjøre med innholdet i fila?
 ```mermaid
 flowchart
   user[fa:fa-user]
-  prg["filnavn = ???\nwith open(filnavn):\n..."]
+  prg["filnavn = ???\nwith open(filnavn) as fil:\n..."]
   style prg text-align:left
   user-- python les_fil.py -->prg
 ```
+
+Vi tar en kikk på ulike måter vi kan hente filnavnet på.
 
 
 ### Hardkode verdien i koden
@@ -29,18 +31,28 @@ For eksempel kan du skrive filstien direkte i koden.
 ```mermaid
 flowchart
   user[fa:fa-user]
-  prg["filnavn = 'filer/min_fil.json'\nwith open(filnavn):\n..."]
+  prg["filnavn = 'filer/min_fil.json'\nwith open(filnavn) as fil:\n..."]
   style prg text-align:left
-  user-- python les_fil.py -->prg
+  user-- python les_fil_hardkodet.py -->prg
+```
+
+Fullstendig kodeeksempel:
+
+```python
+# les_fil_hardkodet.py
+filnavn = "filer/min_fil.json"
+with open(filnavn) as fil:
+  for linje in fil:
+    print(linje, end="")
 ```
 
 Dette kan fungere helt greit når du tester,
-men det blir fort veldig upraktisk å måtte endre programmet hver gang du vil endre et parameter.
+men det blir fryktelig upraktisk å måtte endre programmet hver gang du vil lese ei ny fil.
 
 
 ### Spørre underveis med `input()`
 
-I del 0 av kurset var vi innom [`input()`-funksjonen][doc-input],
+I [del 1.4 av kurset](../kap1/4_input.md) var vi innom [`input()`-funksjonen][doc-input],
 som lar deg stille brukeren et spørsmål som hen må svare på før programmet fortsetter.
 
 ```mermaid
@@ -48,10 +60,20 @@ sequenceDiagram
   actor user as Bruker
   participant prg as filnavn = input('Hvilken fil? ') <br/>with open(filnavn) as fil:<br/>...
   autonumber
-  user->>+prg: python les_fil.py
+  user->>+prg: python les_fil_input.py
   prg->>+user: Hvilken fil?
   user->>-prg: filer/min_fil.json
   prg->>-user: Ferdig
+```
+
+Fullstendig kodeeksempel:
+
+```python
+# les_fil_input.py
+filnavn = input("Hvilken fil? ")
+with open(filnavn) as fil:
+  for linje in fil:
+    print(linje, end="")
 ```
 
 Dette fungerer bra for interaktive applikasjoner der brukeren skal sitte parat ved tastaturet hele veien,
@@ -70,64 +92,34 @@ flowchart
   user[fa:fa-user]
   prg["import sys\nfilnavn = sys.argv[1]\nwith open(filnavn):\n..."]
   style prg text-align:left
-  user-- python les_fil.py filer/min_fil.json -->prg
+  user-- python les_fil_arg.py filer/min_fil.json -->prg
 ```
 
-Kort fortalt kan brukeren legge til argumenter _etter_ navnet på skriptet hen vil kjøre,
-her `les_fil.py`.
-Disse argumentene kan programmet få tak,
-i dette eksemplet ved å lese verdien som ligger i `sys.argv[1]`.
-
-
-
-## Vi skriver et program som tar inn argumenter
-
-For å gjøre dette litt mer konkret, så kan vi starte med et konvertere et eksempel fra `input()` til å bruke programargumenter.
-
-Dette er originalprogrammet, hentet fra [kapittel 1.4: Input](../kap1/4_input.md):
-
-```python
-# hilsen.py
-print("Hei! Hva heter du?")
-navn = input()
-print(f"Så hyggelig å hilse på deg, {navn}!")
-```
-
-Når du kjører dette programmet, kan det se sånn her ut:
-
-```shell-session
-kurs $> python hilsen.py
-Hei! Hva heter du?
-Vibeke
-Så hyggelig å hilse på deg, Vibeke!
-```
-
-Hvordan vil det bli hvis vi går over til å bruke programargumenter?
-
-```shell-session
-kurs $> python hilsen_arg.py Vibeke
-Så hyggelig å hilse på deg, Vibeke!
-```
+Vi kommer tilbake til koden om litt,
+men kan du se hvor brukeren har skrevet filnavnet hen?
 
 Frem til nå har vi alltid skrevet `python` etterfulgt av et mellomrom og navnet på programmet vi ville kjøre.
-Men du kan alltids legge til flere argumenter _etter_ navnet på skriptet.
+Men du kan alltids legge til flere argumenter _etter_ navnet på skriptet (her `les_fil_arg.py`).
 Dette er argumenter til programmet ditt, som det kan lese ut og nyttiggjøre seg av.
 
 Du kjenner kanskje igjen ordet _argument_ fra funksjoner.
-Hvis vi skulle skrevet dette som en Python-funksjon som tok inn navnet som et _funksjonsargument_, ville det kanskje sett sånn her ut:
+Hvis vi skulle skrevet dette som en Python-funksjon som tok inn filnavnet som et _funksjonsargument_, ville det kanskje sett sånn her ut:
 
 ```python
-# hilsen_func.py
-def hils(navn):
-  print(f"Så hyggelig å hilse på deg, {navn}!")
+# les_fil_func.py
+def les_fil(filnavn):
+  with open(filnavn) as fil:
+    for linje in fil:
+      print(linje, end="")
 
-hils("Vibeke")
+les_fil("filer/min_fil.json")
 ```
 
-Funksjonsargumenter og programargumenter handler begge to om å sende informasjon inn til koden.
-Forskjellen ligger i om det er en funksjon eller om det er hele programmet som får argumentet.
+Funksjons- og programargumenter handler begge to om å sende informasjon inn til koden.
+Forskjellen ligger i om det er en funksjon eller om det er hele programmet som er mottaker.
 
-### Lese programargumenter manuelt
+
+## Lese programargumenter manuelt
 
 La oss starte med den innebygde måten du kan lese argumenter på.
 
@@ -138,25 +130,25 @@ Deretter kan du lese argumentene fra [lista `sys.argv`][doc-sys.argv].
 Lista i `sys.argv` har alltid navnet på skriptet i posisjon 0.
 Eventuelle programargumenter ligger i posisjon 1 og utover.
 
-Nå kan vi endelig skrive programmet `hilsen_arg.py` som ble demonstrert ovenfor:
+Nå gir kanskje skriptet under forrige underskrift litt mer mening.
+Det kan se sånn her ut:
 
 ```python
-# hilsen_arg.py
+# les_fil_arg.py
 import sys
 
-def hils(navn):
-  print(f"Så hyggelig å hilse på deg, {navn}!")
-
-hils(sys.argv[1])
+with open(sys.argv[1]) as fil:
+  for linje in fil:
+    print(linje, end="")
 ```
 
 
 ✍️ **Oppgave:**
-_Hva skjer hvis du bare kjører `python hilsen_arg.py`, uten at du oppgir noe navn etterpå?
+_Hva skjer hvis du bare kjører `python les_fil_arg.py`, uten at du oppgir noe navn etterpå?
 Lag deg en teori og test det deretter ut. Skjedde det du forventa?_
 
 
-### Bruke `click` til å tolke programargumenter
+## Bruke `click` til å tolke programargumenter
 
 Selv om det er greit å vite om `sys.argv`, så blir det fort mye arbeid å bruke den direkte.
 Vi skal derfor bruke et verktøy som sparer oss for det arbeidet.
@@ -187,52 +179,64 @@ Package operations: 1 install, 0 updates, 0 removals
 
 Versjonsnummeret (8.1.3) vil sannsynligvis være høyere hos deg, men det gjør ikke noe.
 
-Vi kan starte med å konvertere hilse-skriptet vårt til å bruke `click`:
+Vi kan starte med å konvertere fillesing-skriptet vårt til å bruke `click`:
 
 ```python
-# hilsen_click.py
+# les_fil_click.py
 import click
 
 
 @click.command()
-@click.argument("navn")
-def hils(navn):
-  print(f"Så hyggelig å hilse på deg, {navn}!")
+@click.argument("filnavn")
+def les_fil(filnavn):
+  with open(filnavn) as fil:
+    for linje in fil:
+      print(linje, end="")
 
-hils()
+les_fil()
 ```
 
 Dette ser umiddelbart litt rart ut.
-Hvorfor sender vi ingen argumenter til `hils()`-funksjonen?
+Hvorfor sender vi ingen argumenter til `les_fil()`-funksjonen?
 
-Svaret er at _dekoratørene_ vi har lagt til -- `@click.command()` og `@click.argument("navn")` -- gjør om på hvordan funksjonen virker.
+Svaret er at _dekoratørene_ vi har lagt til -- `@click.command()` og `@click.argument("filnavn")` -- gjør om på hvordan funksjonen virker.
 Den forventer derfor ikke å få noe argument når du kjører den.
-Click vil i stedet lese `sys.argv` og sende inn det første _program_argumentet til brukeren som _funksjons_argumentet `navn`.
+Click vil i stedet lese `sys.argv` og sende inn det første _program_argumentet til brukeren som _funksjons_argumentet `filnavn`.
 
-Når du kjører dette i terminalen, oppfører det seg ganske likt med `hilsen_arg.py`.
+Når du kjører dette i terminalen, oppfører det seg ganske likt med `les_fil_arg.py`.
 Men det øyeblikket du skriver flere eller færre programargumenter enn programmet forventer,
 vil du se at vi har fått en del ny funksjonalitet.
 
 ```shell-session
-kurs $> poetry run python hilsen_click.py Vibeke
-Så hyggelig å hilse på deg, Vibeke!
-kurs $> poetry run python hilsen_click.py Fantorangen
-Så hyggelig å hilse på deg, Fantorangen!
-kurs $> poetry run python hilsen_click.py Vibeke Fantorangen
-Usage: hilsen_click.py [OPTIONS] NAVN
-Try 'hilsen_click.py --help' for help.
+kurs $> poetry run python les_fil_click.py les_fil_click.py
+# les_fil_click.py
+import click
 
-Error: Got unexpected extra argument (Fantorangen)
-kurs $> poetry run python hilsen_click.py
-Usage: hilsen_click.py [OPTIONS] NAVN
-Try 'hilsen_click.py --help' for help.
 
-Error: Missing argument 'NAVN'.
-kurs $> poetry run python hilsen_click.py --help
-Usage: hilsen_click.py [OPTIONS] NAVN
+@click.command()
+@click.argument("filnavn")
+def les_fil(filnavn):
+  with open(filnavn) as fil:
+    for linje in fil:
+      print(linje, end="")
+
+les_fil()
+kurs $> poetry run python les_fil_click.py les_fil_click.py hei
+Usage: les_fil_click.py [OPTIONS] FILNAVN
+Try 'les_fil_click.py --help' for help.
+
+Error: Got unexpected extra argument (hei)
+kurs $> poetry run python les_fil_click.py
+Usage: les_fil_click.py [OPTIONS] FILNAVN
+Try 'les_fil_click.py --help' for help.
+
+Error: Missing argument 'FILNAVN'.
+kurs $> poetry run python les_fil_click.py --help
+Usage: les_fil_click.py [OPTIONS] FILNAVN
 
 Options:
   --help  Show this message and exit.
+kurs $>
 ```
 
 Før vi fortsetter, kan det være lurt å lære litt mer om hvordan kommandoer er strukturert.
@@ -248,14 +252,14 @@ Vi kan starte med kommandoen du bruker for å kjøre et Python-skript:
 <!-- hilsen_arg.py her er ment å være samme navn som er brukt i eksemplet ovenfor -->
 
 ```shell-session
-kurs $> python hilsen_arg.py Vibeke
+kurs $> python les_fil_click.py filer/min_fil.json
 ```
 
 Denne består av tre deler som er atskilt med mellomrom:
 
 * `python`: Dette er navnet på, eller filstien til, programmet vi ønsker å kjøre
-* `hilsen_arg.py`: Dette er det første argumentet som blir gitt til `python`-kommandoen
-* `Vibeke`: Dette er det andre argumentet som blir gitt til `python`-kommandoen
+* `les_fil_click.py`: Dette er det første argumentet som blir gitt til `python`-kommandoen
+* `filer/min_fil.json`: Dette er det andre argumentet som blir gitt til `python`-kommandoen
 
 **Mellomrom er meningsbærende**: De skiller mellom de ulike delene av en kommando.
 Hvis du lager ei fil der navnet inneholder et mellomrom,
@@ -265,36 +269,40 @@ men i stedet inngår i ett og samme argument.
 Her er en kommando som vil bli tolket feil:
 
 ```shell-session
-kurs $> python hilsen arg.py Vibeke
-python3.10: can't open file '/home/n123456/kurs/hilsen': [Errno 2] No such file or directory
+kurs $> python les fil click.py lyttertall p1.csv
+python3.10: can't open file '/home/n123456/kurs/les': [Errno 2] No such file or directory
 ```
 
-Denne kommandoen består av fire deler:
+Denne kommandoen består av fem deler:
 
 * `python`: Programmet vi ønsker å kjøre
-* `hilsen`: Dette er det første argumentet som blir gitt til `python`-programmet.
+* `les`: Dette er det første argumentet som blir gitt til `python`-programmet.
   Python-programmet vil tolke det første argumentet som en filsti til skriptet som skal kjøres.
-* `arg.py`: Dette er det andre argumentet som blir gitt til `python`-programmet.
-  Python vil sende dette argumentet videre til skriptet som heter `hilsen`.
-* `Vibeke`: Dette er det tredje argumentet som blir gitt til `python`-programmet.
-  Python vil sende dette argumentet videre til skriptet som heter `hilsen`.
+* `fil`: Dette er det andre argumentet som blir gitt til `python`-programmet.
+* Python vil sende dette argumentet videre til skriptet som heter `les`.
+* `click.py`: Dette er det tredje argumentet som blir gitt til `python`-programmet.
+  Python vil sende dette argumentet videre til skriptet som heter `les`.
+* `lyttertall`: Dette er det fjerde argumentet som blir gitt til `python`-programmet.
+  Python vil sende dette argumentet videre til skriptet som heter `les`.
+* `p1.csv`: Dette er det femte argumentet som blir gitt til `python`-programmet.
+  Python vil sende dette argumentet videre til skriptet som heter `les`.
 
-Selvfølgelig finnes det ikke noe skript som heter `hilsen`,
+Selvfølgelig finnes det ikke noe skript som heter `les`,
 så derfor feiler `python` med en feilmelding om at fila ikke finnes.
 
-La oss bruke hermetegn rundt filstien, og utvide navnet litt:
+La oss bruke hermetegn rundt filstiene:
 
 ```shell-session
-kurs $> python "hilsen arg.py" "Vibeke Fürst Haugen"
+kurs $> python "les fil click.py" "lyttertall p1.csv"
 ```
 
 Denne kommandoen består av tre deler:
 
 * `python`: Programmet som vi ønsker å kjøre
-* `hilsen arg.py`: Dette er det første argumentet som blir gitt til `python`-programmet,
+* `les fil click.py`: Dette er det første argumentet som blir gitt til `python`-programmet,
   og er skriptet som vi ønsker at `python`-programmet skal kjøre
-* `Vibeke Fürst Haugen`: Dette er det andre argumentet som blir gitt til `python`-programmet.
-  Python vil sende dette argumentet videre til skriptet som heter `hilsen arg.py`.
+* `lyttertall p1.csv`: Dette er det andre argumentet som blir gitt til `python`-programmet.
+  Python vil sende dette argumentet videre til skriptet som heter `les fil click.py`.
 
 
 ## Tips og triks når du skriver kommandoer i terminalen
