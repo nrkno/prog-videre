@@ -12,6 +12,26 @@ Hvordan kan applikasjonen din vite hvilken fil den skal lese fra?
 Eller hvilken fil den skal skrive til?
 Eller hva den i det hele tatt skal gjøre med innholdet i fila?
 
+Før vi går i gang, kan du lage ei fil som heter `ksjefer.txt` med følgende innhold:
+
+```
+Olav Midttun
+Kaare Fostervoll
+Hans Jacob Ustvedt
+Torolf Ester
+Bjartmar Gjerde
+Einar Førde
+John G. Bernander
+Hans-Tore Bjerkaas
+Thor Gjermund Eriksen
+Vibeke Fürst Haugen
+```
+
+Vi skal referere til denne fila når vi kjører eksempelprogrammet vi lager oss.
+
+Vi ser på et eksempel der vi skal åpne ei fil og skrive innholdet av fila til terminalen.
+Hvordan skal programmet vite hvilken fil som skal åpnes?
+
 ```mermaid
 flowchart
   user[fa:fa-user]
@@ -31,7 +51,7 @@ For eksempel kan du skrive filstien direkte i koden.
 ```mermaid
 flowchart
   user[fa:fa-user]
-  prg["filnavn = 'filer/min_fil.json'\nwith open(filnavn) as fil:\n..."]
+  prg["filnavn = 'ksjefer.txt'\nwith open(filnavn) as fil:\n..."]
   style prg text-align:left
   user-- python les_fil_hardkodet.py -->prg
 ```
@@ -40,7 +60,7 @@ Fullstendig kodeeksempel:
 
 ```python
 # les_fil_hardkodet.py
-filnavn = "filer/min_fil.json"
+filnavn = "ksjefer.txt"
 with open(filnavn) as fil:
   for linje in fil:
     print(linje, end="")
@@ -62,7 +82,7 @@ sequenceDiagram
   autonumber
   user->>+prg: python les_fil_input.py
   prg->>+user: Hvilken fil?
-  user->>-prg: filer/min_fil.json
+  user->>-prg: ksjefer.txt
   prg->>-user: Ferdig
 ```
 
@@ -92,7 +112,7 @@ flowchart
   user[fa:fa-user]
   prg["import sys\nfilnavn = sys.argv[1]\nwith open(filnavn):\n..."]
   style prg text-align:left
-  user-- python les_fil_arg.py filer/min_fil.json -->prg
+  user-- python les_fil_arg.py ksjefer.txt -->prg
 ```
 
 Vi kommer tilbake til koden om litt,
@@ -112,11 +132,11 @@ def les_fil(filnavn):
     for linje in fil:
       print(linje, end="")
 
-les_fil("filer/min_fil.json")
+les_fil("ksjefer.txt")
 ```
 
 Funksjons- og programargumenter handler begge to om å sende informasjon inn til koden.
-Forskjellen ligger i om det er en funksjon eller om det er hele programmet som er mottaker.
+Forskjellen ligger i om det er en _funksjon_ eller om det er _hele programmet_ som er mottaker.
 
 
 ## Lese programargumenter manuelt
@@ -153,13 +173,10 @@ Lag deg en teori og test det deretter ut. Skjedde det du forventa?_
 Selv om det er greit å vite om `sys.argv`, så blir det fort mye arbeid å bruke den direkte.
 Vi skal derfor bruke et verktøy som sparer oss for det arbeidet.
 Under panseret vil vi fortsatt bruke `sys.argv`,
-men verktøyet leser fra lista selv og gir oss "gratis" feilhåndtering og mye mer.
+men verktøyet leser fra lista selv og gir oss «gratis» feilhåndtering og mye mer.
 
-Et sånt verktøy er inkludert i Python og heter [`argparse`][argparse],
+Et sånt verktøy er inkludert i Python og heter [`argparse`][doc-argparse],
 men i dette kurset skal vi bruke et tredjepartsbibliotek kalt [`click`][click].
-
-[argparse]: https://docs.python.org/3/howto/argparse.html#id1
-[click]: https://click.palletsprojects.com/en/8.1.x/
 
 Start med å installere click:
 
@@ -199,29 +216,27 @@ les_fil()
 Dette ser umiddelbart litt rart ut.
 Hvorfor sender vi ingen argumenter til `les_fil()`-funksjonen?
 
-Svaret er at _dekoratørene_ vi har lagt til -- `@click.command()` og `@click.argument("filnavn")` -- gjør om på hvordan funksjonen virker.
+Svaret er at _dekoratørene_ vi har lagt til – `@click.command()` og `@click.argument("filnavn")` – gjør om på hvordan funksjonen virker.
 Den forventer derfor ikke å få noe argument når du kjører den.
-Click vil i stedet lese `sys.argv` og sende inn det første _program_argumentet til brukeren som _funksjons_argumentet `filnavn`.
+Click vil i stedet lese `sys.argv` og sende inn det første _program_-argumentet til brukeren som _funksjons_-argumentet `filnavn`.
 
 Når du kjører dette i terminalen, oppfører det seg ganske likt med `les_fil_arg.py`.
 Men det øyeblikket du skriver flere eller færre programargumenter enn programmet forventer,
 vil du se at vi har fått en del ny funksjonalitet.
 
 ```shell-session
-kurs $> poetry run python les_fil_click.py les_fil_click.py
-# les_fil_click.py
-import click
-
-
-@click.command()
-@click.argument("filnavn")
-def les_fil(filnavn):
-  with open(filnavn) as fil:
-    for linje in fil:
-      print(linje, end="")
-
-les_fil()
-kurs $> poetry run python les_fil_click.py les_fil_click.py hei
+kurs $> poetry run python les_fil_click.py ksjefer.txt
+Olav Midttun
+Kaare Fostervoll
+Hans Jacob Ustvedt
+Torolf Ester
+Bjartmar Gjerde
+Einar Førde
+John G. Bernander
+Hans-Tore Bjerkaas
+Thor Gjermund Eriksen
+Vibeke Fürst Haugen
+kurs $> poetry run python les_fil_click.py ksjefer.txt hei
 Usage: les_fil_click.py [OPTIONS] FILNAVN
 Try 'les_fil_click.py --help' for help.
 
@@ -252,14 +267,14 @@ Vi kan starte med kommandoen du bruker for å kjøre et Python-skript:
 <!-- hilsen_arg.py her er ment å være samme navn som er brukt i eksemplet ovenfor -->
 
 ```shell-session
-kurs $> python les_fil_click.py filer/min_fil.json
+kurs $> python les_fil_click.py ksjefer.txt
 ```
 
 Denne består av tre deler som er atskilt med mellomrom:
 
 * `python`: Dette er navnet på, eller filstien til, programmet vi ønsker å kjøre
 * `les_fil_click.py`: Dette er det første argumentet som blir gitt til `python`-kommandoen
-* `filer/min_fil.json`: Dette er det andre argumentet som blir gitt til `python`-kommandoen
+* `ksjefer.txt`: Dette er det andre argumentet som blir gitt til `python`-kommandoen
 
 **Mellomrom er meningsbærende**: De skiller mellom de ulike delene av en kommando.
 Hvis du lager ei fil der navnet inneholder et mellomrom,
@@ -346,46 +361,201 @@ eller lese deg opp på hvordan skriptet er skrevet.
 
 Click gir automatisk applikasjonen din støtte for `-h` og `--help`.
 
-Click leser automatisk _doc-strengen_ som du skriver først i funksjonen.
+Click leser automatisk [_doc-strengen_][doc-glossary.docstring] som du skriver først i funksjonen.
 Her bør du skrive en oppsummering på hva skriptet ditt gjør.
-(Posisjonelle) argumenter som skriptet forventer må også beskrives her.
 
 Det vanlige er å lage en kort oppsummering på én linje,
 etterfulgt av ei blank linje og så ei lengre forklaring som godt kan vare flere linjer.
 
-La oss gi hilsen-skriptet vårt en egen introduksjon:
+La oss gi eksempelskriptet vårt en egen introduksjon:
 
 ```python
-# hilsen_click_v2.py
+# les_fil_click_v2.py
 import click
 
 
 @click.command()
-@click.argument("navn")
-def hils(navn):
+@click.argument("filnavn")
+def les_fil(filnavn):
   """
-  Ta imot hilsen fra NAVN.
+  Skriv innholdet av fila med filstien FILNAVN til terminalen.
+  """
   
-  Skriver en hilsen tilbake til den navngitte personen, i terminalen.
-  """
-  print(f"Så hyggelig å hilse på deg, {navn}!")
+  with open(filnavn) as fil:
+    for linje in fil:
+      print(linje, end="")
 
-hils()
+les_fil()
 ```
 
 Nå vil hjelpeteksten være enda mer hjelpsom:
 
 ```shell
-kurs $> poetry run python hilsen_click_v2.py --help
-Usage: hilsen_click_v2.py [OPTIONS] NAVN
+kurs $> poetry run python les_fil_click_v2.py --help
+Usage: les_fil_click_v2.py [OPTIONS] FILNAVN
 
-  Ta imot hilsen fra NAVN.
-
-  Skriver en hilsen tilbake til den navngitte personen, i terminalen.
+  Skriv innholdet av fila med filstien FILNAVN til terminalen.
 
 Options:
   --help  Show this message and exit.
 ```
+
+
+## Posisjonelle argumenter
+
+Den mest grunnleggende formen for programargument er argument
+som får sin mening ene og alene basert på _hvor_ det står -- altså posisjonen.
+
+For eksempel har vi kommandoen `cp` (kort for _copy_) som lager en kopi av ei fil.
+Den tar inn to posisjonelle argumenter: Kildefila, og den nye kopien du vil lage:
+
+```shell
+kurs $> cp les_fil_click_v2.py les_fil_click_v3.py
+```
+
+At `les_fil_click_v2.py` er kildefila, er bestemt ene og alene av at den er satt først.
+Tilsvarende vet vi at `les_fil_click_v3.py` er navnet på kopien,
+siden det er det andre posisjonelle argumentet.
+
+Med `click` så definerer du nye argumenter ved å bruke `@click.argument("argumentnavn")` rett før funksjonsdefinisjonen.
+Posisjonen til `@click.argument(...)` er den samme som den forventede posisjonen til programargumentet når brukeren kjører skriptet.
+
+Vi kan legge til flere argumenter til utlesingsskriptet vårt, for eksempel for å ta inn en prefiks som skal legges til hver linje:
+
+```python
+# les_fil_prefiks.py
+import click
+
+
+@click.command()
+@click.argument("filnavn")
+@click.argument("prefiks")
+def les_fil_med_prefiks(filnavn, prefiks):
+  """
+  Skriv PREFIKS + innholdet av fila med filstien FILNAVN til terminalen.
+  
+  Prefikset PREFIKS blir skrevet ut på starten av hver linje.
+  """
+
+  with open(filnavn) as fil:
+    for linje in fil:
+      print(prefiks + linje, end="")
+
+les_fil_med_prefiks()
+```
+
+Eksempel på kjøring:
+
+```shell
+kurs $> poetry run python les_fil_prefiks.py --help
+Usage: les_fil_prefiks.py [OPTIONS] FILNAVN PREFIKS
+
+  Skriv PREFIKS + innholdet av fila med filstien FILNAVN til terminalen.
+
+  Prefikset PREFIKS blir skrevet ut på starten av hver linje.
+
+Options:
+  --help  Show this message and exit.
+kurs $> poetry run python les_fil_prefiks.py ksjefer.txt "Kringkastingssjef: "
+Kringkastingssjef: Olav Midttun
+Kringkastingssjef: Kaare Fostervoll
+Kringkastingssjef: Hans Jacob Ustvedt
+Kringkastingssjef: Torolf Ester
+Kringkastingssjef: Bjartmar Gjerde
+Kringkastingssjef: Einar Førde
+Kringkastingssjef: John G. Bernander
+Kringkastingssjef: Hans-Tore Bjerkaas
+Kringkastingssjef: Thor Gjermund Eriksen
+Kringkastingssjef: Vibeke Fürst Haugen
+```
+
+
+### Frivillige, posisjonelle argumenter
+
+Alle argumentene du legger til vil være obligatoriske.
+Det gjør `les_fil_prefiks.py` litt ufleksibel.
+Må vi virkelig ha to forskjellige program, ett med og ett uten prefiks?
+
+Hvis vi gjør PREFIKS-argumentet _frivillig_, kan ett og samme skript brukes enten du vil ha prefiks eller ikke.
+
+For å gjøre et argument frivillig, spesifiserer du hvilken verdi argumentet skal få når brukeren ikke tar det med.
+Det gjør du med det navngitte argumentet `default=...` i `click.argument(...)`.
+
+I eksemplet med prefiksen, så kan vi bare bruke en tom streng som forvalgt verdi.
+Da kommer vi til å konkattenere en tom streng med hver linje i fila,
+men til gjengjeld slipper vi å lage spesiell kode for når vi ikke har noe prefiks.
+Vi behandler rett og slett tilfellet med ingen prefiks som å være likt tilfellet med prefiks lik `""`.
+
+```python
+# les_fil_click_v3.py
+import click
+
+
+@click.command()
+@click.argument("filnavn")
+@click.argument("prefiks", default="")
+def les_fil(filnavn, prefiks):
+  """
+  Skriv PREFIKS + innholdet av fila med filstien FILNAVN til terminalen.
+
+  Prefikset PREFIKS blir skrevet ut på starten av hver linje, hvis angitt.
+  """
+
+  with open(filnavn) as fil:
+    for linje in fil:
+      print(prefiks + linje, end="")
+
+les_fil()
+```
+
+Eksempel på kjøring:
+
+```shell
+kurs $> poetry run python les_fil_click_v3.py ksjefer.txt --help
+Usage: les_fil_click_v3.py [OPTIONS] FILNAVN [PREFIKS]
+
+  Skriv PREFIKS + innholdet av fila med filstien FILNAVN til terminalen.
+
+  Prefikset PREFIKS blir skrevet ut på starten av hver linje, hvis angitt.
+
+Options:
+  --help  Show this message and exit.
+kurs $> poetry run python les_fil_click_v3.py ksjefer.txt "Kringkastingssjef: "
+Kringkastingssjef: Olav Midttun
+Kringkastingssjef: Kaare Fostervoll
+Kringkastingssjef: Hans Jacob Ustvedt
+Kringkastingssjef: Torolf Ester
+Kringkastingssjef: Bjartmar Gjerde
+Kringkastingssjef: Einar Førde
+Kringkastingssjef: John G. Bernander
+Kringkastingssjef: Hans-Tore Bjerkaas
+Kringkastingssjef: Thor Gjermund Eriksen
+Kringkastingssjef: Vibeke Fürst Haugen
+kurs $> poetry run python les_fil_click_v3.py ksjefer.txt
+Olav Midttun
+Kaare Fostervoll
+Hans Jacob Ustvedt
+Torolf Ester
+Bjartmar Gjerde
+Einar Førde
+John G. Bernander
+Hans-Tore Bjerkaas
+Thor Gjermund Eriksen
+Vibeke Fürst Haugen
+```
+
+Legg merke til oppsummeringslinja i hjelpeteksten:
+
+```
+Usage: les_fil_click_v3.py [OPTIONS] FILNAVN [PREFIKS]
+```
+
+PREFIKS er plassert mellom klammeparanteser (`[` og `]`).
+Dette er en konvensjon innenfor terminalprogram, og signaliserer at PREFIKS er frivillig.
+På samme måte er OPTIONS (som for eksempel `--help`) frivillig.
+FILNAVN, på den andre siden, er obligatorisk, siden det ikke er omsluttet av klammeparenteser.
+
+# TODO: Fortsett
 
 
 ## Signalisering av feil
@@ -402,10 +572,8 @@ Du vil typisk bruke `1` til å indikere at noe galt har skjedd.
 Python-programmer trenger som regel ikke tenke på dette.
 Hvis skriptet kjører ferdig uten at det krasjer, vil det avslutte med avslutningskode lik `0`.
 Hvis skriptet derimot krasjer, avslutter det med avslutningskode lik `1`.
-Det eneste måtte være hvis du avslutter skriptet tidlig med [`sys.exit`][sys.exit],
+Det eneste måtte være hvis du avslutter skriptet tidlig med [`sys.exit`][doc-sys.exit],
 som tar inn avslutningskoden som et argument.
-
-[sys.exit]: https://docs.python.org/3/library/sys.html#sys.exit
 
 
 ## Ulike typer programargumenter
@@ -422,25 +590,6 @@ og hvordan det håndterer manglende eller ugyldige data fra brukeren.
 
 
 ### Posisjonelle argumenter
-
-Den mest grunnleggende formen for programargument er argument
-som får sin mening ene og alene basert på _hvor_ det står -- altså posisjonen.
-
-For eksempel har vi kommandoen `cp` (kort for _copy_) som lager en kopi av ei fil.
-Den tar inn to posisjonelle argumenter: Kildefila, og den nye kopien du vil lage:
-
-```shell
-kurs $> cp hilsen_click_v2.py hilsen_click_v3.py
-```
-
-At `hilsen_click_v2.py` er kildefila, er bestemt ene og alene av at den er satt først.
-Tilsvarende vet vi at `hilsen_click_v3.py` er navnet på kopien,
-siden det er det andre posisjonelle argumentet.
-
-Med `click` så definerer du nye argumenter ved å bruke `@click.argument("argumentnavn")` rett før funksjonsdefinisjonen.
-Posisjonen til `@click.argument(...)` er den samme som den forventede posisjonen til programargumentet når brukeren kjører skriptet.
-
-Vi kan legge til flere argumenter til hilsen-skriptet vårt, for eksempel for å ta inn en tittel i tillegg til navnet:
 
 ```python
 # hilsen_tittel.py
@@ -802,9 +951,11 @@ _Kan du skrive om den store oppgaven fra dag 1 sånn at du tar inn navnet på JS
 [doc-input]: https://docs.python.org/3/library/functions.html#input
 [doc-sys]: https://docs.python.org/3/library/sys.html
 [doc-sys.argv]: https://docs.python.org/3/library/sys.html#sys.argv
+[doc-sys.exit]: https://docs.python.org/3/library/sys.html#sys.exit
 [doc-sys.orig_argv]: https://docs.python.org/3/library/sys.html#sys.orig_argv
 [doc-argparse]: https://click.palletsprojects.com/en/8.1.x/
 [click]: https://click.palletsprojects.com/en/8.1.x/
+[doc-glossary.docstring]: https://docs.python.org/3/glossary.html#term-docstring
 [doc-click.option]: https://click.palletsprojects.com/en/8.1.x/options/
 [doc-click.argument]: https://click.palletsprojects.com/en/8.1.x/arguments/
 [docs-builtins.enumerate]: https://docs.python.org/3/library/functions.html#enumerate
