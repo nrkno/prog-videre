@@ -28,7 +28,7 @@ Her setter vi eksplisitt at fila er enkodet i `utf-8`.
 
 En annen ting det er fint å gjøre når man har åpnet en fil er å lukke den pent etter seg når man er ferdig med den. Det er to måter å gjøre det på, den ene måten er å ha en linje etter at man er ferdig med filen, som lukker den, `fil.close()`. Det vi i stedet vil gjøre er å bruke en `with`-blokk. Da vet Python selv at den skal lukke fila når man går ut av blokken. og vi slipper å huske på å lukke fila, og finne ut hvor i koden det er lurt å lukke fila. Men `with` kan det se slik ut:
 ```python
-with open("series.txt", "r", encoding="utf-8") as fil:
+with open("serier.txt", "r", encoding="utf-8") as fil:
     tekst = fil.read()
     print(tekst)
 ```
