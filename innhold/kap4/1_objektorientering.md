@@ -8,7 +8,7 @@ En annen måte å gjøre det på kan være **prosedyreorientert programmering** 
 De fleste moderne programmeringsspråk, for eksempel Java, C# og C++, følger prinsipper fra OOP, så mye av teorien lenger ned vil man kunne dra nytte av ved en senere anledning.
 
 ## Definere klasser
-En klasse er en blåkopi eller en mal for å lage objekter. Det definerer egenskapene og oppførselen til objektene som skal opprettes. Egenskaper kalles ofte attributter eller variabler, mens oppførselen er definert av funksjoner som kalles metoder.
+En klasse er en blåkopi eller en mal for å lage objekter. Den definerer egenskapene og oppførselen til objektene som skal opprettes. Egenskaper kalles ofte attributter eller variabler, mens oppførselen er definert av funksjoner som kalles metoder.
 
 For eksempel kan vi definere en klasse som heter "Menneske", som inneholder attributter som "navn", "alder", og "by", og metoder som "gå" og "snakke". Slik gjøres det i Python:
 
@@ -40,13 +40,13 @@ m2 = Menneske("Gry", 52, "London")
 Her har vi instansiert et objekt av klassen Menneske som heter "m1" med navnet "Vibeke", alderen 54 og byen "Oslo" og et annet objekt. Nå kan man hente ut attributtene til objektet ved å bruke punktnotasjon:
 
 ```python
-m1.navn  # output: Vibeke
-m1.alder  # output: 54
-m1.art # output: Homo sapiens
+print(m1.navn) # output: Vibeke
+print(m1.alder) # output: 54
+print(m1.art) # output: Homo sapiens
 
-m2.navn  # output: Gry
-m2.alder  # output: 52
-m2.art # output: Homo sapiens
+print(m2.navn) # output: Gry
+print(m2.alder) # output: 52
+print(m2.art) # output: Homo sapiens
 ```
 
 Her kan man bite seg merke i at attributen __art__ er den samme på begge objektene selv om de ikke er sendt inn i instansieringen av objektene.
@@ -70,21 +70,26 @@ Her kan man se at et objekt av den avledede klassen kan bruke egenskaper og oppf
 a1 = Ansatt("Vibeke", 54, "Oslo")
 a2 = Ansatt("Gry", 52, "London")
 
-a1.navn  # output: Vibeke
+print(a1.navn)  # output: Vibeke
 a1.gå()  # output: Vibeke går
 
-a2.navn  # output: Gry
-a2.snakk()  # output: Vibeke snakker
+print(a2.navn)  # output: Gry
+a2.snakk()  # output: Gry snakker
 
 ```
 
-Det er mulig å bruke den innebygde funksjonen type() for å se hvilken klasse et objekt tilhører. Ved å bruke isinstance() kan man også sjekke om et objekt er basert på spesifikk klasse.
+Det er mulig å bruke den innebygde funksjonen type() for å se hvilken klasse et objekt tilhører. Man kan også bruke isinstance() for å se at et objektet er utledet av en annen klasse.
 
 ```python
-type
-isinstance
+print(type(m1))  # output: <class '__main__.Menneske'>
+print(type(a1))  # output: <class '__main__.Ansatt'>
 
+print(isinstance(m1, Menneske)) # output: True
+print(isinstance(m1, Ansatt)) # output: False
+print(isinstance(a1, Menneske)) # output: True
+print(isinstance(a1, Ansatt)) # output: True
 ```
+Her kan man se at en ansatt er et menneske, men et menneske ikke er en ansatt.
 
 Man kan også legge på egne egenskaper og oppførsel spesifikt for den avledede klassen. For å sette egne egenskaper for klassen, så man lage en egen __init__-funksjon som vi gjorde tidlegere. Når man gjør det overskriver man __init__metoden fra baseklassen, så derfor må man huske å sette å sende inn verdiene som hører til baseklassen inn i __init__-metoden til baseklassen. Det gjør man ved å bruke den innebygde super()-funksjonen. 
 
@@ -95,12 +100,19 @@ class Ansatt(Menneske):
         self.arbeidsgiver = arbeidsgiver
         self.stilling = stilling
 
-    def jobb(self):
-        print(self.navn, "jobber")
+    def ansattpresentasjon(self):
+        print(f"{self.navn}% er {self.alder} år og jobber som {self.stilling} hos {self.arbeidsgiver}.")
+
+a3 = Ansatt("Fredrik", 46, "Oslo", "NRK", "Programleder")
+a3.ansattpresentasjon() # output: Fredrik er 46 år og jobber som Programleder hos NRK.
 ```
+
+I ansattpresentasjon-funksjonen bruker man egenskaper som både er definert for Menneske og Ansatt.
+
 ## Mutering
 
 ## Innkapsling
+Innkapsling er en programmeringsteknikk i objektorientert programmering som har som formål å hindre direkte tilgang til tilstanden til et objekt fra objekter av andre klasser. Dette vil man gjøre i hovedsak av to grunner. Den første er å være sikker på at tilstanden til objektet er gyldig og at man da har kontroll på hvilke endringer som blir gjort.
 
 ## Internmetoder
 
