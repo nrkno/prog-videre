@@ -1,5 +1,5 @@
 # Dataklasser (WIP)
-**Data Classes** eller dataklasser er relativt ny, innebygd funksjonalitet i Python som gjør det lettere og sikrere å definere klasser. Her får man mye av de objektorienterte funksjonene fra forrige avsnitt ut av boksen. init, repr og eq. En annen viktig fordel med dataklasser er bruk av sterk typetilordning
+**Data Classes**, også kalt dataklasser er relativt ny, innebygd funksjonalitet i Python som gjør det lettere og sikrere å definere klasser. Her får man mye av de objektorienterte funksjonene fra forrige avsnitt ut av boksen. init, repr og eq. En annen viktig fordel med dataklasser er bruk av sterk typetilordning
 
 For å bruke denne innebygde funksjonaliteten så må man bruke en dekoratør.
 
