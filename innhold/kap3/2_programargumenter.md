@@ -261,6 +261,13 @@ Svaret er at _dekoratørene_ vi har lagt til – `@click.command()` og `@click.a
 Den forventer derfor ikke å få noe argument når du kjører den.
 Click vil i stedet lese `sys.argv` og sende inn det første _program_-argumentet til brukeren som _funksjons_-argumentet `filnavn`.
 
+Dekoratører kjennetegnes av funksjonskall med en alfakrøll foran seg,
+som er listet opp rett før en funksjonsdefinisjon.
+I tilfellet her er `click.command()` og `click.argument("filnavn")`
+dekoratører, som dekorerer `les_fil`-funksjonen.
+Nøyaktig _hva_ dekoratører gjør sparer vi til en frivillig ekstra-del,
+men vi nøyer oss med å si at de kan elte og kna på funksjonen du definerer sånn at den kan fungere på en annen måte enn den ellers ville gjort.
+
 Når du kjører dette i terminalen, oppfører det seg ganske likt med `les_fil_arg.py`.
 Men det øyeblikket du skriver flere eller færre programargumenter enn programmet forventer,
 vil du se at vi har fått en del ny funksjonalitet.
@@ -354,25 +361,6 @@ Denne kommandoen består av tre deler:
 2. `lyttertall p1.csv`
 
 Når `les fil click.py` kjører, kan den lese `lyttertall p1.csv` fra `sys.argv[1]`.
-
-
-## Tips og triks når du skriver kommandoer i terminalen
-
-**Autofullfør**: Når du skriver kommandoer i terminalen,
-kan du bruke `[TAB]`-tasten til å fullføre argumentet du skriver på.
-Hvis det du har skrevet er nok til å vite hvilken fil du tenker på,
-kan du fylle ut resten med ett trykk.
-Er det flere filer, må du gjerne trykke flere ganger for å få forslag eller gå gjennom forslagene.
-
-Dette er veldig nyttig siden du ofte vil skrive filnavn i kommandoer.
-Du kan bruke autofullfør både når du skal skrive hvilket skript Python-programmet skal kjøre,
-og når du skal fortelle skriptet hvilken fil du vil lese fra eller skrive til.
-
-**Historikk**: Bruk `[PILTAST OPP]` og `[PILTAST NED]` til å bla gjennom historikken.
-Vil du kjøre den forrige kommandoen din én gang til,
-kan du trykke `[PILTAST OPP]` én gang, etterfulgt av `[ENTER]`.
-Du kan også endre på kommandoen etter at du har bladd deg opp til den,
-for eksempel hvis du vil kjøre det samme med en liten endring.
 
 
 ## Hjelp til selvhjelp
@@ -593,224 +581,7 @@ FILNAVN, på den andre siden, er obligatorisk, siden det ikke er omsluttet av kl
 
 # TODO: Fortsett
 
-
-## Signalisering av feil
-
-Alle program har en avslutningskode, _exit code_ på engelsk, som blir satt når programmet avslutter.
-Denne blir brukt for å kommunisere hvordan det gikk med programmet.
-For eksempel kan et skript som består av flere andre skript velge å avbryte kjøringa hvis et av programmene flagger at noe gikk galt.
-
-Hvis alt gikk bra, så skal programmet avslutte med avslutningskode `0`.
-
-Alle andre avslutningskoder indikerer at noe gikk galt.
-Du vil typisk bruke `1` til å indikere at noe galt har skjedd.
-
-Python-programmer trenger som regel ikke tenke på dette.
-Hvis skriptet kjører ferdig uten at det krasjer, vil det avslutte med avslutningskode lik `0`.
-Hvis skriptet derimot krasjer, avslutter det med avslutningskode lik `1`.
-Det eneste måtte være hvis du avslutter skriptet tidlig med [`sys.exit`][doc-sys.exit],
-som tar inn avslutningskoden som et argument.
-
-
-## Ulike typer programargumenter
-
-Det er i prinsippet ingen regler for hvordan programmet ditt håndterer programargumenter.
-Men det har utviklet seg en bestepraksis over tid for hvordan kommandolinjeprogram bør oppføre seg.
-
-For det første kan du dele programargumenter i to typer:
-* Posisjonelle argumenter
-* Frivillige tilvalg
-
-For det andre er det noen uskrevne regler for hvordan programmet ditt dokumenterer seg selv,
-og hvordan det håndterer manglende eller ugyldige data fra brukeren.
-
-
-### Posisjonelle argumenter
-
-```python
-# hilsen_tittel.py
-
-@click.command()
-@click.argument("tittel")
-@click.argument("navn")
-def hils(tittel, navn):
-  """
-  Ta i mot hilsen fra NAVN med TITTEL.
-  
-  Skriv en hilsen tilbake til den navngitte personen
-  med den angitte tittelen, i terminalen.
-  """
-  print(f"Så hyggelig å få hilst på vår kjære {tittel}, {navn}!")
-  
-hils()
-```
-
-Eksempel på kjøring:
-
-```shell
-kurs $> poetry run python hilsen_tittel.py kringkastingssjef Vibeke
-Så hyggelig å få hilst på vår kjære kringkastingssjef, Vibeke!
-```
-
-
-### Frivillige tilvalg
-
-Tilvalg, eller option på engelsk, er en type programargument som starter med bindestrek.
-Fordi tilvalget har et navn som du oppgir, spiller det ingen rolle hvilken rekkefølge du bruker.
-
-#### Korte og lange tilvalg
-
-Ett og samme tilvalg har som oftest to varianter:
-En kort énbokstavsvariant (short option) og en lang fullvariant (long option).
-De starter med henholdsvis én og to bindestreker.
-For eksempel `-a` i `ls -a`, eller den ekvivalente `ls --all`.
-
-Når du til daglig sitter i terminalen er det praktisk å bruke korte tilvalg,
-men hvis du skriver ned kommandoer i et skript eller i en guide,
-bør du bruke lange tilvalg sånn at leseren lettere forstår hva de gjør.
-
-
-#### Flagg
-
-Noen tilvalg står alene og kalles _flagg_.
-De signaliserer at noe skal aktiveres eller deaktiveres
-simpelthen fordi de er der.
-  
-Hvis du trenger å bruke flere flagg og bruker énbokstavsvarianten,
-kan du bruke én bindestrek og så liste opp alle flaggene etter hverandre.
-For eksempel er `ls -larth` ekvivalent med `ls -l -a -r -t -h`.
-
-
-#### Tilvalg med verdi
-
-Andre tilvalg tar inn en verdi.
-Den kan du angi som det neste programargumentet.
-For lange tilvalg kan du alternativt bruke et likhetstegn.
-
-Som et eksempel kan vi oversette `ls -larth`-kommandoen ovenfor til å bruke lange tilvalg.
-Da bruker vi `--format`, som tar inn typen format, i dette tilfellet `long`.
-Og vi bruker `--sort`, som tar inn hva vi skal sortere på, i dette tilfellet `time`.
-
-```shell
-kurs $> ls --format long --all --reverse --sort time --human-readable
-```
-
-Alternativt med likhetstegn i stedet for mellomrom mellom tilvalg og tilhørende verdi:
-
-```shell
-kurs $> ls --format=long --all --reverse --sort=time --human-readable
-```
-
 ## Bruke `click` til å tolke programargumenter
-
-Hvis du skal følge bestepraksisen beskrevet ovenfor, blir det mye arbeid.
-Derfor finnes det flere verktøy som tolker `sys.argv` for deg,
-sånn at du slipper å gjøre den jobben selv.
-Et av de er inkludert i Python og heter [`argparse`][argparse],
-men i dette kurset skal vi bruke et tredjepartsbibliotek kalt [`click`][click].
-
-[argparse]: https://docs.python.org/3/howto/argparse.html#id1
-[click]: https://click.palletsprojects.com/en/8.1.x/
-
-Start med å installere click:
-
-```shell-session
-kurs $> poetry add click
-Using version ^8.1.3 for click
-
-Updating dependencies
-Resolving dependencies... (0.2s)
-
-Writing lock file
-
-Package operations: 1 install, 0 updates, 0 removals
-
-  • Installing click (8.1.3)
-```
-
-La oss starte med å re-implementere `print_fil.py` med `click`.
-Skriptet skal fortsatt ta inn et posisjonelt argument med navnet på fila vi skal skrive til terminalen.
-
-```python
-# print_fil_click.py
-import click
-
-@click.command()
-@click.argument('valgt_fil')
-def print_fil(valgt_fil):
-  """Skriv innholdet av VALGT_FIL til terminalen."""
-  with open(valgt_fil) as fil:
-    for linje in fil:
-      print(linje, end='')
-
-print_fil()
-```
-
-Her bruker vi noe som kalles for _dekoratører_.
-De kjennetegnes av funksjonskall med en alfakrøll foran seg,
-som er listet opp rett før en funksjonsdefinisjon.
-I tilfellet her er `click.command()` og `click.argument('valgt_fil')`
-dekoratører, som dekorerer `print_fil`-funksjonen.
-Nøyaktig _hva_ dekoratører gjør sparer vi til en frivillig ekstra-del,
-men vi nøyer oss med å si at de kan elte og kna på funksjonen du definerer sånn at den kan fungere på en annen måte enn den ellers ville gjort.
-
-Som du ser, er `click` orientert rundt funksjoner som blir gjort om til kommandoer.
-Du spesifiserer hvilke valg og argumenter som kommandoen skal ta i mot,
-og tar dem inn som funksjonsargumenter.
-Pass på at navnet på argumentet stemmer overens med navnet som er gitt i [`click.argument`][doc-click.argument].
-
-Eksempel på kjøring:
-
-```shell
-kurs $> poetry run python print_fil_click.py 
-Usage: print_fil_click.py [OPTIONS] VALGT_FIL
-Try 'print_fil_click.py --help' for help.
-
-Error: Missing argument 'VALGT_FIL'.
-kurs $> poetry run python print_fil_click.py --help
-Usage: print_fil_click.py [OPTIONS] VALGT_FIL
-
-  Skriv innholdet av VALGT_FIL til terminalen.
-
-Options:
-  --help  Show this message and exit.
-kurs $> poetry run python print_fil_click.py print_fil_click.py
-import click
-
-@click.command()
-@click.argument('valgt_fil')
-def print_fil(valgt_fil):
-  """Skriv innholdet av VALGT_FIL til terminalen."""
-  with open(valgt_fil) as fil:
-    for linje in fil:
-      print(linje, end='')
-
-print_fil()
-kurs $> # Eksempel på fil som ikke finnes
-kurs $> poetry run python print_fil_click.py finnes_ikke.txt
-Traceback (most recent call last):
-  File "/home/n123456/kurs/print_fil_click.py", line 11, in <module>
-    print_fil()
-  File "/home/n123456/.cache/pypoetry/virtualenvs/kurs-hRZI2kkF-py3.10/lib/python3.10/site-packages/click/core.py", line 1130, in __call__
-    return self.main(*args, **kwargs)
-  File "/home/n123456/.cache/pypoetry/virtualenvs/kurs-hRZI2kkF-py3.10/lib/python3.10/site-packages/click/core.py", line 1055, in main
-    rv = self.invoke(ctx)
-  File "/home/n123456/.cache/pypoetry/virtualenvs/kurs-hRZI2kkF-py3.10/lib/python3.10/site-packages/click/core.py", line 1404, in invoke
-    return ctx.invoke(self.callback, **ctx.params)
-  File "/home/n123456/.cache/pypoetry/virtualenvs/kurs-hRZI2kkF-py3.10/lib/python3.10/site-packages/click/core.py", line 760, in invoke
-    return __callback(*args, **kwargs)
-  File "/home/n123456/kurs/print_fil_click.py", line 7, in print_fil
-    with open(valgt_fil) as fil:
-FileNotFoundError: [Errno 2] No such file or directory: 'finnes_ikke.txt'
-```
-
-Noen punkter å notere seg:
-* Click sjekker at brukeren har spesifisert det posisjonelle argumentet
-* Click skriver automatisk en melding til terminalen når argumentet mangler
-* Click skriver en automatisk generert hjelpemelding til terminalen når brukeren spesifiserer `--help` som et valg, uten at den kjører koden inni `print_fil`-funksjonen
-* Doc-strengen vi la til helt i starten av funksjonen blir tatt med i hjelpeteksten
-* Stacktracen som skrives til terminalen når skriptet krasjer,
-  har med seg en del ekstra lag med funksjonskall siden det er en del mekanismer i Click som kjører før selve `print_fil`-funksjonen vår kjører
 
 
 ## Valg med Click

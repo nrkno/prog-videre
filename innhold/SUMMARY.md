@@ -34,3 +34,4 @@
   - [Prosjektapplikasjon](kap4/5_prosjekt_app.md)
 
 - [Ekstra: valgfritt innhold](ekstra/README.md)
+  - [Terminalen](ekstra/terminal.md)
