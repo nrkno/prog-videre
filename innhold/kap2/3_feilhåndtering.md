@@ -56,7 +56,17 @@ while True:
 
 Test ut denne endringen i programmet. Hva skjer nå om man deler på 0 eller skriver inn noe som ikke er tall?
 
-Hva som er riktig å gjøre når det oppstår unntak vil avhenge av hva programmet gjør og hva slags type feil det Program som interagerer med brukere bør prøve å gi brukere hjelpsom informasjon om hva som har skjedd og mulighet for å fortsette programmet. Programmet vårt kræsjer ikke lenger, men vi kan gjøre mer for å hjelpe brukeren med å forstå hva som er feil. I blokka `except Exception` fanges nå alle slags typer unntak, og vi kan fortelle brukeren noe mer om akkurat hva som gikk galt. 
+Hva som er riktig å gjøre når det oppstår unntak vil avhenge av hva programmet gjør og hva slags type feil det er. Program som interagerer med brukere bør prøve å gi brukere hjelpsom informasjon om hva som har skjedd og mulighet for å fortsette programmet. Programmet vårt kræsjer ikke lenger, men vi kan gjøre mer for å hjelpe brukeren med å forstå hva som er feil. I blokka `except Exception` fanges alle slags typer unntak, og vi kan ikke fortelle brukeren noe mer om akkurat hva som gikk galt. Men fra det terminalen skrev ut til oss tidligere ser vi at vi har noe som heter `ZeroDivisionError` og `ValueError` som er undertyper av typen `Exception`, så i tillegg til fange `Exception` kan vi også fange undertyper, ved å ha flere `except`-linjer.
+
+```python
+except ValueError:
+    # Håndtere ugyldig input verdi
+except ZeroDivisionError:
+    # håndtere deling på 0
+except Exception:
+    print("Det skjedde noe feil, prøv igjen!")
+```
+Det er viktig å merke seg at rekkefølge på `except`-linjene har betydning, for håndteringen vil stoppe ved den første uttrykket som matcher. Så hvis `except Exception` er først i lista vil alle unntak fanges opp der, fordi de to andre er undertyper av denne.
 
 
 
