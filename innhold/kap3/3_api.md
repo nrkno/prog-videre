@@ -24,18 +24,37 @@ Både forespørsler og responser har en lignende oppbygging og struktur
 - En valgfri "header" som gir ekstra kontekst eller metadata til meldingen
 - En valgfri "payload body" som inneholder selve informasjonen i meldingen.
 
+Eksempel på en HTTP-request melding:
+```
+POST /bestilling HTTP/1.1
+Host: restaurant.com
+Content-Type: plain/txt
+
+Forrett: Gresskarsuppe
+Hovedrett: Kalkun
+Dessert: Iskrem
+Drikke: Vann 
+```
+
+Den første linjen i eksemplet over viser hva startlinjen inneholder. Det første ordet i linjen er "POST" og dette viser hvilken HTTP-metode som skal benyttes.
+Videre ser vi "/bestilling" som forteller hva "request-target" er. Altså hvilket endepunkt hos "host" meldingen skal ende opp på. Noen ganger kan "request-target" være en fullstending URL som f.eks. kan bestå av forskjellige parametere i tillegg, men i vårt eksempel lar vi den være kort og konsis.
+Det siste vi ser er "HTTP/1.1" som indikerer hvilken versjon av HTTP som skal benyttes.
+
+De to neste linjene spesifiserer hva som ligger i det som kalles "header". 
+
 
 ## Metoder, payload og header
 Web-API som benytter HTTP operer med et sett med metoder for forespørslene ("request methods") som sendes.
 Disse [metodene](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) benyttes for å spesifisere hva slags type handling som skal utføres.
 Det finnes en rekke av disse metodene, men i dette kapittelet skal vi forholde oss til kun noen få, og da spesifikt de som dekker
-CRUD akronymet (**C**reate **R**ead **U**pdate **D**elete).
+CRUD akronymet (**C**reate **R**ead **U**pdate **D**elete). Ikke alle API'er forholder seg helt likt til denne betegnelsen, men i dette kapittelet forsøker vi å forholde oss til den vanligste bruken av metodene som samsvarer med CRUD.
 
 **Payload body**
-En HTTP forespørsel vil noen ganger inneholde informasjon, spesielt hvis forespørselen indikerer at noe skal opprettes et oppdateres. 
+Som nevnt tidligere kan en HTTP forespørsel noen ganger inneholde spesifikk informasjon i det som kalles "payload body", eller bare "body". Innholdet i denne er relevant for tjenesten som mottar meldingen, og tar vi utgangspunkt i eksemplet tidligere med kelneren i restauranten kan "body" sammenlignes med selve bestillingen som kelneren mottar fra deg.
+Innholdet i "body" kan være ren tekst, eller det kan være JSON, XML eller lignende formater.
 
 ### POST - Create
-Denne metoden indikerer at forespørslene skal opprette 
+Denne metoden sender data til tjenesten som mottar meldingen, og betegner som oftest at noe skal opprettes bak tjenesten som mottar meldingen.
 
 ## Arbeide med API'er i Python
 I eksmeplet over er det nettleseren din som gjør forespørslen mot
