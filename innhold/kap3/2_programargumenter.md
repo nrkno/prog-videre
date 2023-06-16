@@ -98,7 +98,7 @@ with open(filnavn) as fil:
 
 Dette fungerer bra for interaktive applikasjoner der brukeren skal sitte parat ved tastaturet hele veien,
 men det er ofte mye mer praktisk for brukeren å kunne bestemme alt dette helt i starten,
-og så gjøre noe annet mens det kjører.
+og så gjøre noe annet mens programmet kjører.
 
 
 ### Gi verdien samtidig som du starter programmet
@@ -121,6 +121,9 @@ men kan du se hvor brukeren har skrevet filnavnet hen?
 Frem til nå har vi alltid skrevet `python` etterfulgt av et mellomrom og navnet på programmet vi ville kjøre.
 Men du kan alltids legge til flere argumenter _etter_ navnet på skriptet (her `les_fil_arg.py`).
 Dette er argumenter til programmet ditt, som det kan lese ut og nyttiggjøre seg av.
+
+
+#### Funksjons- eller programargument?
 
 Du kjenner kanskje igjen ordet _argument_ fra funksjoner.
 Hvis vi skulle skrevet dette som en Python-funksjon som tok inn filnavnet som et _funksjonsargument_, ville det kanskje sett sånn her ut:
@@ -150,8 +153,30 @@ Deretter kan du lese argumentene fra [lista `sys.argv`][doc-sys.argv].
 Lista i `sys.argv` har alltid navnet på skriptet i posisjon 0.
 Eventuelle programargumenter ligger i posisjon 1 og utover.
 
-Nå gir kanskje skriptet under forrige underskrift litt mer mening.
-Det kan se sånn her ut:
+
+### Skrive `sys.argv` til terminalen
+
+Er det litt forvirrende hvordan det du skriver i terminalen blir gjort om til `sys.argv` i Python?
+Vi kan lage oss et program som lar oss se hvordan `sys.argv` ser ut, og eksperimentere med det:
+
+```python
+# print_argv.py
+import sys
+
+print(sys.argv)
+```
+
+✍️ **Oppgave:**
+_Lag `print_argv.py` lokalt hos deg, og eksperimenter med å kjøre det i terminalen.
+Hva printes når du ikke oppgir noe programargument?
+Hva printes når du gir mange programargumenter?_
+
+
+### Fil-eksemplet med `sys.argv`
+
+Ovenfor gikk vi gjennom flere måter programmet ditt kan ta inn et filnavn på,
+men vi gikk aldri inn på hvordan eksemplet ville se ut med `sys.argv`.
+Her er det eksemplet:
 
 ```python
 # les_fil_arg.py
@@ -160,6 +185,22 @@ import sys
 with open(sys.argv[1]) as fil:
   for linje in fil:
     print(linje, end="")
+```
+
+Eksempel på kjøring:
+
+```shell
+kurs $> python les_fil_arg.py ksjefer.txt
+Olav Midttun
+Kaare Fostervoll
+Hans Jacob Ustvedt
+Torolf Ester
+Bjartmar Gjerde
+Einar Førde
+John G. Bernander
+Hans-Tore Bjerkaas
+Thor Gjermund Eriksen
+Vibeke Fürst Haugen
 ```
 
 
@@ -264,17 +305,15 @@ men har du tenkt over hvordan disse kommandoene er bygd opp?
 
 Vi kan starte med kommandoen du bruker for å kjøre et Python-skript:
 
-<!-- hilsen_arg.py her er ment å være samme navn som er brukt i eksemplet ovenfor -->
-
 ```shell-session
 kurs $> python les_fil_click.py ksjefer.txt
 ```
 
 Denne består av tre deler som er atskilt med mellomrom:
 
-* `python`: Dette er navnet på, eller filstien til, programmet vi ønsker å kjøre
-* `les_fil_click.py`: Dette er det første argumentet som blir gitt til `python`-kommandoen
-* `ksjefer.txt`: Dette er det andre argumentet som blir gitt til `python`-kommandoen
+0. `python`: Dette er navnet på, eller filstien til, programmet vi ønsker å kjøre
+1. `les_fil_click.py`: Dette er det første argumentet som blir gitt til `python`-kommandoen
+2. `ksjefer.txt`: Dette er det andre argumentet som blir gitt til `python`-kommandoen
 
 **Mellomrom er meningsbærende**: De skiller mellom de ulike delene av en kommando.
 Hvis du lager ei fil der navnet inneholder et mellomrom,
@@ -288,24 +327,21 @@ kurs $> python les fil click.py lyttertall p1.csv
 python3.10: can't open file '/home/n123456/kurs/les': [Errno 2] No such file or directory
 ```
 
-Denne kommandoen består av fem deler:
+Denne kommandoen består av seks deler:
 
-* `python`: Programmet vi ønsker å kjøre
-* `les`: Dette er det første argumentet som blir gitt til `python`-programmet.
-  Python-programmet vil tolke det første argumentet som en filsti til skriptet som skal kjøres.
-* `fil`: Dette er det andre argumentet som blir gitt til `python`-programmet.
-* Python vil sende dette argumentet videre til skriptet som heter `les`.
-* `click.py`: Dette er det tredje argumentet som blir gitt til `python`-programmet.
-  Python vil sende dette argumentet videre til skriptet som heter `les`.
-* `lyttertall`: Dette er det fjerde argumentet som blir gitt til `python`-programmet.
-  Python vil sende dette argumentet videre til skriptet som heter `les`.
-* `p1.csv`: Dette er det femte argumentet som blir gitt til `python`-programmet.
-  Python vil sende dette argumentet videre til skriptet som heter `les`.
+0. `python`
+1. `les`
+2. `fil`
+3. `click.py`
+4. `lyttertall`
+5. `p1.csv`
 
 Selvfølgelig finnes det ikke noe skript som heter `les`,
 så derfor feiler `python` med en feilmelding om at fila ikke finnes.
 
-La oss bruke hermetegn rundt filstiene:
+Hvis det hadde fantes ei fil som het `les`, kunne den lest `fil`, `click.py`, `lyttertall` og `p1.csv` fra `sys.argv`.
+
+La oss i stedet bruke hermetegn rundt filstiene:
 
 ```shell-session
 kurs $> python "les fil click.py" "lyttertall p1.csv"
@@ -313,11 +349,11 @@ kurs $> python "les fil click.py" "lyttertall p1.csv"
 
 Denne kommandoen består av tre deler:
 
-* `python`: Programmet som vi ønsker å kjøre
-* `les fil click.py`: Dette er det første argumentet som blir gitt til `python`-programmet,
-  og er skriptet som vi ønsker at `python`-programmet skal kjøre
-* `lyttertall p1.csv`: Dette er det andre argumentet som blir gitt til `python`-programmet.
-  Python vil sende dette argumentet videre til skriptet som heter `les fil click.py`.
+0. `python`
+1. `les fil click.py`
+2. `lyttertall p1.csv`
+
+Når `les fil click.py` kjører, kan den lese `lyttertall p1.csv` fra `sys.argv[1]`.
 
 
 ## Tips og triks når du skriver kommandoer i terminalen
@@ -404,7 +440,7 @@ Options:
 ## Posisjonelle argumenter
 
 Den mest grunnleggende formen for programargument er argument
-som får sin mening ene og alene basert på _hvor_ det står -- altså posisjonen.
+som får sin mening ene og alene basert på _hvor_ det står – altså posisjonen.
 
 For eksempel har vi kommandoen `cp` (kort for _copy_) som lager en kopi av ei fil.
 Den tar inn to posisjonelle argumenter: Kildefila, og den nye kopien du vil lage:
@@ -418,7 +454,7 @@ Tilsvarende vet vi at `les_fil_click_v3.py` er navnet på kopien,
 siden det er det andre posisjonelle argumentet.
 
 Med `click` så definerer du nye argumenter ved å bruke `@click.argument("argumentnavn")` rett før funksjonsdefinisjonen.
-Posisjonen til `@click.argument(...)` er den samme som den forventede posisjonen til programargumentet når brukeren kjører skriptet.
+Posisjonen til `@click.argument(...)` bestemmer den forventede posisjonen til programargumentet når brukeren kjører skriptet.
 
 Vi kan legge til flere argumenter til utlesingsskriptet vårt, for eksempel for å ta inn en prefiks som skal legges til hver linje:
 
@@ -474,7 +510,7 @@ Kringkastingssjef: Vibeke Fürst Haugen
 
 Alle argumentene du legger til vil være obligatoriske.
 Det gjør `les_fil_prefiks.py` litt ufleksibel.
-Må vi virkelig ha to forskjellige program, ett med og ett uten prefiks?
+Må vi virkelig ha to forskjellige program, ett med prefiks og ett uten?
 
 Hvis vi gjør PREFIKS-argumentet _frivillig_, kan ett og samme skript brukes enten du vil ha prefiks eller ikke.
 
