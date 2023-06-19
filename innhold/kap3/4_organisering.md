@@ -5,7 +5,7 @@ Organisering med moduler og pakker (Heidi)
 
 ## Moduler
 
-Etterhvert som programmet vokser, og man skriver stadig mer kode, kan det fort oppleves rotete og uoversiktlig om all kode er i samme fil. For å programmet mer ryddig kan man derfor strukturere koden i flere filer, der funksjonalitet som hører sammen eller handler om det samme er i samme modul. 
+Etterhvert som programmet vokser, og man skriver stadig mer kode, kan det fort oppleves rotete og uoversiktlig om all kode er i samme fil. For få å programmet mer ryddig kan man derfor strukturere koden i flere filer, der funksjonalitet som hører sammen eller handler om det samme er i samme modul. 
 
 En modul i Python er ikke noe annet enn en fil med python-kode, altså slike filer vi allerede kjenner til, som slutter på `.py`.
 
@@ -13,7 +13,7 @@ La oss si at vi vil lage et program som tar som input en tekststreng som brukere
 
 Hittil har vi skrevet all kode i samme fil, men nå skal vi lage en røverspråk-modul. 
 
-Start med å lage en fil som heter `røverspråk.py`. I denne filen vil ha funksjonen `til_røverspråk` som tar inn en tekststreng, og returnerer denne teksten omgjort til røverspråk. Lim inn koden under i `røverspråk.py`.
+Start med å lage en fil som heter `røverspråk.py`. Denne filen vil ha funksjonen `til_røverspråk`, som tar inn en tekststreng, og returnerer denne teksten omgjort til røverspråk. Lim inn koden under i `røverspråk.py`.
 
 ```python
 konsonanter = "bcdfghjklmnpqrstvwxz"
@@ -91,7 +91,7 @@ Test å kjøre både `program.py` og `røverspråk.py`, og se at begge programme
 
 Når man har flere moduler som inneholder lignende funksjonalitet eller er relatert til hverandre kan det noen ganger være fint å samle de i en pakke, slik at de importeres med `<pakkenavn>.<modulnavn>`. For eksempel om vi lager en ny modul med språket [Leet](https://no.wikipedia.org/wiki/Leet), kunne det være fint å samle røverspråk og leet i en pakke, la oss kalle den språk.
 
-En pakke i Python er en filmappe som inneholder en fil som heter `__init__.py`. Det er den litt mystiske Python-filen forteller Python at denne mappen er en modul. Så i mappen der du har filene dine kan du nå lage mappen `språk`, med filen `__init__.py`, og så flytter `røverspråk.py` inn hit. Da har følgende struktur i filene dine:
+En pakke i Python er en filmappe som inneholder en fil som heter `__init__.py`. Det er den litt mystiske Python-filen som forteller Python at denne mappen er en modul. Så i mappen der du har filene dine kan du nå lage mappen `språk`, med filen `__init__.py`, og så flytter du `røverspråk.py` inn hit. Da har filene dine følgende struktur:
 
 ```txt
 språk/
