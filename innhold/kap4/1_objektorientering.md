@@ -120,7 +120,7 @@ print(isinstance(a1, Ansatt)) # output: True
 ```
 Her kan man se at en ansatt er et menneske, men et menneske ikke er en ansatt 🤯
 
-Man kan også legge på egne egenskaper og oppførsel spesifikt for den avledede klassen. For å sette egne egenskaper for klassen, så man lage en egen `__init__`-funksjon som vi gjorde tidlegere. Når man gjør det overskriver man `__init__`-metoden fra baseklassen, så derfor må man huske å sette å sende inn verdiene som hører til baseklassen inn i `__init__`-metoden til baseklassen. Det gjør man ved å bruke den innebygde `super()`-funksjonen. 
+Man kan også legge på egne egenskaper og oppførsel spesifikt for den avledede klassen. For å sette egne egenskaper for klassen, må man lage en egen `__init__`-funksjon som vi gjorde tidligere. Når man gjør det overskriver man `__init__`-metoden fra baseklassen, så derfor må man huske å sette inn verdiene som hører til baseklassen inn i `__init__`-metoden til baseklassen. Det gjør man ved å bruke den innebygde `super()`-funksjonen. 
 
 ```python
 class Ansatt(Menneske):
@@ -139,7 +139,7 @@ a3.ansattpresentasjon() # output: Fredrik er 46 år og jobber som Programleder h
 I `ansattpresentasjon`-funksjonen bruker man egenskaper som både er definert for Menneske og Ansatt.
 
 ## Mutering
-__Må skrive litt her om at mutering er mulig og finn overgang til innkapsling.__
+__Må skrive litt her om at mutering er mulig og finne overgang til innkapsling.__
 
 ## Innkapsling
 Innkapsling er en programmeringsteknikk i objektorientert programmering som har som formål å hindre direkte tilgang til tilstanden til et objekt fra objekter av andre klasser. Dette vil man gjøre i hovedsak av to grunner. Den første er å være sikker på at tilstanden til objektet er gyldig og at man da har kontroll på hvilke endringer som blir gjort. Da vil man også gjenbruke oppførsel som man for eksempel enten vil gjøre ved lesing eller setting av data. Den andre grunnen er å lage et brukergrensesnitt ut til brukere av klassen slik at det blir lettere å gjøre endringer internt i klassen på et senere tidspunkt.

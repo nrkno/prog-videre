@@ -57,7 +57,7 @@ Innholdet i "body" kan være ren tekst, eller det kan være JSON, XML eller lign
 Denne metoden sender data til tjenesten som mottar meldingen, og betegner som oftest at noe skal opprettes bak tjenesten som mottar meldingen.
 
 ## Arbeide med API'er i Python
-I eksmeplet over er det nettleseren din som gjør forespørslen mot
+I eksemplet over er det nettleseren din som gjør forespørslen mot
 
 
 

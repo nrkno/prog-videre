@@ -22,5 +22,5 @@ La oss gå tilbake til oppgaven vi gjorde over da vi leste fra fil; å printe ut
 
 Som vanlig er det flere veier til mål. En mulighet er å først lese fra `serier.txt` og istedet for å skrive ut titlene, legge de i en liste. Deretter kan du i en ny `with`-blokk åpne fila du vil skrive til, gå gjennom lista, og for hvert element i lista skrive til fil. Et annet alternativ er å åpne begge filene samtidig, både den som skal leses fra og den som skal leses til, og for hver linje man leser fra seriefila skrive direkte til den andre fila med titler. Det går an å åpne flere filer i samme `with`-blokk ved å ha komma mellom `open`-kallene. Legg merke til navnene på filvariablene som må være ulike, og man må ha kontroll på hvilken fil man leser fra og hvilken man skal skrive til.
 ```python
-with open("series.txt", "r", encoding="utf-8") as seriefil,  open("titler.txt", "w", encoding="utf-8") as tittelfil:
+with open("serier.txt", "r", encoding="utf-8") as seriefil,  open("titler.txt", "w", encoding="utf-8") as tittelfil:
 ```
