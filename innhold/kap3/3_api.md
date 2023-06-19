@@ -31,14 +31,13 @@ Disse [metodene](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) beny
 Det finnes en rekke av disse metodene, men i dette kapittelet skal vi forholde oss til kun noen få, og da spesifikt de som dekker
 CRUD akronymet (**C**reate **R**ead **U**pdate **D**elete).
 
-**Payload body**
-En HTTP forespørsel vil noen ganger inneholde informasjon, spesielt hvis forespørselen indikerer at noe skal opprettes et oppdateres. 
+**Payload body** - En HTTP forespørsel vil noen ganger inneholde informasjon, spesielt hvis forespørselen indikerer at noe skal opprettes et oppdateres. 
 
 ### POST - Create
 Denne metoden indikerer at forespørslene skal opprette 
 
 ## Arbeide med API'er i Python
-I eksmeplet over er det nettleseren din som gjør forespørslen mot
+I eksemplet over er det nettleseren din som gjør forespørslen mot
 
 
 
