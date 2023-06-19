@@ -3,7 +3,7 @@
 
 For å bruke denne innebygde funksjonaliteten så må man bruke en dekoratør.
 
-Slik kan man lage klassen fra forrige kapittel ved å dataklasser.
+Slik kan man lage klassen fra forrige kapittel ved å bruke dataklasser.
 
 ```python
 from dataclasses import dataclass, field
