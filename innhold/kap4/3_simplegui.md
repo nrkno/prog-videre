@@ -6,7 +6,7 @@ Hva er et grafisk brukergrensesnitt?
 ------------------------------------
 Programmer som har et grafisk brukergrensesnitt, er programmer som lar oss interagere med det på en visuell måte. Det er programmer som viser oss ett eller flere vinduer, hvor vi kan klikke på knapper, fylle inn tekst i bokser, og se informasjon og resultater tegnet som mer eller mindre hjelpsomme visuelle elementer. Kort fortalt: "vanlige" programmer.
 
-Du har allerede laget programmer med kommandolinje-baserte brukergrensesnitt i dette kurset. Sånne typer programmer var vanligere før, og brukes fremdeles mye av folk som jobber med utvikling, eller andre datatekniske ting. Det er enkle og utvikle, men kan være litt vanskelige å bruke, og noen ganger kan man få bedre innsikt i dataene man jobber med, hvis de fremstilles på en visuell måte.
+Du har allerede laget programmer med kommandolinje-baserte brukergrensesnitt i dette kurset. Sånne typer programmer var vanligere før, og brukes fremdeles mye av folk som jobber med utvikling, eller andre datatekniske ting. Det er enklere å utvikle, men kan være litt vanskelige å bruke, og noen ganger kan man få bedre innsikt i dataene man jobber med, hvis de fremstilles på en visuell måte.
 
 I dag er det programmer med grafiske brukergrensesnitt som er de vanligste. De er faktisk så vanlige, at vi typisk sløyfer ordet grafisk, og bare sier at programmet har et brukergrensesnitt, når vi snakker om programmer med grafiske brukergrensesnitt. Den engelske forkortelsen GUI (Graphical User Interface) er også mye brukt.
 
