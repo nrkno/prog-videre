@@ -57,9 +57,9 @@ Test å legge til eller endre noe i funksjonen du har i skriptet. Klarer du å e
 
 ✍️ **Oppgave:** _Lag en funksjon som lager bærer fra programkode og type_
 
-1. Tv- og radioprogram har en programkode (eller program-ID) som består av fire bokstaver og åtte tall, for eksempel `KMNO10010922`. En type bærer består av to bokstaver, for eksempel `AH`, og et program sin bærer består av programkoden til programmet satt sammen med bærertypen, `KMNO10010922AH`.
-2. Lag funksjonen `lag_bærer(programkode, bærertype)`. Denne har to parametere, `programkode` og `bærertype`, og skal returnere en streng der programkode og bærertype er satt sammen.
-3. Kall funksjonen i programmet og se at verdien som returneres er som du forventer.
+Tv- og radioprogram har en programkode (eller program-ID) som består av fire bokstaver og åtte tall, for eksempel `KMNO10010922`. En type bærer består av to bokstaver, for eksempel `AH`, og et program sin bærer består av programkoden til programmet satt sammen med bærertypen, `KMNO10010922AH`.
+1. Lag funksjonen `lag_bærer(programkode, bærertype)`. Denne har to parametere, `programkode` og `bærertype`, og skal returnere en streng der programkode og bærertype er satt sammen.
+2. Kall funksjonen i programmet og se at verdien som returneres er som du forventer.
 
 ✍️ **Oppgave:** _Lag en funksjon som splitter opp bæreren_
 
