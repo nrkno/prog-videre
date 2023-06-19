@@ -5,7 +5,7 @@ Organisering med moduler og pakker (Heidi)
 
 ## Moduler
 
-Etterhvert som programmet vokser, og man skriver stadig mer kode, kan det fort oppleves rotete og uoversiktlig om all kode er i samme fil. For få å programmet mer ryddig kan man derfor strukturere koden i flere filer, der funksjonalitet som hører sammen eller handler om det samme er i samme modul. 
+Etterhvert som programmet vokser, og man skriver stadig mer kode, kan det fort oppleves rotete og uoversiktlig om all kode er i samme fil. For å få programmet mer ryddig kan man derfor strukturere koden i flere filer, der funksjonalitet som hører sammen eller handler om det samme er i samme modul. 
 
 En modul i Python er ikke noe annet enn en fil med python-kode, altså slike filer vi allerede kjenner til, som slutter på `.py`.
 
