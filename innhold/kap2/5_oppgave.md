@@ -53,9 +53,9 @@ I utdraget over vises det én kanal med ett program, men i filen vil det være f
 
 ## Kom i gang
 
-Start med en tom Python-fil eller ta utgangspunkt i filen [epg.py](/innhold/kap2/misc/epg.py). Denne filen inneholder en funksjon som er kjekk å ha til ekstraoppgavene.
+Start med en tom Python-fil eller ta utgangspunkt i filen [epg.py](/prog-videre/kap2/misc/epg.py). Denne filen inneholder en funksjon som er kjekk å ha til ekstraoppgavene.
 
-Kopier filen [epg.json](/innhold/kap2/misc/epg.json) til samme mappe som Python-filen over. Dette er filen som vi skal få Python-programmet til å lese og prosessere.
+Kopier filen [epg.json](/prog-videre/kap2/misc/epg.json) til samme mappe som Python-filen over. Dette er filen som vi skal få Python-programmet til å lese og prosessere.
 
 ## Les json fra fil
 

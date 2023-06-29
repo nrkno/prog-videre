@@ -1,27 +1,11 @@
-# lære json
-import json
-import enum
-import dataclasses
 import datetime
-import sys
+  
+def varighet_i_minutter(duration):
+    """Returnerer varighet i antall hele minutter
 
-
-class Medium(enum.Enum):
-    TV = 1
-    RADIO = 2
-
-
-@dataclasses.dataclass
-class Program:
-    kanalnavn: str
-    kanalid: str
-    medium: Medium
-    kategoriid: str
-    tittel: str
-    varighet: datetime.timedelta
-
-
-def to_timedelta(duration):
+    Funksjonen er ikke helt nøyaktig, den bryr seg kun om timer og minutter i den opprinnelige varigheten, og dropper sekundene.
+    Eksempel:  varighet_i_minutter("PT2H49M52.12S") returnerer heltallet 169
+    """
     timepart = duration[2:]
     hour_part = timepart.split("H")
     if len(hour_part) == 2:
@@ -34,42 +18,6 @@ def to_timedelta(duration):
     else:
         minutes = 0
 
-    return datetime.timedelta(hours=hours, minutes=minutes)
+    delta = datetime.timedelta(hours=hours, minutes=minutes)
+    return int(delta.total_seconds()/60)
 
-filnavn = sys.argv[1]
-with open(filnavn, "r", encoding="utf-8") as jsonFile:
-    epg_liste = json.load(jsonFile)
-    uthenta_program = []
-
-    for epg in epg_liste:
-        kanalnavn = epg["channel"]["title"]
-        kanalid = epg["channel"]["id"]
-        medium = Medium(epg["sourceMedium"])
-
-        for json_program in epg["entries"]:
-            kategori = json_program.get("category")
-
-            if kategori is not None:
-                kategoriid = json_program["category"]["id"]
-            else:
-                kategoriid = "Ingen kategori"
-
-            tittel = json_program["title"]
-            varighet = to_timedelta(json_program["duration"])
-
-            program = Program(kanalnavn, kanalid, medium, kategoriid, tittel, varighet)
-            uthenta_program.append(program)
-
-antall_pr_kategori = {}
-
-for program in uthenta_program:
-    kategori = program.kategoriid
-    if kategori in antall_pr_kategori:
-        antall_pr_kategori[kategori] += 1
-    else:
-        antall_pr_kategori[kategori] = 1
-
-antall_pr_kategori_par = list(antall_pr_kategori.items())
-kategorier_med_flest = sorted(antall_pr_kategori_par, key=lambda par: par[1], reverse=True)
-for kategori, antall in kategorier_med_flest:
-    print(f"{kategori.capitalize()}: {antall}")

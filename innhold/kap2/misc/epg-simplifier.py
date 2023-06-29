@@ -2,11 +2,11 @@ import json
 import requests
 import datetime
 
-def json_from_file():
-    filnavn = "epg.json"
-    with open(filnavn, "r", encoding="utf-8") as json_file:
-        epg_liste = json.load(json_file)
-    return epg_liste
+# def json_from_file():
+#     filnavn = "epg.json"
+#     with open(filnavn, "r", encoding="utf-8") as json_file:
+#         epg_liste = json.load(json_file)
+#     return epg_liste
 
 def json_from_api():
     today = datetime.datetime.today()
@@ -41,6 +41,7 @@ entry_simple_keys = [
     "legalAge",
     "title",
     "description",
+    "duration"
 ]
 
 forenkla_epg_liste = []
@@ -67,6 +68,6 @@ for json_epg in epg_liste:
 
     forenkla_epg_liste.append(epg)
 
-with open("json-simple.json", "w", encoding="utf-8") as out_file:
+with open("epg.json", "w", encoding="utf-8") as out_file:
     json.dump(forenkla_epg_liste, fp=out_file, ensure_ascii=False, indent=4)
     out_file.write("\n")
