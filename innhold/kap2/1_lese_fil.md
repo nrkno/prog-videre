@@ -4,7 +4,9 @@ Vi leser data fra en fil (Heidi)
 **💡 Læringsmål:** _I dette avsnittet lærer du hvordan du leser data fra en fil._
 
 
-Vi skal starte med å se på hvordan vi kan lese fra fil, som på mange måter er nyttig. Lag deg en `.py`-fil som du vil skrive programmet ditt i. Vi skal lese fila `serier.txt` som på hver linje inneholder `serieId` og `tittel` for en tv-serie, separert med `,`. Vi skal lese fila, splitte innholdet og printe ut alle titlene i fila.
+Vi skal starte med å se på hvordan vi kan lese fra fil, som på mange måter er nyttig. Lag deg en `.py`-fil som du vil skrive programmet ditt i. Kopier filen [serier.txt](/prog-videre/kap2/filer/serier.txt) til samme mappe som Python-filen.
+
+Vi skal lese fila `serier.txt` som på hver linje inneholder `serieId` og `tittel` for en tv-serie, separert med `,`. Vi skal lese fila, splitte innholdet og skrive ut alle titlene i fila.
 
 For å lese en fil må vi først åpne fila, deretter leser vi innholdet. For å åpne fila brukes funksjonen `open`, du kan lese mer om denne funksjonen i [Python-dokumentasjonen](https://docs.python.org/3/library/functions.html?highlight=open#open).
 
@@ -40,7 +42,7 @@ Vi leser nå hele filen til en stor streng, men for å oppnå målet vårt med �
     for linje in linjer:
         print(linje)
 ```
-Men fortsatt er vi ikke helt i mål, nå printer vi hele linja, ikke bare tittelen. For å få tak i tittelen kan vi bruke  `split`-metoden til string, som deler en streng for hver gang den finner den angitt skille-strengen.
+Men fortsatt er vi ikke helt i mål, nå skriver vi ut hele linja, ikke bare tittelen. For å få tak i tittelen kan vi bruke  `split`-metoden til string, som deler en streng for hver gang den finner den angitt skille-strengen.
  
 ✍️ **Oppgave:** _Kan du fullføre programmet slik at det bare skriver ut tittelen?_
 ```python
@@ -48,3 +50,8 @@ Men fortsatt er vi ikke helt i mål, nå printer vi hele linja, ikke bare tittel
         deler = linje.split(",")
         # print(???)
 ```
+
+✍️ **Oppgave:** _Finn eller lag en fil med tekstlig innhold, og eksperimenter med å lese fila og skrive ut innholdet i terminalen_
+
+Om du trenger litt inspirasjon kan du se om du liker noen av csv-filene på [denne siden](https://people.sc.fsu.edu/~jburkardt/data/csv/csv.html).
+

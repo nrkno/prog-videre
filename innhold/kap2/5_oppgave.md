@@ -53,9 +53,9 @@ I utdraget over vises det én kanal med ett program, men i filen vil det være f
 
 ## Kom i gang
 
-Start med en tom Python-fil eller ta utgangspunkt i filen [epg.py](/prog-videre/kap2/misc/epg.py). Denne filen inneholder en funksjon som er kjekk å ha til ekstraoppgavene.
+Start med en tom Python-fil eller ta utgangspunkt i filen [epg.py](/prog-videre/kap2/filer/epg.py). Denne filen inneholder en funksjon som er kjekk å ha til ekstraoppgavene.
 
-Kopier filen [epg.json](/prog-videre/kap2/misc/epg.json) til samme mappe som Python-filen over. Dette er filen som vi skal få Python-programmet til å lese og prosessere.
+Kopier filen [epg.json](/prog-videre/kap2/filer/epg.json) til samme mappe som Python-filen over. Dette er filen som vi skal få Python-programmet til å lese og prosessere.
 
 ## Les json fra fil
 
@@ -86,4 +86,4 @@ Om du har fullført stegene over kan du utvide programmet ditt hvis du har lyst.
 
 ### 🎯 Kan det du gjør på jobb bli mer effektivt med et Python program?
 
-Temaene vi har jobbet med i dag kan kanskje brukes direkte i noe du gjør på jobb, f.eks om du manuelt henter ut informasjon fra filer. Om du har filer på andre format enn `json` kan de fortsatt leses og tolkes, enten manuelt eller ved å bruke andre biblioteker. Det fins for eksempel en eget [csv-bibliotek](https://docs.python.org/3/library/csv.html) for å håndtere `csv`-filer.
+Temaene vi har jobbet med i dag kan kanskje brukes direkte i noe du gjør på jobb, f.eks. om du manuelt henter ut informasjon fra filer. Om du har filer på andre format enn `json` kan de fortsatt leses og tolkes, enten manuelt eller ved å bruke andre biblioteker. Det fins for eksempel en eget [csv-bibliotek](https://docs.python.org/3/library/csv.html) for å håndtere `csv`-filer.
