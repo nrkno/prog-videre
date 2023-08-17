@@ -5,12 +5,25 @@ Programargumenter
 _I dette kapitlet skal du bli kjent med hvordan du kan gi brukeren kontroll
 over hva applikasjonen skal gjøre, uten at applikasjonen stopper opp underveis._
 
+Når vi skriver kommandolinjeprogram for et visst publikum så må vi tenke på _brukeropplevelsen_ for de som bruker programmet vårt.
+Nå tenker du sikkert at det gjør da ingenting, for det er bare du som skal bruke programmet du lager.
+Men du risikerer selv å bli en nybegynner på programmet ditt når det har gått et år siden sist du brukte det,
+og alle minner om hvordan det fungerte for lengst har forduftet.
+
+Brukergrensesnittet til kommandolinjeprogram kalles _the command-line interface (CLI)_ på engelsk.
+I dette kapitlet ser vi på ett av mange aspekter ved CLI.
+
 
 ## Hvordan kan du la brukeren bestemme ting?
 
 Hvordan kan applikasjonen din vite hvilken fil den skal lese fra?
 Eller hvilken fil den skal skrive til?
 Eller hva den i det hele tatt skal gjøre med innholdet i fila?
+
+Vi skal illustrere ulike alternativer vi har for å løse dette problemet.
+
+
+### Eksempelfila `ksjefer.txt`
 
 Før vi går i gang, kan du lage ei fil som heter `ksjefer.txt` med følgende innhold:
 
@@ -28,6 +41,9 @@ Vibeke Fürst Haugen
 ```
 
 Vi skal referere til denne fila når vi kjører eksempelprogrammet vi lager oss.
+
+
+### Problemstillingen
 
 Vi ser på et eksempel der vi skal åpne ei fil og skrive innholdet av fila til terminalen.
 Hvordan skal programmet vite hvilken fil som skal åpnes?
@@ -237,7 +253,7 @@ Package operations: 1 install, 0 updates, 0 removals
 
 Versjonsnummeret (8.1.3) vil sannsynligvis være høyere hos deg, men det gjør ikke noe.
 
-Vi kan starte med å konvertere fillesing-skriptet vårt til å bruke `click`:
+Vi kan prøve å konvertere fillesing-skriptet vårt til å bruke `click`:
 
 ```python
 # les_fil_click.py
@@ -260,13 +276,6 @@ Hvorfor sender vi ingen argumenter til `les_fil()`-funksjonen?
 Svaret er at _dekoratørene_ vi har lagt til – `@click.command()` og `@click.argument("filnavn")` – gjør om på hvordan funksjonen virker.
 Den forventer derfor ikke å få noe argument når du kjører den.
 Click vil i stedet lese `sys.argv` og sende inn det første _program_-argumentet til brukeren som _funksjons_-argumentet `filnavn`.
-
-Dekoratører kjennetegnes av funksjonskall med en alfakrøll foran seg,
-som er listet opp rett før en funksjonsdefinisjon.
-I tilfellet her er `click.command()` og `click.argument("filnavn")`
-dekoratører, som dekorerer `les_fil`-funksjonen.
-Nøyaktig _hva_ dekoratører gjør sparer vi til en frivillig ekstra-del,
-men vi nøyer oss med å si at de kan elte og kna på funksjonen du definerer sånn at den kan fungere på en annen måte enn den ellers ville gjort.
 
 Når du kjører dette i terminalen, oppfører det seg ganske likt med `les_fil_arg.py`.
 Men det øyeblikket du skriver flere eller færre programargumenter enn programmet forventer,
@@ -302,88 +311,11 @@ Options:
 kurs $>
 ```
 
-Før vi fortsetter, kan det være lurt å lære litt mer om hvordan kommandoer er strukturert.
-
-
-## Anatomien til en kommando
-
-Du har så langt brukt terminalen til å kjøre kommandoer,
-men har du tenkt over hvordan disse kommandoene er bygd opp?
-
-Vi kan starte med kommandoen du bruker for å kjøre et Python-skript:
-
-```shell-session
-kurs $> python les_fil_click.py ksjefer.txt
-```
-
-Denne består av tre deler som er atskilt med mellomrom:
-
-0. `python`: Dette er navnet på, eller filstien til, programmet vi ønsker å kjøre
-1. `les_fil_click.py`: Dette er det første argumentet som blir gitt til `python`-kommandoen
-2. `ksjefer.txt`: Dette er det andre argumentet som blir gitt til `python`-kommandoen
-
-**Mellomrom er meningsbærende**: De skiller mellom de ulike delene av en kommando.
-Hvis du lager ei fil der navnet inneholder et mellomrom,
-må du derfor bruke hermetegn for å indikere at mellomrommet _ikke_ skiller mellom to argument,
-men i stedet inngår i ett og samme argument.
-
-Her er en kommando som vil bli tolket feil:
-
-```shell-session
-kurs $> python les fil click.py lyttertall p1.csv
-python3.10: can't open file '/home/n123456/kurs/les': [Errno 2] No such file or directory
-```
-
-Denne kommandoen består av seks deler:
-
-0. `python`
-1. `les`
-2. `fil`
-3. `click.py`
-4. `lyttertall`
-5. `p1.csv`
-
-Selvfølgelig finnes det ikke noe skript som heter `les`,
-så derfor feiler `python` med en feilmelding om at fila ikke finnes.
-
-Hvis det hadde fantes ei fil som het `les`, kunne den lest `fil`, `click.py`, `lyttertall` og `p1.csv` fra `sys.argv`.
-
-La oss i stedet bruke hermetegn rundt filstiene:
-
-```shell-session
-kurs $> python "les fil click.py" "lyttertall p1.csv"
-```
-
-Denne kommandoen består av tre deler:
-
-0. `python`
-1. `les fil click.py`
-2. `lyttertall p1.csv`
-
-Når `les fil click.py` kjører, kan den lese `lyttertall p1.csv` fra `sys.argv[1]`.
-
-
-## Hjelp til selvhjelp
-
-Det er god kotyme å gi brukeren en kort oppsummering over hvordan du skal bruke programmet hvis brukeren ikke skriver noe programargument,
-i de tilfellene hvor det er påkrevd.
-Sånne korte oppsummeringer pleier ikke å være lengre enn 2-3 linjer,
-og tar med en mal på hvordan kjøringer av programmet kan se ut.
-
-I tillegg er det et standard valg som alle programmer bør støtte:
-`--help`, gjerne med kortvalget `-h`.
-Hvis brukeren spesifiserer dette valget, så skal ikke programmet gjøre noe likevel.
-Det skal i stedet printe en hjelpetekst til terminalen og så avslutte.
-Hjelpeteksten skal forklare hva programmet gjør, hvilke argumenter du må oppgi og hvilke valg du kan bruke.
-
-Tanken er at du skal få den hjelpen du trenger,
-uten at du må lese deg opp på et dokument som ligger et eller annet sted
-eller lese deg opp på hvordan skriptet er skrevet.
-
-
 ### Lage hjelpetekst til Click
 
 Click gir automatisk applikasjonen din støtte for `-h` og `--help`.
+Disse tilvalgene er en etablert konvensjon for kommandolinjeprogram
+– du kan jo prøve å kjøre `ls --help` eller `poetry --help`, for eksempel.
 
 Click leser automatisk [_doc-strengen_][doc-glossary.docstring] som du skriver først i funksjonen.
 Her bør du skrive en oppsummering på hva skriptet ditt gjør.
@@ -425,7 +357,7 @@ Options:
 ```
 
 
-## Posisjonelle argumenter
+### Posisjonelle argumenter
 
 Den mest grunnleggende formen for programargument er argument
 som får sin mening ene og alene basert på _hvor_ det står – altså posisjonen.
@@ -502,7 +434,7 @@ Må vi virkelig ha to forskjellige program, ett med prefiks og ett uten?
 
 Hvis vi gjør PREFIKS-argumentet _frivillig_, kan ett og samme skript brukes enten du vil ha prefiks eller ikke.
 
-For å gjøre et argument frivillig, spesifiserer du hvilken verdi argumentet skal få når brukeren ikke tar det med.
+For å gjøre et posisjonelt argument frivillig, spesifiserer du hvilken verdi argumentet skal få når brukeren ikke tar det med.
 Det gjør du med det navngitte argumentet `default=...` i `click.argument(...)`.
 
 I eksemplet med prefiksen, så kan vi bare bruke en tom streng som forvalgt verdi.
@@ -579,55 +511,88 @@ Dette er en konvensjon innenfor terminalprogram, og signaliserer at PREFIKS er f
 På samme måte er OPTIONS (som for eksempel `--help`) frivillig.
 FILNAVN, på den andre siden, er obligatorisk, siden det ikke er omsluttet av klammeparenteser.
 
-# TODO: Fortsett
 
-## Bruke `click` til å tolke programargumenter
+### Tilvalg som ikke tar inn en verdi (flagg)
 
+Kommandoers virkemåte kan justeres med tilvalg (options).
+De starter alltid med bindestrek.
 
-## Valg med Click
+Vi har to typer tilvalg:
+* Korte tilvalg (short options) er alltid ett tegn lange, og starter med én bindestrek. Eksempel: `-a`, `-f`, `-l`
+* Lange tilvalg (long options) kan være flere tegn lange, og starter med to bindestreker. Eksempel: `--all`, `--force`, `--list`
+
+En annen dimensjon ved tilvalg er hvorvidt de tar inn en verdi eller ikke.
+Hvis de ikke tar inn verdi, kalles de for flagg.
+`--help` er et eksempel på et flagg.
 
 I eksemplet ovenfor så vi at `click.argument` brukes til å registrere at vi skal ta inn et posisjonelt argument.
-Tilsvarende kan vi bruke [`click.option`][doc-click.option] til å registrere et valg.
+Tilsvarende kan vi bruke [`click.option`][doc-click.option] til å registrere et tilvalg.
+De posisjonelle argumentene til `click.option` er tilvalget sånn som du vil at brukeren skal skrive det.
+Du kan oppgi flere synonymer, sånn at ett og samme tilvalg har en kort og en lang variant.
 
-### Flagg
+Click antar at tilvalg skal ta inn en verdi.
+Er det et flagg, må du sette det navngitte argumentet `is_flag` til `True`.
+Da vet også Click at tilvalget skal være enten `True` eller `False` (altså en boolsk verdi).
 
-La oss utvide eksemplet fra i stad med et valg som lar deg skru på nummerering av linjene:
+For hjelpeteksten så kan du legge ved en beskrivelse i det navngitte argumentet `help`.
+Det du skriver her vil bli listet opp i `Options`-seksjonen når brukeren legger til flagget `--help`.
+
+
+#### Eksempel: Linjenummer
+
+La oss utvide eksemplet fra i stad med et valg som lar deg skru på nummerering av linjene.
+Første linje vil da starte med `1: `, andre linje med `2: ` og så videre.
+
+Første spørsmål blir da: Hvordan skal vi få lagt til linjenummeret?
+Vi kan utvide `for`-løkka sånn at vi ikke bare itererer over linjene i fila, men også får med et løpenummer.
+Da kan vi printe løpenummeret til terminalen i forkant av hver linje, men bare hvis brukeren har bedt om det:
 
 ```python
-# print_fil_click_v2.py
+# les_fil_click_v4.py
 import click
 
+
 @click.command()
-@click.option('-n', '--number', is_flag=True, help='Skriv linjenummer foran hver linje.')
-@click.argument('valgt_fil')
-def print_fil(number, valgt_fil):
-  """Skriv innholdet av VALGT_FIL til terminalen."""
-  with open(valgt_fil) as fil:
+@click.option("--number", "-n", is_flag=True, help="Skriv linjenummer foran hver linje.")
+@click.argument("filnavn")
+@click.argument("prefiks", default="")
+def les_fil(number, filnavn, prefiks):
+  """
+  Skriv PREFIKS + innholdet av fila med filstien FILNAVN til terminalen.
+
+  Prefikset PREFIKS blir skrevet ut på starten av hver linje (etter ev.
+  linjenummer), hvis angitt.
+  """
+  with open(filnavn) as fil:
     for linjenummer, linje in enumerate(fil, start=1):
       # Skriv linjenummer hvis aktivert
       if number:
-        # Sørg for konsekvent venstremargin på koden
+        # Sørg for konsekvent venstremargin
         # (for filer på opptil 999 linjer)
-        print(f'{linjenummer: 3d}: ', end='')
+        print(f"{linjenummer: 3d}: ", end="")
       # Skriv linja
-      print(linje, end='')
+      print(prefiks + linje, end="")
 
-print_fil()
+les_fil()
 ```
 
-Med `click.option` spesifiserer vi at vi ønsker å legge til et valg.
-Kortvalget er `'-n'`, mens langvalget er `'--number'`.
-Takket være `is_flag=True` så vet Click at det er flagg,
+Med `click.option` spesifiserer vi at vi ønsker å legge til et tilvalg.
+Kortformen er `"-n"`, mens langformen er `"--number"`.
+Takket være `is_flag=True` så vet Click at det er et flagg,
 og at det derfor ikke skal ta inn en verdi.
-Da vil det også bli tolket som et boolsk valg,
-som er `False` med mindre brukeren tar det med.
+Da vil det også bli tolket som et boolsk tilvalg,
+som er `False` hvis brukeren ikke tar det med, og `True` hvis det er nevnt.
 Teksten i `help='...'` blir tatt med i hjelpeteksten for dette valget.
 
-For å få linjenummeret, bruker vi funksjonen [`enumerate`][docs-builtins.enumerate].
+Som du ser så har vi dokumentert de posisjonelle argumentene i doc-strengen som er først i funksjonskroppen.
+Du kan kun bruke `help="..."` med `click.option`, ikke `click.argument`.
+Dette er en designavgjørelse som utviklerne av Click har tatt.
+
+For å få linjenummeret bruker vi funksjonen [`enumerate`][docs-builtins.enumerate].
 Den tar inn noe som du kan iterere over, for eksempel `['a', 'b', 'c']`,
 og legger på et løpenummer, for eksempel `[(0, 'a'), (1, 'b'), (2, 'c')]`.
 Siden elementene er tupler, kan vi pakke dem ut i `for` ved å skrive `for linjenummer, linje ...`.
-For at ikke første linje skal bli kalt linje 0, ber vi `enumerate` om å starte på 1.
+For at ikke første linje skal bli kalt linje 0, ber vi `enumerate` om å starte på 1 med `start=1`.
 
 Når vi skriver `f'{linjenummer: 3d}: '` bruker vi formateringsspråket til å be om at linjenummeret formateres med ledende mellomrom, sånn at linjenummeret alltid tar opp tre tegn.
 Siden vi forteller `print` at den ikke skal skrive noe linjeskift til terminalen etter teksten vår,
@@ -636,89 +601,99 @@ vil linja som skrives ut havne på samme linje som linjenummeret vårt.
 Eksempel på kjøring:
 
 ```shell
-kurs $> poetry run python print_fil_click_v2.py print_fil_click_v2.py --help
-Usage: print_fil_click_v2.py [OPTIONS] VALGT_FIL
+kurs $> poetry run python les_fil_click_v4.py --help
+Usage: les_fil_click_v4.py [OPTIONS] FILNAVN [PREFIKS]
 
-  Skriv innholdet av VALGT_FIL til terminalen.
+  Skriv PREFIKS + innholdet av fila med filstien FILNAVN til terminalen.
+
+  Prefikset PREFIKS blir skrevet ut på starten av hver linje (etter ev.
+  linjenummer), hvis angitt.
 
 Options:
   -n, --number  Skriv linjenummer foran hver linje.
   --help        Show this message and exit.
-kurs $> poetry run python print_fil_click_v2.py print_fil_click_v2.py --number
-  1: import click
-  2: 
-  3: @click.command()
-  4: @click.option('-n', '--number', is_flag=True, help='Skriv linjenummer foran hver linje.')
-  5: @click.argument('valgt_fil')
-  6: def print_fil(number, valgt_fil):
-  7:   """Skriv innholdet av VALGT_FIL til terminalen."""
-  8:   with open(valgt_fil) as fil:
-  9:     for linjenummer, linje in enumerate(fil, start=1):
- 10:       # Skriv linjenummer hvis aktivert
- 11:       if number:
- 12:         # Sørg for konsekvent venstremargin på koden
- 13:         # (for filer på opptil 999 linjer)
- 14:         print(f'{linjenummer: 3d}: ', end='')
- 15:       # Skriv linja
- 16:       print(linje, end='')
- 17: 
- 18: print_fil()
+kurs $> poetry run python les_fil_click_v4.py --number ksjefer.txt
+  1: Olav Midttun
+  2: Kaare Fostervoll
+  3: Hans Jacob Ustvedt
+  4: Torolf Ester
+  5: Bjartmar Gjerde
+  6: Einar Førde
+  7: John G. Bernander
+  8: Hans-Tore Bjerkaas
+  9: Thor Gjermund Eriksen
+ 10: Vibeke Fürst Haugen
+kurs $> poetry run python les_fil_click_v4.py --number ksjefer.txt "Kringkastingssjef "
+  1: Kringkastingssjef Olav Midttun
+  2: Kringkastingssjef Kaare Fostervoll
+  3: Kringkastingssjef Hans Jacob Ustvedt
+  4: Kringkastingssjef Torolf Ester
+  5: Kringkastingssjef Bjartmar Gjerde
+  6: Kringkastingssjef Einar Førde
+  7: Kringkastingssjef John G. Bernander
+  8: Kringkastingssjef Hans-Tore Bjerkaas
+  9: Kringkastingssjef Thor Gjermund Eriksen
+ 10: Kringkastingssjef Vibeke Fürst Haugen
 ```
 
-### Valg som tar inn verdi
+
+### Tilvalg som tar inn verdi
+
+Ved å utelate `is_flag`-argumentet til `click.option` får vi et tilvalg som tar inn en verdi.
+Det tilhørende funksjonsargumentet vil bli satt til det brukeren skriver i programargumentet etter tilvalget.
+
+Du kan bruke det navngitte argumentet `type` til å bestemme hvordan det brukeren har skrevet skal tolkes.
+Forventer du for eksempel heltall kan du skrive `type=int`.
+
+Tilvalg er valgfrie.
+Vanligvis vil verdien være `None` hvis brukeren ikke har spesifisert tilvalget,
+men du kan sette en egen forvalgt verdi med det navngitte argumentet `default`.
 
 La oss gi brukeren mulighet til å filtrere bort linjer som er for korte.
-For eksempel vil vi at `poetry run python print_fil_click_v3.py --min-length 40`
+For eksempel vil vi at `poetry run python les_fil_click_v5.py --min-length 40 …`
 bare skriver ut linjene som er 40 tegn eller lengre.
 Hvis brukeren ikke bruker `--min-length`, gjør vi ikke noen filtrering:
 
 ```python
-# print_fil_click_v3.py
+# les_fil_click_v5.py
 import click
 
+
 @click.command()
-@click.option('-n', '--number', is_flag=True, help='Skriv linjenummer foran hver linje.')
-@click.option('--min-length', metavar='LENGDE', default=0, help='Hopp over linjer med færre tegn enn LENGDE.')
-@click.argument('valgt_fil')
-def print_fil(number, min_length, valgt_fil):
-  """Skriv innholdet av VALGT_FIL til terminalen."""
-  with open(valgt_fil) as fil:
+@click.option("--number", "-n", is_flag=True, help="Skriv linjenummer foran hver linje.")
+@click.option("--min-length", metavar="LENGDE", default=0, help="Hopp over linjer med færre tegn enn LENGDE.")
+@click.argument("filnavn")
+@click.argument("prefiks", default="")
+def les_fil(number, min_length, filnavn, prefiks):
+  """
+  Skriv PREFIKS + innholdet av fila med filstien FILNAVN til terminalen.
+  
+  Prefikset PREFIKS blir skrevet ut på starten av hver linje (etter ev.
+  linjenummer), hvis angitt.
+  """
+  with open(filnavn) as fil:
     for linjenummer, linje in enumerate(fil, start=1):
       # Hopp over linjer med for få tegn
       antall_tegn_før_linjeskift = len(linje.rstrip())
       if antall_tegn_før_linjeskift < min_length:
         continue
-
+    
       # Skriv linjenummer hvis aktivert
       if number:
-        # Sørg for konsekvent venstremargin på koden
+        # Sørg for konsekvent venstremargin
         # (for filer på opptil 999 linjer)
-        print(f'{linjenummer: 3d}: ', end='')
-
+        print(f"{linjenummer: 3d}: ", end="")
       # Skriv linja
-      print(linje, end='')
+      print(prefiks + linje, end="")
 
-print_fil()
-```
-
-Eksempel på kjøring:
-
-```shell
-kurs $> poetry run python print_fil_click_v3.py --help
-Usage: print_fil_click_v3.py [OPTIONS] VALGT_FIL
-
-  Skriv innholdet av VALGT_FIL til terminalen.
-
-Options:
-  -n, --number         Skriv linjenummer foran hver linje.
-  --min-length LENGDE  Hopp over linjer med færre tegn enn LENGDE.
-  --help               Show this message and exit.
-kurs $> poetry run python print_fil_click_v3.py print_fil_click_v3.py --min-length 55 --number
-  4: @click.option('-n', '--number', is_flag=True, help='Skriv linjenummer foran hver linje.')
-  5: @click.option('--min-length', metavar='LENGDE', default=0, help='Hopp over linjer med færre tegn enn LENGDE.')
+les_fil()
 ```
 
 Her har vi spesifisert valget `--min-length`.
+Men funksjonsargumentet vårt heter `min_length`.
+Dette skyldes at bindestrek ikke er tillat i variabelnavn, for de blir jo tolket som minus.
+Click oversetter derfor fra `--min-length` til `min_length`.
+
 Hvis brukeren ikke bruker valget, blir minstelengden satt til 0 på grunn av `default`-argumentet.
 I tillegg skjønner Click at brukeren må oppgi et _tall_,
 siden default-verdien vår er et tall.
@@ -727,8 +702,28 @@ Alternativt kunne vi spesifisert `type=int` som enda et argument til `click.opti
 Vi bruker `metavar='LENGDE'` til å bestemme hva placeholderen for verdien skal være i hjelpeteksten.
 Hadde vi ikke spesifisert metavar hadde den vært `INTEGER` siden det er et heltall.
 
+Eksempel på kjøring:
 
-## Andre ting du kan gjøre med Click
+```shell
+kurs $> poetry run python les_fil_click_v5.py --help
+Usage: les_fil_click_v5.py [OPTIONS] FILNAVN [PREFIKS]
+
+  Skriv PREFIKS + innholdet av fila med filstien FILNAVN til terminalen.
+
+  Prefikset PREFIKS blir skrevet ut på starten av hver linje (etter ev.
+  linjenummer), hvis angitt.
+
+Options:
+  -n, --number         Skriv linjenummer foran hver linje.
+  --min-length LENGDE  Hopp over linjer med færre tegn enn LENGDE.
+  --help               Show this message and exit.
+kurs $> poetry run python les_fil_click_v5.py ksjefer.txt --min-length 19 --number
+  9: Thor Gjermund Eriksen
+ 10: Vibeke Fürst Haugen
+```
+
+
+### Andre ting du kan gjøre med Click
 
 Når du får et nytt verktøy i hendene frister det kanskje ikke å slå opp bruksanvisningen,
 men når det gjelder programvarepakker så kan dokumentasjonen være vel verdt et besøk.
@@ -743,8 +738,137 @@ Sjekk ut [den offisielle dokumentasjone til Click][click] for å oppdage mange f
 * Åpne opp en editor som brukeren kan bruke til å redigere ei fil
 * Vise en progressbar
 
-✍️ **Oppgave:**
-_Kan du skrive om den store oppgaven fra dag 1 sånn at du tar inn navnet på JSON-fila fra programargumentene i stedet for at den ligger i koden?_
+Click kan altså hjelpe til med flere aspekter av CLI enn bare programargumenter.
+
+
+## Hvordan tillate både CLI og importering med `if __name__ == "__main__"`
+
+Hvis du skulle prøve å gjenbruke en funksjon fra et Python-skript som også fungerer som et kommandolinjeprogram,
+risikerer du at du setter i gang kommandolinjeprogrammet ved uhell.
+
+Se for eksempel hva som skjer hvis du importerer `les_fil_click_v5.py` fra eksemplet ovenfor:
+
+```python
+# importer_cli.py
+import les_fil_click_v5
+
+print("Har importert les_fil_click_v5")
+```
+
+```shell
+kurs $> poetry run python importer_cli.py
+Usage: importer_cli.py [OPTIONS] FILNAVN [PREFIKS]
+Try 'importer_cli.py --help' for help.
+
+Error: Missing argument 'FILNAVN'.
+```
+
+Hva skjedde her?
+Vi har tydeligvis kjørt i gang kommandolinjeprogrammet i `les_fil_click_v5.py` allerede da vi skrev `import les_fil_click_v5`!
+
+Når vi importerer en annen Python-modul, vil Python lese den fila fra topp til bunn.
+Hvis vi bare definerer funksjoner så gjør det ingenting, for da har vi jo ikke faktisk gjort noe.
+Men nederst i `les_fil_click_v5.py` så kaller vi funksjonen vi har definert: `les_fil()`.
+
+For å unngå sånne overraskelser, er det vanlig kutyme å _ikke starte noe arbeid med mindre brukeren kjører skriptet direkte_.
+Det vil si at `python les_fil_click_v5.py` helt fint kan kjøre i gang programmet,
+mens `import les_fil_click_v5` inni et annet Python-skript ikke skal gjøre det.
+
+For å få til dette, sammenlikner vi en magisk Python-variabel, `__name__`, med en magisk verdi, `"__main__"`.
+Hvis de er like, betyr det at skriptet blir kjørt direkte.
+Er de ulike, har skriptet blitt importert av en annen Python-modul.
+
+Her er hvordan det kan gjøres:
+
+```python
+# les_fil_click_v6.py
+import click
+
+
+# Vi definerer funksjonen uansett om vi importeres eller bli kjørt direkte:
+@click.command()
+@click.option("--number", "-n", is_flag=True, help="Skriv linjenummer foran hver linje.")
+@click.option("--min-length", metavar="LENGDE", default=0, help="Hopp over linjer med færre tegn enn LENGDE.")
+@click.argument("filnavn")
+@click.argument("prefiks", default="")
+def les_fil(number, min_length, filnavn, prefiks):
+  """
+  Skriv PREFIKS + innholdet av fila med filstien FILNAVN til terminalen.
+  
+  Prefikset PREFIKS blir skrevet ut på starten av hver linje (etter ev.
+  linjenummer), hvis angitt.
+  """
+  with open(filnavn) as fil:
+    for linjenummer, linje in enumerate(fil, start=1):
+      # Hopp over linjer med for få tegn
+      antall_tegn_før_linjeskift = len(linje.rstrip())
+      if antall_tegn_før_linjeskift < min_length:
+        continue
+
+      # Skriv linjenummer hvis aktivert
+      if number:
+          # Sørg for konsekvent venstremargin
+          # (for filer på opptil 999 linjer)
+          print(f"{linjenummer: 3d}: ", end="")
+      # Skriv linja
+      print(prefiks + linje, end="")
+
+# Vi kjører bare funksjonen hvis vi ble kjørt direkte:
+if __name__ == "__main__":
+  les_fil()
+```
+
+Hvis du lurer på hva i all verden dette betyr,
+har Real Python [en artikkel om `if __name__ == "__main__"`](https://realpython.com/if-name-main-python/).
+
+
+## ✍️ Oppgave
+
+1. _Kan du legge til et nytt tilvalg i det siste eksemplet ovenfor? 
+   For eksempel et som lar brukeren spesifisere en melding som skal skrives til terminalen helt i starten,
+   før vi begynner å lese fra fila._
+
+2. _Kan du tilpasse `@click.argument("filnavn")` fra det samme eksemplet sånn at Click sjekker at brukeren oppgir stien til en lesbar, eksisterende fil?
+   Vi har ikke beskrevet hvordan det gjøres, så her må du bryne deg på [dokumentasjonen til Click][click]!_
+
+3. _Kan du skrive om [den store oppgaven fra kapittel 2](../kap2/5_oppgave.md) sånn at du tar inn navnet på JSON-fila fra programargumentene i stedet for at den ligger i koden?_
+
+
+## Oppsummering
+
+Denne delen av kurset har vært ganske lang.
+Men når vi skriver kommandolinjeprogram så må vi tenke på _brukeropplevelsen_ for de som bruker programmet vårt –
+enten det er kollegaer, eller det er deg selv om seks måneder, når du lurer på hva i all verden du holdt på med 😉
+En viktig del av brukergrensesnittet til kommandolinjeprogram – _the command-line interface (CLI)_ – er programargumenter.
+
+Med hjelp av _programargumenter_ kan brukeren styre hva programmet ditt skal gjøre,
+og hvordan det skal gjøre det.
+Programmet kan lese dem fra `sys.argv`,
+men ved å bruke Click så blir det enklere for oss å støtte de etablerte konvensjonene for kommandolinjeprogram.
+
+Med `@click.command()` så gjør vi om funksjonen under til å være et kommandolinjeprogram.
+Mellom funksjonen og `click.command`-dekoratøren legger vi til flere dekoratører som bestemmer hva programmet skal ta i mot av posisjonelle argumenter og tilvalg.
+Nedenfor funksjonsdefinisjonen kan vi kalle funksjonen uten argumenter, siden de leses inn fra `sys.argv` av Click.
+
+`@click.argument("argumentnavn")` legger til et posisjonelt programargument som vil legges i funksjonsargumentet med samme navn, `argumentnavn`.
+
+`@click.option("--tilvalg-navn")` legger til et tilvalg som vil legges i funksjonsargumentet `tilvalg_navn`.
+Click konverterer fra `--tilvalg-navn` til `tilvalg_navn` automatisk (legg merke til at bindestrek ble til understrek).
+
+Vi kan legge til flere argumenter mellom parentesene for å tilpasse hvordan de fungerer. Vi har sett:
+* `default=...` for å gjøre et posisjonelt programargument frivillig. 
+  For tilvalg kan vi bestemme hvilken verdi funksjonen skal få når brukeren ikke har brukt tilvalget
+* `is_flag=True` for å gjøre et tilvalg om til et flagg.
+  Da skal ikke brukeren gi noen verdi til tilvalget, det er nok å bare spesifisere det
+* `help="..."` for å dokumentere et tilvalg. (Posisjonelle programargumenter må eventuelt dokumenteres i doc-strengen først i funksjonen)
+* `type=...` for å konvertere verdien brukeren har skrevet automatisk
+* `metavar="..."` for å bestemme hva placeholderen for verdien skal være i hjelpeteksten
+
+Den første strengen i funksjonskroppen, doc-strengen, blir tatt med i hjelpeteksten du får når du bruker flagget `--help`.
+Der kan du forklare hva programmet ditt gjør og hvordan det fungerer.
+
+Click har mange flere muligheter, både når det gjelder programargumenter og andre deler av CLI,
+som for eksempel å gi brukeren tilbakemelding om hvordan det går, og så videre.
 
 
 ## Videre lesning
