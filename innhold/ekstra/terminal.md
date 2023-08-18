@@ -1,7 +1,7 @@
 Tips og triks om terminalen
 ===========================
 
-Terminalen, på engelsk ofte kalt _command line_, er en tekstbasert måte å starte programmer på.
+Terminalen/kommandolinja, på engelsk ofte kalt [_command line_][wiki-cli], er en tekstbasert måte å starte programmer på.
 Vi bruker den ofte når vi lager dataprogram.
 
 I terminalen skriver du kommandoer etter hverandre, som ber datamaskinen om å gjøre noe.
@@ -18,87 +18,18 @@ Et skall er programmet som du snakker med når du jobber i terminalen.
 Hvilket skall du bruker, avgjør hvilken avansert funksjonalitet du har tilgang til.
 Den grunnleggende funksjonaliteten for å starte et program, er mer eller mindre helt lik for alle skall.
 
-Skjellet `bash` er velkjent og mye brukt, spesielt på Linux og Mac før macOS Catalina.
+Skallet `bash` er velkjent og mye brukt, spesielt på Linux og Mac før macOS Catalina.
 
 Fra og med macOS Catalina er `zsh` det innebygde skallet.
 
 På Windows er `cmd` og `Powershell` vanlige, der sistnevnte er den mest avanserte.
 Men de fungerer ganske annerledes fra andre skall.
-Du bør vurdere å installere `bash` eller oppsøke en annen innføring i `Powershell`.
+Du bør vurdere å [installere `bash`][git-for-windows] eller oppsøke en annen innføring i `Powershell`.
 
-
-## Vanlig funksjonalitet i skall
-
-### Kjør et program
-
-Den første delen av enhver kommando bestemmer hvilket program du skal kjøre.
-
-Når vi kjører Python, skriver vi alltid `python` først i kommandoen.
-Da er det Python-programmet som kommer til å kjøre.
-
-
-### Programargumenter
-
-Etter navnet på programmet kan du legge til argumenter som vil bli gitt til programmet.
-Vi kaller dem for programargument (arguments).
-Når vi kjører Python-kode vi har skrevet, skriver vi navnet på `.py`-fila etter `python`, men med et mellomrom i mellom.
-Python-programmet vet at filnavn du gir til det skal tolkes som Python-skript som skal kjøres.
-
-For eksempel så har `cp hei.txt hallo.txt` to programargument som blir gitt til `cp`:
-1. `hei.txt`
-2. `hallo.txt`
-
-Hvis en filsti skal inneholde mellomrom, må du bruke hermetegn rundt argumentet sånn at skallet oppfatter det som ett argument og ikke flere.
-For eksempel:
-
-```shell
-cp "hilsen hei.txt" "hilsen hallo.txt"
-```
-
-har to programargument som blir gitt til `cp`:
-1. `hilsen hei.txt`
-2. `hilsen hallo.txt`
-
-Glemmer du hermetegn, får du:
-
-```shell
-cp hilsen hei.txt hilsen hallo.txt
-```
-
-som har fire programargument som blir gitt til `cp`:
-1. `hilsen`
-2. `hei.txt`
-3. `hilsen`
-4. `hallo.txt`
-
-Det blir feil.
-
-
-### Avbryte kjørende program
-
-Du kan avslutte et program med `[CTRL]` + `C`.
-
-
-### Autofullfør
-
-Når du skriver kommandoer i terminalen,
-kan du bruke `[TAB]`-tasten til å fullføre argumentet du skriver på.
-Hvis det du har skrevet er nok til å vite hvilken fil du tenker på,
-kan du fylle ut resten med ett trykk.
-Er det flere filer, må du gjerne trykke flere ganger for å få forslag eller gå gjennom forslagene.
-
-Dette er veldig nyttig siden du ofte vil skrive filnavn i kommandoer.
-Du kan bruke autofullfør både når du skal skrive hvilket skript Python-programmet skal kjøre,
-og når du skal fortelle skriptet hvilken fil du vil lese fra eller skrive til.
-
-
-### Historikk
-
-Bruk `[PILTAST OPP]` og `[PILTAST NED]` til å bla gjennom historikken.
-Vil du kjøre den forrige kommandoen din én gang til,
-kan du trykke `[PILTAST OPP]` én gang, etterfulgt av `[ENTER]`.
-Du kan også endre på kommandoen etter at du har bladd deg opp til den,
-for eksempel hvis du vil kjøre det samme med en liten endring.
+_Vi går litt fort fram i denne gjennomgangen.
+Du kan søke etter «Introduction to Bash command line» for guider som går litt grundigere til verks,
+for eksempel [Programming Historian's Introduction to the Bash Command Line][prog-historian]
+eller [Ryans Linux-introduksjon][ryan-cli] (det meste gjelder også på andre operativsystem så lenger du bruker Bash)._
 
 
 ## Navigere filsystemet
@@ -106,7 +37,7 @@ for eksempel hvis du vil kjøre det samme med en liten endring.
 ### Working Directory
 
 Du står til enhver tid i ei mappe, kalt _working directory_.
-Du kan sammenlikne det et vindu av en filutforsker, som til envher tid har ei mappe åpen.
+Du kan sammenlikne det et vindu av en filutforsker, som til enhver tid har én mappe åpen.
 
 Med kommandoen `pwd` kan du Print Working Directory. Da ser du hvor du står.
 
@@ -187,11 +118,13 @@ For eksempel så kan du konkattenere alle filene i mappa du står i som slutter 
 kurs $> cat *.py
 ```
 
-Hvis du har `1.py`, `2.py` og `3.py` liggende i mappa du er i, vil `cat` få tre programargument:
+Hvis du har `1.py`, `2.py` og `3.py` liggende i mappa du er i, så vil skallet ditt gjøre om kommandoen din til:
 
-1. `1.py`
-2. `2.py`
-3. `3.py`
+```shell
+cat 1.py 2.py 3.py
+```
+
+før den kjører `cat`.
 
 
 ## Vanlige kommandoer
@@ -211,9 +144,97 @@ Noen av disse kommandoene er utilgjengelige i PowerShell, som fungerer ganske an
   Du kan også flytte den til et annet sted. 
 * `cp KILDE MÅL`: CoPy. Lag en kopi av KILDE som heter MÅL.
 * `rm FIL`: ReMove. Slett FIL permanent.
-* `man KOMMANDO`: MANual. Vis hjelpeinformasjon for KOMMANDO.
+* `man KOMMANDO`: MANual. Vis hjelpeinformasjon for KOMMANDO. Tast `q` for å avslutte.
 * `grep SØK FIL`: Vis alle tilfeller av SØK i FIL.
 * `grep -r SØK MAPPE`: Vis alle tilfeller av SØK i filer i MAPPE.
+* `nano FIL`: Rediger FIL i en enkel editor. 
+  Du kan holde inne `[CTRL]` og trykke en tast for å lagre eller avslutte, tastene står nederst.
+  `^O` betyr `[CTRL]` + `O`, `M-U` betyr `[ALT]` + `U`.
+
+
+## Vanlig funksjonalitet i skall
+
+### Kjør et program
+
+Den første delen av enhver kommando bestemmer hvilket program du skal kjøre.
+
+Når vi kjører Python, skriver vi alltid `python` først i kommandoen.
+Da er det Python-programmet som kommer til å kjøre.
+
+
+### Kommandolinje-argumenter
+
+Etter navnet på programmet kan du legge til argumenter som vil bli gitt til programmet.
+Vi kaller dem for kommandolinje-argumenter (command-line arguments).
+Når vi kjører Python-kode vi har skrevet, skriver vi navnet på `.py`-fila etter `python`, men med et mellomrom i mellom.
+Python-programmet vet at filnavn du gir til det skal tolkes som Python-skript som skal kjøres.
+
+For eksempel så har `cp hei.txt hallo.txt` to kommandolinjeargument som blir gitt til `cp`:
+1. `hei.txt`
+2. `hallo.txt`
+
+Hvis en filsti skal inneholde mellomrom, må du bruke hermetegn rundt argumentet sånn at skallet oppfatter det som ett argument og ikke flere.
+For eksempel:
+
+```shell
+cp "hilsen hei.txt" "hilsen hallo.txt"
+```
+
+har to kommandolinjeargument som blir gitt til `cp`:
+1. `hilsen hei.txt`
+2. `hilsen hallo.txt`
+
+Glemmer du hermetegn, får du:
+
+```shell
+cp hilsen hei.txt hilsen hallo.txt
+```
+
+som har fire kommandolinjeargument som blir gitt til `cp`:
+1. `hilsen`
+2. `hei.txt`
+3. `hilsen`
+4. `hallo.txt`
+
+Det blir feil.
+
+I [del 3.2 av kurset][kurs-cli-args] lærer du om hvordan Python-programmet ditt kan dra nytte av kommandolinjeargument.
+
+
+### Avbryte kjørende program
+
+Du kan avslutte de fleste program med `[CTRL]` + `C`.
+
+Noen program bruker den tastekombinasjonen for noe annet.
+De kan gjerne avsluttes på andre måter:
+* `less` (for å skrolle gjennom tekst) og `man` avsluttes ved å trykke `Q`
+* `nano` avsluttes med `[CTRL]` + `X`
+* `vim` (kraftig, men uvant teksteditor) avsluttes ved å trykke `[ESC]`, taste `:q!` (lagrer ikke endringer) og `[ENTER]`
+* Program som leser fra terminalen kan ofte avsluttes med `[CTRL]` + `D`.
+  Da gir du beskjed om at du er ferdig med å skrive
+* Siste utvei er `[CTRL]` + `Z` for å sette programmet på pause, etterfulgt av `kill -9 %1`
+
+
+### Autofullfør
+
+Når du skriver kommandoer i terminalen,
+kan du bruke `[TAB]`-tasten til å fullføre argumentet du skriver på.
+Hvis det du har skrevet er nok til å vite hvilken fil du tenker på,
+kan du fylle ut resten med ett trykk.
+Er det flere filer, må du gjerne trykke flere ganger for å få forslag eller gå gjennom forslagene.
+
+Dette er veldig nyttig siden du ofte vil skrive filnavn i kommandoer.
+Du kan bruke autofullfør både når du skal skrive hvilket skript Python-programmet skal kjøre,
+og når du skal fortelle skriptet hvilken fil du vil lese fra eller skrive til.
+
+
+### Historikk
+
+Bruk `[PILTAST OPP]` og `[PILTAST NED]` til å bla gjennom historikken.
+Vil du kjøre den forrige kommandoen din én gang til,
+kan du trykke `[PILTAST OPP]` én gang, etterfulgt av `[ENTER]`.
+Du kan også endre på kommandoen etter at du har bladd deg opp til den,
+for eksempel hvis du vil kjøre det samme med en liten endring.
 
 
 ## Konvensjoner for program du kjører i terminalen
@@ -223,7 +244,7 @@ Men du har selvfølgelig ingen garantier for at _alle_ program følger disse.
 
 Når du skriver egne program, bør du etterstrebe å overholde disse konvensjonene.
 Det gjør det enklere for andre å ta i bruk programmet ditt.
-[Kapittel 3.2 om programargumenter](/kap3/2_programargumenter.md) går i detalj på hvordan du får til det.
+[Kapittel 3.2 om kommandolinjeargumenter][kurs-cli-args] går i detalj på hvordan du får til det.
 
 
 ### Korte tilvalg/flagg
@@ -271,7 +292,7 @@ De kalles også for _flagg_.
 #### Korte tilvalg med tilhørende verdi
 
 Noen tilvalg tar inn en verdi.
-Den kan du angi som det neste programargumentet.
+Den kan du angi som det neste kommandolinjeargumentet.
 
 `grep`, programmet som lar deg søke etter en tekst i ei fil, printer vanligvis bare de linjene som har søkestrengen i seg.
 Du kan få den til å skrive linjene som kommer før og etter med tilvalget `-C <antall linjer>`. For eksempel:
@@ -305,7 +326,7 @@ bør du bruke lange tilvalg sånn at leseren lettere forstår hva de gjør.
 
 #### Lange tilvalg med tilhørende verdi
 
-Den tilhørende verdien til et langt tilvalg kan gis som et nytt programargument, likt som for korte tilvalg.
+Den tilhørende verdien til et langt tilvalg kan gis som et nytt kommandolinjeargument, likt som for korte tilvalg.
 Men du kan også gi verdien ved å bruke et likhetstegn.
 
 For eksempel:
@@ -345,9 +366,30 @@ som tar inn avslutningskoden som et argument.
 
 ## Temaer som ikke er dekket av denne gjennomgangen
 
-* _Piping_ av output fra et program til et annet
-* Omdirigering, _redirecting_, av output eller input til eller fra ei fil
-* Input- og output-strømmene til alle program: `stdout`, `stderr` og `stdin`
+* [Alt som har med strømmer å gjøre][ryan-piping]
+  * _Piping_ av output fra et program til et annet
+  * Omdirigering, _redirecting_, av output eller input til eller fra ei fil
+  * Input- og output-strømmene til alle program: `stdout`, `stderr` og `stdin`
+* [Prosesshåndtering/kjøre ting i bakgrunnen][ryan-processes]
+* [Programmering i skall (skripting, if, while, for, ...)][ryan-scripting]
+* [Variabler][ryan-variables]
+* [Vim! 😁][vim]
 * Powershell
-* Programmering i skall (if, while, for, ...)
-* Variabler
+
+
+## Videre lesning
+
+* [Wikipedia-artikkelen om _command-line interface_][wiki-cli]
+* [Del 3.2 av kurset om kommandolinje-argument][kurs-cli-args]
+
+
+[prog-historian]: https://programminghistorian.org/en/lessons/intro-to-bash
+[git-for-windows]: https://gitforwindows.org/
+[wiki-cli]: https://en.wikipedia.org/wiki/Command-line_interface
+[kurs-cli-args]: ../kap3/2_kommandolinjeargumenter.md
+[ryan-cli]: https://ryanstutorials.net/linuxtutorial/commandline.php
+[ryan-piping]: https://ryanstutorials.net/linuxtutorial/piping.php
+[ryan-processes]: https://ryanstutorials.net/linuxtutorial/processes.php#fgbg
+[ryan-scripting]: https://ryanstutorials.net/bash-scripting-tutorial/
+[ryan-variables]: https://ryanstutorials.net/bash-scripting-tutorial/bash-variables.php#setting
+[vim]: https://www.vim.org/docs.php

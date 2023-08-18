@@ -21,7 +21,7 @@
 
 - [Hente data fra API](kap3/README.md)
   - [Installere/bruke pakker](kap3/1_pakkebehandler.md)
-  - [Programargumenter](kap3/2_programargumenter.md)
+  - [Kommandolinje-argumenter](kap3/2_kommandolinjeargumenter.md)
   - [Kalle API](kap3/3_api.md)
   - [Organisere kode](kap3/4_organisering.md)
   - [Oppgaver](kap3/5_oppgaver.md)

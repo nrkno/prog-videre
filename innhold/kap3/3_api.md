@@ -78,4 +78,4 @@ Hvis du for eksempel benytter følgende URL og skriver denne inn i adressefeltet
 
 * Så bruker vi requests til å kalle epg-endepunktet.
 * Fra programmet sist: Bytt ut json fra fil med json fra endepunkt
-* Oppgave: Bruk programargument til å velge dato
+* Oppgave: Bruk kommandolinjeargument til å velge dato

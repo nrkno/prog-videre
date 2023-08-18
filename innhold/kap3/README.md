@@ -13,7 +13,7 @@ slik at vi får oppdaterte data og kan bestemme selv hvilke datoer vi ønsker da
 ## Plan
 
 1. [Installere/bruke pakker](1_pakkebehandler.md)
-2. [Programargumenter](2_programargumenter.md)
+2. [Kommandolinje-argumenter](2_kommandolinjeargumenter.md)
 3. [Kalle API](3_api.md)
 4. [Organisere kode](4_organisering.md)
 5. [Oppgaver](5_oppgaver.md)

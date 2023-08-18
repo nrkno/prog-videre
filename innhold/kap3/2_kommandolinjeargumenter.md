@@ -1,5 +1,5 @@
-Programargumenter
-=================
+Kommandolinje-argumenter
+========================
 
 **💡 Læringsmål:**
 _I dette kapitlet skal du bli kjent med hvordan du kan gi brukeren kontroll
@@ -10,8 +10,10 @@ Nå tenker du sikkert at det gjør da ingenting, for det er bare du som skal bru
 Men du risikerer selv å bli en nybegynner på programmet ditt når det har gått et år siden sist du brukte det,
 og alle minner om hvordan det fungerte for lengst har forduftet.
 
-Brukergrensesnittet til kommandolinjeprogram kalles _the command-line interface (CLI)_ på engelsk.
+Brukergrensesnittet til kommandolinjeprogram kalles [_the command-line interface (CLI)_][wiki-cli] på engelsk.
 I dette kapitlet ser vi på ett av mange aspekter ved CLI.
+
+Hvis det er uvant å bruke kommandolinja/terminalen, så kan det hende du har lyst til å lese [ekstra-seksjonen om terminalen](../ekstra/terminal.md).
 
 
 ## Hvordan kan du la brukeren bestemme ting?
@@ -119,7 +121,7 @@ og så gjøre noe annet mens programmet kjører.
 
 ### Gi verdien samtidig som du starter programmet
 
-I resten av dette kapitlet skal vi se på _programargumenter_.
+I resten av dette kapitlet skal vi se på _kommandolinjeargumenter_.
 Dette er verdier som brukeren skriver samtidig som hen starter programmet ditt.
 For eksempel:
 
@@ -138,8 +140,12 @@ Frem til nå har vi alltid skrevet `python` etterfulgt av et mellomrom og navnet
 Men du kan alltids legge til flere argumenter _etter_ navnet på skriptet (her `les_fil_arg.py`).
 Dette er argumenter til programmet ditt, som det kan lese ut og nyttiggjøre seg av.
 
+I eksemplet ovenfor kjører brukeren `python les_fil_arg.py ksjefer.txt` i terminalen.
+Programmet `python` får to argumenter: `les_fil_arg.py` og `ksjefer.txt`.
+Python tolker og videreformidler disse argumentene sånn at også skriptet vårt kan nyttiggjøre seg av dem.
 
-#### Funksjons- eller programargument?
+
+#### Funksjons- eller kommandolinjeargument?
 
 Du kjenner kanskje igjen ordet _argument_ fra funksjoner.
 Hvis vi skulle skrevet dette som en Python-funksjon som tok inn filnavnet som et _funksjonsargument_, ville det kanskje sett sånn her ut:
@@ -154,20 +160,20 @@ def les_fil(filnavn):
 les_fil("ksjefer.txt")
 ```
 
-Funksjons- og programargumenter handler begge to om å sende informasjon inn til koden.
+Funksjons- og kommandolinjeargumenter handler begge to om å sende informasjon inn til koden.
 Forskjellen ligger i om det er en _funksjon_ eller om det er _hele programmet_ som er mottaker.
 
 
-## Lese programargumenter manuelt
+## Lese kommandolinjeargumenter manuelt
 
-La oss starte med den innebygde måten du kan lese argumenter på.
+La oss starte med den innebygde måten du kan lese kommandolinjeargumenter på.
 
 For å nyttiggjøre deg av de ekstra argumentene brukeren skriver,
 kan du importere [`sys`-modulen][doc-sys].
 Deretter kan du lese argumentene fra [lista `sys.argv`][doc-sys.argv].
 
 Lista i `sys.argv` har alltid navnet på skriptet i posisjon 0.
-Eventuelle programargumenter ligger i posisjon 1 og utover.
+Eventuelle kommandolinjeargumenter ligger i posisjon 1 og utover.
 
 
 ### Skrive `sys.argv` til terminalen
@@ -184,8 +190,8 @@ print(sys.argv)
 
 ✍️ **Oppgave:**
 _Lag `print_argv.py` lokalt hos deg, og eksperimenter med å kjøre det i terminalen.
-Hva printes når du ikke oppgir noe programargument?
-Hva printes når du gir mange programargumenter?_
+Hva printes når du ikke oppgir noe kommandolinjeargument?
+Hva printes når du gir mange kommandolinjeargumenter?_
 
 
 ### Fil-eksemplet med `sys.argv`
@@ -225,7 +231,7 @@ _Hva skjer hvis du bare kjører `python les_fil_arg.py`, uten at du oppgir noe n
 Lag deg en teori og test det deretter ut. Skjedde det du forventa?_
 
 
-## Bruke `click` til å tolke programargumenter
+## Bruke `click` til å tolke kommandolinjeargumenter
 
 Selv om det er greit å vite om `sys.argv`, så blir det fort mye arbeid å bruke den direkte.
 Vi skal derfor bruke et verktøy som sparer oss for det arbeidet.
@@ -278,7 +284,7 @@ Den forventer derfor ikke å få noe argument når du kjører den.
 Click vil i stedet lese `sys.argv` og sende inn det første _program_-argumentet til brukeren som _funksjons_-argumentet `filnavn`.
 
 Når du kjører dette i terminalen, oppfører det seg ganske likt med `les_fil_arg.py`.
-Men det øyeblikket du skriver flere eller færre programargumenter enn programmet forventer,
+Men det øyeblikket du skriver flere eller færre kommandolinjeargumenter enn programmet forventer,
 vil du se at vi har fått en del ny funksjonalitet.
 
 ```shell-session
@@ -359,7 +365,7 @@ Options:
 
 ### Posisjonelle argumenter
 
-Den mest grunnleggende formen for programargument er argument
+Den mest grunnleggende formen for kommandolinjeargument er argument
 som får sin mening ene og alene basert på _hvor_ det står – altså posisjonen.
 
 For eksempel har vi kommandoen `cp` (kort for _copy_) som lager en kopi av ei fil.
@@ -374,7 +380,7 @@ Tilsvarende vet vi at `les_fil_click_v3.py` er navnet på kopien,
 siden det er det andre posisjonelle argumentet.
 
 Med `click` så definerer du nye argumenter ved å bruke `@click.argument("argumentnavn")` rett før funksjonsdefinisjonen.
-Posisjonen til `@click.argument(...)` bestemmer den forventede posisjonen til programargumentet når brukeren kjører skriptet.
+Posisjonen til `@click.argument(...)` bestemmer den forventede posisjonen til kommandolinjeargumentet når brukeren kjører skriptet.
 
 Vi kan legge til flere argumenter til utlesingsskriptet vårt, for eksempel for å ta inn en prefiks som skal legges til hver linje:
 
@@ -640,7 +646,7 @@ kurs $> poetry run python les_fil_click_v4.py --number ksjefer.txt "Kringkasting
 ### Tilvalg som tar inn verdi
 
 Ved å utelate `is_flag`-argumentet til `click.option` får vi et tilvalg som tar inn en verdi.
-Det tilhørende funksjonsargumentet vil bli satt til det brukeren skriver i programargumentet etter tilvalget.
+Det tilhørende funksjonsargumentet vil bli satt til det brukeren skriver i kommandolinjeargumentet etter tilvalget.
 
 Du kan bruke det navngitte argumentet `type` til å bestemme hvordan det brukeren har skrevet skal tolkes.
 Forventer du for eksempel heltall kan du skrive `type=int`.
@@ -738,88 +744,7 @@ Sjekk ut [den offisielle dokumentasjone til Click][click] for å oppdage mange f
 * Åpne opp en editor som brukeren kan bruke til å redigere ei fil
 * Vise en progressbar
 
-Click kan altså hjelpe til med flere aspekter av CLI enn bare programargumenter.
-
-
-## Hvordan tillate både CLI og importering med `if __name__ == "__main__"`
-
-Hvis du skulle prøve å gjenbruke en funksjon fra et Python-skript som også fungerer som et kommandolinjeprogram,
-risikerer du at du setter i gang kommandolinjeprogrammet ved uhell.
-
-Se for eksempel hva som skjer hvis du importerer `les_fil_click_v5.py` fra eksemplet ovenfor:
-
-```python
-# importer_cli.py
-import les_fil_click_v5
-
-print("Har importert les_fil_click_v5")
-```
-
-```shell
-kurs $> poetry run python importer_cli.py
-Usage: importer_cli.py [OPTIONS] FILNAVN [PREFIKS]
-Try 'importer_cli.py --help' for help.
-
-Error: Missing argument 'FILNAVN'.
-```
-
-Hva skjedde her?
-Vi har tydeligvis kjørt i gang kommandolinjeprogrammet i `les_fil_click_v5.py` allerede da vi skrev `import les_fil_click_v5`!
-
-Når vi importerer en annen Python-modul, vil Python lese den fila fra topp til bunn.
-Hvis vi bare definerer funksjoner så gjør det ingenting, for da har vi jo ikke faktisk gjort noe.
-Men nederst i `les_fil_click_v5.py` så kaller vi funksjonen vi har definert: `les_fil()`.
-
-For å unngå sånne overraskelser, er det vanlig kutyme å _ikke starte noe arbeid med mindre brukeren kjører skriptet direkte_.
-Det vil si at `python les_fil_click_v5.py` helt fint kan kjøre i gang programmet,
-mens `import les_fil_click_v5` inni et annet Python-skript ikke skal gjøre det.
-
-For å få til dette, sammenlikner vi en magisk Python-variabel, `__name__`, med en magisk verdi, `"__main__"`.
-Hvis de er like, betyr det at skriptet blir kjørt direkte.
-Er de ulike, har skriptet blitt importert av en annen Python-modul.
-
-Her er hvordan det kan gjøres:
-
-```python
-# les_fil_click_v6.py
-import click
-
-
-# Vi definerer funksjonen uansett om vi importeres eller bli kjørt direkte:
-@click.command()
-@click.option("--number", "-n", is_flag=True, help="Skriv linjenummer foran hver linje.")
-@click.option("--min-length", metavar="LENGDE", default=0, help="Hopp over linjer med færre tegn enn LENGDE.")
-@click.argument("filnavn")
-@click.argument("prefiks", default="")
-def les_fil(number, min_length, filnavn, prefiks):
-  """
-  Skriv PREFIKS + innholdet av fila med filstien FILNAVN til terminalen.
-  
-  Prefikset PREFIKS blir skrevet ut på starten av hver linje (etter ev.
-  linjenummer), hvis angitt.
-  """
-  with open(filnavn) as fil:
-    for linjenummer, linje in enumerate(fil, start=1):
-      # Hopp over linjer med for få tegn
-      antall_tegn_før_linjeskift = len(linje.rstrip())
-      if antall_tegn_før_linjeskift < min_length:
-        continue
-
-      # Skriv linjenummer hvis aktivert
-      if number:
-          # Sørg for konsekvent venstremargin
-          # (for filer på opptil 999 linjer)
-          print(f"{linjenummer: 3d}: ", end="")
-      # Skriv linja
-      print(prefiks + linje, end="")
-
-# Vi kjører bare funksjonen hvis vi ble kjørt direkte:
-if __name__ == "__main__":
-  les_fil()
-```
-
-Hvis du lurer på hva i all verden dette betyr,
-har Real Python [en artikkel om `if __name__ == "__main__"`](https://realpython.com/if-name-main-python/).
+Click kan altså hjelpe til med flere aspekter av CLI enn bare kommandolinjeargumenter.
 
 
 ## ✍️ Oppgave
@@ -831,7 +756,7 @@ har Real Python [en artikkel om `if __name__ == "__main__"`](https://realpython.
 2. _Kan du tilpasse `@click.argument("filnavn")` fra det samme eksemplet sånn at Click sjekker at brukeren oppgir stien til en lesbar, eksisterende fil?
    Vi har ikke beskrevet hvordan det gjøres, så her må du bryne deg på [dokumentasjonen til Click][click]!_
 
-3. _Kan du skrive om [den store oppgaven fra kapittel 2](../kap2/5_oppgave.md) sånn at du tar inn navnet på JSON-fila fra programargumentene i stedet for at den ligger i koden?_
+3. _Kan du skrive om [den store oppgaven fra kapittel 2](../kap2/5_oppgave.md) sånn at du tar inn navnet på JSON-fila fra kommandolinjeargumentene i stedet for at den ligger i koden?_
 
 
 ## Oppsummering
@@ -839,9 +764,9 @@ har Real Python [en artikkel om `if __name__ == "__main__"`](https://realpython.
 Denne delen av kurset har vært ganske lang.
 Men når vi skriver kommandolinjeprogram så må vi tenke på _brukeropplevelsen_ for de som bruker programmet vårt –
 enten det er kollegaer, eller det er deg selv om seks måneder, når du lurer på hva i all verden du holdt på med 😉
-En viktig del av brukergrensesnittet til kommandolinjeprogram – _the command-line interface (CLI)_ – er programargumenter.
+En viktig del av brukergrensesnittet til kommandolinjeprogram – _the command-line interface (CLI)_ – er kommandolinjeargumenter.
 
-Med hjelp av _programargumenter_ kan brukeren styre hva programmet ditt skal gjøre,
+Med hjelp av _kommandolinjeargumenter_ kan brukeren styre hva programmet ditt skal gjøre,
 og hvordan det skal gjøre det.
 Programmet kan lese dem fra `sys.argv`,
 men ved å bruke Click så blir det enklere for oss å støtte de etablerte konvensjonene for kommandolinjeprogram.
@@ -850,35 +775,37 @@ Med `@click.command()` så gjør vi om funksjonen under til å være et kommando
 Mellom funksjonen og `click.command`-dekoratøren legger vi til flere dekoratører som bestemmer hva programmet skal ta i mot av posisjonelle argumenter og tilvalg.
 Nedenfor funksjonsdefinisjonen kan vi kalle funksjonen uten argumenter, siden de leses inn fra `sys.argv` av Click.
 
-`@click.argument("argumentnavn")` legger til et posisjonelt programargument som vil legges i funksjonsargumentet med samme navn, `argumentnavn`.
+`@click.argument("argumentnavn")` legger til et posisjonelt kommandolinjeargument som vil legges i funksjonsargumentet med samme navn, `argumentnavn`.
 
 `@click.option("--tilvalg-navn")` legger til et tilvalg som vil legges i funksjonsargumentet `tilvalg_navn`.
 Click konverterer fra `--tilvalg-navn` til `tilvalg_navn` automatisk (legg merke til at bindestrek ble til understrek).
 
 Vi kan legge til flere argumenter mellom parentesene for å tilpasse hvordan de fungerer. Vi har sett:
-* `default=...` for å gjøre et posisjonelt programargument frivillig. 
+* `default=...` for å gjøre et posisjonelt kommandolinjeargument frivillig. 
   For tilvalg kan vi bestemme hvilken verdi funksjonen skal få når brukeren ikke har brukt tilvalget
 * `is_flag=True` for å gjøre et tilvalg om til et flagg.
   Da skal ikke brukeren gi noen verdi til tilvalget, det er nok å bare spesifisere det
-* `help="..."` for å dokumentere et tilvalg. (Posisjonelle programargumenter må eventuelt dokumenteres i doc-strengen først i funksjonen)
+* `help="..."` for å dokumentere et tilvalg. (Posisjonelle kommandolinjeargumenter må eventuelt dokumenteres i doc-strengen først i funksjonen)
 * `type=...` for å konvertere verdien brukeren har skrevet automatisk
 * `metavar="..."` for å bestemme hva placeholderen for verdien skal være i hjelpeteksten
 
 Den første strengen i funksjonskroppen, doc-strengen, blir tatt med i hjelpeteksten du får når du bruker flagget `--help`.
 Der kan du forklare hva programmet ditt gjør og hvordan det fungerer.
 
-Click har mange flere muligheter, både når det gjelder programargumenter og andre deler av CLI,
+Click har mange flere muligheter, både når det gjelder kommandolinjeargumenter og andre deler av CLI,
 som for eksempel å gi brukeren tilbakemelding om hvordan det går, og så videre.
 
 
 ## Videre lesning
 
 * [Click-dokumentasjonen][click]
+* [Wiki-artikkelen om CLI][wiki-cli]
 * [12 Factor CLI Apps](https://medium.com/@jdxcode/12-factor-cli-apps-dd3c227a0e46)
 * [Command Line Interface Guidelines](https://clig.dev/)
 * [argparse-dokumentasjonen][doc-argparse]
 
 [wiki-hardcoding]: https://en.wikipedia.org/wiki/Hard_coding
+[wiki-cli]: https://en.wikipedia.org/wiki/Command-line_interface
 [doc-input]: https://docs.python.org/3/library/functions.html#input
 [doc-sys]: https://docs.python.org/3/library/sys.html
 [doc-sys.argv]: https://docs.python.org/3/library/sys.html#sys.argv
