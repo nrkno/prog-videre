@@ -156,7 +156,9 @@ Etter vi har fått på plass en `layout`, lager vi vinduet som brukergrensesnitt
 window = sg.Window('Hei GUI', layout)
 ```
 
-Hvis vi ikke gjorde noe mer, ville programmet vårt startet, åpnet vinduet, og med en gang lukket det. Vi trenger derfor å passe på at programmet ikke stopper før vi lukker vinduet. En måte å gjøre det på, er å lage en løkke som aldri stopper med `while True:`. Inni løkken kan vi sjekke om brukeren har forsøkt å lukke vinduet, og hvis det er tilfelle, så bryter vi ut av løkken med `break`.
+Hvis vi ikke gjorde noe mer, ville programmet vårt startet, åpnet vinduet, og med en gang lukket det. Vi trenger derfor å passe på at programmet ikke stopper før vi lukker vinduet. En måte å gjøre det på, er å lage en løkke som kjører så lenge brukeren vil kjøre. Inni løkken kan vi sjekke om brukeren har forsøkt å lukke vinduet, og hvis det er tilfelle, stopper vi løkken.
+
+For å få til dette, har vi i programmet under laget en boolsk variabel `running`, som vi setter til `True` når programmet starter. Så bruker vi `while running:` for å få en løkke som kjører hele tiden. For å avslutte programmet, kan vi da sette `running` til `False`, når brukeren forsøker å lukke vinduet. Da vil løkken stoppe, og programmet avsluttes.
 
 ```python
 running = True
@@ -166,7 +168,7 @@ while running:
         running = False
 ```
 
-Å kjøre en uendelig løkke, hvor vi gjentatte ganger sjekker om brukeren har gjort noe, er en vanlig teknikk å bruke når man lager programmer som skal vente på input fra en bruker. I dataspill har til og med denne løkken et eget navn: [game loop](https://en.wikipedia.org/wiki/Video_game_programming#Game_structure).
+_Å kjøre en uendelig løkke, hvor vi gjentatte ganger sjekker om brukeren har gjort noe, er en vanlig teknikk å bruke når man lager programmer som skal vente på input fra en bruker. I dataspill har til og med denne løkken et eget navn: [game loop](https://en.wikipedia.org/wiki/Video_game_programming#Game_structure)._
 
 Til slutt må vi passe på å lukke vinduet når brukeren har bedt om å lukke vinduet, og vi har brutt ut av den uendelige løkken.
 
