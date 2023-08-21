@@ -1,6 +1,6 @@
 Grafiske brukergrensesnitt med PySimpleGUI
 ==========================================
-**💡 Læringsmål:** _I dette avsnittet lærer du litt om hva grafiske brukergrensesnitt er, og du får laget ditt første grafiske brukergrensesnitt med PySimpleGUI. _
+**💡 Læringsmål:** _I dette avsnittet lærer du litt om hva grafiske brukergrensesnitt er, og du får laget ditt første grafiske brukergrensesnitt med PySimpleGUI._
 
 Hva er et grafisk brukergrensesnitt?
 ------------------------------------
@@ -75,22 +75,19 @@ Package operations: 1 install, 0 updates, 0 removals
 Med PySimpleGUI installert, er vi klar til å lage et veldig enkelt brukergrensesnitt. Lag filen `kurs/gui/program.py`, og legg inn koden under.
 
 ```python
-# Importerer pakken PySimpleGUI, og gir den navnet sg i programmet vårt
 import PySimpleGUI as sg
 
-# Her beskriver vi hvordan brukergrensesnittet skal se ut
-# PySimpleGUI bruker en liste av rader i skjermbildet,
-# som igjen inneholder en
 layout = [
     [sg.Text('Hei GUI!')]
 ]
 
 window = sg.Window('Hei GUI', layout)
 
-while True:
+running = True
+while running:
     event, values = window.read()
     if event == sg.WIN_CLOSED:
-        break
+        running = False
 
 window.close()
 ```
@@ -102,21 +99,21 @@ Når dette er på plass, kan du kjøre programmet med `poetry run python program
 #### Hjelp! Programmet feiler med `ModuleNotFoundError: No module named 'tkinter'`
 PySimpleGUI er avhengig av [tkinter](https://docs.python.org/3/library/tkinter.html). Ofte er tkinter allerede tilgjengelig, men på noen maskiner må man installere dette selv.
 
-**Jeg bruker Ubuntu**
+**Jeg bruker Ubuntu:**
 På Ubuntu, eller andre Linux-distribusjoner som bruker [APT](https://en.wikipedia.org/wiki/APT_(software)), kan du installere tkinter med:
 
 ```shell
 $> sudo apt install python3-tk
 ```
 
-**Jeg bruker Mac**
+**Jeg bruker Mac:**
 På Mac kan tkinter installeres med [Homebrew](https://brew.sh/):
 
 ```shell
 $> brew install python-tk
 ```
 
-**Jeg bruker Windows**
+**Jeg bruker Windows:**
 På Windows skal tkinter være installert sammen med Python, så hvis du får denne feilen her, er det verdt å sjekke at du har installert Python 3, og ikke den veldig gamle versjonen Python 2.
 
 _**Jeg har prøvd triksene over, men det fungerer fortsatt ikke:** Ta kontakt med en veileder, så kan dere sammen gå over [denne guiden](https://tkdocs.com/tutorial/install.html) som viser i mer detalj hvordan man installerer tkinter._
@@ -162,10 +159,11 @@ window = sg.Window('Hei GUI', layout)
 Hvis vi ikke gjorde noe mer, ville programmet vårt startet, åpnet vinduet, og med en gang lukket det. Vi trenger derfor å passe på at programmet ikke stopper før vi lukker vinduet. En måte å gjøre det på, er å lage en løkke som aldri stopper med `while True:`. Inni løkken kan vi sjekke om brukeren har forsøkt å lukke vinduet, og hvis det er tilfelle, så bryter vi ut av løkken med `break`.
 
 ```python
-while True:
+running = True
+while running:
     event, values = window.read()
     if event == sg.WIN_CLOSED:
-        break
+        running = False
 ```
 
 Å kjøre en uendelig løkke, hvor vi gjentatte ganger sjekker om brukeren har gjort noe, er en vanlig teknikk å bruke når man lager programmer som skal vente på input fra en bruker. I dataspill har til og med denne løkken et eget navn: [game loop](https://en.wikipedia.org/wiki/Video_game_programming#Game_structure).
