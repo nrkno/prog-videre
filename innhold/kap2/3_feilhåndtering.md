@@ -152,21 +152,48 @@ finally:
     # her er kode som kjøres uavhengig av hva som skjer i try-blokka, det er typisk kode for å rydde opp ressurser som har blitt brukt 
 ```
 
-Man må ikke ha en `except`-blokk for å bruke `finally`, i en `try`-`finally` vil koden i `finally` alltid bli kjørt, før programmet eventuelt kræsjer om kode i `try`-delen gir unntak.
+Man må ikke ha en `except`-blokk for å bruke `finally`, i en `try`-`finally` vil koden i `finally` alltid bli kjørt, før programmet eventuelt kræsjer om kode i `try`-delen gir unntak, fordi  unntaket vil bli kastet videre etter at koden i `finally` er kjørt.
 
-✍️ **Oppgave:** _Fiks kodeeksempelet over med en try-finally, der finally-delen lukker fila. Skriv gjerne ut noe til terminalen så du kan verifisere at koden i finally faktisk blir kjørt._
+✍️ **Oppgave:** _Fiks kodeeksempelet over med en `try`-`finally`, der finally-delen lukker fila. Skriv gjerne ut noe til terminalen så du kan verifisere at koden i `finally` faktisk blir kjørt._
 
 🧠 **Visste du at?** `with`-uttrykket som vi lærte i avsnittene om å lese/skrive til fil egentlig er en slags avansert `try`-`with`-`finally`, den kjører en `finally` som lukker fila for oss. Det betyr at når vi bruker `with` så trenger vi ikke å tenke på å lukke fila, det gjør `with` for oss.
 
-Det er verdt å merke seg at `finally` kan oppføre seg litt uventet, særlig i kombinasjon med `return`, `break` og `continue` i `try`-blokka.
+Det er verdt å merke seg at `finally` kan oppføre seg litt uventet, særlig i kombinasjon med `return`, `break` og `continue` i `try`-blokka, koden i `finally` vil nemlig kjøres før `return`, `break` og `continue` i `try`-blokka. En annen ting er at hvis både `try` og `finally` returnerer en verdi, er det `finally` sin return verdi som vinner, og blir returnert. Som vi også så over vil feil som ikke håndteres av `except` kastes videre etter `finally`, men hvis `finally` har en `return` vil ikke det skje.  
 
 ## Oppgaver
 
-- Hva gjør vi hvis det ikke finnes en fil?
-    - Hva kan gå feil: fila finnes ikke, feil filnavn, feil tillatelser, et annet program holder i filhåndtaket.
+✍️ **Oppgave:** _Finally_
 
+Noen av de litt rare tilfellene med `finally`kan du teste ut med følgende kodesnutter. Tenk gjennom hva som foregår i koden, og eksperimenter med å kommentere ut kode eller legge til nye kodelinjer. 
 
-- Skrive ut med print(file=sys.stderr)
+```python
+def lag_feil():
+    try:
+        raise Exception("Det skjedde en feil")
+    finally:
+        print("finally")
+        return True # kommenter ut linja og se hva som skjer
+    
+lag_feil()
+```
+
+```python
+def hva_returneres():
+    try:
+        return False
+    finally:
+        return True
+
+print(f"Resultatet er: {hva_returneres()}")
+```
+
+✍️ **Oppgave:** _Feilhåndtering i filbehandling_
+
+Ta utgangspunkt i koden for lese til fil, og lag et program som tar inn filnavn som input fra brukeren, og skriver ut innholdet i fila i terminalen.
+
+Hva skjer hvis brukeren skriver inn et filnavn som ikke finnes? Legg inn feilhåndtering så brukeren får tilbud om å prøve på nytt. 
+
+Klarer du framprovosere feil i koden slik at innholdet i fila du leser går tapt?
 
 ## Les mer
 
