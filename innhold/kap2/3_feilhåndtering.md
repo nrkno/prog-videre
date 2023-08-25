@@ -161,7 +161,7 @@ Man må ikke ha en `except`-blokk for å bruke `finally`, i en `try`-`finally` v
 
 🧠 **Visste du at?** `with`-uttrykket som vi lærte i avsnittene om å lese/skrive til fil egentlig er en slags avansert `try`-`with`-`finally`, den kjører en `finally` som lukker fila for oss. Det betyr at når vi bruker `with` så trenger vi ikke å tenke på å lukke fila, det sørger `with` for.
 
-Det er verdt å merke seg at `finally` kan oppføre seg litt uventet, særlig i kombinasjon med `return`, `break` og `continue` i `try`-blokka, koden i `finally` vil nemlig kjøres før `return`, `break` og `continue` i `try`-blokka. En annen ting er at hvis både `try` og `finally` returnerer en verdi, er det `finally` sin return verdi som vinner, og blir returnert. Som vi også så over vil feil som ikke håndteres av `except` kastes videre etter `finally`, men hvis `finally` har en `return` vil ikke det skje.  
+Det er verdt å merke seg at `finally` kan oppføre seg litt uventet, særlig i kombinasjon med `return`, `break` og `continue` i `try`-blokka, koden i `finally` vil nemlig kjøres før `return`, `break` og `continue`. En annen ting er at hvis både `try` og `finally` returnerer en verdi, er det `finally` sin return verdi som vinner, og blir returnert. Som vi også har sett vil feil som ikke håndteres av `except` kastes videre etter `finally`, men hvis `finally` har en `return` vil ikke det skje.  
 
 ## Oppgaver
 
@@ -170,14 +170,14 @@ Det er verdt å merke seg at `finally` kan oppføre seg litt uventet, særlig i 
 Noen av de litt rare tilfellene med `finally`kan du teste ut med følgende kodesnutter. Tenk gjennom hva som foregår i koden, og eksperimenter med å kommentere ut kode eller legge til nye kodelinjer. 
 
 ```python
-def lag_feil():
+def kast_feil():
     try:
         raise Exception("Det skjedde en feil")
     finally:
         print("finally")
         return True # kommenter ut linja og se hva som skjer
     
-lag_feil()
+kast_feil()
 ```
 
 ```python
