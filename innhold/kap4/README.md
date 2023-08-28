@@ -18,7 +18,6 @@
 2. [Dataklasser](2_dataklasser.md)
 3. [Installasjon av PySimpleGUI](3_simplegui.md)
 4. [Eksempelapplikasjon i PySimpleGUI](4_simplegui_demo.md)
-5. [Prosjektapplikasjon](5_prosjekt_app.md)
 
 
 
