@@ -5,7 +5,7 @@ Feilhåndtering (Heidi)
 
 ## Prøv og feil
 
-I program kan det ganske lett oppstå feilsituasjoner som gjør at programmet kræsjer og avslutter, dette kalles unntak, eller `exception` på engelsk. Kanskje har du alt opplevd det selv i dette kurset. 
+I program kan det av og til oppstå feilsituasjoner som gjør at programmet kræsjer og avslutter. Dette kalles unntak, eller `exception` på engelsk. Kanskje har du alt opplevd det selv i dette kurset. 
 
 Noen ganger kan det være riktig at programmet avslutter seg selv, mens andre ganger vil vi redde inn situasjonen, slik at programmet kan forsette selv om det skjedde noe feil eller uventet. En forutsetning for at vi skal kunne klare å redde inn feil når de oppstår er at vi har en formening om hva programmet bør gjøre istedet for det programmet forsøkte å gjøre da det feilet. Feil som oppstår når brukere interagerer med programmet er en type feil som bør håndteres på en god måte. Vi skal nå se et eksempel på det. 
 
@@ -40,7 +40,7 @@ try:
 except Exception:
     # her kan vi gi beskjed til brukeren at det har skjedd en feil og eventuelt gjøre det som trengs for at programmet kan fortsette
 ```
-Koden som vi vil sikre er inni `try`-blokka, og håndtering av feil skjer i `except`-blokka. Koden man skriver i `except`-blokka vil bare bli kjørt om det faktisk skjer et unntak. Man kan også bruke `except:` i stedet for `except Exception:`, da fanger man alle slags feiltyper, og ikke bare de som `Exception` eller en undertype av `Exception`.
+Koden som vi vil sikre har vi inni `try`-blokka, og håndtering av feil skjer i `except`-blokka. Koden man skriver i `except`-blokka vil bare bli kjørt om det faktisk skjer et unntak av typen man vil håndtere. I eksempelkoden over er det typen `Exception` som angis, det vil si at feil av typen `Exception` eller en  undertype av `Exception` håndteres. Man kan bruke `except:` uten å angi en spesifikk feiltype, da fanger man alle slags feiltyper.
 
 La oss starte med det enkleste vi kan gjøre for redde programmet vårt fra å kræsje. Da setter vi all kode som kan kræsje inni en `try`-blokk, og skriver ut en feilmelding til brukeren i `except`-blokka: 
 
@@ -59,7 +59,7 @@ Test ut denne endringen i programmet. Hva skjer nå om man deler på 0 eller skr
 
 Hva som er riktig å gjøre når det oppstår unntak vil avhenge av hva programmet gjør, og hva slags type feil det gjelder. Program som interagerer med brukere bør prøve å gi brukere hjelpsom informasjon om hva som har skjedd, slik at brukeren kan rette opp feilen, og fullføre oppgaven. 
 
-Programmet vårt kræsjer ikke lenger, men vi kan gjøre mer for å hjelpe brukeren med å forstå hva som er feil. I blokka `except Exception` fanges mange slags typer unntak, og vi kan derfor ikke så lett fortelle brukeren noe mer om akkurat hva som gikk galt når vi bare håndterer den generelle typen `Exception`. Men fra det som ble skrevet til terminalen da vi testet ut ulike feilsituasjoner over, ser vi at vi har noe som heter `ZeroDivisionError` og `ValueError`. De ser ut til å gi oss mer informasjon om hva som er feil, så la oss bruke disse feiltypene. Vi kan nemlig fange spesifikke typer feil, ved å ha flere `except`-linjer, en for hver type:
+Programmet vårt kræsjer ikke lenger, men vi kan gjøre mer for å hjelpe brukeren med å forstå hva som er feil. I blokka `except Exception` fanges mange slags typer unntak, og vi kan derfor ikke så lett fortelle brukeren noe mer om akkurat hva som gikk galt når vi bare håndterer den generelle typen `Exception`. Men fra det som ble skrevet til terminalen da vi testet ut ulike feilsituasjoner, ser vi at vi har noe som heter `ZeroDivisionError` og `ValueError`. De ser ut til å gi oss mer informasjon om hva som er feil, så la oss bruke disse feiltypene. Vi kan nemlig håndtere ulike typer feil på ulik måte, ved å ha flere `except`-linjer, en for hver type:
 
 ```python
 except ValueError:
@@ -100,7 +100,7 @@ Først kan vi starte med å kreve at fødselsår skal være et heltall. Det kan 
 fødselsår_tall = int(fødselsår)
 ```
 
-Kjør programmet og se at det nå vil be deg prøve på nytt om du skriver noe som ikke er et heltall, hvis du derimot skriver et gyldig tall vil programmet avsluttes. Hva er det som skjer i koden når blir bedt om å prøve på nytt?
+Kjør programmet og se at det nå vil be deg prøve på nytt om du skriver noe som ikke er et heltall, hvis du derimot skriver et gyldig tall vil programmet avsluttes. Hva er det som skjer i koden når du blir bedt om å prøve på nytt?
 
 Vi kan gjøre valideringen enda bedre, for ikke alle heltall er noe som kan være et gyldig fødselsår for en person som bruker programmet i dag. Så la oss legge til en litt naiv sjekk på at hvis årstallet er større enn i år eller mindre enn la oss si år 1900 så vil vi også kaste et `ValueError`-unntak. Legg til følgende linjer og sjekk hvordan programmet nå oppfører seg med ulik inndata, store og små tall.
 
@@ -109,7 +109,7 @@ if fødselsår_tall < 1900 or fødselsår_tall > 2023:
     raise ValueError()
 ```
 
-🤔 _Ser du noen problemer med denne valideringskoden? Er det noe du ville gjort annerledes?_
+ _Ser du noen problemer med denne valideringskoden? Er det noe du ville gjort annerledes?_
 
 Det går også an å lage sine helt egne unntakstyper istedet for å bruke de som finnes innebygd i Python, slik som `ValueError`. For å lage et unntak kan du bruke følgende linje. 
 
@@ -132,7 +132,7 @@ Endelig nærmer vi oss sluttet på dette kapittelet, men først skal vi se på h
 
 Noen ganger ønsker vi å sikre oss at en kodesnutt blir kjørt, enten koden inni `try`-blokka feilet eller ikke. Typisk eksempler er filer eller databasetilkoblinger som man gjerne vil lukke pent etter seg når man er ferdig med å bruke dem. 
 
-Se på følgende eksempel, her åpner vi en fil, vi forsøker å skrive til den, og etter at vi er ferdig med fila ønsker vi å lukke den.
+Se på følgende eksempel. Her åpner vi en fil, vi forsøker å skrive til den, og etter at vi er ferdig med fila ønsker vi å lukke den.
 
 ```python
 fil = open("adresser.txt", "r", encoding="utf-8")
@@ -140,7 +140,7 @@ text = fil.write("Ole Brumm,,Hundremeterskogen\n")
 fil.close()
 ```
 
-Men om linjene over kjøres, så vi programmet feilet, ser du hva som er galt?  Kjør programmet og se hva som skjer. 
+Men om linjene over kjøres, så vil programmet feile, ser du hva som er galt?  Kjør programmet og se hva som skjer. 
 
 Problemet her er at feilen oppstår i den midterste linja, så linja som sørger for at fila blir lukket vil ikke bli kjørt. Hvordan ville du fikset programmet for å sikre at `fil.close()` blir kjørt enten programmet kjørte uten feil eller om det oppstod feil?
 
@@ -157,13 +157,13 @@ finally:
 
 Man må ikke ha en `except`-blokk for å bruke `finally`, i en `try`-`finally` vil koden i `finally` alltid bli kjørt, før programmet eventuelt kræsjer om kode i `try`-delen gir unntak, fordi  unntaket vil bli kastet videre etter at koden i `finally` er kjørt.
 
-✍️ **Oppgave:** _Fiks kodeeksempelet over med en `try`-`finally`, der finally-delen lukker fila. Skriv gjerne ut noe til terminalen så du kan verifisere at koden i `finally` faktisk blir kjørt._
+✍️ **Oppgave:** _Fiks kodeeksempelet over med en `try`-`finally`, der finally-delen lukker fila. Skriv gjerne noe ut til terminalen så du kan verifisere at koden i `finally` faktisk blir kjørt._
 
 🧠 **Visste du at?** `with`-uttrykket som vi lærte i avsnittene om å lese/skrive til fil egentlig er en slags avansert `try`-`with`-`finally`, den kjører en `finally` som lukker fila for oss. Det betyr at når vi bruker `with` så trenger vi ikke å tenke på å lukke fila, det sørger `with` for.
 
 Det er verdt å merke seg at `finally` kan oppføre seg litt uventet, særlig i kombinasjon med `return`, `break` og `continue` i `try`-blokka, koden i `finally` vil nemlig kjøres før `return`, `break` og `continue`. En annen ting er at hvis både `try` og `finally` returnerer en verdi, er det `finally` sin return verdi som vinner, og blir returnert. Som vi også har sett vil feil som ikke håndteres av `except` kastes videre etter `finally`, men hvis `finally` har en `return` vil ikke det skje.  
 
-## Oppgaver
+## Flere oppgaver
 
 ✍️ **Oppgave:** _Finally_
 
