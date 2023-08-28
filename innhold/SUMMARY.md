@@ -1,6 +1,6 @@
 # Innhold
 
-[Introduksjon](README.md)
+[Introduksjon til kurset](README.md)
 
 - [Grunnleggende](kap1/README.md)
   - [Kjøre Python-program](kap1/1_kjøre_pythonprogram.md)
