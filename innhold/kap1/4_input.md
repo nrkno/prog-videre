@@ -1,4 +1,4 @@
-Input (Thorben)
+Input
 =====
 
 **💡 Læringsmål:** _I dette avsnittet skal du lære deg å få inn data fra brukeren._

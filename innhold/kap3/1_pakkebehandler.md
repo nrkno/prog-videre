@@ -1,5 +1,5 @@
-Pakkebehandler og pip (Thorben)
-===============================
+Pakkebehandler og pip
+=====================
 
 _Hvorfor skrive egen kode når du kan bruke andres? Velkommen til jungelen av bibliotekspakker!_
 

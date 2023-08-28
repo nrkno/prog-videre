@@ -1,4 +1,4 @@
-Funksjoner (Heidi)
+Funksjoner
 ==========
 **💡 Læringsmål:** _I dette avsnittet skal du lære å lage funksjoner slik at du kan dele opp koden i mindre biter og kan bruke samme kodebit flere steder._
 

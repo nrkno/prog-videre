@@ -1,4 +1,4 @@
-Enkle datastrukturer og variabler (Teodor)
+Enkle datastrukturer og variabler
 =================================
 **💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke enkle datastrukturer som tall, tekst og boolske verdier. I tillegg skal vi se litt på variabler._
 

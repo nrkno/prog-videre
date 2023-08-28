@@ -1,6 +1,5 @@
-
-Hvis, omatte og ellers (Thorben)
-=======================
+Hvis, omatte og ellers
+======================
 
 **💡 Læringsmål:** _I dette avsnittet skal du lære deg å skrive kode som gjør valg._
 

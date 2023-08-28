@@ -1,4 +1,4 @@
-JSON: Et dataformat (Per Edvard)
+JSON: Et dataformat
 ===================
 
 JSON står for "JavaScript Object Notation" og er et tekstformat som er relativt leselig for mennesker, og enda enklere for maskiner å lese. Det er basert på JavaScript, men er ellers språkuavhengig.

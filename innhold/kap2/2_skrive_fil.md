@@ -1,5 +1,5 @@
-Vi skriver data til en fil (Heidi)
-===========================
+Vi skriver data til en fil
+==========================
 
 **💡 Læringsmål:** _I dette avsnittet lærer du hvordan du leser data til en fil._
 

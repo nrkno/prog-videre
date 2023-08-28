@@ -1,5 +1,5 @@
-Applikasjonsprogrammeringsgrensesnitt (API) (Per Edvard)
-==================================================================================
+Applikasjonsprogrammeringsgrensesnitt (API)
+===========================================
 
 **💡 Læringsmål:**
 _I dette avsnittet lærer du hva et API er og hva det benyttes til, og hvilke muligheter Python har til å arbeide med et API_

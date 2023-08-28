@@ -1,5 +1,5 @@
-Lek og Moro med Elektronisk Program-Guide! (Heidi)
-===================================================
+Lek og Moro med Elektronisk Program-Guide!
+==========================================
 
 **💡 Læringsmål:** _I dette avsnittet lærer du hvordan enkeltdelene i dag 1 kan settes sammen og bli til et nyttig program_
 

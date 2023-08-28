@@ -1,4 +1,4 @@
-Feilhåndtering (Heidi)
+Feilhåndtering
 ==============
 
 **💡 Læringsmål:** _I dette avsnittet lærer du hvordan du kan håndtere feil som oppstår når programmet kjører, og dermed unngå at programmet kræsjer uventet._

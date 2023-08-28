@@ -1,5 +1,5 @@
-Løkker (Per Edvard)
-=======
+Løkker
+======
 
 **💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke løkker for å gjøre ting flere ganger._
 

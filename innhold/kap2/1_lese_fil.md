@@ -1,4 +1,4 @@
-Vi leser data fra en fil (Heidi)
+Vi leser data fra en fil
 ========================
 
 **💡 Læringsmål:** _I dette avsnittet lærer du hvordan du leser data fra en fil._

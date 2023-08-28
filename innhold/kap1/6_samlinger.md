@@ -1,4 +1,4 @@
-Samlinger (Per Edvard)
+Samlinger
 =========
 **💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke datastrukturer som samler flere elementer til et sett med informasjon._
 

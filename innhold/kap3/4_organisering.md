@@ -1,5 +1,5 @@
-Organisering med moduler og pakker (Heidi)
-=========================================================================
+Organisering med moduler og pakker
+==================================
 
 **💡 Læringsmål:** _I dette avsnittet lærer du hvordan du kan organisere koden på en strukturert måte så det blir lettere å finne fram_
 
