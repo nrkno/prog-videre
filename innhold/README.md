@@ -1,4 +1,4 @@
-# Programmeringskurs for viderekomne
+# Programmeringskurs
 
 _Under arbeid - vi jobber med å utvikle et nytt pythonkurs!_
 

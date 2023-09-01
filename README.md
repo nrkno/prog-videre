@@ -1,4 +1,4 @@
-# Programmeringskurs for viderekomne
+# Programmeringskurs
 
 ## [→ Åpne kursets nettside](https://nrkno.github.io/prog-videre)
 
