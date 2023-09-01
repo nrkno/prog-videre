@@ -7,7 +7,7 @@ Hva skal vi lage?
 -----------------
 Vi skal lage en kommandolinjeapplikasjon, som er et langt ord for et program som ikke har et eget grafisk grensesnitt, men som kjører i terminalen. Kommunikasjonen mellom bruker og program foregår via tekst.
 
-Når du er ferdig med dette kapittelet vil du ha laget med en kommandolinjeapplikasjon som leser en elektronisk programguide fra en fil på `json`-format, og skriver ut til brukeren av programmet en oversikt over hvilke kategorier programmene har, og hvor mange programmer det er av hver kategori.
+Når du er ferdig med dette kapittelet vil du ha laget en kommandolinjeapplikasjon som leser en elektronisk programguide fra en fil på `json`-format, og skriver ut til brukeren av programmet en oversikt over hvilke kategorier programmene har, og hvor mange programmer det er av hver kategori.
 
 ## Plan
 

@@ -17,7 +17,7 @@ I dette kurset skal du bruke programmeringsspråket Python til å lage små appl
 3. [Hente data fra API](kap3/)
 4. [Applikasjon med grafisk brukergrensesnitt (GUI)](kap4/)
 5. [Prosjektapplikasjon](kap5/)
-6. [Ekstra - valgfritt innhold](kap6/)
+6. [Ekstra - valgfritt innhold](ekstra/)
  
 Kurset er bygd opp slik at et kapittel bygger videre på det man har lært i foregående kapitler.
 
