@@ -1,7 +1,7 @@
 Hente data fra API
 ==================
 
-**💡 Læringsmål:** _I dette kapittelet skal du lære å hente data fra API i stedet for å lese data fra fil._
+**💡 Læringsmål:** _I dette kapittelet vil du lære å hente data fra API i stedet for å lese data fra fil._
 
 Forrige gang lagde vi et program som leste inn ei ferdig fil med NRKs programguide,
 og hentet ut statistikk basert på den.
