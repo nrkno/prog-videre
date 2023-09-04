@@ -9,6 +9,7 @@ I dette kurset skal du bruke programmeringsspråket Python til å lage små appl
 1. Installere Python (&ge; 3.10) ved å følge instruksjon på [python.org](https://www.python.org/downloads/)
 2. Installere et verktøy som kan brukes til å skrive pythonkode. Om du ikke har noen preferanser anbefaler vi [VS Code](https://code.visualstudio.com/), med [Python plugin](https://marketplace.visualstudio.com/items?itemName=ms-python.python) installert. Hvis du vil vite mer om redigering av pythonkode i VS Code, kan du ta en titt på [denne guiden](https://code.visualstudio.com/docs/languages/python).
 
+<!-- TODO: Forklar grunnleggende bruk/navigering av sida -->
 
 ## Innhold
 
