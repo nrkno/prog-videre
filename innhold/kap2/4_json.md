@@ -53,7 +53,7 @@ Videre kan vi f.eks utvide eksemplet til å innholde en liste med verdier:
 }
 ```
 
-Og helt til sist, et eksempel med en liste av objekter:
+Her er et eksempel hvor et JSON-objekt har en liste med underobjekter (`episodes` er da en liste med objekter):
 ```json
 {
     "id": "12975534035527",
@@ -82,6 +82,29 @@ Og helt til sist, et eksempel med en liste av objekter:
     ]
 }
 ```
+
+Og helt til sist, et eksempel på en lengre liste av JSON-objekter. Slik ser det gjerne ut i en JSON-fil:
+```json
+[
+    {
+        "id": "12975534035527",
+        "product_code": "DVSF65100022",
+        "title": "Der ingen skulle tru at nokon kunne bu",
+    },
+    {
+        "id": "45975588035556",
+        "product_code": "MUHU65100022",
+        "title": "Der alle skulle tru at nokon kunne bu",
+    },
+    {
+        "id": "78455588067599",
+        "product_code": "NNFA65100022",
+        "title": "Nyheter om hvor ingen skulle tru at nokon kunne bu",
+    }
+]
+```
+
+
 
 I Python får man støtte for JSON gjennom standardbiblioteket `json`. 
 Det er fire funksjoner i dette biblioteket som du kommer til å benytte mye når du arbeider med JSON i Python:  
@@ -194,7 +217,7 @@ with open("data.json", "w", encoding="utf-8") as fil:
     json.dump(product, fil, indent=2)
 ```
 
-Obs! Her tar vi høyde for at innholdet i data.json er strukturert som en liste av JSON-objekter
+Obs! I eksemplet over tar vi høyde for at innholdet i data.json er strukturert som en liste av JSON-objekter
 
 Resultatet av koden over er at JSON-fila nå ser slik ut.
 ```json
