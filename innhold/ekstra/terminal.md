@@ -1,13 +1,21 @@
 Tips og triks om terminalen
 ===========================
 
+Denne sida tar med diverse temaer som kan være nyttige hvis du er ny bruker av terminal.
+
+## Innholdsfortegnelse
+
+<!-- toc -->
+
+## Hva er en terminal?
+
 Terminalen/kommandolinja, på engelsk ofte kalt [_command line_][wiki-cli], er en tekstbasert måte å starte programmer på.
 Vi bruker den ofte når vi lager dataprogram.
 
-I terminalen skriver du kommandoer etter hverandre, som ber datamaskinen om å gjøre noe.
+I terminalen skriver du inn kommandoer etter hverandre.
+Det gjør du ved å skrive inn en kommando og trykke `[ENTER]`.
+Hver kommando du kjører ber datamaskinen om å gjøre noe.
 Hvis du ikke får noen feilmelding, har det som regel gått bra – terminalprogram pleier ikke å si fra at ting er OK.
-
-Denne sida tar med diverse temaer som kan være nyttige hvis du er ny bruker av terminal.
 
 
 ## Alle terminaler er ikke like
@@ -16,7 +24,7 @@ Det finnes mange forskjellige typer _shell_.
 Et skall er programmet som du snakker med når du jobber i terminalen.
 
 Hvilket skall du bruker, avgjør hvilken avansert funksjonalitet du har tilgang til.
-Den grunnleggende funksjonaliteten for å starte et program, er mer eller mindre helt lik for alle skall.
+Den grunnleggende funksjonaliteten for å starte et program er mer eller mindre helt lik for alle skall.
 
 Skallet `bash` er velkjent og mye brukt, spesielt på Linux og Mac før macOS Catalina.
 

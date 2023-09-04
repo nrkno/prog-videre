@@ -46,6 +46,25 @@ jobs:
           # Add mdbook-mermaid to the path
           echo "${MERMAID_TMP_DIR}" >> $GITHUB_PATH
 
+      - name: Setup mdBook-table of contents plugin
+        shell: bash
+        env:
+          SHA256SUM: |
+            43e68fc15720a4c27ddb3c2673d5bb229f6c8667ed4714221456b3fa9a72b2c1  mdbook-toc-0.14.1-x86_64-unknown-linux-gnu.tar.gz
+        run: |
+          # Create temporary directory for mdbook-toc
+          TOC_TMP_DIR=$(mktemp --directory "${RUNNER_TEMP}/mdbook-toc-XXXXXXXXXX")
+          cd "${TOC_TMP_DIR}"
+          
+          # Download, check downloaded file and unpack it
+          wget https://github.com/badboy/mdbook-toc/releases/download/0.14.1/mdbook-toc-0.14.1-x86_64-unknown-linux-gnu.tar.gz
+          echo $SHA256SUM | sha256sum --check
+          tar -xvf mdbook-toc-0.14.1-x86_64-unknown-linux-gnu.tar.gz
+          rm mdbook-mermaid-v0.12.6-x86_64-unknown-linux-gnu.tar.gz
+          
+          # Add mdbook-mermaid to the path
+          echo "${MERMAID_TMP_DIR}" >> $GITHUB_PATH
+
       - name: Build the book
         shell: bash
         env:
