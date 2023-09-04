@@ -7,7 +7,7 @@ To strukturer danner oppbyggingen til JSON:
 - En samling av par basert på nøkkel og verdi
 - En hierarkisk liste med verdier
 
-Disse strukturene universelle og så å si alle moderne programmeringsspråk støtter disse i en eller annen form. Derfor passer JSON spesielt godt til å overføre data mellom forskjellige tjenester som kan være bygget med forskjellige programmeringsspråk.
+Disse strukturene er universelle og så å si alle moderne programmeringsspråk støtter disse i en eller annen form. Derfor passer JSON spesielt godt til å overføre data mellom forskjellige tjenester som kan være bygget med forskjellige programmeringsspråk.
 
 
 Et eksempel på JSON kan for eksempel være:
@@ -84,7 +84,10 @@ Og helt til sist, et eksempel med en liste av objekter:
 ```
 
 I Python får man støtte for JSON gjennom standardbiblioteket `json`. 
-Det er to funksjoner i dette biblioteket som du kommer til å benytte mye når du arbeider med JSON i Python, nemlig `loads()` og `dumps()`.
+Det er fire funksjoner i dette biblioteket som du kommer til å benytte mye når du arbeider med JSON i Python:  
+`load()`, `dump()`, `loads()`, og `dumps()`. 
+Merk den lille forskjellen mellom de to første funksjonene og de to siste funksjonene, nemlig 's'-endelsen.
+Kort forklart så benyttes funksjonene uten 's' når man skal lese eller skrive til en fil, mens funksjonene med 's' benyttes når man skal lese elle skrive til en streng.
 Disse funksjonene konverterer henholdsvis JSON fra og til et Python objekt (oppslagstabell).
 
 Det første eksemplet vårt kan for eksempel se slikt ut når man konverterer en JSON-streng til en Python-oppslagstabell:
@@ -110,6 +113,8 @@ product = {
 json_string = json.dumps(product)
 print(json_string)
 ```
+I eksmplet over bruker vi altså funksjonene `loads()` og `dumps()` fordi vi konverterer JSON fra og til en streng:
+
 
 I de aller fleste tilfeller hvor man arbeider med JSON kommer man ikke til å belage seg på at dataen er hardkodet i scriptet sitt.
 Man ønsker nok heller å hente dataen fra et eksternt sted, f.eks. en fil eller et API. 
@@ -130,12 +135,10 @@ Så kan man lese hele innholdet av fila som beskrevet i kapittel 2.1, for derett
 import json
 
 with open("data.json", "r", encoding="utf-8") as fil:
-    json_data = fil.read()
-
-data_dict = json.loads(json_data)
+    json_data = json.load(fil)
 ```
 
-Dersom fila med JSON-data inneholder flere objekter per linje, f.eks. slik:
+Dersom fila med JSON-data inneholder ett objekt per linje, f.eks. slik:
 ```json
 { "id": "12975534035527", "product_code": "DVSF65100022", "title": "Der ingen skulle tru at nokon kunne bu"},
 { "id": "13158833767527", "product_code": "NNFA21000023", "title": "Dagsrevyen 21"},
@@ -156,6 +159,55 @@ for linje in linjer:
 Lista kalt `json_liste` vil da inneholde JSON-objektene du leste inn fra fila, da konvertert til oppslagstabeller.
 
 
+For å kunne skrive JSON til en fil benytter vi oss av nesten samme kode som beskrevet i kapittel 2.2, men istedet for `write()` benytter vi `json.dump()`:
+```python
+import json
 
-TODO:
-- Skrive data til en fil som JSON.
+product = {
+    "id": "12975534035527", 
+    "product_code": "DVSF65100022", 
+    "title": "Der ingen skulle tru at nokon kunne bu"
+}
+
+with open("data.json", "w", encoding="utf-8") as fil:
+    json.dump(product, fil)
+```
+
+Merk at i eksemplet over så overskriver vi innholdet i fila data.json, men i enkelte tilfeller ønsker vi kanskje å tilføye data til en allerede eksisterende JSON-struktur.
+Det kan tenkes at å kun erstatte `w` med `a` er nok for å kunne legge til innhold i fila, men dette kan tukle med JSON-strukturen som allerede finnes i fila.
+Det beste er derfor å lese inn hele innholdet i fila for deretter å legge til ønsket JSON-objekt før man til slutt skriver innholdet til fila på nytt igjen:
+```python
+import json
+
+with open("data.json", "r", encoding="utf-8") as fil:
+    json_data = json.load(fil)
+
+new_product = {
+    "id": "98975534655545", 
+    "product_code": "MUHU65100022", 
+    "title": "Der alle skulle tru at nokon kunne bu"
+}
+
+json_data.append(new_product)
+
+with open("data.json", "w", encoding="utf-8") as fil:
+    json.dump(product, fil, indent=2)
+```
+
+Obs! Her tar vi høyde for at innholdet i data.json er strukturert som en liste av JSON-objekter
+
+Resultatet av koden over er at JSON-fila nå ser slik ut.
+```json
+[
+  {
+    "id": "12975534035527",
+    "product_code": "DVSF65100022",
+    "title": "Der ingen skulle tru at nokon kunne bu"
+  },
+  {
+    "id": "98975534655545",
+    "product_code": "MUHU65100022",
+    "title": "Der alle skulle tru at nokon kunne bu"
+  }
+]
+```
