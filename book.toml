@@ -12,6 +12,10 @@ create-missing = false
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
 
+[preprocessor.toc]
+command = "mdbook-toc"
+renderer = ["html"]
+
 [output.html]
 git-repository-url = "https://github.com/nrkno/prog-videre"
 edit-url-template = "https://github.com/nrkno/prog-videre/edit/main/{path}"
