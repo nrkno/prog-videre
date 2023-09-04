@@ -60,10 +60,10 @@ jobs:
           wget https://github.com/badboy/mdbook-toc/releases/download/0.14.1/mdbook-toc-0.14.1-x86_64-unknown-linux-gnu.tar.gz
           echo $SHA256SUM | sha256sum --check
           tar -xvf mdbook-toc-0.14.1-x86_64-unknown-linux-gnu.tar.gz
-          rm mdbook-mermaid-v0.12.6-x86_64-unknown-linux-gnu.tar.gz
+          rm mdbook-toc-0.14.1-x86_64-unknown-linux-gnu.tar.gz
           
           # Add mdbook-mermaid to the path
-          echo "${MERMAID_TMP_DIR}" >> $GITHUB_PATH
+          echo "${TOC_TMP_DIR}" >> $GITHUB_PATH
 
       - name: Build the book
         shell: bash
