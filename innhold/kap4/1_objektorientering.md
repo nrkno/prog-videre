@@ -166,16 +166,18 @@ print(r1 == r2) # output: True
 
 En `Rektangel`-klasse uten `__eq__` ville gitt `False`.
 
-En annen internmetode som det kan være greit å ha kjennskap til er `__str__`. Den brukes når man for eksempel bruker print() og str(). Her flytter vi ansattrepresentasjon-koden inn i `__str__` i stedet for å ha det i en egen metode.
+En annen internmetode som det kan være greit å ha kjennskap til er `__str__`. Den brukes når man for eksempel bruker print() og str(). Hvis du ikke definerer denne metoden for en klasse, vil Python bruke en standard representasjon, som ofte ikke er særlig brukervennlig. Her flytter vi ansattrepresentasjon-koden inn i `__str__` i stedet for å ha det i en egen metode. 
 
 ```python
 class Ansatt(Menneske):
     ...
 
     def __str__(self):
-        print(f"{self.navn}% er {self.alder} år og jobber som {self.stilling} hos {self.arbeidsgiver}.")
+        return f"{self.navn}% er {self.alder} år og jobber som {self.stilling} hos {self.arbeidsgiver}."
 
 
 print(m1) # output: <__main__.Menneske object at 0x107e4bd30>
 print(a1) # output: Fredrik er 46 år og jobber som Programleder hos NRK.
 ```
+
+**Oppgave:** _Legg til `__eq__`- og `__str__`-funksjoner for klassen `Kanal`_
