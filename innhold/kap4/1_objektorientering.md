@@ -21,9 +21,9 @@ class Menneske:
     art = "Homo sapiens"
 
     def __init__(self, navn, alder, by):
-        self.navn = navn
-        self.alder = alder
-        self.by = by
+        self.__navn = navn
+        self.__alder = alder
+        self.__by = by
         
     def gå(self):
         print(self.navn, "går")
@@ -130,7 +130,7 @@ class Ansatt(Menneske):
         self.stilling = stilling
 
     def ansattpresentasjon(self):
-        print(f"{self.navn}% er {self.alder} år og jobber som {self.stilling} hos {self.arbeidsgiver}.")
+        print(f"{self.navn} er {self.alder} år og jobber som {self.stilling} hos {self.arbeidsgiver}.")
 
 a3 = Ansatt("Fredrik", 46, "Oslo", "NRK", "Programleder")
 a3.ansattpresentasjon() # output: Fredrik er 46 år og jobber som Programleder hos NRK.
@@ -139,12 +139,51 @@ a3.ansattpresentasjon() # output: Fredrik er 46 år og jobber som Programleder h
 I `ansattpresentasjon`-funksjonen bruker man egenskaper som både er definert for Menneske og Ansatt.
 
 ## Mutering
-__Må skrive litt her om at mutering er mulig og finne overgang til innkapsling.__
+
 
 ## Innkapsling
-Innkapsling er en programmeringsteknikk i objektorientert programmering som har som formål å hindre direkte tilgang til tilstanden til et objekt fra objekter av andre klasser. Dette vil man gjøre i hovedsak av to grunner. Den første er å være sikker på at tilstanden til objektet er gyldig og at man da har kontroll på hvilke endringer som blir gjort. Da vil man også gjenbruke oppførsel som man for eksempel enten vil gjøre ved lesing eller setting av data. Den andre grunnen er å lage et brukergrensesnitt ut til brukere av klassen slik at det blir lettere å gjøre endringer internt i klassen på et senere tidspunkt.
+Innkapsling er en programmeringsteknikk i objektorientert programmering som har som formål å hindre direkte tilgang til tilstanden til et objekt fra objekter av andre klasser. Dette vil man gjøre for å være sikker på at tilstanden til objektet er gyldig og at man har kontroll på hvilke endringer som blir gjort.
 
-__Må få inn litt eksempler og kodeoppgaver her.__
+Uten at feltene er innkapslet, så er det for eksempel veldig lett å endre på instansen `m1`:
+```python
+m1.går() # output: Vibeke går
+m1.navn = 123
+m1.går() # output: 123 går
+```
+
+For å hindre at man kan gjøre dette, så bruker man private attributter for å definere at de ikke skal kunne brukes på utsiden av objektet. For Menneske-klassen vil det se slik ut:
+
+```python
+class Menneske:
+    def __init__(self, navn, alder):
+        self.__navn = navn
+        self.__alder = alder
+
+    def get_navn(self):
+        return self.__navn
+
+    def set_navn(self, navn):
+        if isinstance(navn, str) and len(navn) > 0:
+            self.__navn = navn
+
+    def get_alder(self):
+        return self.__alder
+
+    def set_alder(self, alder):
+        if isinstance(alder, int) and 0 <= alder <= 150:
+            self.__alder = alder
+```
+
+Ved å legge til to understreker foran attributtene __navn og __alder, gjør vi dem private, slik at de ikke kan nås direkte fra utsiden av klassen. Vi gir deretter tilgang til dem gjennom getter- og settermetoder, som også gir oss mulighet til å legge til validering. Ved å gjøre dette lager vi et brukergrensesnitt ut til brukere av klassen som vil gjøre det lettere å gjøre endringer internt i klassen på et senere tidspunkt.
+
+Slik vil bruken av Menneske-objektet se ut:
+```python
+m3 = Menneske("Harald", 86)
+m3.set_navn(123)
+print(m3.get_navn()) # output: Harald
+```
+
+**Oppgave:** _Implementer innkapsling for `Kanal`-klassen. Sørg for at listen over programmer ikke kan endres direkte, men tilby en metode for å legge til et program i listen._
 
 ## Internmetoder
 Vi har allerede lært om internmetoden `__init__` som brukes for å lage instanser av en klasse. Vi har også flere internmetoder som for eksempel `__eq__` som brukes når man sammenligner objekter. Hvis vi for eksempel sammenligner to instanser som er laget av en klasse som ikke implementerer en egen `__eq__`-funksjon vil man få `False` på om instansene er like siden de refererer til to forskjellige objekter, men i noen tilfeller vil man definere hva som gjør to instanser av en klasse like. 
@@ -171,9 +210,8 @@ En annen internmetode som det kan være greit å ha kjennskap til er `__str__`. 
 ```python
 class Ansatt(Menneske):
     ...
-
     def __str__(self):
-        return f"{self.navn}% er {self.alder} år og jobber som {self.stilling} hos {self.arbeidsgiver}."
+        return f"{self.navn} er {self.alder} år og jobber som {self.stilling} hos {self.arbeidsgiver}."
 
 
 print(m1) # output: <__main__.Menneske object at 0x107e4bd30>
