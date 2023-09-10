@@ -138,9 +138,6 @@ a3.ansattpresentasjon() # output: Fredrik er 46 år og jobber som Programleder h
 
 I `ansattpresentasjon`-funksjonen bruker man egenskaper som både er definert for Menneske og Ansatt.
 
-## Mutering
-
-
 ## Innkapsling
 Innkapsling er en programmeringsteknikk i objektorientert programmering som har som formål å hindre direkte tilgang til tilstanden til et objekt fra objekter av andre klasser. Dette vil man gjøre for å være sikker på at tilstanden til objektet er gyldig og at man har kontroll på hvilke endringer som blir gjort.
 
