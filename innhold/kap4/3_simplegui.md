@@ -15,7 +15,7 @@ Et enkelt brukergrensesnitt med PySimpleGUI
 Når man lager brukergrensesnitt, er det sjelden man starter helt fra bunnen. I dette kurset har vi valgt å ta utgangspunkt i rammeverket [PySimpleGUI](https://www.pysimplegui.org/en/latest/), som er utviklet for å gjøre det lett å komme i gang med å lage enkle brukergrensesnitt i Python.
 
 ### Installasjon av PySimpleGUI
-PySimpleGUI er en pakke, og kan [installeres med Poetry](/kap3/1_pakkebehandler.html#legge-til-avhengigheter), som andre pakker. Start med å lage en egen mappe under `kurs/`-mappen, for eksempel `kurs/gui/`. Her lager du et nytt Python-prosjekt med `poetry init`.
+PySimpleGUI er en pakke, og kan [installeres med Poetry](../kap3/1_pakkebehandler.md#legge-til-avhengigheter), som andre pakker. Start med å lage en egen mappe under `kurs/`-mappen, for eksempel `kurs/gui/`. Her lager du et nytt Python-prosjekt med `poetry init`.
 
 ```shell
 $> cd kurs/gui/

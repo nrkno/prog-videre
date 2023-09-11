@@ -392,6 +392,7 @@ som tar inn avslutningskoden som et argument.
 
 
 [prog-historian]: https://programminghistorian.org/en/lessons/intro-to-bash
+[doc-sys.exit]: https://docs.python.org/3/library/sys.html#sys.exit
 [git-for-windows]: https://gitforwindows.org/
 [wiki-cli]: https://en.wikipedia.org/wiki/Command-line_interface
 [kurs-cli-args]: ../kap3/2_kommandolinjeargumenter.md
@@ -400,4 +401,4 @@ som tar inn avslutningskoden som et argument.
 [ryan-processes]: https://ryanstutorials.net/linuxtutorial/processes.php#fgbg
 [ryan-scripting]: https://ryanstutorials.net/bash-scripting-tutorial/
 [ryan-variables]: https://ryanstutorials.net/bash-scripting-tutorial/bash-variables.php#setting
-[vim]: https://www.vim.org/docs.php
+[vim]: https://vimhelp.org/

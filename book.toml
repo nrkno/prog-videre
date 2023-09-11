@@ -24,4 +24,6 @@ additional-js = ["mermaid.min.js", "mermaid-init.js"]
 [output.html.fold]
 enable = true
 
-
+[output.linkcheck]
+follow-web-links = true
+exclude = [ 'marketplace\.visualstudio\.com']
