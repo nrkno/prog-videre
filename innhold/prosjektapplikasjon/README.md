@@ -42,3 +42,10 @@ Internett er selvfølgelig fullt av tips og veiledninger til morsomme og nyttige
 * [Lær å bruke data-biblioteket Pandas](https://www.learndatasci.com/tutorials/python-pandas-tutorial-complete-introduction-for-beginners/)
 * [8 Prosjekter med maskinlæring for nybegynnere](https://elitedatascience.com/machine-learning-projects-for-beginners#neural-network)
 * [Flere prosjekter med maskinlæring for nybegynnere](https://www.geeksforgeeks.org/machine-learning-projects/#Beginners)
+
+### Andre nyttige ting
+
+* Bruk Python og maler til å generere dokumenter. For eksempel å lage en mengde brev i Word der innholdet i hovedsak er det samme, men deler er spesifikt for hvert brev. 
+    * [Dokumentasjon av biblioteket docxtpl som kan brukes](https://docxtpl.readthedocs.io/en/latest/) 
+    * [Blogg-post med framgangsmåte](https://towardsdatascience.com/5-python-projects-to-automate-your-life-from-beginner-to-advanced-90fe29a7d664)
+* Lær å lage en [blogg-nettside med Web-rammeverket Flask](https://flask.palletsprojects.com/en/2.3.x/tutorial/)
