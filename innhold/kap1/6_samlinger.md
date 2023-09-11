@@ -59,7 +59,7 @@ slettet_kanal = kanaler.pop()   # pop() fjerner det siste elementet i lista og l
 
 ## Tupler
 
-Tupler er også en samling av elementer i en bestemt rekkefølge, men skiller seg fra lister ved å være «immutable. Man kan altså ikke endre elementene, fjerne eller legge til nye.
+Tupler er også en samling av elementer i en bestemt rekkefølge, men skiller seg fra lister ved å være «immutable». Man kan altså ikke endre elementene, fjerne eller legge til nye.
 
 En tuple definerers slik:
 
@@ -77,6 +77,44 @@ For å hente ut elementer fra en tuppel benytter man indeks:
 
 ```python
 print(kanaler[0])
+```
+
+## Innebygde funskjoner for samlinger
+Python har en rekke innebygde funksjoner som kan benyttes for å utføre diverse handlinger på samlinger.
+
+Funksjonen `list()` kan benyttes for å lage en liste av f.ek.s en streng
+```python
+kanal = "NRK1"
+kanal_ord_liste = list(kanal)
+print(kanal_ord_liste)
+# ['N', 'R', 'K', '1']
+```
+
+Funksjonen `sorted()` benyttes for å sortere en samling bestående av tall
+```python
+episoder_for_planlegging = [1, 2, 8, 5, 10, 4, 22, 11]
+sorterte_episoder = sorted(episoder_for_planlegging)
+print(sorterte_episoder)
+# [1, 2, 4, 5, 8, 10, 11, 22]
+```
+
+Funksjonen `reversed()` benyttes for å reversere en gitt sekvens eller samling
+```python
+episoder_for_planlegging = [1, 2, 8, 5, 10, 4, 22, 11]
+episoder_for_planlegging.reverse()
+print(episoder_for_planlegging)
+# [11, 22, 4, 10, 5, 8, 2, 1]
+```
+
+Funksjonene `min()`, `max()` og `len()` returnerer henholdsvis den minste og største tilfellet i en samling, og lengden av samlingen.
+```python
+episoder_for_planlegging = [1, 2, 8, 5, 10, 4, 22, 11]
+print(min(episoder_for_planlegging))
+print(max(episoder_for_planlegging))
+print(len(episoder_for_planlegging))
+# 1
+# 22
+# 8
 ```
 
 ## Oppslagstabeller
@@ -139,6 +177,7 @@ For å slette et element benytter man, ja du gjetter riktig, nøkkelen:
 del kanaler["nrk3"]
 ```
 
-Mer å nevne:
-    - Slice
-    - Oppgaver
+⚠️ Samlinger kan inneholder andre samlinger! Man kan altså ha en liste av lister, eller oppslagstabeller som inneholder oppslagstabeller. Dette kalles å «neste» - man får da nestede lister eller nestede oppslagstabeller.
+
+✍️ **Oppgave** Lag en oppslagstabell hvor hver verdi er en annen samling. Du bestemmer selv hva slags nøkler og samlinger du benytter.
+F.eks. kan man ta utganspunkt i eksemplene over hvor kanal er nøkkel - kanskje verdiene kan være en liste av tv-programmer som sendes på kanalene?
