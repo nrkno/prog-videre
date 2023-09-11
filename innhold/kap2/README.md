@@ -15,6 +15,6 @@ Vi trenger å lære flere ting før vi kommer til selve applikasjonen, her er de
 
 1. [Lese fra fil](1_lese_fil.md)
 2. [Skrive til fil](2_skrive_fil.md)
-3. [Feilhåndtering](3_feilh%C3%A5ndtering.md)
+3. [Feilhåndtering](3_feilhåndtering.md)
 4. [Json](4_json.md)
 5. [Et helt program](5_oppgave.md)

@@ -4,7 +4,7 @@
 
 Her er det bare å starte fra avsnitt 1 og jobbe seg gjennom avsnittene bit for bit, i ditt eget tempo. Avsnittene tar for seg det grunnleggende i Python, og tingene som gjennomgås her er byggeklossene for det vi skal lage senere i kurset.
 
-Om dette er stoff du kjenner til fra før kan du vurdere å gå videre til [kapittel 2](/innhold/kap2/). I så fall kan være lurt å se raskt igjennom avsnittene for å forsikre det om at du ikke går glipp av noe.
+Om dette er stoff du kjenner til fra før kan du vurdere å gå videre til [kapittel 2](../kap2/). I så fall kan være lurt å se raskt igjennom avsnittene for å forsikre det om at du ikke går glipp av noe.
 
 1. [Kjøre Python-program](1_kjøre_pythonprogram.md)
     * Navigere filhierarkiet
