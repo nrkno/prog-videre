@@ -1,6 +1,8 @@
 JSON: Et dataformat
 ===================
 
+**💡 Læringsmål:** _I dette avsnittet lærer du hva JSON er og hvordan formatet er strukturert, samt hvordan man kan lese og skrive JSON til og fra fil._
+
 JSON står for "JavaScript Object Notation" og er et tekstformat som er relativt leselig for mennesker, og enda enklere for maskiner å lese. Det er basert på JavaScript, men er ellers språkuavhengig.
 
 To strukturer danner oppbyggingen til JSON:
