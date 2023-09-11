@@ -1,13 +1,13 @@
 Input
 =====
 
-**💡 Læringsmål:** _I dette avsnittet skal du lære deg å få inn data fra brukeren._
+**💡 Læringsmål:** _I dette avsnittet vil du lære å ta inn data fra brukeren._
 
 Fram til nå har vi skrevet tekst fra programmet til terminalen.
 Men hvis du har villet endre hvilke verdier programmet ditt opererte på,
 så har du måttet gå inn i koden og gjøre endringene der.
 
-Hadde det ikke vært mer praktisk hvis du kunne latt koden være den samme,
+Hadde det ikke vært mer praktisk om du kunne latt koden være den samme,
 og heller _spurt brukeren_ om hvilke verdier du skal bruke?
 Da kan du kjøre programmet ditt flere ganger, men brukt ulike verdier hver gang.
 
