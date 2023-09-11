@@ -39,12 +39,12 @@ Python har flere innebygde funksjoner for å regne med tall:
 
 I motsetning til funksjonene vi har blitt kjent med fra før, skriver man de vanligste matematiske funksjonene mellom de to tallene man regner på. Dette er forskjellig fra hvordan man bruker funksjoner ellers i Python, men er noe man har gjort for at matematiske uttrykk skal ligne mer på det man er vant til fra annen matematikk.
 
-Funksjonene over, fungerer både med heltall og flyttall, og returnerer heltall eller flyttall, avhengig om svaret på utregningen er et desimaltall, eller om man brukte et flyttall for å regne ut svaret.
+Funksjonene over fungerer både med heltall og flyttall, og returnerer heltall eller flyttall, avhengig om svaret på utregningen er et desimaltall, eller om man brukte et flyttall for å regne ut svaret.
 
 ✍️ **Oppgave:** _Kan du skrive litt kode i `datastrukturer.py` som bruker de fire innebygde matematiske funksjonene over?_
 
 ### Vanlige og spesielle matematiske funksjoner
-Mange matematiske funksjonene finnes både som "vanlige" Python-funksjoner og som "spesielle" funksjoner som man skriver mellom to tall. Et eksempel på dette er `pow(...)`-funksjonen, som regner ut potensen til et tall. Dette kan også gjøres med den "spesielle" funksjonen `**`.
+Mange matematiske funksjoner finnes både som "vanlige" Python-funksjoner og som "spesielle" funksjoner som man skriver mellom to tall. Et eksempel på dette er `pow(...)`-funksjonen, som regner ut potensen til et tall. Dette kan også gjøres med den "spesielle" funksjonen `**`.
 
 ```python
 # Regner ut 2 opphøyd i 3. potens med pow-funksjonen
@@ -61,7 +61,7 @@ Noen matematiske funksjoner finnes bare som "vanlige" Python-funksjoner. Et ekse
 # Import av biblioteker er noe vi ikke skal gå inn på nå, men som forklares i senere kapitler
 import math
 
-# Regner ut roten av 9
+# Regner ut kvadratroten av 9
 print(math.sqrt(9))
 ```
 
@@ -83,19 +83,19 @@ print(float(3))
 
 Når man skal oversette et flyttall til et heltall, er det flere funksjoner som er vanlige å bruke:
 * `int(...)` kutter av alle desimalene, så både `int(1.2)` og `int(1.8)` blir til `1`.
-* `round(...)` runner av tallet, så `round(1.2)` blir til `1` og `round(1.8)` blir til `2`. Man kan også sende inn et ekstra tall til `round(...)`, hvis man ønsker å ta vare på et spesielt antall desimaler  `round(1.333333333333333333, 2)` blir til `1.33`.
+* `round(...)` runder av tallet, så `round(1.2)` blir til `1` og `round(1.8)` blir til `2`. Man kan også sende inn et ekstra tall til `round(...)`, hvis man ønsker å ta vare på et spesielt antall desimaler  `round(1.333333333333333333, 2)` blir til `1.33`.
 * `//` er nyttig hvis man skal dele to tall, og bare ønske å få tilbake tallene før komma. Eksempelvis blir `2 // 3` til `0`, og `5 // 3` blir til `1`. Man kan med andre ord tenke på `//` som en funksjon som først deler tallene med `/`, og deretter kutter av desimalene med `int(...)`.
 
 ### Enda flere matematiske funksjoner
-[Modulus](https://no.wikipedia.org/wiki/Modulus) er noe vi kanskje ikke bruker så mye i det daglige, men som har en tendens til å dukke opp i programmering tidt og ofte. Kort fortalt er dette hvor mye som er igjen av et tall, hvis vi forsøker å dele det med et annet. I Python kan vi finne denne med å bruke funksjonen `%`. Eksempelvis blir `5 % 2` til `1`, fordi man kan trekke `2` fra `5` to hele ganger, og så ender man opp med en rest på `1`. `10 % 6` blir til `4`, fordi man kan trekke `6` fra `10` en gang, og da ender man opp med en rest på `4`.
+[Modulus](https://no.wikipedia.org/wiki/Modulus) er noe vi kanskje ikke bruker så mye i det daglige, men som har en tendens til å dukke opp i programmering titt og ofte. Kort fortalt er dette hvor mye som er igjen av et tall, hvis vi forsøker å dele det med et annet. I Python kan vi finne denne med å bruke funksjonen `%`. Eksempelvis blir `5 % 2` til `1`, fordi man kan trekke `2` fra `5` to hele ganger, og så ender man opp med en rest på `1`. `10 % 6` blir til `4`, fordi man kan trekke `6` fra `10` en gang, og da ender man opp med en rest på `4`.
 
-Modulus er nyttig for å f.eks. finne ut om et tall er et partall. Vi vet at partall kan deles på 2, så derfor må er partall sin `% 2` være lik `0`.
+Modulus er nyttig for å f.eks. finne ut om et tall er et partall. Vi vet at partall kan deles på 2, så derfor må et partall sin `% 2` være lik `0`.
 
 En annen funksjon som stadig vekk er nyttig når man programmerer, er `abs(...)`, som finner [absoluttverdien](https://no.wikipedia.org/wiki/Absoluttverdi) til et tall. Absoluttverdien er kort fortalt hvor stort tallet er, hvis vi ser bort ifra om det er positivt eller negativt. Eksempelvis er både `abs(3)` og `abs(-3)` tallet `3`.
 
 Variabler
 ---------
-Når man programmerer, skiller man gjerne mellom variabler og verdier. Verdier er ofte det som representerer data i et program, og er gjerne noe spesifikt, som tallet `3`, eller teksten `"hei alle sammen"`. Når vi lært om tall i seksjonen over, var alle tallene vi brukte eksempel på verdier.
+Når man programmerer, skiller man gjerne mellom variabler og verdier. Verdier er ofte det som representerer data i et program, og er gjerne noe spesifikt, som tallet `3`, eller teksten `"hei alle sammen"`. Når vi lærte om tall i seksjonen over, var alle tallene vi brukte eksempel på verdier.
 
 Variabler lar oss gi verdier et navn. Ved å gi verdier navn, kan vi bedre kommunisere hva en verdi representerer. Med variabler kan vi skrive kode som regner med `antall_epler` og `antall_appelsiner`, i stede for tall som `3` og `5`. Da slipper vi å huske hva hvert tall representerer.
 
@@ -106,7 +106,7 @@ Livet til en variabel består av fire faser:
 1. Variabelen oppstår når vi gir den et navn.
 2. Når variabelen har et navn, kan vi gi den en verdi.
 3. Når variabelen har en verdi, kan vi bruke variabelnavnet til å hente verdien i koden vår.
-4. Når det ikke lenger er behov for variabelen lenger, kan programmet fjerne den.
+4. Når det ikke lenger er behov for variabelen, kan programmet fjerne den.
 
 #### Variabelen oppstår og får sin første verdi
 I Python gjennomgår variabler alltid livets to første faser samtidig. Det betyr at vi alltid må gi variabler en verdi samtidig som vi gir de navn. Dette gjør vi ved å skrive navnet på variabelen vi ønsker å lage, et likhetstegn `=`, etterfulgt av verdien vi vil at variabelen skal ha. Kodelinjen `en_variabel = 3` forteller dermed Python at vi ønsker å opprette en variabel med navnet `en_variabel`, og at vi ønsker at den skal få verdien `3`.
@@ -185,7 +185,7 @@ Grunnen til at det er viktig for programmeringsspråk å vite at variabler ikke 
 
 Når man starter å programmere, er det ikke så viktig å tenke på at ting ryddes opp, men etter hvert som man skriver mer avanserte programmer, som f.eks. skal jobbe med filer som er større enn RAM-minnet til datamaskinen, må man i større grad ta hensyn til sånne ting.
 
-I senere kapitler, kommer du også til å bli kjent med Python-kode hvor man forteller Python hvor lenge det er behov for en variabel. Da bruker man typisk syntaksen `with verdi as variabelnavn:`, som forteller Python at denne variabelen bare skal leve innenfor skopet til den blokken `with`-uttrykket omfavner. Ikke fortvil om dette ikke gir så mye mening nå, da vi kommer til å jobbe mer med det senere.
+I senere kapitler, kommer du også til å bli kjent med Python-kode hvor man forteller Python hvor lenge det er behov for en variabel. Da bruker man typisk syntaksen `with verdi as variabelnavn:`, som forteller Python at denne variabelen bare skal leve innenfor skopet til den blokken `with`-uttrykket omfavner. Ikke fortvil om dette ikke gir så mye mening nå, vi kommer til å jobbe mer med det senere.
 
 Strenger
 --------
@@ -262,7 +262,7 @@ Når man fletter inn en verdi eller variabel i en formatert streng, vil Python f
 _Formaterte strenger er litt nyere funksjonalitet i Python. Før dette var tilgjengelig, brukte man gjerne funksjonen `+` for å slå sammen strenger og verdier. Dette er typisk litt mer kronglete enn å bruke f-strenger, men kommer du over gammel kode, kan det være du ser denne måten å bygge strenger på._
 
 
-### Andre nyttige strenge-funksjoner
+### Andre nyttige streng-funksjoner
 Det finnes veldig [mange nyttige funksjoner](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str) som kan brukes til å behandle strenger i Python. Vi rekker ikke å dekke alle her, men lurer du på hvordan man kan gjøre noe spesielt med en streng, er det ofte verdt å ta en titt i dokumentasjonen. Under har vi trukket frem tre funksjoner som er nyttig å vite om.
 
 Noen ganger lurer man på om en streng inneholder en spesiell tekst. For å finne ut av dette, kan man bruke funksjonene `in` og `not in`.
@@ -299,7 +299,7 @@ print(en_streng.split()) # Skriver ut ['Hallo', 'verden']
 
 I grove trekk, deler split opp strengen basert på mellomrom. Dette kan ofte være et greit utgangspunkt hvis man forsøker å dele en tekst opp i flere ord.
 
-Hvis man heller ønsker å dele opp strengen basert på et annet tegn, kan man gjøre dette ved å sende tegnet inn om et argument til split-funksjonen.
+Hvis man heller ønsker å dele opp strengen basert på et annet tegn, kan man gjøre dette ved å sende tegnet inn som et argument til split-funksjonen.
 
 ```python
 en_streng = "Hallo verden"
@@ -310,10 +310,10 @@ _**Tips:** Strenger er en veldig nyttig og fleksibel datastruktur, men siden den
 
 Boolske verdier
 ---------------
-Boolske verdier, er verdier som enten kan være sant (`True`) eller falskt (`False`). De brukes gjerne der man ønsker at et dataprogram skal velge mellom å gjøre to forskjellige ting. Hvordan man får programmer til å velge mellom forskjellige ting, basert på en boolsk verdi, er noe vi skal se på i et senere kapittel. I første omgang skal vi bare se litt på hva boolske verdier er, og hvordan man kan bruke ulike boolske funksjoner til å lage boolske uttrykk, som igjen regner ut nye boolske verdier.
+Boolske verdier, er verdier som enten kan være sanne (`True`) eller falske (`False`). De brukes gjerne der man ønsker at et dataprogram skal velge mellom å gjøre to forskjellige ting. Hvordan man får programmer til å velge mellom forskjellige ting, basert på en boolsk verdi, er noe vi skal se på i et senere kapittel. I første omgang skal vi bare se litt på hva boolske verdier er, og hvordan man kan bruke ulike boolske funksjoner til å lage boolske uttrykk, som igjen regner ut nye boolske verdier.
 
 ### Sant og falskt
-En boolsk verdi kan bare være en av to ting. Enten er den sant (`True`), eller så er den falskt (`False`).
+En boolsk verdi kan bare være en av to ting. Enten er den sann (`True`), eller så er den falsk (`False`).
 
 ```python
 sant = True
@@ -337,7 +337,7 @@ Tabellen over, viser at hvis variabelen `a` er satt til `False`, vil det boolske
 
 ```python
 sant = True
-print(f"Noen ting er {sant} og noen ting er {not falskt}")
+print(f"Noen ting er {sant} og noen ting er {not sant}")
 ```
 
 ### Og
@@ -353,7 +353,7 @@ Hvis man ønsker å finne ut av om to variabler er sanne samtidig, kan man bruke
 ```python
 a = True
 b = False
-print(f"Kommer jeg til å bli sant eller falskt? {a and b}")
+print(f"Kommer jeg til å bli sann eller falsk? {a and b}")
 ```
 
 ### Eller
@@ -369,7 +369,7 @@ Hvis man bare er opptatt av å finne ut om en av to variabler er sanne, kan man 
 ```python
 a = True
 b = False
-print(f"Kommer jeg til å bli sant eller falskt? {a or b}")
+print(f"Kommer jeg til å bli sann eller falsk? {a or b}")
 ```
 
 ### Gruppering av boolske uttrykk
