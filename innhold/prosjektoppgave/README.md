@@ -17,10 +17,10 @@
 Bruk det du har lært om EPG og GUI til å lage en applikasjon med grafisk brukergrensesnitt som for eksempel har følgende funksjonalitet:
 
 * Viser fram programmet for en gitt dag på en gitt kanal. Bruk en datovelger for å velge dato og en combobox for å velge kanal.
-* Lar brukeren velge om data skal hentes fra fil eller API
-* Henter data fra API og lagrer til fil
+* Lar brukeren velge om data skal hentes fra fil eller API.
+* Henter data fra API og lagrer til fil.
 * Viser fram bilder og mer informasjon om programmet om man klikker på tittelen. [TV-guiden på tv.nrk.no](https://tv.nrk.no/guide/) kan være til inspirasjon.
-* Kan spille av et program. (Dette er nok et litt vanskelig å få til, og vi vil ikke fortelle for mye om det her, så spør kursholder om hjelp til å komme i gang.)
+* Kan spille av et program. (Dette er nok et litt vanskelig å få til, og vi vil ikke fortelle for mye om det her, så spør kursveileder om hjelp til å komme i gang.)
 
 ## 🎯 Noe som du trenger til jobb eller fritid
 
@@ -48,8 +48,8 @@ Internett er selvfølgelig fullt av tips og veiledninger til morsomme og nyttige
 
 * Bruk Python og maler til å generere dokumenter. For eksempel å lage en mengde brev i Word der innholdet i hovedsak er det samme, men deler er spesifikt for hvert brev. 
     * [Dokumentasjon av biblioteket docxtpl som kan brukes](https://docxtpl.readthedocs.io/en/latest/) 
-    * [Blogg-post med framgangsmåte](https://towardsdatascience.com/5-python-projects-to-automate-your-life-from-beginner-to-advanced-90fe29a7d664)
-* Lær å lage en [blogg-nettside med Web-rammeverket Flask](https://flask.palletsprojects.com/en/2.3.x/tutorial/)
+    * [Artikkel som beskriver framgangsmåte](https://towardsdatascience.com/5-python-projects-to-automate-your-life-from-beginner-to-advanced-90fe29a7d664)
+* Lær å lage en [blogg-applikasjon med Web-rammeverket Flask](https://flask.palletsprojects.com/en/2.3.x/tutorial/). Bruk det du lærer til å lage din egen web-applikasjon med funksjonaliteten du drømmer om.
 * Lag en desktop-applikasjon for stoppeklokke eller timer, for eksempel for å arbeide etter [Pomodoro-teknikken](https://no.wikipedia.org/wiki/Pomodoro-teknikken)
     * [Eksempel på timer i PySimpleGui](https://www.pysimplegui.org/en/latest/cookbook/#desktop-floating-widget-timer)
     * [Eksempel på en enkel Pomodoro-timer som bruker system-notifikasjoner](https://dev.to/code_jedi/create-a-simple-pomodoro-timer-in-python-l97). Man kan ta utgangspunkt i dette programmet, og bygge videre til en Desktop-applikasjon eller lage støtte for konfigurasjon av pause- og arbeidstid.  
