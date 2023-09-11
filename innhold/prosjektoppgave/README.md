@@ -1,4 +1,4 @@
-# Prosjektapplikasjon 🎉
+# Prosjektoppgave 🎉
 
 **💡 Læringsmål:** _I dette avsnittet er målet at du bruker mye av det du har lært hittil i et større prosjekt. Vi har samlet noen forslag til prosjekt du kan jobbe med, resten opp til deg! 🌟_
 

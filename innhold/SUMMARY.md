@@ -32,7 +32,7 @@
   - [Installasjon av PySimpleGUI](kap4/3_simplegui.md)
   - [Eksempelapplikasjon i PySimpleGUI](kap4/4_simplegui_demo.md)
 
-- [Prosjektapplikasjon](prosjektapplikasjon/README.md)
+- [Prosjektoppgave](prosjektoppgave/README.md)
 
 - [Ekstra: valgfritt innhold](ekstra/README.md)
   - [Terminalen](ekstra/terminal.md)
