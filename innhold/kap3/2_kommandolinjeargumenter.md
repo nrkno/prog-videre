@@ -78,7 +78,7 @@ men det blir fryktelig upraktisk å måtte endre programmet hver gang du vil les
 
 ### Spørre underveis med `input()`
 
-I [del 1.4 av kurset](../kap1/4_input.md) var vi innom [`input()`-funksjonen][doc-input],
+I [del 1.5 av kurset](../kap1/5_input.md) var vi innom [`input()`-funksjonen][doc-input],
 som lar deg stille brukeren et spørsmål som hen må svare på før programmet fortsetter.
 
 ```mermaid

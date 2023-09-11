@@ -9,8 +9,8 @@ Det finnes en rekke datastrukturer hvor alle har egne regler, styrker og begrens
 ## Lister
 
 Lister er en samling av elementer i en bestemt rekkefølge. Lister kan inneholde «hva som helst»; strenger, tall, variabler, eller til og med andre datastrukturer.
-Det er heller ingen krav til at elementene i lista har en viss tilhørighet til de andre elementene.
-Lister i Python er det man på fagspråket kaller «mutable». Elementene i lista kan endres og erstattes, fjernes og nye kan bli lagt til.
+Det er heller ingen krav om at elementene i lista har en viss tilhørighet til de andre elementene.
+Lister i Python er det man på fagspråket kaller muterbare (på engelsk «mutable»). Elementene i lista kan endres og erstattes, fjernes og nye kan bli lagt til.
 
 En liste defineres på følgende måte:
 
@@ -79,10 +79,10 @@ For å hente ut elementer fra en tuppel benytter man indeks:
 print(kanaler[0])
 ```
 
-## Innebygde funskjoner for samlinger
+## Innebygde funksjoner for samlinger
 Python har en rekke innebygde funksjoner som kan benyttes for å utføre diverse handlinger på samlinger.
 
-Funksjonen `list()` kan benyttes for å lage en liste av f.ek.s en streng
+Funksjonen `list()` kan benyttes for å lage en liste av f.eks, en streng. Hvert tegn i strengen blir et element i lista.
 ```python
 kanal = "NRK1"
 kanal_ord_liste = list(kanal)
