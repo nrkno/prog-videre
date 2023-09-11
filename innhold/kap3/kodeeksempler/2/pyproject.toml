@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "kodeeksempler-3-2"
+version = "0.1.0"
+description = ""
+authors = ["Thorben Werner Sjøstrøm Dahl <thorben.dahl@nrk.no>"]
+readme = "README.md"
+packages = [{include = "kodeeksempler_3"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+click = "^8.1.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

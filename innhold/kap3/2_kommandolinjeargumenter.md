@@ -30,16 +30,7 @@ Vi skal illustrere ulike alternativer vi har for å løse dette problemet.
 Før vi går i gang, kan du lage ei fil som heter `ksjefer.txt` med følgende innhold:
 
 ```
-Olav Midttun
-Kaare Fostervoll
-Hans Jacob Ustvedt
-Torolf Ester
-Bjartmar Gjerde
-Einar Førde
-John G. Bernander
-Hans-Tore Bjerkaas
-Thor Gjermund Eriksen
-Vibeke Fürst Haugen
+{{#include kodeeksempler/2/ksjefer.txt}}
 ```
 
 Vi skal referere til denne fila når vi kjører eksempelprogrammet vi lager oss.
@@ -78,10 +69,7 @@ Fullstendig kodeeksempel:
 
 ```python
 # les_fil_hardkodet.py
-filnavn = "ksjefer.txt"
-with open(filnavn) as fil:
-  for linje in fil:
-    print(linje, end="")
+{{#include kodeeksempler/2/les_fil_hardkodet.py}}
 ```
 
 Dette kan fungere helt greit når du tester,
@@ -108,10 +96,7 @@ Fullstendig kodeeksempel:
 
 ```python
 # les_fil_input.py
-filnavn = input("Hvilken fil? ")
-with open(filnavn) as fil:
-  for linje in fil:
-    print(linje, end="")
+{{#include kodeeksempler/2/les_fil_input.py}}
 ```
 
 Dette fungerer bra for interaktive applikasjoner der brukeren skal sitte parat ved tastaturet hele veien,
@@ -152,12 +137,7 @@ Hvis vi skulle skrevet dette som en Python-funksjon som tok inn filnavnet som et
 
 ```python
 # les_fil_func.py
-def les_fil(filnavn):
-  with open(filnavn) as fil:
-    for linje in fil:
-      print(linje, end="")
-
-les_fil("ksjefer.txt")
+{{#include kodeeksempler/2/les_fil_input.py}}
 ```
 
 Funksjons- og kommandolinjeargumenter handler begge to om å sende informasjon inn til koden.
@@ -183,9 +163,7 @@ Vi kan lage oss et program som lar oss se hvordan `sys.argv` ser ut, og eksperim
 
 ```python
 # print_argv.py
-import sys
-
-print(sys.argv)
+{{#include kodeeksempler/2/print_argv.py}}
 ```
 
 ✍️ **Oppgave:**
@@ -202,27 +180,14 @@ Her er det eksemplet:
 
 ```python
 # les_fil_arg.py
-import sys
-
-with open(sys.argv[1]) as fil:
-  for linje in fil:
-    print(linje, end="")
+{{#include kodeeksempler/2/les_fil_arg.py}}
 ```
 
 Eksempel på kjøring:
 
 ```shell
 kurs $> python les_fil_arg.py ksjefer.txt
-Olav Midttun
-Kaare Fostervoll
-Hans Jacob Ustvedt
-Torolf Ester
-Bjartmar Gjerde
-Einar Førde
-John G. Bernander
-Hans-Tore Bjerkaas
-Thor Gjermund Eriksen
-Vibeke Fürst Haugen
+{{#include kodeeksempler/2/ksjefer.txt}}
 ```
 
 
@@ -263,17 +228,7 @@ Vi kan prøve å konvertere fillesing-skriptet vårt til å bruke `click`:
 
 ```python
 # les_fil_click.py
-import click
-
-
-@click.command()
-@click.argument("filnavn")
-def les_fil(filnavn):
-  with open(filnavn) as fil:
-    for linje in fil:
-      print(linje, end="")
-
-les_fil()
+{{#include kodeeksempler/2/les_fil_click.py}}
 ```
 
 Dette ser umiddelbart litt rart ut.
@@ -289,16 +244,7 @@ vil du se at vi har fått en del ny funksjonalitet.
 
 ```shell-session
 kurs $> poetry run python les_fil_click.py ksjefer.txt
-Olav Midttun
-Kaare Fostervoll
-Hans Jacob Ustvedt
-Torolf Ester
-Bjartmar Gjerde
-Einar Førde
-John G. Bernander
-Hans-Tore Bjerkaas
-Thor Gjermund Eriksen
-Vibeke Fürst Haugen
+{{#include kodeeksempler/2/ksjefer.txt}}
 kurs $> poetry run python les_fil_click.py ksjefer.txt hei
 Usage: les_fil_click.py [OPTIONS] FILNAVN
 Try 'les_fil_click.py --help' for help.
@@ -333,21 +279,7 @@ La oss gi eksempelskriptet vårt en egen introduksjon:
 
 ```python
 # les_fil_click_v2.py
-import click
-
-
-@click.command()
-@click.argument("filnavn")
-def les_fil(filnavn):
-  """
-  Skriv innholdet av fila med filstien FILNAVN til terminalen.
-  """
-  
-  with open(filnavn) as fil:
-    for linje in fil:
-      print(linje, end="")
-
-les_fil()
+{{#include kodeeksempler/2/les_fil_click_v2.py}}
 ```
 
 Nå vil hjelpeteksten være enda mer hjelpsom:
@@ -386,24 +318,7 @@ Vi kan legge til flere argumenter til utlesingsskriptet vårt, for eksempel for 
 
 ```python
 # les_fil_prefiks.py
-import click
-
-
-@click.command()
-@click.argument("filnavn")
-@click.argument("prefiks")
-def les_fil_med_prefiks(filnavn, prefiks):
-  """
-  Skriv PREFIKS + innholdet av fila med filstien FILNAVN til terminalen.
-  
-  Prefikset PREFIKS blir skrevet ut på starten av hver linje.
-  """
-
-  with open(filnavn) as fil:
-    for linje in fil:
-      print(prefiks + linje, end="")
-
-les_fil_med_prefiks()
+{{#include kodeeksempler/2/les_fil_prefiks.py}}
 ```
 
 Eksempel på kjøring:
@@ -450,24 +365,7 @@ Vi behandler rett og slett tilfellet med ingen prefiks som å være likt tilfell
 
 ```python
 # les_fil_click_v3.py
-import click
-
-
-@click.command()
-@click.argument("filnavn")
-@click.argument("prefiks", default="")
-def les_fil(filnavn, prefiks):
-  """
-  Skriv PREFIKS + innholdet av fila med filstien FILNAVN til terminalen.
-
-  Prefikset PREFIKS blir skrevet ut på starten av hver linje, hvis angitt.
-  """
-
-  with open(filnavn) as fil:
-    for linje in fil:
-      print(prefiks + linje, end="")
-
-les_fil()
+{{#include kodeeksempler/2/les_fil_click_v3.py}}
 ```
 
 Eksempel på kjøring:
@@ -494,16 +392,7 @@ Kringkastingssjef: Hans-Tore Bjerkaas
 Kringkastingssjef: Thor Gjermund Eriksen
 Kringkastingssjef: Vibeke Fürst Haugen
 kurs $> poetry run python les_fil_click_v3.py ksjefer.txt
-Olav Midttun
-Kaare Fostervoll
-Hans Jacob Ustvedt
-Torolf Ester
-Bjartmar Gjerde
-Einar Førde
-John G. Bernander
-Hans-Tore Bjerkaas
-Thor Gjermund Eriksen
-Vibeke Fürst Haugen
+{{#include kodeeksempler/2/ksjefer.txt}}
 ```
 
 Legg merke til oppsummeringslinja i hjelpeteksten:
@@ -555,31 +444,7 @@ Da kan vi printe løpenummeret til terminalen i forkant av hver linje, men bare 
 
 ```python
 # les_fil_click_v4.py
-import click
-
-
-@click.command()
-@click.option("--number", "-n", is_flag=True, help="Skriv linjenummer foran hver linje.")
-@click.argument("filnavn")
-@click.argument("prefiks", default="")
-def les_fil(number, filnavn, prefiks):
-  """
-  Skriv PREFIKS + innholdet av fila med filstien FILNAVN til terminalen.
-
-  Prefikset PREFIKS blir skrevet ut på starten av hver linje (etter ev.
-  linjenummer), hvis angitt.
-  """
-  with open(filnavn) as fil:
-    for linjenummer, linje in enumerate(fil, start=1):
-      # Skriv linjenummer hvis aktivert
-      if number:
-        # Sørg for konsekvent venstremargin
-        # (for filer på opptil 999 linjer)
-        print(f"{linjenummer: 3d}: ", end="")
-      # Skriv linja
-      print(prefiks + linje, end="")
-
-les_fil()
+{{#include kodeeksempler/2/les_fil_click_v4.py}}
 ```
 
 Med `click.option` spesifiserer vi at vi ønsker å legge til et tilvalg.
@@ -662,37 +527,7 @@ Hvis brukeren ikke bruker `--min-length`, gjør vi ikke noen filtrering:
 
 ```python
 # les_fil_click_v5.py
-import click
-
-
-@click.command()
-@click.option("--number", "-n", is_flag=True, help="Skriv linjenummer foran hver linje.")
-@click.option("--min-length", metavar="LENGDE", default=0, help="Hopp over linjer med færre tegn enn LENGDE.")
-@click.argument("filnavn")
-@click.argument("prefiks", default="")
-def les_fil(number, min_length, filnavn, prefiks):
-  """
-  Skriv PREFIKS + innholdet av fila med filstien FILNAVN til terminalen.
-  
-  Prefikset PREFIKS blir skrevet ut på starten av hver linje (etter ev.
-  linjenummer), hvis angitt.
-  """
-  with open(filnavn) as fil:
-    for linjenummer, linje in enumerate(fil, start=1):
-      # Hopp over linjer med for få tegn
-      antall_tegn_før_linjeskift = len(linje.rstrip())
-      if antall_tegn_før_linjeskift < min_length:
-        continue
-    
-      # Skriv linjenummer hvis aktivert
-      if number:
-        # Sørg for konsekvent venstremargin
-        # (for filer på opptil 999 linjer)
-        print(f"{linjenummer: 3d}: ", end="")
-      # Skriv linja
-      print(prefiks + linje, end="")
-
-les_fil()
+{{#include kodeeksempler/2/les_fil_click_v5.py}}
 ```
 
 Her har vi spesifisert valget `--min-length`.
@@ -747,7 +582,7 @@ Sjekk ut [den offisielle dokumentasjone til Click][click] for å oppdage mange f
 Click kan altså hjelpe til med flere aspekter av CLI enn bare kommandolinjeargumenter.
 
 
-## ✍️ Oppgave
+## ✍️ Oppgaver
 
 1. _Kan du legge til et nytt tilvalg i det siste eksemplet ovenfor? 
    For eksempel et som lar brukeren spesifisere en melding som skal skrives til terminalen helt i starten,
@@ -811,7 +646,7 @@ som for eksempel å gi brukeren tilbakemelding om hvordan det går, og så vider
 [doc-sys.argv]: https://docs.python.org/3/library/sys.html#sys.argv
 [doc-sys.exit]: https://docs.python.org/3/library/sys.html#sys.exit
 [doc-sys.orig_argv]: https://docs.python.org/3/library/sys.html#sys.orig_argv
-[doc-argparse]: https://click.palletsprojects.com/en/8.1.x/
+[doc-argparse]: https://docs.python.org/3/howto/argparse.html#argparse-tutorial
 [click]: https://click.palletsprojects.com/en/8.1.x/
 [doc-glossary.docstring]: https://docs.python.org/3/glossary.html#term-docstring
 [doc-click.option]: https://click.palletsprojects.com/en/8.1.x/options/
