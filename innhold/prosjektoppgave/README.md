@@ -5,6 +5,7 @@
 ## Tips
 
 * Prosjektet kan få en viss størrelse, så det kan være lurt å tenke litt på struktur, og være ryddig med koden fra starten av. Start med en tom Python-fil i en ny mappe.
+* Bruk [Poetry](../kap3/1_pakkebehandler.md) for pakkehåndtering om du bruker eksterne biblioteker.
 * Om du har erfaring med versjonering med Git kan det være lurt å pushe kode til et repo ofte. Alternativt kan du lage en sikkerhetskopi av koden jevnlig. Da kan du finne tilbake til en fungerende utgave av programmet om du forviller deg inn i noe som ikke lar seg fikse.
 
 ## Prosjektideer
@@ -49,3 +50,6 @@ Internett er selvfølgelig fullt av tips og veiledninger til morsomme og nyttige
     * [Dokumentasjon av biblioteket docxtpl som kan brukes](https://docxtpl.readthedocs.io/en/latest/) 
     * [Blogg-post med framgangsmåte](https://towardsdatascience.com/5-python-projects-to-automate-your-life-from-beginner-to-advanced-90fe29a7d664)
 * Lær å lage en [blogg-nettside med Web-rammeverket Flask](https://flask.palletsprojects.com/en/2.3.x/tutorial/)
+* Lag en desktop-applikasjon for stoppeklokke eller timer, for eksempel for å arbeide etter [Pomodoro-teknikken](https://no.wikipedia.org/wiki/Pomodoro-teknikken)
+    * [Eksempel på timer i PySimpleGui](https://www.pysimplegui.org/en/latest/cookbook/#desktop-floating-widget-timer)
+    * [Eksempel på en enkel Pomodoro-timer som bruker system-notifikasjoner](https://dev.to/code_jedi/create-a-simple-pomodoro-timer-in-python-l97). Man kan ta utgangspunkt i dette programmet, og bygge videre til en Desktop-applikasjon eller lage støtte for konfigurasjon av pause- og arbeidstid.  
