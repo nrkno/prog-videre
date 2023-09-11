@@ -6,9 +6,9 @@
   - [Kjøre Python-program](kap1/1_kjøre_pythonprogram.md)
   - [Kommentarer](kap1/2_kommentarer.md)
   - [Enkle datastrukturer og variabler](kap1/3_enkle_datastrukturer_og_variabler.md)
-  - [Ta inn data fra brukeren](kap1/4_input.md)
-  - [Hvis, omatte og ellers](kap1/5_hvis_omatte_og_ellers.md)
-  - [Samlinger](kap1/6_samlinger.md)
+  - [Samlinger](kap1/4_samlinger.md)
+  - [Ta inn data fra brukeren](kap1/5_input.md)
+  - [Hvis, omatte og ellers](kap1/6_hvis_omatte_og_ellers.md)
   - [Løkker](kap1/7_løkker.md)
   - [Funksjoner](kap1/8_funksjoner.md)
 
