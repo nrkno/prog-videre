@@ -1,6 +1,6 @@
 # Introduksjon til Python
 
-**💡 Læringsmål:** _I dette kapittelet vil du lære hvordan man bruker Python, og de helt enkle verktøyene som finnes i dette programmeringsspråket._
+**💡 Læringsmål:** _I dette kapitlet vil du lære hvordan du bruker Python, og de helt enkle verktøyene som finnes i dette programmeringsspråket._
 
 Her er det bare å starte fra avsnitt 1 og jobbe seg gjennom avsnittene, bit for bit, i ditt eget tempo. Avsnittene tar for seg det grunnleggende i Python, og tingene som gjennomgås her er byggeklossene for det vi skal lage senere i kurset.
 
