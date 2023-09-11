@@ -72,7 +72,7 @@ Hvis du kommer over en skrivefeil eller en formulering som kan gjøres bedre, s�
 2. [Kommandolinjeapplikasjon](kap2/)
 3. [Hente data fra API](kap3/)
 4. [Applikasjon med grafisk brukergrensesnitt (GUI)](kap4/)
-5. [Prosjektapplikasjon](kap5/)
+5. [Prosjektapplikasjon](prosjektapplikasjon/)
 6. [Ekstra - valgfritt innhold](ekstra/)
  
 Kurset er bygd opp slik at et kapittel bygger videre på det man har lært i foregående kapitler.

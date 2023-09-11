@@ -53,13 +53,16 @@ I utdraget over vises det én kanal med ett program, men i filen vil det være f
 
 ## Kom i gang
 
-Start med en tom Python-fil eller ta utgangspunkt i filen [epg.py](/prog-videre/kap2/filer/epg.py). Denne filen inneholder en funksjon som er kjekk å ha til ekstraoppgavene.
+Start med en tom Python-fil eller ta utgangspunkt i filen [epg.py]. Denne filen inneholder en funksjon som er kjekk å ha til ekstraoppgavene.
 
-Kopier filen [epg.json](/prog-videre/kap2/filer/epg.json) til samme mappe som Python-filen over. Dette er filen som vi skal få Python-programmet til å lese og prosessere.
+Kopier filen [epg.json] til samme mappe som Python-filen over. Dette er filen som vi skal få Python-programmet til å lese og prosessere.
+
+[epg.py]: filer/epg.py
+[epg.json]: filer/epg.json
 
 ## Les json fra fil
 
-Bruk det du lærte i del [1](1_lese_fil), [3](3_feilhåndtering) og [4](4_json) til å lese innholdet i `epg.json`som json. I første omgang kan du bare skrive ut innholdet av json-objektet til terminalen som verifikasjon på at filen er lest inn.   
+Bruk det du lærte i del [1](1_lese_fil.md), [3](3_feilhåndtering.md) og [4](4_json.md) til å lese innholdet i `epg.json`som json. I første omgang kan du bare skrive ut innholdet av json-objektet til terminalen som verifikasjon på at filen er lest inn.   
 
 ## Tell opp antall programmer for hver kategori
 
