@@ -29,7 +29,7 @@ Vi kan utvide eksemplet til innholde et underobjekt med egne nøkler og verdier:
     "title": "Der ingen skulle tru at nokon kunne bu",
     "additional_metadata": {
         "category": "3.8.7 Personlig / Livsstil / Familie",
-        "presentation_form": "2.1.4.99 Dokumentarserie",
+        "presentation_format": "2.1.4.99 Dokumentarserie",
         "age_restriction": "A",
         "production_year": 2022
     }
@@ -45,7 +45,7 @@ Videre kan vi f.eks utvide eksemplet til å innholde en liste med verdier:
     "title": "Der ingen skulle tru at nokon kunne bu",
     "additional_metadata": {
         "category": "3.8.7 Personlig / Livsstil / Familie",
-        "presentation_form": "2.1.4.99 Dokumentarserie",
+        "presentation_format": "2.1.4.99 Dokumentarserie",
         "age_restriction": "A",
         "production_year": 2022
     },
@@ -61,7 +61,7 @@ Her er et eksempel hvor et JSON-objekt har en liste med underobjekter (`episodes
     "title": "Der ingen skulle tru at nokon kunne bu",
     "additional_metadata": {
         "category": "3.8.7 Personlig / Livsstil / Familie",
-        "presentation_form": "2.1.4.99 Dokumentarserie",
+        "presentation_format": "2.1.4.99 Dokumentarserie",
         "age_restriction": "A",
         "production_year": 2022
     },
@@ -104,7 +104,24 @@ Og helt til sist, et eksempel på en lengre liste av JSON-objekter. Slik ser det
 ]
 ```
 
-
+✍️ **Oppgave** JSON-eksemplet under inneholder en rekke feil og mangler. Klarer du å rette opp slik formateringen blir korrekt?
+```
+{
+    "id": "43905584095567",
+    "product_code" = "MUHU65100022",
+    "title"; "Nytt på nytt",
+	"medvirkende": (
+		"Bård Tufte Johansen",
+		"Isalill Kolpus,
+		Johan Golden,
+	)
+	"metadata": {
+		"category" "3.5.7.4 Satire".
+		"presentation_format": 2.0.8 "Talkshow",
+		"age_restriction": "9+",
+		"production_year" - 2023,
+	}
+```
 
 I Python får man støtte for JSON gjennom standardbiblioteket `json`. 
 Det er fire funksjoner i dette biblioteket som du kommer til å benytte mye når du arbeider med JSON i Python:  
@@ -217,7 +234,7 @@ with open("data.json", "w", encoding="utf-8") as fil:
     json.dump(product, fil, indent=2)
 ```
 
-Obs! I eksemplet over tar vi høyde for at innholdet i data.json er strukturert som en liste av JSON-objekter
+⚠️ Obs! I eksemplet over tar vi høyde for at innholdet i data.json er strukturert som en liste av JSON-objekter
 
 Resultatet av koden over er at JSON-fila nå ser slik ut.
 ```json
@@ -234,3 +251,5 @@ Resultatet av koden over er at JSON-fila nå ser slik ut.
   }
 ]
 ```
+
+✍️ **Oppgave** Prøv deg frem! Ta utgangpsunkt i JSON-eksemplene nevnt over, eller lag helt nye strukturer, og gjør et forsøk på å både lese og skrive til fil. Klarer du å f.eks. å lese inn en JSON, gjøre endringer og så skrive den til samme eller ny fil?
