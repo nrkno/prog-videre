@@ -8,18 +8,18 @@ Vi skal se på to typer løkker, nemlig for-løkker og while-løkker.
 
 ## for-løkker
 
-For løkker benyttes for det meste for å itere over en gitt samling for å utføre handlinger og operasjoner for hvert enkelt element. Løkka utfører altså én handling for hvert element i lista, uavhengig av hvor mange elementer som finnes i lista.
-Variablen for hvert enkelt element endres ved hver iterasjon, og eksisterer kun i «scopet» til for-løkka. I eksemplet under benytter vi kanal-lista vi tidligere så på, og hvis denne inneholder NRK1, NRK2, og NRK3 vil løkka kjøre tre ganger.
-Ved første iterasjon vil variablen 'kanal' være "nrk1", neste iterasjon "nrk2" og i siste iterasjon "nrk3".
+For-løkker benyttes vanligvis for å itere over en gitt samling for å utføre handlinger og operasjoner for hvert enkelt element. Løkka utfører altså én handling for hvert element i lista, uavhengig av hvor mange elementer som finnes i lista.
+Variabelen for hvert enkelt element endres ved hver iterasjon, og eksisterer kun i «scopet» til for-løkka. I eksemplet under benytter vi kanal-lista vi tidligere så på, og hvis denne inneholder NRK1, NRK2, og NRK3 vil løkka kjøre tre ganger.
+Ved første iterasjon vil variabelen 'kanal' være "nrk1", neste iterasjon "nrk2" og i siste iterasjon "nrk3".
 
-En for for-løkke kan altså definerers slik:
+En for-løkke kan altså defineres slik:
 
 ```python
 for kanal in kanaler:
     print(kanal)                # Gjør noe med elementent, eller utfør andre handlinger
 ```
 
-### Oppgave 1
+### ✍️ Oppgave 1
 Her en liste over alle fornavnene til de andre i avdelingen din. 
 
 ```python
@@ -28,7 +28,7 @@ navneliste = ["Vibeke", "Aisha", "Carlos", "Vibeke", "Lise", "Fatima", "Per", "L
 
 Hvor mange i avdelingen din heter Vibeke? Bruk en for-løkke til å finne det ut.
 
-### Oppgave 2
+### ✍️ Oppgave 2
 Lag en quiz med tre spørsmål. Spørsmålene skal være strukturert i en liste der hvert element skal være en oppslagstabell med èn nøkkel for `spørsmål` og en annen for `svar`. Bruk for-løkka til å iterere over spørsmålene og ta inn svar fra brukeren ved å bruke `input`-funksjonen.
 
 Et spørsmål kan se slik ut:
@@ -81,7 +81,7 @@ while count < 5:
     count += 1
 ```
 
-Her har vi en variable kalt 'count' som har verdien null. Denne verdien benyttes for å definere kriteriet til while-løkka; selve løkka skal altså kjøre helt til verdien til 'count' blir 5. I selve løkka øker vi verdien med en i hver iterasjon.
+Her har vi en variable kalt 'count' som har verdien 0. Denne verdien benyttes for å definere kriteriet til while-løkka; selve løkka skal altså kjøre helt til verdien til 'count' blir 5. I selve løkka øker vi verdien med én i hver iterasjon.
 
 ## Kontrollere løkker ved å bruke break
 Ved å bruke `break` stopper vi utførelsen av løkka. I dette eksempelet lar vi brukeren gjette hvilket år NRK ble grunnlagt. 
@@ -158,9 +158,9 @@ print("Takk for at du spilte!")
 
 Å bruke et flagg på den måte gjør koden mer lesbar ved å klart vise hva som er kriteriet til løkka.
 
-## Oppgave: Interaktiv handleliste
+## ✍️ Oppgave: Interaktiv handleliste
 
-**Mål**: Skriv et program som lar brukeren legge til varer i en handleliste til de bestemmer seg for å avslutte. Når de avslutter, skal programmet skrive handlelisten ut til brukeren.
+**Mål**: Skriv et program som lar brukeren legge til varer i en handleliste til hen bestemmer seg for å avslutte. Når hen avslutter, skal programmet skrive handlelisten ut til brukeren.
 
 **Tips**:
 
