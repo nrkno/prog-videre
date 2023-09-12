@@ -79,43 +79,24 @@ For å hente ut elementer fra en tuppel benytter man indeks:
 print(kanaler[0])
 ```
 
-## Innebygde funksjoner for samlinger
-Python har en rekke innebygde funksjoner som kan benyttes for å utføre diverse handlinger på samlinger.
+✍️ **Oppgave** _Lister og tupler_
 
-Funksjonen `list()` kan benyttes for å lage en liste av f.eks, en streng. Hvert tegn i strengen blir et element i lista.
+Lag følgende liste og tuppel i en Python-fil:
+
 ```python
-kanal = "NRK1"
-kanal_ord_liste = list(kanal)
-print(kanal_ord_liste)
-# ['N', 'R', 'K', '1']
+tv_serier = ["Side om Side", "Nytt på Nytt", "Stjernekamp", "Pørni"]
+podcaster = ("Etikketaten", "Kongerekka", "Oppdatert", "Drivkraft")
 ```
 
-Funksjonen `sorted()` benyttes for å sortere en samling bestående av tall
-```python
-episoder_for_planlegging = [1, 2, 8, 5, 10, 4, 22, 11]
-sorterte_episoder = sorted(episoder_for_planlegging)
-print(sorterte_episoder)
-# [1, 2, 4, 5, 8, 10, 11, 22]
-```
+Bruk det du har lært om lister til å:
+* Slette _Nytt på nytt_ ved bruke `del` med riktig indeks
+* Slette _Stjernekamp_ ved å bruke `remove`
+* Legge til en ny serie i først i lista
+* Legge til en ny serie til sist i lista
 
-Funksjonen `reversed()` benyttes for å reversere en gitt sekvens eller samling
-```python
-episoder_for_planlegging = [1, 2, 8, 5, 10, 4, 22, 11]
-episoder_for_planlegging.reverse()
-print(episoder_for_planlegging)
-# [11, 22, 4, 10, 5, 8, 2, 1]
-```
+Skriv ut lista underveis så du vet hva lista inneholder mellom hvert steg.
 
-Funksjonene `min()`, `max()` og `len()` returnerer henholdsvis den minste og største tilfellet i en samling, og lengden av samlingen.
-```python
-episoder_for_planlegging = [1, 2, 8, 5, 10, 4, 22, 11]
-print(min(episoder_for_planlegging))
-print(max(episoder_for_planlegging))
-print(len(episoder_for_planlegging))
-# 1
-# 22
-# 8
-```
+Prøv å slette eller en legge til en podcast i tuppelen med podcaster. Hva skjer? Hvorfor?
 
 ## Oppslagstabeller
 
@@ -179,5 +160,78 @@ del kanaler["nrk3"]
 
 ⚠️ Samlinger kan inneholder andre samlinger! Man kan altså ha en liste av lister, eller oppslagstabeller som inneholder oppslagstabeller. Dette kalles å «neste» - man får da nestede lister eller nestede oppslagstabeller.
 
-✍️ **Oppgave** Lag en oppslagstabell hvor hver verdi er en annen samling. Du bestemmer selv hva slags nøkler og samlinger du benytter.
-F.eks. kan man ta utganspunkt i eksemplene over hvor kanal er nøkkel - kanskje verdiene kan være en liste av tv-programmer som sendes på kanalene?
+✍️ **Oppgave** Lag en oppslagstabell der hver verdi er en annen samling. Du bestemmer selv hva slags nøkler og samlinger du benytter.
+F.eks. kan man ta utgangspunkt i eksemplene over der kanal er nøkkel - kanskje verdiene kan være en liste av tv-programmer som sendes på kanalene?
+
+## Innebygde funksjoner for samlinger
+Python har en rekke innebygde funksjoner som kan benyttes for å utføre diverse handlinger på samlinger. Det er verdt å merke seg at en streng også er en type samling, så de fleste av funksjonene under fungerer også for strenger.
+
+Funksjonen `list()` kan benyttes for å lage en liste av f.eks, en streng. Hvert tegn i strengen blir et element i lista.
+```python
+kanal = "NRK1"
+kanal_ord_liste = list(kanal)
+print(kanal_ord_liste)
+# ['N', 'R', 'K', '1']
+```
+
+Funksjonen `sorted()` benyttes for å sortere en samling, for eksempel en liste av tall eller strenger.
+```python
+episoder_for_planlegging = [1, 2, 8, 5, 10, 4, 22, 11]
+sorterte_episoder = sorted(episoder_for_planlegging)
+print(sorterte_episoder)
+# [1, 2, 4, 5, 8, 10, 11, 22]
+```
+
+Funksjonen `reversed()` benyttes for å reversere en gitt sekvens eller samling
+```python
+episoder_for_planlegging = [1, 2, 8, 5, 10, 4, 22, 11]
+episoder_for_planlegging.reverse()
+print(episoder_for_planlegging)
+# [11, 22, 4, 10, 5, 8, 2, 1]
+```
+
+Funksjonene `min()`, `max()` og `len()` returnerer henholdsvis den minste og største tilfellet i en samling, og lengden av samlingen.
+```python
+episoder_for_planlegging = [1, 2, 8, 5, 10, 4, 22, 11]
+print(min(episoder_for_planlegging))
+print(max(episoder_for_planlegging))
+print(len(episoder_for_planlegging))
+# 1
+# 22
+# 8
+```
+
+✍️ **Oppgave** Samle inn postnumrene til de som sitter rundt deg, og legg de inn i en samling. Bruk `min` og `max` til å finne høyeste og laveste postnummer.
+
+For å vite om et element er inneholdt i en samling kan man bruke `in`, vi skal se at dette nøkkelordet vil være nyttig i flere sammenhenger, blant annet når vi kommer til løkker.
+
+```python
+tv_serier = ["Side om Side", "Nytt på Nytt", "Stjernekamp", "Pørni"]
+inneholder_pompel_og_pilt= "Pompel og Pilt" in tv_serier
+print(inneholder_pompel_og_pilt)
+```
+
+✍️ **Oppgave** Bruk `in` til å teste ut om `Pørni` er del av lista `tv_serier`. Hva med `pørni`?
+
+Vi har alt sett at man kan hente ut et bestemt element på en gitt indeks, for eksempel vil `tv_serier[1]` gi `Side om Side`. Python har også veldig nyttig funksjonalitet for å hente ut en del av en samling med det som kalles "slicing" på godt norsk. Prinsippet er at man i stedet for `tv_serier[index]` kan angi flere ting i klammeparentesene, `tv_serier[start:stopp:steg]`. Start er indeksen man vil starte fra, stopp er indeksen man vi slutte ved, merk at selve stopp indeksen ikke er inkludert. Steg lar deg justere om du vil ha hvert element fra start til stopp, annethvert element, hvert tredje element etc. Default-verdien på steg er 1, så steg angis ikke med mindre man skal ha noe annet enn 1. 
+
+La oss se på et eksempel med en streng, det vil fungere tilsvarende for andre samlinger. Unntaket er oppslagstabeller som ikke støtter oppsplitting på denne måten.
+
+```python
+nrk_plakat_paragraf_12 = "NRK skal ha som formål å oppfylle demokratiske, sosiale og kulturelle behov i samfunnet."
+```
+
+Eksperimenter med linjene under, og se hva som skrives ut om du justerer på indeksene.
+
+```python
+print(f"'{nrk_plakat_paragraf_12[16:22]}'") # Henter ut elementer fra og med indeks 16 til, men uten, indeks 22, skriver ut "formål"
+print(f"'{nrk_plakat_paragraf_12[:3]}'") # Hvis man vi hente elementer fra starten kan man droppe å skrive 0, [:3] er det samme som [0:3], skriver ut NRK
+print(f"'{nrk_plakat_paragraf_12[78:]}'") # Det samme gjelder for slutten, hvis du vil ha med alle elementer på slutten trenger man ikke ha med sluttindeksen. Skriver ut "samfunnet."
+print(f"'{nrk_plakat_paragraf_12[-10:]}'") # Det er upraktisk å telle helt til indeks 78. Ved å bruke negativ index i starten får man de x siste elementene, i dette tilfellet de 10 siste bokstavene. "samfunnet." skrives ut
+print(f"'{nrk_plakat_paragraf_12[:-10]}'") # Hvis man har negativ indeks i slutten vil man ikke skrive ut de x siste tegnene. Her skrives alt unntatt "samfunnet." ut.
+```
+
+✍️ **Oppgave** Ta utgangspunkt i lista `tall`, og bruk slicing til å lage listene `partall` og `oddetall`, som skal inneholde henholdsvis bare partallene og oddetallene fra `tall`.
+```python
+tall = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+```
