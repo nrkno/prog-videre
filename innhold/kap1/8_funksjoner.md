@@ -14,7 +14,7 @@ Funksjoner i programmering ligner mistenkelig på funksjoner man lærte om i mat
 
 I programmering brukes funksjoner til å abstrahere vekk detaljer slik at man i lange programmer ikke behøver å forholde seg til alle ting hele tiden. I stedet kan man dele koden opp mindre deler, funksjoner, og man trenger bare å  vite navnet på funksjonen og verdiene den eventuelt trenger som input, på det stedet der man vi bruke funksjonen. Det er litt på samme måte som i en matoppskrift, det er ikke alle detaljer som forklares hele tiden. Om det for eksempel står "kok opp 2 liter vann" i oppskriften er det vanligvis ikke forklart hvordan man koker vann.
 
-Funksjoner gjør også at man ikke trenger å gjenta kodelinjer som skal gjøre (neste) det samme. Det er bedre å ha denne samme funksjonaliteten ett sted i koden. Da er det bare ett sted det er nødvendig å forsikre seg om at funksjonaliteten er kodet riktig, og om man trenger å endre funksjonaliteten senere en gang, er det bare ett sted man trenger å oppdatere.
+Funksjoner gjør også at man ikke trenger å gjenta kodelinjer som skal gjøre (nesten) det samme. Det er bedre å ha denne samme funksjonaliteten ett sted i koden. Da er det bare ett sted man må forsikre seg om at funksjonaliteten er kodet riktig, og om man trenger å endre funksjonaliteten senere en gang, er det bare ett sted man trenger å oppdatere.
 
 ## Funksjoner i Python
 
@@ -27,7 +27,7 @@ def lag_hilsen(navn):
 ```
 Første linje i funksjonen består av nøkkelordet `def` som angir at definisjonen av funksjonen starter her. Teksten som kommer etterpå er navnet på selve funksjonen, deretter kommer parametrene inni parentesen, før linja avsluttes med `:`. Hvis funksjonen ikke skal ta inn noen verdier er det tomt mellom parentesene `()`, hvis funksjonen har flere parametre er de separert med med komma `(fornavn, etternavn)`. Parametrene brukes som variable inni funksjonen og en parameter vil inneholde verdien som angis når man bruker funksjonen, det som sendes inn som argument til funksjonen.
 
-Selve innholdet i funksjonen kommer på linja etter `:`, og alt som skal være inni funksjonen må ha et innrykk. Til sist i funksjonen returneres verdien man vi ha tilbake fra funksjonen ved å skrive `return` etterfulgt av det man vil returnere. Funksjoner i Python må ikke ha en eksplisitt returverdi, om det ikke er noen linje med `return` til slutt, vil funksjonen implisitt returnere verdien `None`.
+Selve innholdet i funksjonen kommer på linja etter `:`, og alt som skal være inni funksjonen må ha et innrykk. Til sist i funksjonen returneres verdien man vi ha tilbake fra funksjonen ved å skrive `return` etterfulgt av det man vil returnere. Funksjoner i Python må ikke ha en eksplisitt returverdi. Om det ikke er noen linje med `return` til slutt, vil funksjonen implisitt returnere verdien `None`.
 
 Lag en ny Python-fil, f.eks med navn `funksjoner.py`, og kopier funksjonen over inn i fila. Deretter kan du i fila kalle funksjonen og lagre resultatet i en variabel, og så printe resultatet:
 
@@ -36,9 +36,9 @@ hilsen = lag_hilsen("Jens")
 print(hilsen)
 ```
 
-Bytt ut navnet med ditt eget navn, og prøve å kalle funksjonen flere ganger med forskjellige navn. 
+Test ut å kalle funksjonen med ditt eget navn og skriv ut hilsenen til deg selv.
 
-Når man skal sende inn argument til en funksjon kan man eksplitt navngi parameteren. Det er spesielt nyttig når man har flere argumenter, så man er sikker på at riktig parameter får riktig verdi. I eksempelet kan man derfor skrive:
+Når man skal sende inn argument til en funksjon kan man eksplisitt navngi parameteren. Det er spesielt nyttig når man har flere argumenter, så man er sikker på at riktig parameter får riktig verdi. I eksempelet kan man derfor skrive:
 
 ```python
 hilsen = lag_hilsen(navn = "Jens")
@@ -46,7 +46,7 @@ hilsen = lag_hilsen(navn = "Jens")
 
 I eksempelet er  `navn` parameter og `Jens` argument for funksjonen `lag_hilsen`.
 
-Test å legge til eller endre noe i funksjonen du har i skriptet. Klarer du å endre funksjonen så programmet feiler når du kjører det? Hvorfor feiler det?
+✍️ **Oppgave:**  Test å legge til eller endre noe i funksjonen du har i skriptet. Klarer du å endre funksjonen så programmet feiler når du kjører det? Hvorfor feiler det?
 
 ✍️ **Oppgave:** _Lag en funksjon som skriver ut hjelp til terminalen_
 
