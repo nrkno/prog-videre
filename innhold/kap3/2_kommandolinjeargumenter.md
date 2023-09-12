@@ -564,7 +564,7 @@ kurs $> poetry run python les_fil_click_v5.py ksjefer.txt --min-length 19 --numb
 ```
 
 
-### Andre ting du kan gjøre med Click
+## Andre ting du kan gjøre med Click
 
 Når du får et nytt verktøy i hendene frister det kanskje ikke å slå opp bruksanvisningen,
 men når det gjelder programvarepakker så kan dokumentasjonen være vel verdt et besøk.
@@ -582,9 +582,67 @@ Sjekk ut [den offisielle dokumentasjone til Click][click] for å oppdage mange f
 Click kan altså hjelpe til med flere aspekter av CLI enn bare kommandolinjeargumenter.
 
 
+### Be om bekreftelse med Click
+
+I [delkapittel 1.5 om `input()`](../kap1/5_input.md) brukte vi «Vil du fortsette?»-spørsmål som et eksempel på `input()`.
+Etter mye knoting fikk vi på plass funksjonalitet for å ha en forvalgt verdi og akseptere ulike ja/nei-svar,
+men du kan få den samme funksjonaliteten med [Click sin funksjon `click.confirm()`][doc-click.confirm].
+
+Her er et eksempel på et program som lager tomme filer for deg.
+Hvis ei fil finnes fra før, vil programmet spørre deg før det overskriver fila:
+
+```python
+# lag_tomme_filer.py
+{{#include kodeeksempler/2/lag_tomme_filer.py}}
+```
+
+Forklaring:
+* Med `nargs=-1` i `click.argument()` forteller vi Click at vi tar i mot så mange filnavn som brukeren vil gi oss.
+  Det kan være ingen, én, to, eller mange titalls filnavn.
+  Funksjonsargumentet `filnavn` vil som en konsekvens alltid være ei liste, i dette tilfellet ei liste med strenger.
+* `os.path.exists(filnavn)` returnerer `True` hvis `filnavn` finnes, `False` hvis ikke.
+* Når vi kommer til linja `if not click.confirm(prompt, default=True)` vil skriptet vårt settes på pause mens vi venter på svar fra brukeren.
+  Click bruker nemlig `input()` under panseret.
+* Vi bruker `default=True` eller `default=False` for å bestemme hvilket svar vi skal anta hvis brukeren trykker `[ENTER]` uten å skrive noe.
+  Hvilket valg som er forvalgt kommuniseres til brukeren ved at bokstaven er majuskel.
+* For å lage en tom fil holder det å åpne den i skrivemodus (`w`).
+  Da blir fila gjort tom.
+  Siden vi ikke skriver noe til fila, blir den bare værende tom.
+
+Eksempel på kjøring:
+
+```shell
+kurs $> poetry run python lag_tomme_filer.py ksjefer.txt tom_fil.txt
+ksjefer.txt finnes fra før. Vil du slette innholdet i fila? [Y/n]: n
+Hopper over ksjefer.txt
+```
+
+Hvis du vil spørre brukeren om hen vil fortsette, og avbryte programmet hvis ikke, så har Click lagd en svarvei for deg.
+Du kan nemlig legge til `abort=True` i argumentlista til `click.confirm()`:
+
+```python
+# fortsette_click.py
+{{#include kodeeksempler/2/fortsette_click.py}}
+```
+Eksempel på kjøring:
+
+```shell
+kurs $> poetry run python fortsette_click.py
+Alle filene vil bli slettet!!
+Vil du fortsette? [y/N]:
+Aborted!
+kurs $> poetry run python fortsette_click.py
+Alle filene vil bli slettet!!
+Vil du fortsette? [y/N]: y
+Dett var dett. Alle filene er slettet.
+```
+
+Grunnen til at vi ikke brukte `abort=True` i det forrige eksemplet, er at du avbryter hele kjøringa og ikke får fortsatt med neste fil.
+
+
 ## ✍️ Oppgaver
 
-1. _Kan du legge til et nytt tilvalg i det siste eksemplet ovenfor? 
+1. _Kan du legge til et nytt tilvalg i det siste `les_fil_click_v5`-eksemplet ovenfor? 
    For eksempel et som lar brukeren spesifisere en melding som skal skrives til terminalen helt i starten,
    før vi begynner å lese fra fila._
 
@@ -651,4 +709,5 @@ som for eksempel å gi brukeren tilbakemelding om hvordan det går, og så vider
 [doc-glossary.docstring]: https://docs.python.org/3/glossary.html#term-docstring
 [doc-click.option]: https://click.palletsprojects.com/en/8.1.x/options/
 [doc-click.argument]: https://click.palletsprojects.com/en/8.1.x/arguments/
+[doc-click.confirm]: https://click.palletsprojects.com/en/8.1.x/api/#click.confirm
 [docs-builtins.enumerate]: https://docs.python.org/3/library/functions.html#enumerate
