@@ -34,5 +34,7 @@
 
 - [Prosjektoppgave](prosjektoppgave/README.md)
 
-- [Ekstra: valgfritt innhold](ekstra/README.md)
+---
+
+- [Ekstra: Valgfritt innhold](ekstra/README.md)
   - [Terminalen](ekstra/terminal.md)
