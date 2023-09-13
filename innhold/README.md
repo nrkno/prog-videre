@@ -78,3 +78,14 @@ Hvis du kommer over en skrivefeil eller en formulering som kan gjøres bedre, s�
 Kurset er bygd opp slik at en del bygger videre på det man har lært i foregående delene.
 
 Del 1 er en oppfriskning av grunnleggende Python, så om du allerede har dette i fingrene, kan du gå rett videre til del 2.
+
+
+## Bakgrunn
+
+Denne nettsida utgjør kursmateriellet til et programmeringskurs som er laget av NRK-ansatte, med andre NRK-ansatte som målgruppe.
+Derfor bruker vi eksempler som vil være gjenkjennelige for folk i NRK, som for eksempel TV- og radioguiden.
+Når nettsida likevel er publisert åpent på internett, skyldes det at vi tror det kan være av nytte også for andre utenfor NRK.
+
+Merk at kurset i blant bruker NRK sine interne API-er som eksempler på datakilder.
+Du må selv sette deg inn i hvilke vilkår som gjelder for ulike datakilder.
+For eksempel så har `psapi.nrk.no` vilkår som ligger på [https://psapi.nrk.no/](https://psapi.nrk.no/).
