@@ -97,7 +97,7 @@ Variabler
 ---------
 Når man programmerer, skiller man gjerne mellom variabler og verdier. Verdier er ofte det som representerer data i et program, og er gjerne noe spesifikt, som tallet `3`, eller teksten `"hei alle sammen"`. Når vi lærte om tall i seksjonen over, var alle tallene vi brukte eksempel på verdier.
 
-Variabler lar oss gi verdier et navn. Ved å gi verdier navn, kan vi bedre kommunisere hva en verdi representerer. Med variabler kan vi skrive kode som regner med `antall_epler` og `antall_appelsiner`, i stede for tall som `3` og `5`. Da slipper vi å huske hva hvert tall representerer.
+Variabler lar oss gi verdier et navn. Ved å gi verdier navn, kan vi bedre kommunisere hva en verdi representerer. Med variabler kan vi skrive kode som regner med `antall_epler` og `antall_appelsiner`, i stedet for tall som `3` og `5`. Da slipper vi å huske hva hvert tall representerer.
 
 Variabler gir oss også muligheten til å skrive kode som fungerer for mange forskjellige verdier. Man kan f.eks. lage to variabler, `et_tall` og `et_annet_tall`, som inneholder to tallverdier som en bruker har skrevet inn. Så kan man bruke disse variablene til å printe ut summen av tallene med `print(et_tall + et_annet_tall)`. Denne koden vil da fungere uansett hvilke tall brukeren har skrevet inn.
 
