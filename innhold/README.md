@@ -84,7 +84,7 @@ Del 1 er en oppfriskning av grunnleggende Python, så om du allerede har dette i
 
 Denne nettsida utgjør kursmateriellet til et programmeringskurs som er laget av NRK-ansatte, med andre NRK-ansatte som målgruppe.
 Derfor bruker vi eksempler som vil være gjenkjennelige for folk i NRK, som for eksempel TV- og radioguiden.
-Når nettsida likevel er publisert åpent på internett, skyldes det at vi tror det kan være av nytte også for andre utenfor NRK.
+Når nettsida likevel er publisert åpent på internett, skyldes det at vi tror den kan være av nytte også for andre utenfor NRK.
 
 Merk at kurset i blant bruker NRK sine interne API-er som eksempler på datakilder.
 Du må selv sette deg inn i hvilke vilkår som gjelder for ulike datakilder.

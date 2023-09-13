@@ -193,6 +193,13 @@ Oi, dette gikk visst ikke så bra.
 Det eneste som ble konvertert til `False` var en tom streng.
 Hva er det som skjer?
 
+✍️ **Oppgave:**
+_Åpne en interaktiv Python-sesjon ved å kjøre `python` uten noe filnavn etter.
+Klarer du finne et mønster i hvordan strenger blir konvertert til en boolsk verdi før du leser fasiten nedenfor?_
+
+
+#### Hvordan blir strenger konvertert til boolske verdier?
+
 Alle objekter har en implisitt boolsk verdi,
 med ulike regler for ulike typer.
 For strenger så er denne implisitte boolske verdien `True`,
@@ -203,28 +210,32 @@ får du den implisitte verdien til objektet som du sender inn.
 Derfor blir `"False"` tolket til `True`:
 Det er en ikke-tom streng, så da er den `True`.
 
+
 ### Eksempel på problemløsing: Tolke ja/nei-svar
 
 Hvis vi skal få til å tolke svaret på ja/nei-spørsmål,
 må vi i grunn gjøre en god del arbeid.
 La oss starte med å lage en liste med krav:
 
-* `"y"`, `"Y"`, `"Yes"` og `"yes"` skal tolkes som `True`
-* `"n"`, `"N"`, `"No"` og `"no"` skal tolkes som `False`
-* Hvis du bare trykker `[ENTER]` skal du bruke en forvalgt verdi
+1. Programmet skal spørre brukeren om hen vil fortsette.
+2. Brukeren sitt svar skal gjøres om til en boolsk verdi på denne måten:
 
-Dette er ganske mange krav...
-I stedet for å skulle løse alt på én gang,
-er det enklere å bare starte med én bit.
-La oss starte med å bare godta `"y"` for `True`, og anta alt annet som `False`.
+   * `"y"`, `"Y"`, `"Yes"` og `"yes"` skal tolkes som `True`
+   * `"n"`, `"N"`, `"No"` og `"no"` skal tolkes som `False`
+   * Hvis du bare trykker `[ENTER]` skal du bruke en forvalgt verdi, her `True`
 
-#### Runde 1: Godta kun y som «ja»
+3. Programmet skal skrive den boolske verdien til terminalen.
+
+
+#### Først: La oss lage oss et skjelett
+
+Fokuset vårt er på krav 2 ovenfor, men la oss lage alt «rundt» først:
 
 ```python
-# input_ja_nei_v1.py
+# input_ja_nei_v0.py
 print("La oss late som at programmet ønsker å opprette ei fil.")
 vil_fortsette = input("Vil du fortsette (Y/n)? ")
-vil_fortsette_tolket = vil_fortsette == "y"
+vil_fortsette_tolket = vil_fortsette  # TODO: Må konvertere til bool
 print(f"{vil_fortsette_tolket=}")
 ```
 
@@ -246,7 +257,34 @@ f"{vil_fortsette_tolket=}"
 
 Dette er en snarvei som vil vise _både_ uttrykket du har brukt _og_
 resultatet av uttrykket.
-For eksempel vil det stå `vil_fortsette_tolket=True` hvis du svarte `y`.
+For eksempel vil det stå `vil_fortsette_tolket=True` hvis `vil_fortsette_tolket` er `True`.
+
+
+#### ✍️ Vil du prøve selv?
+
+Skriv av `input_ja_nei_v0.py` ovenfor.
+
+Har du lyst til å prøve deg på å endre definisjonen av `vil_fortsette_tolket` sånn at den blir `True` eller `False` etter reglene ovenfor?
+Du kan for eksempel starte med én regel og se at den blir riktig, før du prøver deg på neste regel – likt hvordan du løser én side av en Rubiks kube først.
+
+Hvis du merker at du er litt lite inspirert akkurat nå, kan du bare hoppe over oppgaven – resten av dette kapitlet er dedikert til hvordan den kan løses.
+
+
+#### Runde 1: Godta kun y som «ja»
+
+Kravlista ovenfor er ganske lang…
+I stedet for å skulle løse alt på én gang,
+er det enklere å bare starte med én bit.
+La oss starte med å bare godta `"y"` for `True`, og anta alt annet som `False`.
+
+```python
+# input_ja_nei_v1.py
+print("La oss late som at programmet ønsker å opprette ei fil.")
+vil_fortsette = input("Vil du fortsette (Y/n)? ")
+vil_fortsette_tolket = vil_fortsette == "y"
+print(f"{vil_fortsette_tolket=}")
+```
+
 
 Hvis du prøvekjører dette programmet i terminalen,
 vil du fort nok oppdage tre feil:
