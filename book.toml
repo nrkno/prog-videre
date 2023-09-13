@@ -22,7 +22,7 @@ edit-url-template = "https://github.com/nrkno/prog-videre/edit/main/{path}"
 additional-js = ["mermaid.min.js", "mermaid-init.js"]
 
 [output.html.fold]
-enable = true
+enable = false
 
 [output.linkcheck]
 follow-web-links = true
