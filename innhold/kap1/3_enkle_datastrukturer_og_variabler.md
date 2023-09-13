@@ -39,7 +39,7 @@ Python har flere innebygde funksjoner for å regne med tall:
 
 I motsetning til funksjonene vi har blitt kjent med fra før, skriver man de vanligste matematiske funksjonene mellom de to tallene man regner på. Dette er forskjellig fra hvordan man bruker funksjoner ellers i Python, men er noe man har gjort for at matematiske uttrykk skal ligne mer på det man er vant til fra annen matematikk.
 
-Funksjonene over fungerer både med heltall og flyttall, og returnerer heltall eller flyttall, avhengig om svaret på utregningen er et desimaltall, eller om man brukte et flyttall for å regne ut svaret.
+Funksjonene over fungerer både med heltall og flyttall, og returnerer heltall eller flyttall, avhengig av om svaret på utregningen er et desimaltall, eller om man brukte et flyttall for å regne ut svaret.
 
 ✍️ **Oppgave:** _Kan du skrive litt kode i `datastrukturer.py` som bruker de fire innebygde matematiske funksjonene over?_
 
