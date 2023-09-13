@@ -176,7 +176,7 @@ Selv om det kan være nyttig å endre verdien til en variabel, kan det også væ
 1. Hvis det ikke er en spesiell grunn til å endre verdien på en variabel, bruk heller to eller flere variabler.
 2. Hvis man må endre på verdien til en variabel, forsøk å skriv koden sånn at man ikke trenger å endre på hvilken type verdi variabelen inneholder.
 
-_**Tips:** Alle regler er til for å brytes, og reglene over er intet unntak. Det finnes mange tilfeller hvor det kan være nyttig å endre verdien til en variabel, og du kommer til å støte på flere eksempler på kode som gjøre det i dette kurset._
+_**Tips:** Alle regler er til for å brytes, og reglene over er intet unntak. Det finnes mange tilfeller hvor det kan være nyttig å endre verdien til en variabel, og du kommer til å støte på flere eksempler på kode som gjør det i dette kurset._
 
 #### Når det ikke lenger er behov for en variabel
 Python er et eksempel på et programmeringsspråk hvor man i liten grad trenger å skrive kode som forteller programmet at det ikke lenger er behov for en variabel. Dette klarer Python i stor grad å finne ut selv.
@@ -189,7 +189,7 @@ I senere kapitler, kommer du også til å bli kjent med Python-kode hvor man for
 
 Strenger
 --------
-Skal man jobbe med tekst, er [strenger](https://docs.python.org/3/library/string.html) en fin datastruktur. Kort forklart er en streng en sekvens av tegn (bokstaver eller andre skrifttegn som punktum og komma).
+Skal man jobbe med tekst, er [strenger](https://docs.python.org/3/library/string.html) en fin datastruktur. Kort forklart er en streng en sekvens av tegn (bokstaver, tall eller andre skrifttegn som punktum og komma).
 
 Den enkleste måten å lage en streng på, er ofte å bruke anførselstegn (`"`) eller apostrof (`'`):
 
