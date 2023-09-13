@@ -149,7 +149,7 @@ kanaler["nrk super"] = "1. desember 2007"
 For å modifisere et bestemt element benytter man også nøkkelen og gir den en ny verdi:
 
 ```python
-kanaler["nrk"] = "13. mai 1843" # Historieforfalskning...?
+kanaler["nrk3"] = "13. mai 1843" # Historieforfalskning...?
 ```
 
 For å slette et element benytter man, ja du gjetter riktig, nøkkelen:
