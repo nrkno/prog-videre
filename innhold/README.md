@@ -89,3 +89,14 @@ Når nettsida likevel er publisert åpent på internett, skyldes det at vi tror 
 Merk at kurset i blant bruker NRK sine interne API-er som eksempler på datakilder.
 Du må selv sette deg inn i hvilke vilkår som gjelder for ulike datakilder.
 For eksempel så har `psapi.nrk.no` vilkår som ligger på [https://psapi.nrk.no/](https://psapi.nrk.no/).
+
+
+## Menneskene bak
+
+Dette kursmateriellet er skrevet av:
+
+* Heidi Mork
+* Matias Pettersen
+* Per Edvard Volla
+* Teodor Ande Elstad
+* Thorben Werner Sjøstrøm Dahl
