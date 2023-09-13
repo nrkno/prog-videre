@@ -14,7 +14,7 @@ Er du allerede komfortabel med et tema så kan du bare hoppe forbi det.
 
 I dette kurset skal du bruke programmeringsspråket Python til å lage små applikasjoner. Derfor trenger du et par verktøy for å komme i gang:
 
-1. Installere Python (&ge; 3.10) ved å følge instruksjonene på [python.org][python-nedlasting].
+1. Installere Python (&ge; 3.8) ved å følge instruksjonene på [python.org][python-nedlasting] eller ved å bruke programvarekiosken (FileWave).
 2. Installere et verktøy som kan brukes til å skrive Python-kode.
    Om du ikke har noen preferanser anbefaler vi [VS Code][vs-code],
    med [Python-plugin][vs-code-python-plugin] installert.
