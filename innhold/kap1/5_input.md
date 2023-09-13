@@ -427,7 +427,7 @@ Det er en ganske åpenbar bit som mangler i eksemplet vi har bygd ut her:
 Det spiller ingen rolle om du svarer ja eller nei.
 Det vil så klart skrives ulike ting til terminalen,
 men programmet vil utføre de samme instruksjonene uansett hva du svarer.
-Hvordan kan programmet gjøre ulike ting, avhengig av hva du svarer?
+I neste kapittel skal vi se på hvordan programmet kan gjøre ulike ting avhengig av hva du svarer.
 
 [doc-input]: https://docs.python.org/3/library/functions.html#input
 [doc-int-funk]: https://docs.python.org/3/library/functions.html#int
