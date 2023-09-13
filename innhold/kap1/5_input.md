@@ -1,7 +1,7 @@
 Input
 =====
 
-**💡 Læringsmål:** _I dette avsnittet vil du lære å ta inn data fra brukeren._
+**💡 Læringsmål:** _I dette kapitlet vil du lære å ta inn data fra brukeren._
 
 Fram til nå har vi skrevet tekst fra programmet til terminalen.
 Men hvis du har villet endre hvilke verdier programmet ditt opererte på,

@@ -1,7 +1,7 @@
 Vi leser data fra en fil
 ========================
 
-**💡 Læringsmål:** _I dette avsnittet lærer du hvordan du leser data fra en fil._
+**💡 Læringsmål:** _I dette kapitlet lærer du hvordan du leser data fra en fil._
 
 
 Vi skal starte med å se på hvordan vi kan lese fra fil, som på mange måter er nyttig. Lag deg en `.py`-fil som du vil skrive programmet ditt i, og kopier fila [serier.txt](filer/serier.txt) til samme mappe som Python-filen.

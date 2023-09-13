@@ -121,7 +121,7 @@ Din versjon vil sannsynligvis være nyere enn 1.3.1 som er vist ovenfor, men det
 
 Før du kan begynne å installere pakker, må du sette opp et _Python-prosjekt_.
 Et Python-prosjekt er ei mappe med Python-filer som utgjør en logisk enhet.
-EPG-innleseren fra forrige kapittel er et typisk eksempel på et Python-prosjekt,
+[EPG-innleseren fra del 2](../kap2/5_oppgave.md) er et typisk eksempel på et Python-prosjekt,
 og hvis du skulle lagd en tale-til-tekst-tjeneste så ville den vært et annet Python-prosjekt.
 
 Alle Python-filene i et Python-prosjekt deler de samme avhengighetene.

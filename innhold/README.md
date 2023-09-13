@@ -30,13 +30,13 @@ I dette kurset skal du bruke programmeringsspråket Python til å lage små appl
 
 ### Navigering
 
-Kursmateriellet er delt opp i _kapitler_, som igjen er delt opp i _underkapitler_.
-Du kan hoppe rett til et kapittel eller underkapittel ved å trykke på det i venstremenyen.
+Kursmateriellet er delt opp i _kapitler_, som vi har organisert i ulike _deler_.
+Du kan hoppe rett til et kapittel ved å trykke på det i venstremenyen.
 
 Venstremenyen er vanligvis skjult på mobil og når du har et smalt nettleservindu.
 Du kan åpne eller lukke menyen ved å trykke på meny-ikonet <i class="fa fa-bars"></i> i det øvre, venstre hjørnet.
 
-Du kan enkelt bla til forrige eller neste del av kurset ved å bruke venstre- eller høyrepila.
+Du kan enkelt bla til forrige eller neste kapittel ved å bruke venstre- eller høyrepila.
 Du kan enten trykke på dem mot kanten av nettsida (eller i bunnen hvis du har et smalt nettleservindu), eller du kan bruke piltastene på tastaturet til å bla.
 
 
@@ -75,6 +75,6 @@ Hvis du kommer over en skrivefeil eller en formulering som kan gjøres bedre, s�
 5. [Prosjektoppgave](prosjektoppgave/)
 6. [Ekstra - valgfritt innhold](ekstra/)
  
-Kurset er bygd opp slik at et kapittel bygger videre på det man har lært i foregående kapitler.
+Kurset er bygd opp slik at en del bygger videre på det man har lært i foregående delene.
 
-Det første kapittelet er en oppfriskning av grunnleggende Python, så om du allerede har dette i fingrene, kan du gå rett videre til kapittel 2.
+Del 1 er en oppfriskning av grunnleggende Python, så om du allerede har dette i fingrene, kan du gå rett videre til del 2.

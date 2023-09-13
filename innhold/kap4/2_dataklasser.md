@@ -1,5 +1,5 @@
 # Dataklasser
-**Data Classes**, også kalt dataklasser er relativt ny, innebygd funksjonalitet i Python som gjør det lettere og sikrere å definere klasser. Færre kodelinjer, med samme funksjonalitet. Her får man mye av de objektorienterte funksjonene fra forrige avsnitt ut av boksen. init, repr og eq. En annen viktig fordel med dataklasser er bruk av typer i klassedeklareringen slik at det er enklere å jobbe med dataene i klassen når man vet hva den forventer.
+**Data Classes**, også kalt dataklasser er relativt ny, innebygd funksjonalitet i Python som gjør det lettere og sikrere å definere klasser. Færre kodelinjer, med samme funksjonalitet. Her får man mye av de objektorienterte funksjonene fra forrige kapittel ut av boksen. init, repr og eq. En annen viktig fordel med dataklasser er bruk av typer i klassedeklareringen slik at det er enklere å jobbe med dataene i klassen når man vet hva den forventer.
 
 For å bruke denne innebygde funksjonaliteten så må man bruke en dekoratør. Kort fortalt er dekoratører et verktøy som lar oss utvide oppførselen til en funksjon eller klasse uten å endre selve funskjonen eller klassen permanent. Les mer om dekoratører [her](https://docs.python.org/3/glossary.html#term-decorator).
 

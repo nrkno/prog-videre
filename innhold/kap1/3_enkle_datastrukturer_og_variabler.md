@@ -1,10 +1,10 @@
 Enkle datastrukturer og variabler
 =================================
-**💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke enkle datastrukturer som tall, tekst og boolske verdier. I tillegg skal vi se litt på variabler._
+**💡 Læringsmål:** _I dette kapitlet skal du lære deg å bruke enkle datastrukturer som tall, tekst og boolske verdier. I tillegg skal vi se litt på variabler._
 
 Når vi snakker om datastrukturer, snakker vi i grove trekk om mekanismene vi bruker for å organiserer data i et dataprogram. Ofte skiller vi mellom enkle datastrukturer, som typisk er bygget inn i programmeringsspråket, og mer avanserte datastrukturer, hvor programmereren selv bygger datastrukturen basert på egendefinerte klasser, objekter og funksjoner.
 
-I dette avsnittet skal vi se på enkle datastrukturer som tall, strenger (tekst) og boolske verdier (sant og falskt). I tillegg skal vi se på variabler, som lar oss referere til dataverdier med navn.
+I dette kapitlet skal vi se på enkle datastrukturer som tall, strenger (tekst) og boolske verdier (sant og falskt). I tillegg skal vi se på variabler, som lar oss referere til dataverdier med navn.
 
 _**Tips:** Når du går gjennom dette kapittelet, kan det være lurt å lage en kodefil som heter `datastrukturer.py` i mappen `kurs/`, og bruke denne til å teste ut de forskjellige kodesnuttene du støter på._
 

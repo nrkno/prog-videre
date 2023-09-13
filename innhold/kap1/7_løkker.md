@@ -1,7 +1,7 @@
 Løkker
 ======
 
-**💡 Læringsmål:** _I dette avsnittet skal du lære deg å bruke løkker for å gjøre ting flere ganger._
+**💡 Læringsmål:** _I dette kapitlet skal du lære deg å bruke løkker for å gjøre ting flere ganger._
 
 Løkker lar deg gjøre handlinger og operasjoner flere ganger, for eksempel ved å itere over alle elementene i en samling og slette elementene som matcher et spesifikt kriterie.
 Vi skal se på to typer løkker, nemlig for-løkker og while-løkker.

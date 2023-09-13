@@ -1,5 +1,5 @@
 # Objektorientert programmering i Python
-**💡 Læringsmål:** _I dette avsnittet skal du lære om objektorientert programmering og hvordan du kan skrive dine egne klasser for å binde sammen egenskaper og oppførsel i objekter_
+**💡 Læringsmål:** _I dette kapitlet skal du lære om objektorientert programmering og hvordan du kan skrive dine egne klasser for å binde sammen egenskaper og oppførsel i objekter_
 
 Python er et **objektorientert språk(OOP)**, som betyr at et program er strukturert slik at egenskaper og oppførsel er representert i objekter. Et objekt kan for eksempel representere et menneske med egenskaper som navn, alder eller by og oppførsel som for eksempel å gå, snakke eller puste. Eller det kan representere en handlekurv med egenskaper som beskriver hvilke varer som er i handlekurven og oppførsel for å legge til eller fjerne varer. Også typer som du har lært om tidligere, som for eksempel strenger, tall og lister, er representert som objekter i Python.
 

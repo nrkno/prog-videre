@@ -1,6 +1,6 @@
 Hei på deg Python
 =================
-**💡 Læringsmål:** _I dette avsnittet skal du lære deg å kjøre Python-programmer i terminalen._
+**💡 Læringsmål:** _I dette kapitlet skal du lære deg å kjøre Python-programmer i terminalen._
 
 Når man lærer seg et programmeringsspåk, er ofte det første programmet man skrivet et ["Hallo verden"-program](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program). Dette er helt enkelt et program som skriver ut teksten "Hallo verden". La oss skrive et sånt program sammen!
 

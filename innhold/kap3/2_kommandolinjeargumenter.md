@@ -78,7 +78,7 @@ men det blir fryktelig upraktisk å måtte endre programmet hver gang du vil les
 
 ### Spørre underveis med `input()`
 
-I [del 1.5 av kurset](../kap1/5_input.md) var vi innom [`input()`-funksjonen][doc-input],
+I [kapittel 1.5](../kap1/5_input.md) var vi innom [`input()`-funksjonen][doc-input],
 som lar deg stille brukeren et spørsmål som hen må svare på før programmet fortsetter.
 
 ```mermaid
@@ -584,7 +584,7 @@ Click kan altså hjelpe til med flere aspekter av CLI enn bare kommandolinjeargu
 
 ### Be om bekreftelse med Click
 
-I [delkapittel 1.5 om `input()`](../kap1/5_input.md) brukte vi «Vil du fortsette?»-spørsmål som et eksempel på `input()`.
+I [kapittel 1.5 om `input()`](../kap1/5_input.md) brukte vi «Vil du fortsette?»-spørsmål som et eksempel på `input()`.
 Etter mye knoting fikk vi på plass funksjonalitet for å ha en forvalgt verdi og akseptere ulike ja/nei-svar,
 men du kan få den samme funksjonaliteten med [Click sin funksjon `click.confirm()`][doc-click.confirm].
 
@@ -649,7 +649,7 @@ Grunnen til at vi ikke brukte `abort=True` i det forrige eksemplet, er at du avb
 2. _Kan du tilpasse `@click.argument("filnavn")` fra det samme eksemplet sånn at Click sjekker at brukeren oppgir stien til en lesbar, eksisterende fil?
    Vi har ikke beskrevet hvordan det gjøres, så her må du bryne deg på [dokumentasjonen til Click][click]!_
 
-3. _Kan du skrive om [den store oppgaven fra kapittel 2](../kap2/5_oppgave.md) sånn at du tar inn navnet på JSON-fila fra kommandolinjeargumentene i stedet for at den ligger i koden?_
+3. _Kan du skrive om [den store oppgaven fra del 2](../kap2/5_oppgave.md) sånn at du tar inn navnet på JSON-fila fra kommandolinjeargumentene i stedet for at den ligger i koden?_
 
 
 ## Oppsummering

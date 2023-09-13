@@ -2,7 +2,7 @@ Applikasjonsprogrammeringsgrensesnitt (API)
 ===========================================
 
 **💡 Læringsmål:**
-_I dette avsnittet lærer du hva et API er og hva det benyttes til, og hvilke muligheter Python har til å arbeide med et API_
+_I dette kapitlet lærer du hva et API er og hva det benyttes til, og hvilke muligheter Python har til å arbeide med et API_
 
 
 ## Hva er et API?
@@ -78,7 +78,7 @@ I Python har man en rekke bibliotek og rammeverk for å sende spørringer og mot
 Et populært og mye brukt bibliotek er [requests](https://requests.readthedocs.io/en/latest/). 
 Det er dette biblioteket vi kommer til å benytte i dette kapittelet, men du står selv fritt til å velge andre HTTP-bibliotek eller rammeverk som finnes i Python hvis du ønsker.
 
-✍️ **Oppgave** Biblioteket `requests` er ikke standard i Python, og må derfor installeres. Installer `requests` basert på det du lærte om pakkebehandling tidligere i dette kapittelet.
+✍️ **Oppgave** Biblioteket `requests` er ikke standard i Python, og må derfor installeres. Installer `requests` basert på det du lærte om [pakkebehandling i kapittel 3.1](1_pakkebehandler.md).
 
 Etter at `requests` er installert kan vi prøve å sende samme forespørslen mot ps-api som over, men denne gangen fra et Python script og ikke via nettleser.
 ```python

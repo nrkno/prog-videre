@@ -1,7 +1,7 @@
 Kommandolinjeapplikasjon
 ========================
 
-**💡 Læringsmål:** _I dette kapittelet vil du lære å lage en enkel kommandolinjeapplikasjon som leser input fra fil og fra bruker og gir et fornuftig svar._
+**💡 Læringsmål:** _I denne delen av kurset vil du lære å lage en enkel kommandolinjeapplikasjon som leser input fra fil og fra bruker og gir et fornuftig svar._
 
 Hva skal vi lage?
 -----------------
@@ -11,7 +11,7 @@ Når du er ferdig med dette kapittelet vil du ha laget en kommandolinjeapplikasj
 
 ## Plan
 
-Vi trenger å lære flere ting før vi kommer til selve applikasjonen, her er det vi skal lære i dette kapittelet:
+Vi trenger å lære flere ting før vi kommer til selve applikasjonen, her er det vi skal lære i denne delen:
 
 1. [Lese fra fil](1_lese_fil.md)
 2. [Skrive til fil](2_skrive_fil.md)

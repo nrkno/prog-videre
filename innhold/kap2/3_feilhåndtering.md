@@ -1,7 +1,7 @@
 Feilhåndtering
 ==============
 
-**💡 Læringsmål:** _I dette avsnittet lærer du hvordan du kan håndtere feil som oppstår når programmet kjører, og dermed unngå at programmet kræsjer uventet._
+**💡 Læringsmål:** _I dette kapitlet lærer du hvordan du kan håndtere feil som oppstår når programmet kjører, og dermed unngå at programmet kræsjer uventet._
 
 ## Prøv og feil
 
@@ -159,7 +159,7 @@ Man må ikke ha en `except`-blokk for å bruke `finally`, i en `try`-`finally` v
 
 ✍️ **Oppgave:** _Fiks kodeeksempelet over med en `try`-`finally`, der finally-delen lukker fila. Skriv gjerne noe ut til terminalen så du kan verifisere at koden i `finally` faktisk blir kjørt._
 
-🧠 **Visste du at?** `with`-uttrykket som vi lærte i avsnittene om å lese/skrive til fil egentlig er en slags avansert `try`-`with`-`finally`, den kjører en `finally` som lukker fila for oss. Det betyr at når vi bruker `with` så trenger vi ikke å tenke på å lukke fila, det sørger `with` for.
+🧠 **Visste du at?** `with`-uttrykket som vi lærte i kapitlene om å lese/skrive til fil egentlig er en slags avansert `try`-`with`-`finally`, den kjører en `finally` som lukker fila for oss. Det betyr at når vi bruker `with` så trenger vi ikke å tenke på å lukke fila, det sørger `with` for.
 
 Det er verdt å merke seg at `finally` kan oppføre seg litt uventet, særlig i kombinasjon med `return`, `break` og `continue` i `try`-blokka, koden i `finally` vil nemlig kjøres før `return`, `break` og `continue`. En annen ting er at hvis både `try` og `finally` returnerer en verdi, er det `finally` sin return verdi som vinner, og blir returnert. Som vi også har sett vil feil som ikke håndteres av `except` kastes videre etter `finally`, men hvis `finally` har en `return` vil ikke det skje.  
 

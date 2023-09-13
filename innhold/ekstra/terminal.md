@@ -206,7 +206,7 @@ som har fire kommandolinjeargument som blir gitt til `cp`:
 
 Det blir feil.
 
-I [del 3.2 av kurset][kurs-cli-args] lærer du om hvordan Python-programmet ditt kan dra nytte av kommandolinjeargument.
+I [kapittel 3.2][kurs-cli-args] lærer du om hvordan Python-programmet ditt kan dra nytte av kommandolinjeargument.
 
 
 ### Avbryte kjørende program
@@ -388,7 +388,7 @@ som tar inn avslutningskoden som et argument.
 ## Videre lesning
 
 * [Wikipedia-artikkelen om _command-line interface_][wiki-cli]
-* [Del 3.2 av kurset om kommandolinje-argument][kurs-cli-args]
+* [Kapittel 3.2 om kommandolinje-argument][kurs-cli-args]
 
 
 [prog-historian]: https://programminghistorian.org/en/lessons/intro-to-bash

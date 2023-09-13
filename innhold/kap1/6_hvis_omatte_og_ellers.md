@@ -1,7 +1,7 @@
 Hvis, omatte og ellers
 ======================
 
-**💡 Læringsmål:** _I dette avsnittet skal du lære deg å skrive kode som gjør valg._
+**💡 Læringsmål:** _I dette kapitlet skal du lære deg å skrive kode som gjør valg._
 
 Hittil har programmene våre kjørt fra topp til bunn:
 Så snart det har gjort seg ferdig med én instruks,
