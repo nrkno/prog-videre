@@ -225,7 +225,9 @@ Gratulerer! Du har nå kjørt ditt første Python-skript.
 
 Sånn printer du til terminalen
 ------------------------------
-I programmet over brukte vi funksjonen `print(...)` til å skrive tekst til terminalen. Dette er ofte den enkleste måten å vise frem data. Man kan skrive tekst til terminalen med `print(...)` stort sett hvor som helst i et program, så denne funksjonen kan være nyttig i mange sammenhenger.
+I programmet over brukte vi funksjonen `print(...)` for å få Python-fortolkeren til å skrive tekst til terminalen.
+Dette er ofte den enkleste måten å vise frem data på.
+Man kan få Python-fortolkeren til å skrive tekst til terminalen med `print(...)` stort sett hvor som helst i en Python-fil, så denne funksjonen kan være nyttig i mange sammenhenger.
 
 `print(...)` er et eksempel på en innebygget funksjon i Python. Funksjoner skal vi lære mer om senere i kurset, blant annet hvordan du kan lage dine egne funksjoner, men nå i første omgang kan vi notere oss tre ting:
 1. Funksjonen har ett navn, `print`, og dette navnet står først, sånn at Python forstår hvilken funksjon vi ønsker å bruke.
