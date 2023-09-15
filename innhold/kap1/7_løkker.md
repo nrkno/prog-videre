@@ -26,7 +26,7 @@ Her en liste over alle fornavnene til de andre i avdelingen din.
 navneliste = ["Vibeke", "Aisha", "Carlos", "Vibeke", "Lise", "Fatima", "Per", "Leyla", "Oliver", "Vibeke", "Henrik", "Anna"]
 ```
 
-Hvor mange i avdelingen din heter Vibeke? Bruk en for-løkke til å finne det ut. Du kan få bruk for å lage en variabel som tar vare på antall Vibeke.
+Hvor mange i avdelingen din heter Vibeke? Bruk en for-løkke til å finne det ut. Lag en variabel for å ta vare på antall Vibeke, og skriv ut innholdet i variabelen til sist i programmet.
 
 ### ✍️ Oppgave 2
 Lag en quiz med tre spørsmål. Spørsmålene skal være strukturert i en liste der hvert element skal være en oppslagstabell med èn nøkkel for `spørsmål` og en annen for `svar`. Bruk for-løkka til å iterere over spørsmålene og ta inn svar fra brukeren ved å bruke `input`-funksjonen.

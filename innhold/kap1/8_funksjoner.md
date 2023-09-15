@@ -53,7 +53,7 @@ I eksempelet er  `navn` parameter og `Jens` argument for funksjonen `lag_hilsen`
 1. Lag funksjonen `print_hjelp()` som ikke tar inn noe argument og som ikke returnerer noen verdi. Bruk `print()`-funksjonen til å skrive ut en valgfri setning om hjelp til terminal.
 2. Kall funksjonen i programmet, og se at hjelpeteksten skrives ut når programmet kjører.
 3. Lagre returnverdien fra funksjonen i en variabel, for eksempel `hjelp = print_hjelp()`, og print ut denne variabelen. Hva skrives ut?
-4. Prøv å legge inn en eksplisitt `return None` i slutten av programmet, hva skrives ut fra variabelen nå?
+4. Prøv å legge inn en eksplisitt `return None` i slutten av funksjonen, hva skrives ut fra variabelen nå?
 
 ✍️ **Oppgave:** _Lag en funksjon som lager bærer fra programkode og type_
 

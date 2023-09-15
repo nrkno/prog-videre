@@ -182,7 +182,7 @@ print(sorterte_episoder)
 # [1, 2, 4, 5, 8, 10, 11, 22]
 ```
 
-Funksjonen `reversed()` benyttes for å reversere en gitt sekvens eller samling
+Funksjonen `reverse()` benyttes for å reversere en gitt sekvens eller samling
 ```python
 episoder_for_planlegging = [1, 2, 8, 5, 10, 4, 22, 11]
 episoder_for_planlegging.reverse()
