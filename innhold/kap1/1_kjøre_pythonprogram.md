@@ -16,7 +16,7 @@ Språket er i dag mye brukt i introduksjonskurs i programmering.
 Det er likevel ikke begrenset til lek og undervisning; Python er mye brukt innenfor områder som vitenskap, maskinlæring (KI), og nettsideutvikling.
 I NRK brukes Python blant annet for diverse støttesystemer rundt planleggings- og rapporteringssystemet PRF, og til å styre transkodingsprosessene for podkast- og radio-lydfiler.
 
-[Les mer om Python på Store norske leksikon](https://snl.no/Python_-_programmeringsspr%C3%A5k).
+[Les mer om Python i Store norske leksikon](https://snl.no/Python_-_programmeringsspr%C3%A5k).
 
 
 Python som programmeringsspråk
