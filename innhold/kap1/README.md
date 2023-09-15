@@ -7,9 +7,11 @@ Her er det bare å starte fra kapittel 1.1 og jobbe seg gjennom kapitlene, bit f
 Om dette er stoff du kjenner til fra før kan du vurdere å gå videre til [del 2](../kap2/). I så fall kan det være lurt å se raskt igjennom kapitlene for å forsikre deg om at du ikke går glipp av noe.
 
 1. [Kjøre Python-program](1_kjøre_pythonprogram.md)
+    * Hva er Python
+    * Kjøre Python interaktivt
     * Navigere i filhierarkiet
-    * Skrive ditt første Python-program
-    * Kjøre Python-program
+    * Skrive ditt første Python-skript
+    * Kjøre Python-skript
 2. [Kommentarer](2_kommentarer.md)
     * Hvordan legge ved forklaringer i koden
 3. [Enkle datastrukturer og variabler](3_enkle_datastrukturer_og_variabler.md)

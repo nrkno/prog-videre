@@ -37,4 +37,5 @@
 ---
 
 - [Ekstra: Valgfritt innhold](ekstra/README.md)
+  - [Interaktiv Python](ekstra/idle.md)
   - [Terminalen](ekstra/terminal.md)
