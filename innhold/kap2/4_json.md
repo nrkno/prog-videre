@@ -180,25 +180,26 @@ with open("data.json", "r", encoding="utf-8") as fil:
     json_data = json.load(fil)
 ```
 
-Dersom fila med JSON-data inneholder ett objekt per linje, f.eks. slik:
+Selv om fila med JSON-data inneholder flere objekter i en liste, f.eks. slik:
 ```json
-{ "id": "12975534035527", "product_code": "DVSF65100022", "title": "Der ingen skulle tru at nokon kunne bu"},
-{ "id": "13158833767527", "product_code": "NNFA21000023", "title": "Dagsrevyen 21"},
-{ "id": "13272583632527", "product_code": "DVFJ20000023", "title": "Norge i dag"}
+[
+    { "id": "12975534035527", "product_code": "DVSF65100022", "title": "Der ingen skulle tru at nokon kunne bu"},
+    { "id": "13158833767527", "product_code": "NNFA21000023", "title": "Dagsrevyen 21"},
+    { "id": "13272583632527", "product_code": "DVFJ20000023", "title": "Norge i dag"}
+]
 ```
 
-Så kan man lese en og en linje ved hjelp av metoden du lærte i kapittel 2.1, og deretter konvertere hver linje til en oppslagstabell som man legger i en liste:
+Så kan man lese inn json på samme måte som før, siden en liste av JSON-objekter fortsatt er et gyldig JSON-format.
+
 ```python
 import json
 
-with open("data.json", "r", encoding="utf-8") as fil:
-    linjer = fil.readlines()
+import json
 
-json_liste = []
-for linje in linjer:
-    json_liste.append(json.loads(linje))
+with open("data.json", "r", encoding="utf-8") as fil:
+    json_liste = json.load(fil)
 ```
-Lista kalt `json_liste` vil da inneholde JSON-objektene du leste inn fra fila, da konvertert til oppslagstabeller.
+Lista kalt `json_liste` vil da inneholde en lista av de JSON-objektene du leste inn fra fila, konvertert til oppslagstabeller.
 
 
 For å kunne skrive JSON til en fil benytter vi oss av nesten samme kode som beskrevet i kapittel 2.2, men istedet for `write()` benytter vi `json.dump()`:
