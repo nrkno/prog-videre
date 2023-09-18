@@ -20,10 +20,10 @@ Et eksempel på JSON kan for eksempel være:
     "title": "Der ingen skulle tru at nokon kunne bu",
 }
 ```
-Et JSON-objekt kan ha ingen, ett, eller flere "nøkkel-verdi-par", hvor kolon skiller mellom nøkkel og verdi, og komma skiller mellom hvert par. Selve objektet er omgitt av klammeparenteser.
+Et JSON-objekt kan ha ingen, ett, eller flere "nøkkel-verdi-par", hvor kolon skiller mellom nøkkel og verdi, og komma skiller mellom hvert par. Selve objektet er omgitt av krøllparenteser.
 Eksemplet over viser ett JSON-objekt med tre nøkkel-verdi-par. 
 
-Vi kan utvide eksemplet til innholde et underobjekt med egne nøkler og verdier:
+Vi kan utvide eksemplet til inneholde et underobjekt med egne nøkler og verdier:
 ```json
 {
     "id": "12975534035527",
@@ -39,7 +39,7 @@ Vi kan utvide eksemplet til innholde et underobjekt med egne nøkler og verdier:
 ```
 I eksemplet over ser vi også at flere datatyper enn strenger støttes for verdier. Datatypene som støttes er streng, nummer, objekt, liste, boolean, og null.
 
-Videre kan vi f.eks utvide eksemplet til å innholde en liste med verdier:
+Videre kan vi f.eks utvide eksemplet til å inneholde en liste med verdier:
 ```json
 {
     "id": "12975534035527",
@@ -130,7 +130,7 @@ Det er fire funksjoner i dette biblioteket som du kommer til å benytte mye når
 `load()`, `dump()`, `loads()`, og `dumps()`. 
 Merk den lille forskjellen mellom de to første funksjonene og de to siste funksjonene, nemlig 's'-endelsen.
 Kort forklart så benyttes funksjonene uten 's' når man skal lese eller skrive til en fil, mens funksjonene med 's' benyttes når man skal lese elle skrive til en streng.
-Disse funksjonene konverterer henholdsvis JSON fra og til et Python objekt (oppslagstabell).
+Disse funksjonene konverterer henholdsvis JSON fra og til en Python-oppslagstabell.
 
 Det første eksemplet vårt kan for eksempel se slikt ut når man konverterer en JSON-streng til en Python-oppslagstabell:
 ```python
@@ -155,10 +155,10 @@ product = {
 json_string = json.dumps(product)
 print(json_string)
 ```
-I eksmplet over bruker vi altså funksjonene `loads()` og `dumps()` fordi vi konverterer JSON fra og til en streng:
+I eksempelet over bruker vi altså funksjonene `loads()` og `dumps()` fordi vi konverterer JSON fra og til en streng.
 
 
-I de aller fleste tilfeller hvor man arbeider med JSON kommer man ikke til å belage seg på at dataen er hardkodet i scriptet sitt.
+I de aller fleste tilfeller der man arbeider med JSON kommer man ikke til å belage seg på at dataen er hardkodet i scriptet sitt.
 Man ønsker nok heller å hente dataen fra et eksternt sted, f.eks. en fil eller et API. 
 
 Vi har tidligere sett på hvordan man kan lese innhold fra en fil, så nå skal vi se videre på hvordan man kan lese JSON fra en fil for deretter å benytte det innebygde json-biblioteket i Python til å konvertere innholdet i fila til en oppslagstabell.
@@ -254,4 +254,4 @@ Resultatet av koden over er at JSON-fila nå ser slik ut.
 ]
 ```
 
-✍️ **Oppgave** Prøv deg frem! Ta utgangpsunkt i JSON-eksemplene nevnt over, eller lag helt nye strukturer, og gjør et forsøk på å både lese og skrive til fil. Klarer du å f.eks. å lese inn en JSON, gjøre endringer og så skrive den til samme eller ny fil?
+✍️ **Oppgave** Prøv deg frem! Ta utgangspunkt i JSON-eksemplene nevnt over, eller lag helt nye strukturer, og gjør et forsøk på å både lese og skrive til fil. Klarer du å f.eks. å lese inn en JSON, gjøre endringer og så skrive den til samme eller ny fil?
