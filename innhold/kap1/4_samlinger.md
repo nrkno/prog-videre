@@ -3,7 +3,7 @@ Samlinger
 **💡 Læringsmål:** _I dette kapitlet skal du lære deg å bruke datastrukturer som samler flere elementer til et sett med informasjon._
 
 Datastrukturer regnes som noe av det mest grunnleggende innenfor programmering. Man samler data i en spesifikk struktur, derav selve beskrivelsen. 
-Mye av styrken kommer av mulighetene man har til å utføre bestemte opreasjoner på den lagrede dataen, på en veldig effektiv måte; _gjør X operasjon på alle elementene i lista_
+Mye av styrken kommer av mulighetene man har til å utføre bestemte operasjoner på den lagrede dataen, på en veldig effektiv måte; _gjør X operasjon på alle elementene i lista_
 Det finnes en rekke datastrukturer hvor alle har egne regler, styrker og begrensninger. I denne korte introduksjonen skal vi se på tre datastrukturer som alle er mye brukt i Python.
 
 ## Lister
