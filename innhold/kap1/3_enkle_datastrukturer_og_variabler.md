@@ -194,7 +194,7 @@ print(en_variabel)
 
 Selv om det kan være nyttig å endre verdien til en variabel, kan det også være veldig forvirrende. Spesielt forvirrende kan det være om man lar variabelen endre seg fra helt to forskjellige typer verdier. Derfor kan det være lurt å ha disse to tommelfingerreglene i bakhodet:
 1. Hvis det ikke er en spesiell grunn til å endre verdien på en variabel, bruk heller to eller flere variabler.
-2. Hvis man må endre på verdien til en variabel, forsøk å skriv koden sånn at man ikke trenger å endre på hvilken type verdi variabelen inneholder.
+2. Hvis man må endre på verdien til en variabel, forsøk å skrive koden sånn at man ikke trenger å endre på hvilken type verdi variabelen inneholder.
 
 _**Tips:** Alle regler er til for å brytes, og reglene over er intet unntak. Det finnes mange tilfeller hvor det kan være nyttig å endre verdien til en variabel, og du kommer til å støte på flere eksempler på kode som gjør det i dette kurset._
 
