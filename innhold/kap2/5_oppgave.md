@@ -1,7 +1,7 @@
 Lek og Moro med Elektronisk Program-Guide!
 ==========================================
 
-**💡 Læringsmål:** _I dette kapitlet lærer du hvordan enkeltdelene i dag 1 kan settes sammen og bli til et nyttig program_
+**💡 Læringsmål:** _I dette kapitlet lærer du hvordan enkeltdelene i de foregående kapitlene kan settes sammen og bli til et nyttig program_
 
 Vi skal i korte trekk lage et program som:
 1. Leser inn Elektronisk Program-Guide (EPG) for flere kanaler fra en JSON-fil.
@@ -62,7 +62,7 @@ Kopier filen [epg.json] til samme mappe som Python-filen over. Dette er filen so
 
 ## Les json fra fil
 
-Bruk det du lærte i del [1](1_lese_fil.md), [3](3_feilhåndtering.md) og [4](4_json.md) til å lese innholdet i `epg.json`som json. I første omgang kan du bare skrive ut innholdet av json-objektet til terminalen som verifikasjon på at filen er lest inn.   
+Bruk det du lærte i del [1](1_lese_fil.md), [3](3_feilhåndtering.md) og [4](4_json.md) til å lese innholdet i `epg.json`som json. I første omgang kan du bare skrive ut innholdet av json-objektet til terminalen, som verifikasjon på at filen er lest inn.   
 
 ## Tell opp antall programmer for hver kategori
 
@@ -74,7 +74,7 @@ I stedet for å skrive ut jsonen til terminalen må vi hente ut kategorien for h
     "dokumentar": 4
 }
 ```
-For å få til dette må vi iterere over listen av kanaler, og for hver kanal interere gjennom programmene, og til sist, for hvert program må vi hente ut kategorien. Dette kan for eksempel løses med to `for`-løkker inni hverandre. Når man har fått tak i kategorien må oppslagstabellen oppdateres. Om man bruker kategoriens `id` som nøkkel må man sjekke iden finnes finnes i oppslagstabellen fra før, i såfall må man øke verdien med 1. Hvis ikke, må den nye nøkkelen legges til i tabellen.
+For å få til dette må vi iterere over listen av kanaler, og for hver kanal iterere gjennom programmene, og til sist, for hvert program må vi hente ut kategorien. Dette kan for eksempel løses med to `for`-løkker inni hverandre. Når man har fått tak i kategorien må oppslagstabellen oppdateres. Om man bruker kategoriens `id` som nøkkel må man sjekke om iden finnes finnes i oppslagstabellen fra før, i så fall må man øke verdien med 1. Hvis ikke, må den nye nøkkelen legges til i tabellen.
 
 __Gratulerer, du har en fiks ferdig kommandolinjeapplikasjon! 🎉__
 

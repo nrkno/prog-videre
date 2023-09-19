@@ -1,7 +1,7 @@
 Kommandolinjeapplikasjon
 ========================
 
-**💡 Læringsmål:** _I denne delen av kurset vil du lære å lage en enkel kommandolinjeapplikasjon som leser input fra fil og fra bruker og gir et fornuftig svar._
+**💡 Læringsmål:** _I denne delen av kurset vil du lære å lage en enkel kommandolinjeapplikasjon som leser input fra fil og fra bruker, og gir et fornuftig svar._
 
 Hva skal vi lage?
 -----------------

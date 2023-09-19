@@ -93,6 +93,26 @@ Modulus er nyttig for å f.eks. finne ut om et tall er et partall. Vi vet at par
 
 En annen funksjon som stadig vekk er nyttig når man programmerer, er `abs(...)`, som finner [absoluttverdien](https://no.wikipedia.org/wiki/Absoluttverdi) til et tall. Absoluttverdien er kort fortalt hvor stort tallet er, hvis vi ser bort ifra om det er positivt eller negativt. Eksempelvis er både `abs(3)` og `abs(-3)` tallet `3`.
 
+
+### Flyttall er ikke helt presise
+
+Flyttall blir lagret på en måte som gjør at de ikke blir helt presise.
+Dette er en generell egenskap ved flyttall.
+
+Prøv for eksempel å regne ut `0.1 + 0.1 + 0.1`:
+
+```
+$> python
+Python 3.10.2 (tags/v3.10.2:a58ebcc, Jan 17 2022, 14:12:15) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 0.1 + 0.1 + 0.1
+0.30000000000000004
+>>>
+```
+
+Det finnes [gode forklaringer på hvorfor](https://docs.python.org/3/tutorial/floatingpoint.html), men de er litt kompliserte og handler om hvordan man lagrer ting i totallssystemet (hvor du bare har `0` og `1`).
+
+
 Variabler
 ---------
 Når man programmerer, skiller man gjerne mellom variabler og verdier. Verdier er ofte det som representerer data i et program, og er gjerne noe spesifikt, som tallet `3`, eller teksten `"hei alle sammen"`. Når vi lærte om tall i seksjonen over, var alle tallene vi brukte eksempel på verdier.

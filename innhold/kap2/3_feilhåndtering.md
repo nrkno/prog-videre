@@ -69,7 +69,7 @@ except ZeroDivisionError:
 except Exception:
     print("Det skjedde noe feil, prøv igjen!")
 ```
-Det er viktig å merke seg at rekkefølge på `except`-linjene har betydning, for håndteringen vil stoppe ved den første uttrykket som matcher på at typen er den samme, eller en undertype, av typen som er angitt i uttrykket. Så hvis `except Exception` er først i lista vil alle unntak fanges opp der, fordi de to andre er undertyper av denne.
+Det er viktig å merke seg at rekkefølge på `except`-linjene har betydning, for håndteringen vil stoppe ved det første uttrykket som matcher på at typen er den samme, eller en undertype, av typen som er angitt i uttrykket. Så hvis `except Exception` er først i lista vil alle unntak fanges opp der, fordi de to andre er undertyper av denne.
 
 ✍️ **Oppgave** Erstatt feilhåndteringen i programmet med koden over, og lag passende feilhåndtering for ugyldig verdi og deling på 0. 
 
@@ -79,7 +79,7 @@ Det er viktig å merke seg at rekkefølge på `except`-linjene har betydning, fo
 
 Unntak oppstår fordi de har blitt "kastet" et sted i kode som kjører, ofte fra biblioteker og kode man ikke selv har skrevet. Men man kan også selv kaste unntak med nøkkelordet `raise`. 
 
-La oss se på et nytt lite program. Kopier følgende linjer i en ny Python-fil og test ut programmet. 
+La oss se på et nytt lite program. Kopier følgende linjer i en ny Python-fil, og test ut programmet. 
 
 ```python
 ferdig = False
@@ -130,7 +130,7 @@ Endre programmet over til å bruke dette nye unntaket og se at du klarer å fang
 
 Endelig nærmer vi oss sluttet på dette kapittelet, men først skal vi se på hvordan og hvorfor `try`-`except` kan bygges ut med en `finally`. 
 
-Noen ganger ønsker vi å sikre oss at en kodesnutt blir kjørt, enten koden inni `try`-blokka feilet eller ikke. Typisk eksempler er filer eller databasetilkoblinger som man gjerne vil lukke pent etter seg når man er ferdig med å bruke dem. 
+Noen ganger ønsker vi å forsikre oss om at en kodesnutt blir kjørt, enten koden inni `try`-blokka feilet eller ikke. Typisk eksempler er filer eller databasetilkoblinger som man gjerne vil lukke pent etter seg når man er ferdig med å bruke dem. 
 
 Se på følgende eksempel. Her åpner vi en fil, vi forsøker å skrive til den, og etter at vi er ferdig med fila ønsker vi å lukke den.
 
@@ -159,9 +159,9 @@ Man må ikke ha en `except`-blokk for å bruke `finally`, i en `try`-`finally` v
 
 ✍️ **Oppgave:** _Fiks kodeeksempelet over med en `try`-`finally`, der finally-delen lukker fila. Skriv gjerne noe ut til terminalen så du kan verifisere at koden i `finally` faktisk blir kjørt._
 
-🧠 **Visste du at?** `with`-uttrykket som vi lærte i kapitlene om å lese/skrive til fil egentlig er en slags avansert `try`-`with`-`finally`, den kjører en `finally` som lukker fila for oss. Det betyr at når vi bruker `with` så trenger vi ikke å tenke på å lukke fila, det sørger `with` for.
+🧠 **Visste du at?** `with`-uttrykket som vi lærte om i kapitlene om å lese/skrive til fil egentlig er en slags avansert `try`-`with`-`finally`, den kjører en `finally` som lukker fila for oss. Det betyr at når vi bruker `with` så trenger vi ikke å tenke på å lukke fila, det sørger `with` for.
 
-Det er verdt å merke seg at `finally` kan oppføre seg litt uventet, særlig i kombinasjon med `return`, `break` og `continue` i `try`-blokka, koden i `finally` vil nemlig kjøres før `return`, `break` og `continue`. En annen ting er at hvis både `try` og `finally` returnerer en verdi, er det `finally` sin return verdi som vinner, og blir returnert. Som vi også har sett vil feil som ikke håndteres av `except` kastes videre etter `finally`, men hvis `finally` har en `return` vil ikke det skje.  
+Det er verdt å merke seg at `finally` kan oppføre seg litt uventet, særlig i kombinasjon med `return`, `break` og `continue` i `try`-blokka, koden i `finally` vil nemlig kjøres før `return`, `break` og `continue`. En annen ting er at hvis både `try` og `finally` returnerer en verdi, er det `finally` sin returverdi som vinner, og blir returnert. Som vi også har sett vil feil som ikke håndteres av `except` kastes videre etter `finally`, men hvis `finally` har en `return` vil ikke det skje.  
 
 ## Flere oppgaver
 
@@ -192,7 +192,7 @@ print(f"Resultatet er: {hva_returneres()}")
 
 ✍️ **Oppgave:** _Feilhåndtering i filbehandling_
 
-Ta utgangspunkt i koden for lese til fil, og lag et program som tar inn filnavn som input fra brukeren, og skriver ut innholdet i fila i terminalen.
+Ta utgangspunkt i koden for å lese til fil, og lag et program som tar inn filnavn som input fra brukeren, og skriver ut innholdet i fila i terminalen.
 
 Hva skjer hvis brukeren skriver inn et filnavn som ikke finnes? Legg inn feilhåndtering så brukeren får tilbud om å prøve på nytt. 
 
