@@ -10,8 +10,8 @@ Om dette er stoff du kjenner til fra før kan du vurdere å gå videre til [del 
     * Hva er Python
     * Kjøre Python interaktivt
     * Navigere i filhierarkiet
-    * Skrive ditt første Python-skript
-    * Kjøre Python-skript
+    * Skrive ditt første Python-program
+    * Kjøre Python-program
 2. [Kommentarer](2_kommentarer.md)
     * Hvordan legge ved forklaringer i koden
 3. [Enkle datastrukturer og variabler](3_enkle_datastrukturer_og_variabler.md)
