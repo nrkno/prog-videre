@@ -48,7 +48,7 @@ kanaler.insert(1, "nrk tv")     # insert() legger til et element på den valgte 
 
 For å fjerne elementer fra en lista kan man bruke følgende operasjoner:
 ```python
-kanaler.remove("nrk2")          # remove() fjerner det første elmenetet som matcher den valgte verdien
+kanaler.remove("nrk2")          # remove() fjerner det første elementet som matcher den valgte verdien
 
 del kanaler[0]                  # del() fjerner elementet på den valgte indeksen
 
@@ -61,7 +61,7 @@ slettet_kanal = kanaler.pop()   # pop() fjerner det siste elementet i lista og l
 
 Tupler er også en samling av elementer i en bestemt rekkefølge, men skiller seg fra lister ved å være «immutable». Man kan altså ikke endre elementene, fjerne eller legge til nye.
 
-En tuple definerers slik:
+En tuple defineres slik:
 
 ```python
 tuple = ()
