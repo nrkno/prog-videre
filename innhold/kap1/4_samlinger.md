@@ -102,7 +102,7 @@ Prøv å slette eller en legge til en podcast i tuppelen med podcaster. Hva skje
 
 Oppslagstabeller, eller _dictionaries_ er en datastruktur som baserer seg på nøkler med bestemte verdier, istedet for en indeks. 
 
-En oppslagstabell definerers slik:
+En oppslagstabell defineres slik:
 
 ```python
 dict = {}
