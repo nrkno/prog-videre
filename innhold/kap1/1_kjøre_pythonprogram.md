@@ -233,6 +233,8 @@ Hallo, verden
 
 Gratulerer! Du har nå kjørt ditt første _Python-skript_.
 
+❌ _Får du feil? Sjekk [listen over vanlige feil ovenfor](#mulige-feil-og-løsninger-når-du-kjører-python-i-terminalen). Du må for eksempel gå ut av interaktiv Python før du får kjørt Python-skript._
+
 
 ### Hva er et Python-skript?
 
@@ -240,7 +242,7 @@ En `.py`-fil, ofte kalt _et Python-skript_, er en fil som inneholder Python-kode
 Disse skriptene får ikke til å gjøre noe med datamaskinen din på egenhånd; de er fullstendig avhengige av at Python-fortolkeren leser dem og utfører instruksjonene i dem.
 
 Begrepet _skript_ stammer fra _manuskript_, og du kan sammenlikne Python-skript med manuskript som skuespillere fremfører på scenen.
-Manuskriptet alene er ikke nok til å utgjøre en forestilling; det er først når du kombinerer manuskriptet med skuespillere, rekvisitører, teknikere og alle rundt at du får en fremføring.
+Manuskriptet alene er ikke nok til å utgjøre en forestilling; det er først når du kombinerer manuskriptet med skuespillere, rekvisitører, teknikere og alle rundt at du får en forestilling.
 
 ![Manuskript pluss skuespillere er lik forestilling, på samme måte som et python-skript pluss fortolkeren er lik en kjøring av koden.](pythonskript-manuskript.png)
 _([Foto av Nationaltheatret](https://commons.wikimedia.org/wiki/File:Oslo_Nationaltheatret.JPG) av Chris Nyborg. [Foto av «Et dukkehjem»-forestilling](https://commons.wikimedia.org/wiki/File:A_Doll%27s_House_(6940143217).jpg) av Otterbein University Theatre & Dance. [Python-logo](https://commons.wikimedia.org/wiki/File:Python.svg) av Tango-prosjektet.
@@ -250,7 +252,13 @@ Selve Python-språket er det samme, uansett om du kjører Python-fortolkeren int
 Du _kan_ i teorien sitte og ta én og én linje fra et Python-skript og fôre dem til en interaktiv Python-sesjon, og resultatet vil bli nøyaktig det samme.
 
 **NB**: I dette kapitlet har vi brukt begrepet _Python-fortolker_ om dataprogrammet som tolker og kjører Python-koden den blir gitt, og _Python-skript_ om `.py`-filene som inneholder Python-kode.
-I resten av kurset kan vi finne på å si at «Vi lager et Python-program som skal gi oss statistikk på bakgrunn av en programguide», og bruker «Python-program» og «Python-skript» om hverandre.
+I resten av kurset kan vi finne på å si at «Vi lager et program som skal lese en tekstfil», og bruker «(Python-)program» og «(Python-)skript» om hverandre.
+Når vi bare snakker om «Python» kan det referere til språket eller til Python-fortolkeren.
+
+| Fagterm            | Forklaring                                   | Kalles også                           |
+|--------------------|----------------------------------------------|---------------------------------------|
+| Python-fortolkeren | Dataprogram som tolker og kjører Python-kode | Python, CPython, Python-programmet    |
+| et Python-skript   | `.py`-filer som inneholder Python-kode       | et skript, et program, en applikasjon |
 
 
 Sånn printer du til terminalen

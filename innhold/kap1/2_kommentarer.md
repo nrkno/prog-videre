@@ -4,9 +4,9 @@ Kommentarer
 
 Korte kommentarer
 -----------------
-Kommentarer er kode som ikke gjør noe annet enn å være forklarende tekst til den som leser koden. Teksten i kommentarene kjøres ikke som en del av dataprogrammet, men er kodelinjer som Python "hopper over".
+Kommentarer er kode som ikke gjør noe annet enn å være forklarende tekst til den som leser koden. Teksten i kommentarene kjøres ikke som en del av dataprogrammet, men er kodelinjer som Python-fortolkeren "hopper over".
 
-For å skrive en kommentar på en linje i et Python-program, starter man linjen med et nummertegn (`#`). Da vil Python forstå at resten av teksten på linjen er en kommentar, og ikke programkode.
+For å skrive en kommentar på en linje i et Python-skript, starter man linjen med et nummertegn (`#`). Da vil Python-fortolkeren forstå at resten av teksten på linjen er en kommentar, og ikke programkode.
 
 ```python
 # Dette er en kommentar

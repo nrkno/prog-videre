@@ -3,7 +3,7 @@ Lek og Moro med Elektronisk Program-Guide!
 
 **💡 Læringsmål:** _I dette kapitlet lærer du hvordan enkeltdelene i de foregående kapitlene kan settes sammen og bli til et nyttig program_
 
-Vi skal i korte trekk lage et program som:
+Vi skal i korte trekk lage et skript som:
 1. Leser inn Elektronisk Program-Guide (EPG) for flere kanaler fra en JSON-fil.
 2. Teller opp hvor mange programmer som finnes i hver kategori.
 3. Skriver ut antall programmer per kategori, i synkende rekkefølge, til terminalen.
@@ -55,7 +55,7 @@ I utdraget over vises det én kanal med ett program, men i filen vil det være f
 
 Start med en tom Python-fil eller ta utgangspunkt i filen [epg.py]. Denne filen inneholder en funksjon som er kjekk å ha til ekstraoppgavene.
 
-Kopier filen [epg.json] til samme mappe som Python-filen over. Dette er filen som vi skal få Python-programmet til å lese og prosessere.
+Kopier filen [epg.json] til samme mappe som Python-filen over. Dette er filen som vi skal få Python-skriptet til å lese og prosessere.
 
 [epg.py]: filer/epg.py
 [epg.json]: filer/epg.json
