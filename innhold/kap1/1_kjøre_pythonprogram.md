@@ -1,8 +1,8 @@
-Hei på deg Python
+Kjøre Python-kode
 =================
-**💡 Læringsmål:** _I dette kapitlet skal du lære deg å kjøre Python-programmer i terminalen._
+**💡 Læringsmål:** _I dette kapitlet skal du lære deg hvordan du får datamaskinen din til å kjøre Python-kode._
 
-Når man lærer seg et programmeringsspåk, er ofte det første programmet man skrivet et ["Hallo verden"-program](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program). Dette er helt enkelt et program som skriver ut teksten "Hallo verden". La oss skrive et sånt program sammen!
+Når man lærer seg et programmeringsspåk, er ofte det første programmet man skrivet et [«Hallo, verden»-program](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program). Dette er helt enkelt et program som skriver ut teksten «Hallo, verden». La oss skrive et sånt program sammen!
 
 
 Hva er Python?
@@ -252,13 +252,15 @@ Selve Python-språket er det samme, uansett om du kjører Python-fortolkeren int
 Du _kan_ i teorien sitte og ta én og én linje fra et Python-skript og fôre dem til en interaktiv Python-sesjon, og resultatet vil bli nøyaktig det samme.
 
 **NB**: I dette kapitlet har vi brukt begrepet _Python-fortolker_ om dataprogrammet som tolker og kjører Python-koden den blir gitt, og _Python-skript_ om `.py`-filene som inneholder Python-kode.
-I resten av kurset kan vi finne på å si at «Vi lager et program som skal lese en tekstfil», og bruker «(Python-)program» og «(Python-)skript» om hverandre.
-Når vi bare snakker om «Python» kan det referere til språket eller til Python-fortolkeren.
+I resten av kurset kan vi finne på å si at «Vi lager et program som skal lese en tekstfil», og bruker «program» og «(Python-)skript» om hverandre.
+Når vi bare snakker om «Python» kan vi referere til språket eller til Python-fortolkeren.
 
-| Fagterm            | Forklaring                                   | Kalles også                           |
-|--------------------|----------------------------------------------|---------------------------------------|
-| Python-fortolkeren | Dataprogram som tolker og kjører Python-kode | Python, CPython, Python-programmet    |
-| et Python-skript   | `.py`-filer som inneholder Python-kode       | et skript, et program, en applikasjon |
+Oppsummert:
+
+| Fagterm            | Engelsk                | Forklaring                                   | Kalles også                           |
+|--------------------|------------------------|----------------------------------------------|---------------------------------------|
+| Python-fortolkeren | the Python interpreter | Dataprogram som tolker og kjører Python-kode | Python, CPython                       |
+| et Python-skript   | a Python script        | `.py`-filer som inneholder Python-kode       | et skript, et program, en applikasjon |
 
 
 Sånn printer du til terminalen
