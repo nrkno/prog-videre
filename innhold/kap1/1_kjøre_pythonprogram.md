@@ -238,13 +238,18 @@ Gratulerer! Du har nå kjørt ditt første _Python-skript_.
 
 En `.py`-fil, ofte kalt _et Python-skript_, er en fil som inneholder Python-kode.
 Disse skriptene får ikke til å gjøre noe med datamaskinen din på egenhånd; de er fullstendig avhengige av at Python-fortolkeren leser dem og utfører instruksjonene i dem.
-Begrepet _skript_ stammer fra _manuskript_, og du kan sammenlikne Python-skript med manuskript som skuespillere fremfører på scenen.
-Manuskriptet alene er ikke nok til å utgjøre en forestilling, det er først når du kombinerer manuskriptet med et teater at du får en fremføring.
 
-Selve Python-språket er det samme, uansett om du kjører Python-fortolkeren interaktivt i terminalen eller du skriver koden i skript som du ber fortolkeren om å tolke.
+Begrepet _skript_ stammer fra _manuskript_, og du kan sammenlikne Python-skript med manuskript som skuespillere fremfører på scenen.
+Manuskriptet alene er ikke nok til å utgjøre en forestilling; det er først når du kombinerer manuskriptet med skuespillere, rekvisitører, teknikere og alle rundt at du får en fremføring.
+
+![Manuskript pluss skuespillere er lik forestilling, på samme måte som et python-skript pluss fortolkeren er lik en kjøring av koden.](pythonskript-manuskript.png)
+_([Foto av Nationaltheatret](https://commons.wikimedia.org/wiki/File:Oslo_Nationaltheatret.JPG) av Chris Nyborg. [Foto av «Et dukkehjem»-forestilling](https://commons.wikimedia.org/wiki/File:A_Doll%27s_House_(6940143217).jpg) av Otterbein University Theatre & Dance. [Python-logo](https://commons.wikimedia.org/wiki/File:Python.svg) av Tango-prosjektet.
+Alle tre er lisensiert under [Creative Commons BY-SA](https://creativecommons.org/licenses/by-sa/3.0/deed.en). Denne montasjen er satt sammen av Thorben Werner Sjøstrøm Dahl og er lisensiert under [Creative Commons BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.en).)_
+
+Selve Python-språket er det samme, uansett om du kjører Python-fortolkeren interaktivt i terminalen eller du skriver koden i et skript som du ber fortolkeren om å tolke.
 Du _kan_ i teorien sitte og ta én og én linje fra et Python-skript og fôre dem til en interaktiv Python-sesjon, og resultatet vil bli nøyaktig det samme.
 
-**NB**: I dette kapitlet har vi brukt begrepet _Python-fortolker_ om dataprogrammet som er kjent som CPython, og _Python-skript_ om `.py`-filene som inneholder Python-kode.
+**NB**: I dette kapitlet har vi brukt begrepet _Python-fortolker_ om dataprogrammet som tolker og kjører Python-koden den blir gitt, og _Python-skript_ om `.py`-filene som inneholder Python-kode.
 I resten av kurset kan vi finne på å si at «Vi lager et Python-program som skal gi oss statistikk på bakgrunn av en programguide», og bruker «Python-program» og «Python-skript» om hverandre.
 
 
