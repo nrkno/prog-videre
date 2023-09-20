@@ -3,7 +3,7 @@
 [Introduksjon til kurset](README.md)
 
 - [Grunnleggende](kap1/README.md)
-  - [Kjøre Python-program](kap1/1_kjøre_pythonprogram.md)
+  - [Kjøre Python-kode](kap1/1_kjøre_pythonprogram.md)
   - [Kommentarer](kap1/2_kommentarer.md)
   - [Enkle datastrukturer og variabler](kap1/3_enkle_datastrukturer_og_variabler.md)
   - [Samlinger](kap1/4_samlinger.md)
@@ -37,4 +37,5 @@
 ---
 
 - [Ekstra: Valgfritt innhold](ekstra/README.md)
+  - [Interaktiv Python](ekstra/idle.md)
   - [Terminalen](ekstra/terminal.md)

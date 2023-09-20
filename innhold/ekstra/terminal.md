@@ -167,7 +167,7 @@ Noen av disse kommandoene er utilgjengelige i PowerShell, som fungerer ganske an
 Den første delen av enhver kommando bestemmer hvilket program du skal kjøre.
 
 Når vi kjører Python, skriver vi alltid `python` først i kommandoen.
-Da er det Python-programmet som kommer til å kjøre.
+Da er det Python-fortolkeren som kommer til å kjøre.
 
 
 ### Kommandolinje-argumenter
@@ -175,7 +175,7 @@ Da er det Python-programmet som kommer til å kjøre.
 Etter navnet på programmet kan du legge til argumenter som vil bli gitt til programmet.
 Vi kaller dem for kommandolinje-argumenter (command-line arguments).
 Når vi kjører Python-kode vi har skrevet, skriver vi navnet på `.py`-fila etter `python`, men med et mellomrom i mellom.
-Python-programmet vet at filnavn du gir til det skal tolkes som Python-skript som skal kjøres.
+Python-fortolkeren vet at filnavn du gir til den skal tolkes som Python-skript som skal kjøres.
 
 For eksempel så har `cp hei.txt hallo.txt` to kommandolinjeargument som blir gitt til `cp`:
 1. `hei.txt`
@@ -206,7 +206,7 @@ som har fire kommandolinjeargument som blir gitt til `cp`:
 
 Det blir feil.
 
-I [kapittel 3.2][kurs-cli-args] lærer du om hvordan Python-programmet ditt kan dra nytte av kommandolinjeargument.
+I [kapittel 3.2][kurs-cli-args] lærer du om hvordan Python-skriptet ditt kan dra nytte av kommandolinjeargument.
 
 
 ### Avbryte kjørende program
@@ -232,7 +232,7 @@ kan du fylle ut resten med ett trykk.
 Er det flere filer, må du gjerne trykke flere ganger for å få forslag eller gå gjennom forslagene.
 
 Dette er veldig nyttig siden du ofte vil skrive filnavn i kommandoer.
-Du kan bruke autofullfør både når du skal skrive hvilket skript Python-programmet skal kjøre,
+Du kan bruke autofullfør både når du skal skrive hvilket skript Python-fortolkeren skal kjøre,
 og når du skal fortelle skriptet hvilken fil du vil lese fra eller skrive til.
 
 
@@ -365,7 +365,7 @@ Hvis alt gikk bra, så skal programmet avslutte med avslutningskode `0`.
 Alle andre avslutningskoder indikerer at noe gikk galt.
 Du vil typisk bruke `1` til å indikere at noe galt har skjedd.
 
-Python-programmer trenger som regel ikke tenke på dette.
+Python-skript trenger som regel ikke tenke på dette.
 Hvis skriptet kjører ferdig uten at det krasjer, vil det avslutte med avslutningskode lik `0`.
 Hvis skriptet derimot krasjer, avslutter det med avslutningskode lik `1`.
 Det eneste måtte være hvis du avslutter skriptet tidlig med [`sys.exit`][doc-sys.exit],

@@ -4,6 +4,10 @@ Her samler vi innhold som er litt på siden av det kurset handler om, eller som 
 
 ## Innhold
 
+* [Interaktiv Python](idle.md)
 * [Terminal](terminal.md)
+
+<!-- Aktuelle temaer:
 * dekoratører
 * Testing
+-->
