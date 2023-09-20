@@ -8,7 +8,7 @@ Når Python-fortolkeren venter på at du skal skrive ei kodelinje, står det `>>
 Når du har skrevet ei linje og trykker `[ENTER]`, vil fortolkeren kjøre linja og skrive resultatet til terminalen.
 Med andre ord trenger du ikke bruke `print(...)` for å se hva verdien til ulike variabler eller uttrykk er.
 
-Se [kapittel 1.1 for en introduksjon til interaktiv Python](../kap1/1_kjøre_pythonprogram.md).
+Se [kapittel 1.1 for en introduksjon til interaktiv Python](../kap1/1_kjøre_pythonprogram.md#interaktiv-python-test-ut-ting-rett-i-terminalen).
 
 Her får du noen tips om andre ting du kan gjøre i en interaktiv Python-sesjon.
 
@@ -17,6 +17,18 @@ Her får du noen tips om andre ting du kan gjøre i en interaktiv Python-sesjon.
 Har du fått en idé som du har lyst til å prøve ut?
 Med en interaktiv Python-sesjon kan du teste ut ulike ting og få umiddelbar respons på hvordan det virker.
 Det kan ofte være nyttig å teste litt ut i en interaktiv Python-sesjon først, før du deretter lager den samme koden i ei Python-fil.
+
+
+## Bla i historikken
+
+Du kan bruke `[PIL OPP]` og `[PIL NED]` til å bla mellom kodelinjene du har kjørt før.
+
+
+## Autofullfør
+
+På Linux og MacOS kan du bruke `[TAB]`-tasten til å be Python om å fullføre det du skriver.
+Prøv for eksempel å skrive `pri` og trykke `[TAB]`.
+Hvis det er flere valg kan du trykke `[TAB]` én gang til for å liste opp alle alternativene.
 
 
 ## Interaktiv hjelp
@@ -54,6 +66,35 @@ Avhengig av hvor mye dokumentasjon det er, kan du bli tatt til en egen visning.
 
 Merk at dette oppslaget bare er ment for utviklere som allerede er kjent med ulike tekniske begreper og Python-syntaksen.
 Det er ikke forventa at du forstår hva den prøver å si når du akkurat har begynt å lære Python 🙂
+
+
+## Se variabler som er definert
+
+Bruk `dir()` til å liste opp alle navn (inkludert definerte funksjoner) som er definert i den nåværende konteksten.
+Merk at innebygde funksjoner ikke er tatt med.
+
+Bruk `dir(...)` for å liste opp alle attributter som hører til hva enn du oppgir mellom parentesene.
+Hvis du for eksempel kjører `dir("en tekst")` kan du se alle metodene du kan kjøre på strengen.
+
+
+## Gå i interaktiv modus etter at et skript har kjørt ferdig
+
+Hvis du bruker tilvalget `-i` når du kjører et skript, vil Python-fortolkeren tolke skriptet ditt, og deretter åpne interaktiv modus.
+I denne interaktive modusen har du tilgang til alle variabler og funksjoner som ble definert i skriptet.
+
+Si at du har et skript, `funksjoner.py`, som definerer en funksjon `lag_hilsen`, likt [eksemplet i kapittel 1.8 om funksjoner](../kap1/8_funksjoner.html#funksjoner-i-python).
+Da kan du la fortolkeren kjøre funksjonsdefinisjonen og så leke deg med den ferdig definerte funksjonen etterpå:
+
+```shell
+kurs $> python -i funksjoner.py
+>>> lag_hilsen("Jens")
+'Hei Jens!'
+>>> lag_hilsen(3.14)
+'Hei 3.14!'
+>>> # Gjør flere tester her
+>>> exit()
+kurs $> 
+```
 
 
 ## Morsomheter
