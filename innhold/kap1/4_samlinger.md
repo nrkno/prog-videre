@@ -213,7 +213,7 @@ print(inneholder_pompel_og_pilt)
 
 ✍️ **Oppgave** Bruk `in` til å teste ut om `Pørni` er del av lista `tv_serier`. Hva med `pørni`?
 
-Vi har alt sett at man kan hente ut et bestemt element på en gitt indeks, for eksempel vil `tv_serier[1]` gi `Side om Side`. Python har også veldig nyttig funksjonalitet for å hente ut en del av en samling med det som kalles "slicing" på godt norsk. Prinsippet er at man i stedet for `tv_serier[index]` kan angi flere ting i klammeparentesene, `tv_serier[start:stopp:steg]`. Start er indeksen man vil starte fra, stopp er indeksen man vi slutte ved, merk at selve stopp indeksen ikke er inkludert. Steg lar deg justere om du vil ha hvert element fra start til stopp, annethvert element, hvert tredje element etc. Default-verdien på steg er 1, så steg angis ikke med mindre man skal ha noe annet enn 1. 
+Vi har alt sett at man kan hente ut et bestemt element på en gitt indeks, for eksempel vil `tv_serier[1]` gi `Nytt på Nytt`. Python har også veldig nyttig funksjonalitet for å hente ut en del av en samling med det som kalles "slicing" på godt norsk. Prinsippet er at man i stedet for `tv_serier[index]` kan angi flere ting i klammeparentesene, `tv_serier[start:stopp:steg]`. Start er indeksen man vil starte fra, stopp er indeksen man vi slutte ved, merk at selve stopp indeksen ikke er inkludert. Steg lar deg justere om du vil ha hvert element fra start til stopp, annethvert element, hvert tredje element etc. Default-verdien på steg er 1, så steg angis ikke med mindre man skal ha noe annet enn 1. 
 
 La oss se på et eksempel med en streng, det vil fungere tilsvarende for andre samlinger. Unntaket er oppslagstabeller som ikke støtter oppsplitting på denne måten.
 
