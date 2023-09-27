@@ -194,8 +194,6 @@ Så kan man lese inn json på samme måte som før, siden en liste av JSON-objek
 ```python
 import json
 
-import json
-
 with open("data.json", "r", encoding="utf-8") as fil:
     json_liste = json.load(fil)
 ```
