@@ -232,7 +232,7 @@ new_product = {
 json_data.append(new_product)
 
 with open("data.json", "w", encoding="utf-8") as fil:
-    json.dump(product, fil, indent=2)
+    json.dump(json_data, fil, indent=2)
 ```
 
 ⚠️ Obs! I eksemplet over tar vi høyde for at innholdet i data.json er strukturert som en liste av JSON-objekter
