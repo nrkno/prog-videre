@@ -36,7 +36,7 @@ with open("serier.txt", "r", encoding="utf-8") as fil:
 ```
 Bytt ut innholdet i programmet ditt med linjene over og se at programmet kjører som før. 
 
-Vi leser nå hele filen som en lang streng, men for å oppnå målet vårt med å skrive ut en liste med bare titlene må vi kunne lese hver linje for seg. Det er flere måter å få til det på. Fil har en metode `readLines()`, men det som er upraktisk med den er at den beholder linjeskift-tegnet `\n` i slutten av hver linje. I stedet bruker vi string sin metode `splitlines()`. Vi kan derfor bytte ut innholdet i with-blokka med følgende linjer:
+Vi leser nå hele filen som en lang streng, men for å oppnå målet vårt med å skrive ut en liste med bare titlene må vi kunne lese hver linje for seg. Det er flere måter å få til det på. Fil har en metode `readlines()`, men det som er upraktisk med den er at den beholder linjeskift-tegnet `\n` i slutten av hver linje. I stedet bruker vi string sin metode `splitlines()`. Vi kan derfor bytte ut innholdet i with-blokka med følgende linjer:
 ```python
     linjer = fil.read().splitlines()
     for linje in linjer:
