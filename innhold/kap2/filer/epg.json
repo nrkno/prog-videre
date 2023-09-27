@@ -441,7 +441,6 @@
                 "description": "Siste nytt fra Dagsnytt.",
                 "duration": "PT1H14M58.16S"
             },
-            {},
             {
                 "programId": "KOID37005220",
                 "seriesId": "sommersprek-med-sofia",
@@ -955,8 +954,7 @@
                 "title": "Ođđasat - nyheter på samisk",
                 "description": "Ođđasat - Nyheter på samisk",
                 "duration": "PT4M37.84S"
-            },
-            {}
+            }
         ]
     },
     {
@@ -1187,8 +1185,6 @@
             "priority": 4
         },
         "entries": [
-            {},
-            {},
             {
                 "programId": "MSUI51006520",
                 "seriesId": "gusse-den-bitte-lille-ridderen",
@@ -1567,7 +1563,6 @@
                 "description": "Leirfuglane skal grave ned ein tidskapsel. Odo vil finne noko å legge i han slik at fuglar i framtida kan sjå korleis dei hadde det i Leirskogen.",
                 "duration": "PT7M7.32S"
             },
-            {},
             {
                 "programId": "MSUI56000120",
                 "seriesId": "smurfene",
@@ -1802,8 +1797,6 @@
                 "description": "Britisk animasjonsserie. Bortkommet i fjellet. \rMoose har med seg en gruppe folk for å se på ulike steinarter i Pontypandy-fjellet. Der blir Lily fascinert av en sau, og selv om Sara ikke syns det er så lurt, følger hun Lily og sauen.",
                 "duration": "PT9M59.76S"
             },
-            {},
-            {},
             {
                 "programId": "MSUD12001322",
                 "seriesId": "bablo",
@@ -3200,7 +3193,6 @@
                 "description": "Dagsnytt 18 er et nyhets-og aktualitetsmagasin med debatter og intervjuer. Sendes på P2 og NRK1 alle hverdager fra 1800 til 1900.\nI denne sendinga retter vi blikket opp og fram.",
                 "duration": "PT57M"
             },
-            {},
             {
                 "programId": "NPUB09018023",
                 "seriesId": "dagsnytt",
