@@ -137,7 +137,7 @@ Hvis vi skulle skrevet dette som en Python-funksjon som tok inn filnavnet som et
 
 ```python
 # les_fil_func.py
-{{#include kodeeksempler/2/les_fil_input.py}}
+{{#include kodeeksempler/2/les_fil_func.py}}
 ```
 
 Funksjons- og kommandolinjeargumenter handler begge to om å sende informasjon inn til koden.
