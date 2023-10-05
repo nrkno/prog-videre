@@ -224,7 +224,7 @@ Du har to alternativer for å tre inn i Python-prosjektet:
 Eksempel på å kjøre én kommando med `poetry run`:
 
 ```shell
-kurs $> poetry run python -m cowsay -t Dette er kuuuuult
+kurs $> poetry run python -m cowsay -t "Dette er kuuuuult"
   _________________
 | Dette er kuuuuult |
   =================
@@ -243,7 +243,7 @@ Eksempel på å kjøre flere kommandoer med `poetry shell`:
 kurs $> poetry shell
 Spawning shell within /home/n123456/.cache/pypoetry/virtualenvs/epg-innleser-ZMuqz6FV-py3.8
 . /home/n123456/.cache/pypoetry/virtualenvs/epg-innleser-ZMuqz6FV-py3.8/bin/activate
-(epg-innleser-py3.8) kurs $> python -m cowsay -t Dette var litt møøøøe
+(epg-innleser-py3.8) kurs $> python -m cowsay -t "Dette var litt møøøøe"
   _____________________
 | Dette var litt møøøøe |
   =====================
