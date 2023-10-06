@@ -14,17 +14,20 @@ Når programvaren har utført handlingen vil API'et videreføre en respons tilba
 tilsvarende kelneren som kommer med maten når kokken har tilberedt den.
 
 
-## HTTP meldinger
-En type API som vi skal se på og lære mer om i dette kapitlet er "web-API". 
-Web-API som benytter HTTP sender meldinger som følger en bestemt standard, og kan deles inn i to typer; forespørsler og responser ("request" og "response"). Forespørslene er meldingene som sendes til API'et, mens responsen er svaret som API'et gir til tjenesten som sendte forespørselen.
+## HTTP-meldinger
+En type API som vi skal se på og lære mer om i dette kapitlet er web-API.
 
-Både forespørsler og responser har en lignende oppbygging og struktur
+Web-API som benytter HTTP sender meldinger som følger en bestemt standard, og kan deles inn i to typer; forespørsler og responser (`request` og `response`). Forespørslene er meldingene som sendes til API'et, mens responsen er svaret som API'et gir til klienten som sendte forespørselen.
 
-- Startlinje som beskriver metoden som forespørselen skal benytte, eller en status i responsen som forteller om forespørselen ble vellykket eller førte til feil.
+Både forespørsler og responser har en lignende oppbygging og struktur:
+
+- En startlinje som beskriver metoden som skal benyttes når det er en forespørsel, eller om meldingen er en respons, en statuskode forteller om forespørselen var vellykket eller førte til feil.
 - En valgfri "header" som gir ekstra kontekst eller metadata til meldingen
-- En valgfri "payload body" som inneholder selve informasjonen i meldingen.
+- En blank linje
+- En valgfri "payload body" som utgjør selve innholdet i meldingen.
 
-Eksempel på en HTTP-request melding:
+Eksempel på en HTTP-forespørsel:
+
 ```
 POST /bestilling HTTP/1.1
 Host: restaurant.com
@@ -37,39 +40,72 @@ Drikke: Vann
 ```
 
 Den første linjen i eksemplet over viser hva startlinjen inneholder. Det første ordet i linjen er "POST" og dette viser hvilken HTTP-metode som skal benyttes.
-Videre ser vi "/bestilling" som forteller hva "request-target" er. Altså hvilket endepunkt hos "host" meldingen skal ende opp på. Noen ganger kan "request-target" være en fullstending URL som f.eks. kan bestå av forskjellige parametere i tillegg, men i vårt eksempel lar vi den være kort og konsis.
-Det siste vi ser er "HTTP/1.1" som indikerer hvilken versjon av HTTP som skal benyttes.
+Videre ser vi "/bestilling" som forteller hva "request-target" er. Altså hvilket endepunkt hos "host" meldingen skal ende opp på. Noen ganger kan "request-target" være en fullstendig URL som f.eks. kan bestå av forskjellige parametere i tillegg, men i vårt eksempel lar vi den være kort og konsis.
+Det siste vi ser er "HTTP/1.1" som indikerer hvilken versjon av HTTP som benyttes.
 
-De to neste linjene spesifiserer hva som ligger i det som kalles "header". I eksemplet over finnes det to HTTP-headers, `host` og `content-type`. #TODO
-Den siste delen under linjeskiftet etter "header"-delen er det som kalles "payload body".
+De to neste linjene spesifiserer hva som ligger i det som kalles "header". I eksemplet over finnes det to HTTP-headers, `host` og `content-type`. Den siste delen under linjeskiftet etter "header"-delen er det som kalles "payload body", som utgjør selve innholdet i meldingen som sendes. 
 
-Alle responser returnerer en statuskode som forteller noe om #TODO
+Responsen på forespørselen over kan se ut på følgende måte:
 
-## Metoder, payload og header
+```
+HTTP/1.1 201 Created
+Content-Type: text/plain
+
+Bestillingen din er registrert! Dine valg er:
+Forrett: Gresskarsuppe
+Hovedrett: Kalkun
+Dessert: Iskrem
+Drikke: Vann
+
+Takk for din bestilling! Den blir snart behandlet.
+```
+
+I responsen er inneholder første linje en statuskode i stedet for HTTP-metode og url som det var i forespørselen. 
+
+### Metoder
+
 Web-API som benytter HTTP operer med et sett med metoder for forespørslene ("request methods") som sendes.
 Disse [metodene](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) benyttes for å spesifisere hva slags type handling som skal utføres.
 Det finnes en rekke av disse metodene, men i dette kapittelet skal vi forholde oss til kun noen få, og da spesifikt de som dekker
 CRUD akronymet (**C**reate **R**ead **U**pdate **D**elete). Ikke alle API'er forholder seg helt likt til denne betegnelsen, men i dette kapittelet forsøker vi å forholde oss til den vanligste bruken av metodene som samsvarer med CRUD.
 
-**Payload body**
-Som nevnt tidligere kan en HTTP forespørsel noen ganger inneholde spesifikk informasjon i det som kalles "payload body", eller bare "body". Innholdet i denne er relevant for tjenesten som mottar meldingen, og tar vi utgangspunkt i eksemplet tidligere med kelneren i restauranten kan "body" sammenlignes med selve bestillingen som kelneren mottar fra deg.
-Innholdet i "body" kan være ren tekst, eller det kan være JSON, XML eller lignende formater.
+| HTTP Verb | CRUD ekvivalent | Beskrivelse |
+|-----------|-----------------|-------------|
+| POST | Create | Denne metoden sender data til API som mottar forespørselen, og betegner som oftest at noe skal opprettes i systemet bak tjenesten.|
+| GET | Read | Denne metoden benyttes for å spørre etter data hos et API. Selve forespørselen inneholder ikke noe body, men responsen fra API'et vil inneholdet dataen som ble etterspurt.|
+| PUT | Update | Denne metoden benyttes for å oppdatere noe i tjenesten bak et API. |
+| DELETE | Delete | Denne metoden benyttes for å slette noe i tjenesten bak et API.|
 
-### POST - Create
-Denne metoden sender data til API som mottar forespørslen, og betegner som oftest at noe skal opprettes i systemet bak tjenesten.
+### Statuskoder
 
-### GET - Read
-Denne metoden benyttes for å spørre etter data hos et API. Selve forespørslen inneholder ikke noe body, men responsen fra API'et vil inneholdet dataen som ble etterspurt.
+Statuskoden i en respons forteller hvordan det gikk med behandlingen av en response. Den kan ha feilet, da sier statuskoden noe om av slags type feil som skjedde. Hvis forespørselen var vellykket kan statuskoden gi nyttig tilleggsinformasjon.
 
-### PUT - Update
-Denne metoden benyttes for å oppdatere noe i tjenesten bak et API. 
+Statuskoden er en tresifret kode der første siffer sier noe om hva slags type status det dreier seg om. Tabellen under viser de ulike typene.
 
-### DELETE - Delete
-Denne metoden benyttes for å slette noe i tjenesten bak et API.
+| Statuskode | Type | Forklaring |
+|------------|------|------|
+| 1xx        | Informerende | Forespørselen er mottatt og den prosesseres |
+| 2xx | Vellykket | Forespørselen ble vellykket mottatt, forstått og akseptert |
+| 3xx | Videresending | Forespørselen ble videresendt |
+| 4xx | Klientfeil | Forespørselen inneholder feil og kan ikke fullføres |
+| 5xx | Tjenerfeil | Tjeneren feilet i å fullføre forespørselen | 
 
-// TODO mer her
-* responsekoder
-* parametertyper
+De mest vanlige statuskodene er de som starter på 2, 4 og 5. Det er vanlig å se `200 OK` når alt gikk bra, `201 Created` om noe har blitt opprettet på tjenersiden, `204 No Content` om forespørselen var vellykket men responsen er tom. Av feilkoder er de vanlige `400 Bad Request` om klienten sender noe feil, `401 Unauthorized` eller `403 Forbidden` om man ikke har tilgang til tjenesten eller ikke har autentisert seg på riktig måte. På tjenersiden er `500 Internal Server Error` og `503 Service Unavailable` vanlige, den første er typisk at noe uventet skjer på tjeneren, mens den siste forekommer når en tjener er overbelastet.
+
+### Header
+
+// todo
+
+### Body
+
+Som nevnt tidligere kan en HTTP forespørsel eller respons inneholde informasjon i det som kalles "payload body", eller bare "body", dette er den egentlige informasjonen som partene i meldingsutvekslingen ønsker å sende til hverandre. Tar vi utgangspunkt i eksemplet over med kelneren i restauranten kan "body" sammenlignes med selve bestillingen som kelneren mottar fra deg. Responsen er ekvivalent med kva en kelner kunne svart tilbake. Han gjentar bestillingen så du kan sjekke at den ble riktig, og han forteller at den snart lages.
+
+Innholdet i "body" kan være ren tekst, eller det kan være JSON, XML, HTML eller lignende formater. Informasjon om hva meldingen inneholder bør finnes i header-feltet `Content-Type`, og 
+
+### Parametre
+
+// todo path, query parametre etc
+
 
 ## Arbeide med API'er i Python
 I et web-API tar forespørslene form som en URL, og ja, du kan for enkelte forespørsler ofte lime inn URL'en i nettleseren din og få svaret servert tilbake.
@@ -93,12 +129,12 @@ print(r.headers)
 print(r.text)
 ```
 
-// TODO: mer her
+// TODO: mer her, ugyldig statuskode, poste melding
+// TODO: oppgaver med å teste ut morsomme apier
 
-* Først bruker vi requests til å kalle morsomme API som:
-    - https://psapi.nrk.no/ipcheck
-    - finn noe morsomt:
-    - youtube
-    - ping https://psapi.nrk.no/ping
-    - rss, feks https://www.nrk.no/nyheter/siste.rss
+## Videre lesning
 
+[HTTP - Wikipedia](https://en.wikipedia.org/wiki/HTTP)
+[HTTP Headers - Wikipedia](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
+[Media-typer - Wikipedia](https://en.wikipedia.org/wiki/Media_type)
+[HTTP Statuskoder - Wikipedia](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
