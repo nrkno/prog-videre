@@ -67,7 +67,9 @@ Denne metoden benyttes for å oppdatere noe i tjenesten bak et API.
 ### DELETE - Delete
 Denne metoden benyttes for å slette noe i tjenesten bak et API.
 
-#TODO mer her
+// TODO mer her
+* responsekoder
+* parametertyper
 
 ## Arbeide med API'er i Python
 I et web-API tar forespørslene form som en URL, og ja, du kan for enkelte forespørsler ofte lime inn URL'en i nettleseren din og få svaret servert tilbake.
@@ -91,16 +93,8 @@ print(r.headers)
 print(r.text)
 ```
 
-#TODO: mer her
+// TODO: mer her
 
-Kladd:
-
-Forespørslene tar da form som en URL, og ja, du kan for enkelte forespørsler ofte lime inn URL'en i nettleseren din og få svaret servert tilbake.
-Hvis du for eksempel benytter følgende URL og skriver denne inn i adressefeltet til nettleseren vil du se at du får en tilbakemelding i JSON-formatet.
-[https://psapi.nrk.no/ipcheck](https://psapi.nrk.no/ipcheck)
-
-
-* Her installerer vi bibliotekspakken som heter requests.
 * Først bruker vi requests til å kalle morsomme API som:
     - https://psapi.nrk.no/ipcheck
     - finn noe morsomt:
@@ -108,6 +102,3 @@ Hvis du for eksempel benytter følgende URL og skriver denne inn i adressefeltet
     - ping https://psapi.nrk.no/ping
     - rss, feks https://www.nrk.no/nyheter/siste.rss
 
-* Så bruker vi requests til å kalle epg-endepunktet.
-* Fra programmet sist: Bytt ut json fra fil med json fra endepunkt
-* Oppgave: Bruk kommandolinjeargument til å velge dato
