@@ -24,7 +24,7 @@
   - [Kommandolinje-argumenter](kap3/2_kommandolinjeargumenter.md)
   - [Kalle API](kap3/3_api.md)
   - [Organisere kode](kap3/4_organisering.md)
-  - [Oppgaver](kap3/5_oppgave.md)
+  - [Mer lek og moro med EPG!](kap3/5_oppgave.md)
 
 - [Desktop-applikasjon](kap4/README.md)
   - [Objektorientering](kap4/1_objektorientering.md)
