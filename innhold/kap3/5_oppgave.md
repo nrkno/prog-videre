@@ -35,4 +35,4 @@ Eksperimenter med å angi ulike kanaler og datoer, og se om du ser noen mønstre
 
 ## Rydd i koden
 
-Er det noe i programmet som kan ryddes? Lag moduler og eventuelt pakker der du synes det passer. Det kan være at lange sekvenser med kode bør deles opp i flere mindre funksjoner som kun utfører én oppgave, og som har et beskrivende navn. Kanskje er det også noen testutskrifter som kan fjernes, navn på variable og funksjoner som kan bli bedre og lignende.
+Er det noe i programmet som kan ryddes? Lag moduler og eventuelt pakker der du synes det passer. Det kan være at lange sekvenser med kode bør deles opp i flere mindre funksjoner som kun utfører én oppgave, og som har et beskrivende navn. Kanskje er det også noen testutskrifter som kan fjernes, navn på variable og funksjoner som kan bli bedre, og lignende.
