@@ -134,7 +134,7 @@ print(r.text)
 
 ## Videre lesning
 
-[HTTP - Wikipedia](https://en.wikipedia.org/wiki/HTTP)
-[HTTP Headers - Wikipedia](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
-[Media-typer - Wikipedia](https://en.wikipedia.org/wiki/Media_type)
-[HTTP Statuskoder - Wikipedia](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+* [HTTP - Wikipedia](https://en.wikipedia.org/wiki/HTTP)
+* [HTTP Headers - Wikipedia](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
+* [Media-typer - Wikipedia](https://en.wikipedia.org/wiki/Media_type)
+* [HTTP Statuskoder - Wikipedia](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
