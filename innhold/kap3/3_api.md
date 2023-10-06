@@ -78,9 +78,9 @@ CRUD akronymet (**C**reate **R**ead **U**pdate **D**elete). Ikke alle API'er for
 
 ### Statuskoder
 
-Statuskoden i en respons forteller hvordan det gikk med behandlingen av en response. Den kan ha feilet, da sier statuskoden noe om av slags type feil som skjedde. Hvis forespørselen var vellykket kan statuskoden gi nyttig tilleggsinformasjon.
+Statuskoden i en respons forteller hvordan det gikk med behandlingen av en forespørsel. Den kan ha feilet, da sier statuskoden noe om hva slags type feil som skjedde. Hvis forespørselen var vellykket kan statuskoden gi nyttig tilleggsinformasjon.
 
-Statuskoden er en tresifret kode der første siffer sier noe om hva slags type status det dreier seg om. Tabellen under viser de ulike typene.
+Statuskoden er en tresifret kode der første siffer sier noe om hva slags type status det dreier seg om, tabellen viser de ulike typene.
 
 | Statuskode | Type | Forklaring |
 |------------|------|------|
@@ -90,7 +90,7 @@ Statuskoden er en tresifret kode der første siffer sier noe om hva slags type s
 | 4xx | Klientfeil | Forespørselen inneholder feil og kan ikke fullføres |
 | 5xx | Tjenerfeil | Tjeneren feilet i å fullføre forespørselen | 
 
-De mest vanlige statuskodene er de som starter på 2, 4 og 5. Det er vanlig å se `200 OK` når alt gikk bra, `201 Created` om noe har blitt opprettet på tjenersiden, `204 No Content` om forespørselen var vellykket men responsen er tom. Av feilkoder er de vanlige `400 Bad Request` om klienten sender noe feil, `401 Unauthorized` eller `403 Forbidden` om man ikke har tilgang til tjenesten eller ikke har autentisert seg på riktig måte. På tjenersiden er `500 Internal Server Error` og `503 Service Unavailable` vanlige, den første er typisk at noe uventet skjer på tjeneren, mens den siste forekommer når en tjener er overbelastet.
+De mest vanlige statuskodene er de som starter på 2, 4 og 5. Det er vanlig å se `200 OK` når alt gikk bra, `201 Created` om noe har blitt opprettet på tjenersiden, og `204 No Content` om forespørselen var vellykket, men responsen er tom. Av feilkoder er de vanlige `400 Bad Request` om klienten sender noe feil, `401 Unauthorized` eller `403 Forbidden` om man ikke har tilgang til tjenesten eller ikke har autentisert seg på riktig måte. På tjenersiden er `500 Internal Server Error` og `503 Service Unavailable` vanlige, den første er typisk at noe uventet skjer på tjeneren, mens den siste forekommer når en tjener er overbelastet.
 
 ### Header
 
@@ -98,9 +98,9 @@ De mest vanlige statuskodene er de som starter på 2, 4 og 5. Det er vanlig å s
 
 ### Body
 
-Som nevnt tidligere kan en HTTP forespørsel eller respons inneholde informasjon i det som kalles "payload body", eller bare "body", dette er den egentlige informasjonen som partene i meldingsutvekslingen ønsker å sende til hverandre. Tar vi utgangspunkt i eksemplet over med kelneren i restauranten kan "body" sammenlignes med selve bestillingen som kelneren mottar fra deg. Responsen er ekvivalent med kva en kelner kunne svart tilbake. Han gjentar bestillingen så du kan sjekke at den ble riktig, og han forteller at den snart lages.
+En HTTP forespørsel eller respons inneholde informasjon i det som kalles "payload body", eller bare "body", dette er den egentlige informasjonen som partene i meldingsutvekslingen ønsker å sende til hverandre. Tar vi utgangspunkt i eksemplet over med kelneren i restauranten kan "body" i forespørselen sammenlignes med selve bestillingen som kelneren mottar fra deg. Responsen tilsvarer det kelneren kunne svart tilbake. Han gjentar bestillingen så du kan sjekke at den ble riktig, og han forteller at den snart lages.
 
-Innholdet i "body" kan være ren tekst, eller det kan være JSON, XML, HTML eller lignende formater. Informasjon om hva meldingen inneholder bør finnes i header-feltet `Content-Type`, og 
+Innholdet i "body" kan være ren tekst, eller det kan være JSON, XML, HTML eller lignende formater, informasjon om hva meldingen inneholder finnes i header-feltet `Content-Type`. Når en forespørsel sendes kan headeren `Accept` settes for å angi hva slags format klienten godtar for innholdet i responsen.  
 
 ### Parametre
 
@@ -129,7 +129,7 @@ print(r.headers)
 print(r.text)
 ```
 
-// TODO: mer her, ugyldig statuskode, poste melding
+// TODO: mer her, ugyldig statuskode, poste melding, sette accept header etc
 // TODO: oppgaver med å teste ut morsomme apier
 
 ## Videre lesning
