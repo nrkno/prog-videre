@@ -132,11 +132,6 @@ def til_leet(tekst):
 ✍️ **Oppgave:**
 _Oppdater `program.py` så den også bruker funksjonen `til_leet`. Du velger selv hvordan du ta i bruk funksjonen, om brukeren må velge om teksten skal oversettes til røverspråk eller leet, eller om du bare skriver ut begge oversettelsene._
 
-## EPG-programmet
-
-✍️ **Oppgave:**
-_Skriv om programmet der du jobber med EPG-er slik at det bruker moduler og eventuelt pakker der du synes det passer for at koden skal bli ryddigere_
-
 ## Ekstraoppgaver
 
 Her er et par ekstraoppgaver hvis du har litt ekstra tid og vil leke mer med språk.
