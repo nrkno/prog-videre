@@ -7,7 +7,7 @@ Nå som vi både har lært om kommandolinjeargumenter, kan hente data fra API , 
 
 Tidligere brukte vi en fil for å arbeide med EPG-data på JSON-format, men disse dataene finnes også i et API, som vi nå vil bruke istedet. 
 
-Det spesifikke endepunktet for EPG-data er [https://psapi.nrk.no/epg/](https://psapi.nrk.no/epg/), og dokumentasjonen for endepunktet finnes som en [nettside](https://psapi.nrk.no/documentation/redoc/epg/). Det kan være litt uvant å lese i starten, men på høyre side kan vi se urlen til endepunktet, det står at det er en GET-metode med sti `/epg/{channelIds}`, og vi ser hvordan responsen kan se ut. 
+Det spesifikke endepunktet for EPG-data er `https://psapi.nrk.no/epg/`, og og endepunktet har egen [dokumentasjon](https://psapi.nrk.no/documentation/redoc/epg/). Det kan være litt uvant å lese en slik dokumentasjon i starten, men på høyre side kan vi se urlen til endepunktet, det står at det er en GET-metode med sti `/epg/{channelIds}`, og vi ser hvordan responsen kan se ut. 
 
 I midtdelen står det noe om en path-parameter `channelIds` og en query-parameter `date`. 
 Parameteren `channelIds` er påkrevd, og den må være en kommaseparert liste av kanal id-er man vil hente EPG for, for eksempel `nrk1` for bare NRK1, `nrk2,p1,p2` for NRK2, P1 og P2. Siden den er en path-parameter skal den være en del av stien, og settes inn i urlen der det står `{channelIds}`.  Parameteren `date`er en query-parameter på formatet `yyyy-mm-dd`, og om den utelates, får man EPG for dagens dato.
