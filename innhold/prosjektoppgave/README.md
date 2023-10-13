@@ -36,7 +36,7 @@ Internett er selvfølgelig fullt av tips og veiledninger til morsomme og nyttige
 * [2048](https://en.wikipedia.org/wiki/2048_(video_game))
 * [Snake](https://en.wikipedia.org/wiki/Snake_(video_game_genre))
 * Norsk utgave av [Wordle](https://en.wikipedia.org/wiki/Wordle)
-* [Mange flere ideer ...](https://inventwithpython.com/blog/2012/02/20/i-need-practice-programming-49-ideas-for-game-clones-to-code/)
+* Mange flere ideer ... `https://inventwithpython.com/blog/2012/02/20/i-need-practice-programming-49-ideas-for-game-clones-to-code/`
 
 ### Maskinlæring og data science
 
