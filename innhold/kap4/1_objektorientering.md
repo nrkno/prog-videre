@@ -148,7 +148,7 @@ m1.navn = 123
 m1.går() # output: 123 går
 ```
 
-For å hindre at man kan gjøre dette, så bruker man private attributter for å definere at de ikke skal kunne brukes på utsiden av objektet. For Menneske-klassen vil det se slik ut:
+For Menneske-klassen vil innkapsling se slik ut:
 
 ```python
 class Menneske:
@@ -171,7 +171,7 @@ class Menneske:
             self.__alder = alder
 ```
 
-Ved å legge til to understreker foran attributtene __navn og __alder, gjør vi dem private, slik at de ikke kan nås direkte fra utsiden av klassen. Vi gir deretter tilgang til dem gjennom getter- og settermetoder, som også gir oss mulighet til å legge til validering. Ved å gjøre dette lager vi et brukergrensesnitt ut til brukere av klassen som vil gjøre det lettere å gjøre endringer internt i klassen på et senere tidspunkt.
+Ved å legge til to understreker foran attributtene __navn og __alder, gjør vi dem private. I Python har man fortsatt tilgang på private attrributter, men ved å legge til med dobbel understrek, så tydeliggjør man at de ikke burde brukes utenfor klassen. Tilgangen til attributtene gis gjennom getter- og settermetoder, som også gir oss mulighet til å legge til validering. Ved å gjøre dette lager vi et brukergrensesnitt ut til brukere av klassen som vil gjøre det lettere å gjøre endringer internt i klassen på et senere tidspunkt.
 
 Slik vil bruken av Menneske-objektet se ut:
 ```python
@@ -180,7 +180,7 @@ m3.set_navn(123)
 print(m3.get_navn()) # output: Harald
 ```
 
-**Oppgave:** _Implementer innkapsling for `Kanal`-klassen. Sørg for at listen over programmer ikke kan endres direkte, men tilby en metode for å legge til et program i listen._
+**Oppgave:** _Implementer innkapsling for `Kanal`-klassen. Gjør listen over programmer privat og tilby en metode for å legge til et program i listen._
 
 ## Internmetoder
 Vi har allerede lært om internmetoden `__init__` som brukes for å lage instanser av en klasse. Vi har også flere internmetoder som for eksempel `__eq__` som brukes når man sammenligner objekter. Hvis vi for eksempel sammenligner to instanser som er laget av en klasse som ikke implementerer en egen `__eq__`-funksjon vil man få `False` på om instansene er like siden de refererer til to forskjellige objekter, men i noen tilfeller vil man definere hva som gjør to instanser av en klasse like. 
