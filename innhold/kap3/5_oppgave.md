@@ -1,7 +1,7 @@
 Mer lek og moro med Elektronisk Program-Guide!
 ==========================================
 
-**💡 Læringsmål:** _I dette kapitlet vil du lære hvordan enkeltdelene fra de foregående kapitlene kan brukes sammen for å utvide og forbedre EPG-programmet_
+**💡 Læringsmål:** _I dette kapittelet vil du lære hvordan enkeltdelene fra de foregående kapitlene kan brukes sammen for å utvide og forbedre EPG-programmet_
 
 Nå som vi både har lært om kommandolinjeargumenter, kan hente data fra API , og kan lage moduler og pakker, kan vi forbedre programmet fra [kapittel 2.5](../kap2/5_oppgave.md).
 

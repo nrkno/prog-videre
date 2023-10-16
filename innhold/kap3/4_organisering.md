@@ -1,7 +1,7 @@
 Organisering med moduler og pakker
 ==================================
 
-**💡 Læringsmål:** _I dette kapitlet lærer du hvordan du kan organisere koden på en strukturert måte så det blir lettere å finne fram_
+**💡 Læringsmål:** _I dette kapittelet lærer du hvordan du kan organisere koden på en strukturert måte så det blir lettere å finne fram_
 
 ## Moduler
 

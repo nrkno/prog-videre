@@ -1,7 +1,7 @@
 Feilhåndtering
 ==============
 
-**💡 Læringsmål:** _I dette kapitlet lærer du hvordan du kan håndtere feil som oppstår når programmet kjører, og dermed unngå at programmet kræsjer uventet._
+**💡 Læringsmål:** _I dette kapittelet lærer du hvordan du kan håndtere feil som oppstår når programmet kjører, og dermed unngå at programmet kræsjer uventet._
 
 ## Prøv og feil
 

@@ -1,6 +1,6 @@
 Grafiske brukergrensesnitt med PySimpleGUI
 ==========================================
-**💡 Læringsmål:** _I dette kapitlet lærer du litt om hva grafiske brukergrensesnitt er, og du får laget ditt første grafiske brukergrensesnitt med PySimpleGUI._
+**💡 Læringsmål:** _I dette kapittelet lærer du litt om hva grafiske brukergrensesnitt er, og du får laget ditt første grafiske brukergrensesnitt med PySimpleGUI._
 
 Hva er et grafisk brukergrensesnitt?
 ------------------------------------

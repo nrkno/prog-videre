@@ -2,7 +2,7 @@ Applikasjonsprogrammeringsgrensesnitt (API)
 ===========================================
 
 **💡 Læringsmål:**
-_I dette kapitlet lærer du hva et API er og hva det benyttes til, og hvilke muligheter Python har til å arbeide med et API_
+_I dette kapittelet lærer du hva et API er og hva det benyttes til, og hvilke muligheter Python har til å arbeide med et API_
 
 ## Hva er et API?
 API står for "Application Programming Interface" og kan defineres som et set med protokoller, definisjoner og verktøy for å bygge og integrere applikasjonsprogramvare.
@@ -14,7 +14,7 @@ tilsvarende kelneren som kommer med maten når kokken har tilberedt den.
 
 
 ## HTTP-meldinger
-En type API som vi skal se på og lære mer om i dette kapitlet er web-API.
+En type API som vi skal se på og lære mer om i dette kapittelet er web-API.
 
 Web-API som benytter HTTP sender meldinger som følger en bestemt standard, og kan deles inn i to typer; forespørsler og responser (`request` og `response`). Forespørslene er meldingene som sendes til API'et, mens responsen er svaret som API'et gir til klienten som sendte forespørselen.
 

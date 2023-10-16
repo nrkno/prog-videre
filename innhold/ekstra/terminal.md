@@ -293,7 +293,7 @@ kurs $> ls -lh
 
 Tilvalg skal som regel plasseres rett etter navnet på programmet du kjører, men rekkefølgen på dem spiller ingen rolle.
 
-Tilvalgene som er vist i dette delkapitlet tar ikke inn noen tilhørende verdi.
+Tilvalgene som er vist i dette delkapittelet tar ikke inn noen tilhørende verdi.
 De kalles også for _flagg_.
 
 

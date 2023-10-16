@@ -1,7 +1,7 @@
 Lek og Moro med Elektronisk Program-Guide!
 ==========================================
 
-**💡 Læringsmål:** _I dette kapitlet lærer du hvordan enkeltdelene i de foregående kapitlene kan settes sammen og bli til et nyttig program_
+**💡 Læringsmål:** _I dette kapittelet lærer du hvordan enkeltdelene i de foregående kapitlene kan settes sammen og bli til et nyttig program_
 
 Vi skal i korte trekk lage et skript som:
 1. Leser inn Elektronisk Program-Guide (EPG) for flere kanaler fra en JSON-fil.

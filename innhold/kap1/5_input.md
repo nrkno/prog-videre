@@ -1,7 +1,7 @@
 Input
 =====
 
-**💡 Læringsmål:** _I dette kapitlet vil du lære å ta inn data fra brukeren._
+**💡 Læringsmål:** _I dette kapittelet vil du lære å ta inn data fra brukeren._
 
 Fram til nå har vi skrevet tekst fra programmet til terminalen.
 Men hvis du har villet endre hvilke verdier programmet ditt opererte på,
@@ -267,7 +267,7 @@ Skriv av `input_ja_nei_v0.py` ovenfor.
 Har du lyst til å prøve deg på å endre definisjonen av `vil_fortsette_tolket` sånn at den blir `True` eller `False` etter reglene ovenfor?
 Du kan for eksempel starte med én regel og se at den blir riktig, før du prøver deg på neste regel – likt hvordan du løser én side av en Rubiks kube først.
 
-Hvis du merker at du er litt lite inspirert akkurat nå, kan du bare hoppe over oppgaven – resten av dette kapitlet er dedikert til hvordan den kan løses.
+Hvis du merker at du er litt lite inspirert akkurat nå, kan du bare hoppe over oppgaven – resten av dette kapittelet er dedikert til hvordan den kan løses.
 
 
 #### Runde 1: Godta kun y som «ja»
