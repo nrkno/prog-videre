@@ -29,7 +29,19 @@ Formatet på JSON-en som kommer fra API-et matcher med fila vi brukte tidligere,
 
 ## La bruker angi dato og kanaler
 
-Bruk det du har lært om kommandolinjeargumenter til å la bruker angi datoen og kanalene for EPG-en programmet bruker for å lage kategori-statistikk.
+Bruk det du har lært om kommandolinjeargumenter til å la bruker angi datoen og kanalene for EPG-en programmet skal bruke for å lage kategori-statistikk.
+
+For å sette datoen som query-parameter når man gjør kall til API-et, kan man bruke en format-streng som vi har brukt når vi vil bruke verdi fra variabel i en tekst. Men det som er ryddigere, særlig om man har flere en én query-parameter, er bruke bibliotekets egne funksjonalitet for disse parametrene. Da må man lage en oppslagstabell for parametrene, sende de med som parameter `params` til  `requests.get`.
+
+```python
+parametre = {
+    "date": "2023-10-16"
+}
+respons = requests.get("https://psapi.nrk.no/epg/nrk2", params = parametre)
+```
+
+Kanalene, som er en path-parameter må fortsatt settes med en format-streng.
+
 
 Eksperimenter med å angi ulike kanaler og datoer, og se om du ser noen mønstre i hvilke kategorier som brukes.
 
