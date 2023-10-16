@@ -139,8 +139,40 @@ I eksempelet over ser vi at responsen egentlig er på JSON-format, og da ønsker
 
 Vi vil gjerne ha JSON tilbake, og API-et støtter at hvis vi ber om JSON ved å bruke `Accept`-headeren når vi sender responsen, får vi JSON tilbake. Requests sin `get`-funksjon kan ta inn et argument, `headers`, som må være en oppslagstabell der nøkkel er navn på headeren man vil sette og verdien er verdien headeren skal ha. I vårt tilfelle vil vi sette `Accept` til å være `application/json`. Gjør kallet igjen men nå med parameteren `headers`, og se at responsen du får tilbake er på JSON-format.
 
-// TODO: poste melding
-// TODO: oppgaver med å teste ut morsomme apier
+✍️ **Ekstraoppgave** Hittil har vil bare brukt `GET`-verbet, men det kan være fint å bli kjent med de andre verbene også. For å få til det, bruker vi tjenesten [reqres.in](https://reqres.in/), som har et gratis API laget nettopp for testing. Her kan vi teste både `GET`, `POST`, `PUT` og `DELETE` med et API av brukere. Men API-et returnerer tilfeldige data. Du kan tilsynelatende lage, endre og slette brukere, og få en suksess-statuskode tilbake, uten at du faktisk endrer noe i systemet.
+
+Test først å hente ut en list av brukere med en get-forespørsel til `https://reqres.in/api/users`, og se at du får en liste av brukere tilbake.
+
+Deretter kan du teste ut å lage en ny bruker ved bruk av post-metoden, som krever at man sender med innhold i meldingen.Vanligvis er innholdet som kreves definert av API-et, men i dette test-API-et kan man sende inn hva man vil.
+
+Definer en bruker med de feltene du ønsker, i form av en oppslagstabell. For eksempel:
+
+```python
+bruker = {
+    "fornavn": "Testus",
+    "etternavn": "Testesen"
+}
+```
+
+Prøv deretter å "opprette" brukeren ved å kalle sende en `POST`-melding til API-et. Biblioteket vi bruker har støtte for alle verbene, så i stedet for å bruke `requests.get` må vi bruke `requests.post`. I tillegg må vi få sendt inn brukeren som body i meldinga. Det fins en egen parameter `json` vi kan bruke for å sende med data i meldingen som skal være på JSON-format. (For annen type data kan parameteren `data` brukes). Når `json`-parameteren brukes vil også `Content-Type` bli satt til `application/json`.
+
+```python
+response = requests.post("https://reqres.in/api/users", json = bruker)
+```
+
+Sjekk statuskode og innhold i responsen, er det som forventet?
+
+Å oppdatere med `PUT` eller slette med `DELETE` er handlinger knyttet til et bestemt objekt, så vi må spesifisere hvilket objekt vi vil modifisere. Det løses vanligvis ved at urlene vi kaller har med id-en til objektet vi vil oppdatere eller slette. Det gjelder også for test-API-et, urlen må ha med id til slutt, `https://reqres.in/api/users/{id}`. 
+
+I test-API-et gjør vi ikke faktiske endringer så vi kan bruke en tilfeldig id, for eksempel tallet `1`. Prøv å gjøre oppdatering og sletting med følgende linjer:
+
+```python
+respons = requests.put("https://reqres.in/api/users/1", json = bruker)
+response = requests.delete("https://reqres.in/api/users/1")
+```
+
+Sjekke statuskode og innhold for hver av responsene. Hvorfor har kallet til `put` med bruker som json-data, mens `delete` ikke har det?
+
 
 ## Videre lesning
 
@@ -148,3 +180,4 @@ Vi vil gjerne ha JSON tilbake, og API-et støtter at hvis vi ber om JSON ved å 
 * [HTTP Headers - Wikipedia](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields)
 * [Mediatyper - Wikipedia](https://en.wikipedia.org/wiki/Media_type)
 * [HTTP Statuskoder - Wikipedia](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+* [Dokumentasjon av Requests-biblioteket](https://requests.readthedocs.io/en/latest/)
