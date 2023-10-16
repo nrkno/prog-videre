@@ -1,6 +1,6 @@
 Funksjoner
 ==========
-**💡 Læringsmål:** _I dette kapitlet skal du lære å lage funksjoner slik at du kan dele opp koden i mindre biter og kan bruke samme kodebit flere steder._
+**💡 Læringsmål:** _I dette kapittelet skal du lære å lage funksjoner slik at du kan dele opp koden i mindre biter og kan bruke samme kodebit flere steder._
 
 ## Hva er en funksjon?
 

@@ -1,6 +1,6 @@
 Kommentarer
 ===========
-**💡 Læringsmål:** _I dette kapitlet skal du lære deg å skrive forklaringer som kan bo sammen med koden._
+**💡 Læringsmål:** _I dette kapittelet skal du lære deg å skrive forklaringer som kan bo sammen med koden._
 
 Korte kommentarer
 -----------------

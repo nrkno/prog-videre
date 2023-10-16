@@ -2,7 +2,7 @@ Kommandolinje-argumenter
 ========================
 
 **💡 Læringsmål:**
-_I dette kapitlet skal du bli kjent med hvordan du kan gi brukeren kontroll
+_I dette kapittelet skal du bli kjent med hvordan du kan gi brukeren kontroll
 over hva applikasjonen skal gjøre, uten at applikasjonen stopper opp underveis._
 
 Når vi skriver kommandolinjeprogram for et visst publikum så må vi tenke på _brukeropplevelsen_ for de som bruker programmet vårt.
@@ -11,7 +11,7 @@ Men du risikerer selv å bli en nybegynner på programmet ditt når det har gåt
 og alle minner om hvordan det fungerte for lengst har forduftet.
 
 Brukergrensesnittet til kommandolinjeprogram kalles [_the command-line interface (CLI)_][wiki-cli] på engelsk.
-I dette kapitlet ser vi på ett av mange aspekter ved CLI.
+I dette kapittelet ser vi på ett av mange aspekter ved CLI.
 
 Hvis det er uvant å bruke kommandolinja/terminalen, så kan det hende du har lyst til å lese [ekstra-seksjonen om terminalen](../ekstra/terminal.md).
 
@@ -106,7 +106,7 @@ og så gjøre noe annet mens programmet kjører.
 
 ### Gi verdien samtidig som du starter programmet
 
-I resten av dette kapitlet skal vi se på _kommandolinjeargumenter_.
+I resten av dette kapittelet skal vi se på _kommandolinjeargumenter_.
 Dette er verdier som brukeren skriver samtidig som hen starter programmet ditt.
 For eksempel:
 

@@ -1,6 +1,6 @@
 Kjøre Python-kode
 =================
-**💡 Læringsmål:** _I dette kapitlet skal du lære deg hvordan du får datamaskinen din til å kjøre Python-kode._
+**💡 Læringsmål:** _I dette kapittelet skal du lære deg hvordan du får datamaskinen din til å kjøre Python-kode._
 
 Når man lærer seg et programmeringsspåk, er ofte det første programmet man skrivet et [«Hallo, verden»-program](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program). Dette er helt enkelt et program som skriver ut teksten «Hallo, verden». La oss skrive et sånt program sammen!
 
@@ -251,7 +251,7 @@ Alle tre er lisensiert under [Creative Commons BY-SA](https://creativecommons.or
 Selve Python-språket er det samme, uansett om du kjører Python-fortolkeren interaktivt i terminalen eller du skriver koden i et skript som du ber fortolkeren om å tolke.
 Du _kan_ i teorien sitte og ta én og én linje fra et Python-skript og fôre dem til en interaktiv Python-sesjon, og resultatet vil bli nøyaktig det samme.
 
-**NB**: I dette kapitlet har vi brukt begrepet _Python-fortolker_ om dataprogrammet som tolker og kjører Python-koden den blir gitt, og _Python-skript_ om `.py`-filene som inneholder Python-kode.
+**NB**: I dette kapittelet har vi brukt begrepet _Python-fortolker_ om dataprogrammet som tolker og kjører Python-koden den blir gitt, og _Python-skript_ om `.py`-filene som inneholder Python-kode.
 I resten av kurset kan vi finne på å si at «Vi lager et program som skal lese en tekstfil», og bruker «program» og «(Python-)skript» om hverandre.
 Når vi bare snakker om «Python» kan vi referere til språket eller til Python-fortolkeren.
 
