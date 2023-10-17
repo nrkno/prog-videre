@@ -277,9 +277,30 @@ For å kjøre programmet fra terminalen brukes `poetry` ganske likt som terminal
 poetry run python <filnavn>.py
 ```
 
-Hvis du bruker VS Code vil den ofte finne ut av seg selv hvordan prosjektet er satt opp (mer presist, at det er opprettet er virtuelt miljø for prosjektet), så "play"-knappen vil trolig fungere som før. I motsatt fall går det an å fortelle VS Code hva slags Python-fortolker den skal bruke. Helt nederst i VS Code er det en slags menylinje med informasjon, på høyresiden av denne står det Python og versjonsnummeret for Python-installasjonen. Hvis det står noe om `venv` ved siden av versjonsnummeret bør alt være i orden, hvis ikke, klikk på versjonsnummeret og se om det kommer opp en valgmulighet i toppmenyen for å velge Pyhton fortolker, velg i så fall den som inneholder `venv`.
+### Få Poetry til å fungere med VS Code
 
-Kjør programmet og se at kua dukker opp i terminalen. 
+Hvis du bruker VS Code vil den ofte finne ut av seg selv hvordan prosjektet er satt opp (mer presist, at det er opprettet er virtuelt miljø for prosjektet), så "play"-knappen vil trolig fungere som før. 
+
+I motsatt fall går det an å fortelle VS Code hva slags Python-fortolker den skal bruke. Helt nederst i VS Code er det en slags menylinje med informasjon, på høyresiden av denne står det Python og versjonsnummeret for Python-installasjonen. 
+
+![Høyre side av bunnmenyen i VS Code](bilder/vscode-bunnmeny.png)
+
+Hvis det står noe om `venv` ved siden av versjonsnummeret bør alt være i orden, hvis ikke, klikk på versjonsnummeret og se om det kommer opp en valgmulighet i toppmenyen for å velge Python-fortolker.
+
+![Meny i VS Code for å velge Pyton-fortolker](bilder/velg-fortolker.png)
+
+Om et av valgene inneholder noe med `venv`, velg denne. Ellers kan man fra en terminal få Poetry til å liste opp miljøer med følgende kommando:
+
+```shell
+poetry env info
+```
+Da vil det listes opp miljøer tilsvarende bildet under. I menyen i VS Code kan man velge å legge til sti for kjørbar fortolker selv. Forsøk å legge inn stien fra `executable` under `virtualenv` som innholder stien til mappa der du initialiserte Poetry 
+
+![Skjermbilde av det som skrives ut når man kjører ](bilder/poetry-env-info.png)
+
+### Kjør programmet
+
+Kjør programmet og se at kua dukker opp i terminalen! 
 
 ✍️ **Oppgave** Det finnes andre innebygde figurer enn ku, for eksempel `dragon`, `fox`, `octopus`, `stegosaurus` og `turtle`. Disse finnes også som funksjoner, så test å bytte ut kall til `cow()` i programmet med en av de andre figurene.
 
