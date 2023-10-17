@@ -259,6 +259,48 @@ exit
 kurs $> 
 ```
 
+## Hvordan bruke en pakke i Python-kode
+
+Som oftest ønsker vi å bruke pakka vi har installert i et Python-program. En pakke kan gi både nye kjørbare program, importerbare moduler, eller begge deler. Vi skal se på hvordan vi kan bruke en importerbare modul fra en pakke.
+
+Siden vi alt har `cowsay`-pakka installert, bruker vi denne i eksempelet. Vi starter med å få kua til å si det samme som fra terminalen. Lag en ny Python-fil innenfor samme mappe som prosjektfila `pyproject.toml`, og kopier inn linjene under. Den første linja med `import` er for at vi skal få tilgang til funksjonene i `cowsay`-modulen. Deretter kaller vi `cow`-funksjonen med teksten vi vil at kua skal si som parameter.
+
+```python
+import cowsay
+
+cowsay.cow("Dette er kuuuuult")
+```
+
+For å kjøre programmet fra terminalen brukes `poetry` ganske likt som terminaleksempelet over.
+
+```shell
+poetry run python <filnavn>.py
+```
+
+Hvis du bruker VS Code vil den ofte finne ut av seg selv hvordan prosjektet er satt opp (mer presist, at det er opprettet er virtuelt miljø for prosjektet), så "play"-knappen vil trolig fungere som før. Hvis ikke går det an å fortelle VS Code hva slags Python den skal bruke. Helt nederst i VS Code er det en slags menylinje med informasjon, på høyreside her står det Python og versjonsnummeret for Python-installasjonen. Hvis det står noe om `venv` ved siden av versjonsnummeret bør alt være i orden, hvis ikke, klikk på versjonsnummeret og se om det kommer opp en valgmulighet i toppmenyen for å velge Pyhton fortolker, velg i så fall den som inneholder `venv`.  
+
+Kjør programmet og se at kua dukker opp i terminalen. 
+
+Det finnes andre innebygde figurer enn ku, for eksempel `dragon`, `fox`, `octopus`, `stegosaurus` og `turtle`. Disse finnes også som funksjoner, så test å bytte ut kall til `cow()` i programmet med en av de andre figurene.
+
+✍️ **Ekstraoppgave** `cowsay` har også funksjonen `draw()`, som i tillegg til tekst, lar deg sende inn en streng for figuren man vil skal tegnes under snakkebobla. For eksempel:
+
+```python
+fisk = r"""
+\
+ \  
+        /`·.¸
+     /¸...¸`:·
+ ¸.·´  ¸   `·.¸.·´)
+: © ):´;      ¸  {
+ `·.¸ `·  ¸.·´\`·¸)
+     `\\´´\¸.·´
+"""
+```
+
+Bruk funksjonen `draw` for å få fisken til å snakke. Eller søk etter ascii art på nettet, [asciiart.eu](https://www.asciiart.eu/) er en nettside med mange små kunstverk i ascii. Eller kanskje du vil lage en figur helt selv?
+
+
 ## Andre ting du kan gjøre
 
 Vi har sett på disse Poetry-kommandoene allerede:
