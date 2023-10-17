@@ -279,7 +279,7 @@ poetry run python <filnavn>.py
 
 ### Få Poetry til å fungere med VS Code
 
-Hvis vi fortsatt vil kjøre programmer fra VS Code ved å trykke på "play"-knappen, må vi fortelle VS Code hvilken Python-fortolker den nå skal bruke. Det er fordi Poetry lager en egen folder for prosjektet med en Python-fortolker og pakkene vi installerer.
+Hvis vi fortsatt vil kjøre programmer fra VS Code ved å trykke på "play"-knappen, må vi fortelle VS Code hvilken Python-fortolker den nå skal bruke. Det er fordi Poetry lager en egen folder for prosjektet med en Python-fortolker og pakkene vi installerer, så om vi ikke bruker samme fortolker vil VS Code ikke finne pakkene vi har installert.
 
 For å finne stien til Python-fortolkeren til Poetry kan man kjøre følgende kommando i terminalen.
 
