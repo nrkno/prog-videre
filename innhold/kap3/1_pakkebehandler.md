@@ -279,24 +279,26 @@ poetry run python <filnavn>.py
 
 ### Få Poetry til å fungere med VS Code
 
-Hvis du bruker VS Code vil den ofte finne ut av seg selv hvordan prosjektet er satt opp (mer presist, at det er opprettet er virtuelt miljø for prosjektet), så "play"-knappen vil trolig fungere som før. 
+Hvis vi fortsatt vil kjøre programmer fra VS Code ved å trykke på "play"-knappen, må vi fortelle VS Code hvilken Python-fortolker den nå skal bruke. Det er fordi Poetry lager en egen folder for prosjektet med en Python-fortolker og pakkene vi installerer.
 
-I motsatt fall går det an å fortelle VS Code hva slags Python-fortolker den skal bruke. Helt nederst i VS Code er det en slags menylinje med informasjon, på høyresiden av denne står det Python og versjonsnummeret for Python-installasjonen. 
-
-![Høyre side av bunnmenyen i VS Code](bilder/vscode-bunnmeny.png)
-
-Hvis det står noe om `venv` ved siden av versjonsnummeret bør alt være i orden, hvis ikke, klikk på versjonsnummeret og se om det kommer opp en valgmulighet i toppmenyen for å velge Python-fortolker.
-
-![Meny i VS Code for å velge Pyton-fortolker](bilder/velg-fortolker.png)
-
-Om et av valgene inneholder noe med `venv`, velg denne. Ellers kan man fra en terminal få Poetry til å liste opp miljøer med følgende kommando:
+For å finne stien til Python-fortolkeren til Poetry kan man kjøre følgende kommando i terminalen.
 
 ```shell
 poetry env info
 ```
-Da vil det listes opp miljøer tilsvarende bildet under. I menyen i VS Code kan man velge å legge til sti for kjørbar fortolker selv. Forsøk å legge inn stien fra `executable` under `virtualenv` som innholder stien til mappa der du initialiserte Poetry 
+Det vil da listes opp miljøer tilsvarende bildet under. Kopier ut stien som er i `executable` under `virtualenv`.
 
 ![Skjermbilde av det som skrives ut når man kjører ](bilder/poetry-env-info.png)
+
+For å sette Python-fortolker i VS Code, kan du gå til `View` i toppmenyen i VS Code, og deretter velge `Command Palette...`. Begynn å skrive `python: select interpreter` i kommandofeltet, og klikk på samme tekst når det kommer som valg i nedtrekkslista.
+
+Da har du forhåpentligvis kommet til noe som ligner på bildet under, klikk på `Enter interpreter path`, og lim inn stien du kopierte fra terminalen.
+
+![Meny i VS Code for å velge Pyton-fortolker](bilder/velg-fortolker.png)
+
+Om du har valgt riktig fortolker bør det stå noe om `Poetry` i menylinja helt i bunnen av VS Code, ved siden av versjonsnummeret for Python. 
+
+![](bilder/vscode-bunnmeny.png)
 
 ### Kjør programmet
 
