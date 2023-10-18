@@ -107,6 +107,36 @@ Vi skal derfor bruke en pakkebehandler som heter [Poetry].
 Poetry har et eget Python-skript du kan kjøre for å installere det.
 Følg [installasjonsveiledningen til Poetry](https://python-poetry.org/docs/#installation).
 
+
+### Hvordan legge til Poetry i `$PATH`?
+
+Installasjonen nevner at du må ha en viss mappe i `$PATH`.
+Oppsettet til `$PATH` bestemmer hvilke mapper terminalen/skallet skal lete i når du bare skriver navnet på en kommando, for eksempel `poetry`.
+Hvis ikke mappa som `poetry` ligger i er satt opp i `$PATH`, vil aldri terminalen finne den kjørbare fila som heter `poetry` med mindre du skriver hele filstien dens manuelt hver gang du vil kjøre Poetry.
+
+På Windows kan du legge til denne mappa ved å:
+
+1. Trykk på Windows-ikonet
+2. Søk etter «Rediger miljøvariabler for kontoen din» og kjør den
+3. Dobbelttrykk på den som heter `Path` i den øverste lista
+4. Trykk «Ny» og skriv inn stien til mappa. Denne stien blir skrevet til terminalen når du installerer Poetry
+5. Trykk «OK» og «OK»
+6. Åpne terminalen på nytt for at de nye innstillingene skal tre i kraft
+
+På Unix og Linux er det typisk en fil som blir kjørt av skallet ditt ved oppstart som setter innholdet av `$PATH`-variabelen.
+Nøyaktig hvilken fil det er, kommer an på hvilket skall du bruker.
+For Bash (default i Ubuntu og eldre Mac OS X) er det `.bashrc` i hjemmemappa di, for ZSH (default i nyere Mac OS X) er det `.zshrc` i hjemmemappa.
+Lag fila hvis den ikke finnes, og legg til ei linje på formatet:
+
+```shell
+export PATH="/sti/til/mappe/med/poetry:$PATH"
+```
+
+Akkurat hvilken sti du skal legge til før kolonet blir skrevet til terminalen når du installerer Poetry.
+
+
+### Dobbeltsjekke at Poetry er installert
+
 Når du har installert Poetry, skal du kunne kjøre `poetry --version` i terminalen.
 
 ```shell
