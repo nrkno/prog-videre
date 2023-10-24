@@ -3,6 +3,12 @@ Hente data fra API
 
 **💡 Læringsmål:** _I del 3 av kurset vil du lære å hente data fra API i stedet for å lese data fra fil, du vil også lære om hvordan du kan bruke andres Python-kode gjennom en pakkebehandler, hvordan kommandolinjeargumenter fungerer, og hvordan kode kan organiseres i moduler og pakker._
 
+I denne presentasjonen går vi gjennom konseptene på et overordnet nivå:
+
+<div class="nrk-video" data-nrk-id="b0fcdf09-5128-48cf-b0ef-6db4eed9e5a2" data-nrk-aspect="16:9"></div><script src="https://static.nrk.no/ludo/latest/video-embed.js"></script>
+
+Kort oppsummert:
+
 I del 2 lagde vi et program som leste inn ei ferdig fil med NRKs programguide,
 og hentet ut statistikk basert på den.
 Men i den virkelige verden er det vanligvis bedre å hente disse dataene fra et sted, automatisk. I løpet av del 3 skal vi derfor lære hvordan vi kan hente data fra internett gjennom et API.
@@ -14,6 +20,7 @@ Vi skal også lære å bruke kommandolinjeargumenter som er en mer effektiv måt
 Nå som vi skriver stadig mer kode vil det være nyttig å vite hvordan man kan splitte opp kode over flere filer og mapper, som i Python svarer til moduler og pakker. Det skal vi også se på i denne delen av kurset.
 
 Til sist skal vi bruke det vi har lært til å utvide EPG-programmet vårt til å hente data fra et API, og bruke kommandolinjeargumenter til å angi dato og kanaler.
+
 
 ## Plan
 
