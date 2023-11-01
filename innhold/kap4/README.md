@@ -1,6 +1,5 @@
-Applikasjon med grafisk brukergrensesnitt
-=========================================
-
+Grafisk brukergrensesnitt og objektorientering
+==============================================
 **💡 Læringsmål:** _I del 4 av kurset vil du bli kjent med objektorientert programmering i Python, og du vil lære å lage grafiske brukergrensesnitt med PySimpleGUI._
 
 Hittil i kurset har vi laget applikasjoner som man bruker via kommandolinjen. Vi kan på en måte si at dette er programmer som "snakker" og "forstår" tekst.
