@@ -21,9 +21,9 @@ class Menneske:
     art = "Homo sapiens"
 
     def __init__(self, navn, alder, by):
-        self.__navn = navn
-        self.__alder = alder
-        self.__by = by
+        self.navn = navn
+        self.alder = alder
+        self.by = by
         
     def gå(self):
         print(self.navn, "går")
