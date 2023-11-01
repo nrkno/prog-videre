@@ -1,9 +1,9 @@
 Mer om PySimpleGUI
 ==================
+
 **💡 Læringsmål:** _I dette avsnittet lærer du mer om hvordan PySimpleGUI fungerer, ved å utvide brukergrensesnittet du laget i forrige seksjon med mer funksjonalitet._
 ​
-Vi lager en knapp som lukker vinduet
-------------------------------------
+## Vi lager en knapp som lukker vinduet
 Knapper er en av de vanligste komponentene man bruker når man lager brukergrensesnitt. Man kan bruke knapper for å gi brukeren mulighet til å kjøre forskjellige deler av programmet, som å starte et søk, lagre en fil, eller åpne et bilde.
 
 Den første knappen vi skal lage, skal bare hjelpe oss med å lukke vinduet i brukergrensesnittet vi laget i forrige seksjon.
@@ -35,8 +35,7 @@ while running:
 
 Prøv å kjøre programmet igjen når du har lagt til denne koden. Klarer du ​å lukke vinduet med knappen nå?
 ​
-Fargetemaer
------------
+## Fargetemaer
 Man kan endre hvordan komponentene i PySimpleGUI ser ut ved å endre fargetemaet. Du kan prøve dette ut ved å sette fargetemaet til "DarkTeal6" i starten av programmet.
 
 ```python
@@ -55,8 +54,7 @@ sg.theme_previewer()
 
 I tillegg til å bruke innebygde fargetema, kan du også [endre på et eksisterende tema](https://www.pysimplegui.org/en/latest/cookbook/#recipe-modifying-an-existing-theme), eller [lage ditt eget tema](https://www.pysimplegui.org/en/latest/cookbook/#recipe-adding-your-own-color-theme).
 
-Printe tekst fra GUI
---------------------
+## Printe tekst fra GUI
 Når man skal debugge brukergrensesnitt, er de ikke alltid like lett å printe ut tekst. Dette har PySimpleGUI en egen funksjon for!
 ​
 Under er tre eksempler på hvordan man skriver ut debug-tekst i PySimpleGUI. Legg de inn i programmet ditt og se hvs som skjer.
@@ -69,8 +67,7 @@ sg.Print('Hvit tekst på rød bakgrunn', text_color='white', background_color='r
 
 ✍️ **Oppgave:** _Kan du bruke `sg.Print` til å skrive ut debug-tekst som viser når programmet starter, og når en bruker trykker på Lukk-knappen?_​
 ​
-Input-felter
-------------
+## Input-felter
 På samme måte som det er nyttig å kunne lese inn kommandolinjeargumenter i kommandolineapplikasjoner, kan det være nyttig å lese inn input fra brukeren i applikasjoner med grafiske brukergrensesnitt.
 
 En vanlig måte å få inn input fra brukeren, er ved å bruke et input-felt hvor brukeren kan skrive inn tekst, og i eksempelet under, skal vi oppdatere programmet vårt sånn at det kan lese inn navnet til brukeren, og si hei hvis brukeren trykker på en knapp.
@@ -104,8 +101,7 @@ Kodeutsnittet under viser hvordan vi kan få til disse fire tingene. Denne koden
         greetingText.update(value=f'Hei {name}!')
 ```
 ​
-Hvor finner jeg mer informasjon om PySimpleGUI?
------------------------------------------------
+## Hvor finner jeg mer informasjon om PySimpleGUI?
 I denne seksjonen har vi sett litt på noen få komponenter i PySimpleGUI, men når du skal lage dine egne brukergrensesnitt, kan det fort være at du trenger mange flere.
 Det betyr at du fort må grave litt rundt i dokumentasjonen til PySimpleGUI på egenhånd.
 ​
