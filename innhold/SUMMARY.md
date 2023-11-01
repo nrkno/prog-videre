@@ -27,10 +27,10 @@
   - [Mer lek og moro med EPG!](kap3/5_oppgave.md)
 
 - [Grafisk brukergrensesnitt og objektorientering](kap4/README.md)
-  - [Objektorientert programmering i Python](1_objektorientering.md)
-  - [Dataklasser](2_dataklasser.md)
-  - [Grafiske brukergrensesnitt med PySimpleGUI](3_simplegui.md)
-  - [Mer om PySimpleGUI](4_simplegui_demo.md)
+  - [Objektorientert programmering i Python](kap4/1_objektorientering.md)
+  - [Dataklasser](kap4/2_dataklasser.md)
+  - [Grafiske brukergrensesnitt med PySimpleGUI](kap4/3_simplegui.md)
+  - [Mer om PySimpleGUI](kap4/4_simplegui_demo.md)
 
 - [Prosjektoppgave](prosjektoppgave/README.md)
 
