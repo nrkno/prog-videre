@@ -193,7 +193,7 @@ class Rektangel:
         self.bredde = bredde
 
     def __eq__(self, other):
-        return (self.høyde == other.bredde) and (self.bredde == other.bredde)
+        return (self.høyde == other.høyde) and (self.bredde == other.bredde)
 
 r1 = Rektangel(1,2)
 r2 = Rektangel(1,2)
