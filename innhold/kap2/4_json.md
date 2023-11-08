@@ -37,7 +37,9 @@ Vi kan utvide eksemplet til inneholde et underobjekt med egne nøkler og verdier
     }
 }
 ```
-I eksemplet over ser vi også at flere datatyper enn strenger støttes for verdier. Datatypene som støttes er streng, nummer, objekt, liste, boolean, og null.
+I eksemplet over ser vi også at flere datatyper enn strenger støttes for verdier, f.eks. verdien 'production_year' som er et nummer.
+Datatypene som støttes er [strenger](../kap1/3_enkle_datastrukturer_og_variabler.md#strenger), [nummer](../kap1/3_enkle_datastrukturer_og_variabler.md#tall), [objekt](../kap4/1_objektorientering.md), [lister](../kap1/4_samlinger.md#lister), [boolean](../kap1/3_enkle_datastrukturer_og_variabler.md#boolske-verdier), og null.
+I eksmeplene under vises hvordan disse datatypene kan benyttes i JSON.
 
 Videre kan vi f.eks utvide eksemplet til å inneholde en liste med verdier:
 ```json
