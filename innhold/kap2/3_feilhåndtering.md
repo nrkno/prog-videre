@@ -192,7 +192,7 @@ print(f"Resultatet er: {hva_returneres()}")
 
 ✍️ **Oppgave:** _Feilhåndtering i filbehandling_
 
-Ta utgangspunkt i koden for å lese til fil, og lag et program som tar inn filnavn som input fra brukeren, og skriver ut innholdet i fila i terminalen.
+Ta utgangspunkt i koden for å lese fra fil, og lag et program som tar inn filnavn som input fra brukeren, og skriver ut innholdet i fila i terminalen.
 
 Hva skjer hvis brukeren skriver inn et filnavn som ikke finnes? Legg inn feilhåndtering så brukeren får tilbud om å prøve på nytt. 
 
