@@ -289,6 +289,26 @@ exit
 kurs $> 
 ```
 
+
+### ❌ Mulige løsninger hvis `poetry shell` gir feilmelding på Windows
+
+Jobbmaskiner kan ofte være sperret ned for å beskytte deg fra å kjøre ondsinnet programvare ved et uhell.
+Men denne beskyttelsen kan også hindre deg i å kjøre skript som du faktisk har lyst til å kjøre.
+Du risikerer derfor at `poetry shell` gir deg en feil om at den ikke får lov til å kjøre skript.
+
+Hvordan løse:
+
+1. Kjør `exit` for å gå ut av skallet som ble opprettet av `poetry shell`
+2. Kjør `poetry run powershell` i stedet for `poetry shell`
+3. Nå kan du kjøre `python` og andre kjørbare filer som er installert i prosjektet, som for eksempel `cowsay`,
+   uten å ta med `poetry run` foran
+
+Hver gang du ville ha kjørt `poetry shell`, kjører du `poetry run powershell` i stedet.
+De to skal fungere likt.
+
+Alternativt kan du velge å bare bruke den første metoden med `poetry run` foran hver kommando.
+
+
 ## Hvordan bruke en pakke i Python-kode
 
 Som oftest ønsker vi å bruke pakka vi har installert i et Python-program. En pakke kan gi både nye kjørbare program, importerbare moduler, eller begge deler. Vi skal se på hvordan vi kan bruke en importerbar modul fra en pakke.
