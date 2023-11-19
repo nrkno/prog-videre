@@ -59,7 +59,7 @@ for i in range(2, 10, 2):
     print(i)
 ```
 
-✍️ **Oppgave:** _Fra 1947 har vi avholdt kommunevalg hvert fjerde år. Kan du liste opp alle de årene fra da frem til i dag?_
+**✍️ Oppgave 3** _Fra 1947 har vi avholdt kommunevalg hvert fjerde år. Kan du liste opp alle de årene fra da frem til i dag?_
 
 ## while-løkker
 
@@ -158,7 +158,7 @@ print("Takk for at du spilte!")
 
 Å bruke et flagg på den måte gjør koden mer lesbar ved å klart vise hva som er kriteriet til løkka.
 
-## ✍️ Oppgave: Interaktiv handleliste
+## ✍️ Oppgave 4: Interaktiv handleliste
 
 **Mål**: Skriv et program som lar brukeren legge til varer i en handleliste til hen bestemmer seg for å avslutte. Når hen avslutter, skal programmet skrive handlelisten ut til brukeren.
 
