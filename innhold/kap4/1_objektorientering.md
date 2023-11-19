@@ -1,7 +1,7 @@
 # Objektorientert programmering i Python
 **💡 Læringsmål:** _I dette kapittelet skal du lære om objektorientert programmering og hvordan du kan skrive dine egne klasser for å binde sammen egenskaper og oppførsel i objekter_
 
-Python er et **objektorientert språk(OOP)**, som betyr at et program er strukturert slik at egenskaper og oppførsel er representert i objekter. Et objekt kan for eksempel representere et menneske med egenskaper som navn, alder eller by og oppførsel som for eksempel å gå, snakke eller puste. Eller det kan representere en handlekurv med egenskaper som beskriver hvilke varer som er i handlekurven og oppførsel for å legge til eller fjerne varer. Også typer som du har lært om tidligere, som for eksempel strenger, tall og lister, er representert som objekter i Python.
+Python er et **objektorientert språk (OOP)**, som betyr at et program er strukturert slik at egenskaper og oppførsel er representert i objekter. Et objekt kan for eksempel representere et menneske med egenskaper som navn, alder eller by og oppførsel som for eksempel å gå, snakke eller puste. Eller det kan representere en handlekurv med egenskaper som beskriver hvilke varer som er i handlekurven og oppførsel for å legge til eller fjerne varer. Også typer som du har lært om tidligere, som for eksempel strenger, tall og lister, er representert som objekter i Python.
 
 Sagt på en annen måte så kan man si at objektorientert programmering er en måte å modellere virkeligheten på. Både ved å definere egenskapene og oppførselen til forskjellige ting, men også relasjonen mellom dem.
 
@@ -34,7 +34,7 @@ class Menneske:
 
 Her er det forskjell på attributter som er definert i `__init__`, såkalte objektattributter, og attributter som er definert i selve klassen, klasseatributter. Objektattributter er egenskaper som hører til hvert nye objekt, mens klasseattributtene er noe som er felles for alle nye objekter av en klasse.
 
-**Oppgave:** _Kan du skrive kode i `datastrukturer.py` som lager en klasse for en tv-kanal(kalt `Kanal`) som inneholder et felt for kanalnavn(kalt `navn`) og en liste over tv-programmer(kalt `programmer`) som vises på kanalen? Lag også en funksjon for å liste ut hvilke programmer som vises på kanalen i valgfritt format._
+**✍️ Oppgave 1** _Kan du skrive kode i `datastrukturer.py` som lager en klasse for en tv-kanal (kalt `Kanal`) som inneholder et felt for kanalnavn (kalt `navn`) og en liste over tv-programmer (kalt `programmer`) som vises på kanalen? Lag også en funksjon for å liste ut hvilke programmer som vises på kanalen i valgfritt format._
 
 ## Instansiere objekter fra klasser
 Vi kan så opprette objekter av klassen "Menneske" for å representere konkrete personer i koden vår. Dette kalles for å instansiere et objekt. For å gjøre dette kaller man konstruktøren `__init__` med de nødvendige parameterne:
@@ -63,7 +63,7 @@ m1.gå()  # output: Vibeke går
 m1.snakk()  # output: Vibeke snakker
 ```
 
-**Oppgave:** _Lag to instanser av klassen `Kanal` med kanalnavn "nrksuper" og "nrk2" med programmer henholdsvis `["Supernytt", "Minibarna" og "Fantus og maskinene"]` og `["Filmavisen" og "Med hjartet på rette staden"]`._
+**✍️ Oppgave 2** _Lag to instanser av klassen `Kanal` med kanalnavn "nrksuper" og "nrk2" med programmer henholdsvis `["Supernytt", "Minibarna", "Fantus og maskinene"]` og `["Filmavisen","Med hjartet på rette staden"]`._
 
 ## Bruk av type()
 Det er mulig å bruke den innebygde funksjonen `type()` for å se hvilken klasse et objekt tilhører. Sjekk for eksempel disse objektene:
@@ -84,7 +84,7 @@ for var in [a, b, c, d, e, f, g]:
     print(type(var))
 ```
 
-**Oppgave:** _Sjekk at kanalene du har instansiert er av klassen `Kanal`_
+**✍️ Oppgave 3** _Sjekk at kanalene du har instansiert er av klassen `Kanal` ved å skrive ut typen til kanalene_
 
 ## Arv
 Arv er en måte å lage nye klasser som baserer seg på andre klasser. Den nye klassen kalles en avledet klasse, mens den eksistertende klassen kalles en baseklasse. Slik kan man lage en klasse som baserer seg på klassen vi definerte i tidligere.
@@ -180,7 +180,7 @@ m3.set_navn(123)
 print(m3.get_navn()) # output: Harald
 ```
 
-**Oppgave:** _Implementer innkapsling for `Kanal`-klassen. Gjør listen over programmer privat og tilby en metode for å legge til et program i listen._
+**✍️ Oppgave 4** _Implementer innkapsling for `Kanal`-klassen. Gjør navnet til kanalen og listen over programmer privat og tilby en metode for å legge til et program i listen._
 
 ## Internmetoder
 Vi har allerede lært om internmetoden `__init__` som brukes for å lage instanser av en klasse. Vi har også flere internmetoder som for eksempel `__eq__` som brukes når man sammenligner objekter. Hvis vi for eksempel sammenligner to instanser som er laget av en klasse som ikke implementerer en egen `__eq__`-funksjon vil man få `False` på om instansene er like siden de refererer til to forskjellige objekter, men i noen tilfeller vil man definere hva som gjør to instanser av en klasse like. 
@@ -215,4 +215,4 @@ print(m1) # output: <__main__.Menneske object at 0x107e4bd30>
 print(a1) # output: Fredrik er 46 år og jobber som Programleder hos NRK.
 ```
 
-**Oppgave:** _Legg til `__eq__`- og `__str__`-funksjoner for klassen `Kanal`_
+**✍️ Oppgave 5** _Legg til `__eq__`- og `__str__`-funksjoner for klassen `Kanal`_

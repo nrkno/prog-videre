@@ -36,6 +36,12 @@
 
 ---
 
+- [Løsningsforslag](fasit/README.md)
+  - [Kapittel 1](fasit/kap1.md)
+  - [Kapittel 2](fasit/kap2.md)
+  - [Kapittel 3](fasit/kap3.md)
+  - [Kapittel 4](fasit/kap4.md)
+
 - [Ekstra: Valgfritt innhold](ekstra/README.md)
   - [Interaktiv Python](ekstra/idle.md)
   - [Terminalen](ekstra/terminal.md)

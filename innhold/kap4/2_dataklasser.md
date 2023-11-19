@@ -28,7 +28,7 @@ Her ser vi at vi har definert hvilken type et felt skal ha og hvis man for eksem
 Expected type 'int', got 'str' instead
 ```
 
-**Oppgave:** _Skriv om Kanal-klassen fra forrige kapittel til å bruke dataclass_
+**✍️ Oppgave 1** _Skriv om Kanal-klassen fra forrige kapittel til å bruke dataclass. Hint: Kanskje den innebygde **str**-funksjonen for dataclass også viser informasjon om programmene i hver kanal?_
 
 ## Hvilke andre funksjoner til dataclass kan det være lurt å vite om?
 ### Bruk av standard-verdier
@@ -69,7 +69,7 @@ class Produkt:
 ```
 I eksemplet ovenfor vil en ValueError bli kastet dersom du prøver å lage et Produkt med en negativ pris.
 
-**Oppgave:** _Legg til en validering for Kanal-klassen som sjekker at navnet til kanalen ikke er en tom streng og at kanallista ikke er tom_
+**✍️ Oppgave 2** _Legg til en validering for Kanal-klassen som sjekker at navnet til kanalen ikke er en tom streng og at kanallista ikke er tom_
 
 ## Når skal jeg bruke dataclass og når burde jeg bruke en vanlig klasse? 
 **Data classes** er veldig nyttig når det ikke er noe kompleks logikk i konstruktøren til klassen. Noen ganger skjer det for eksempel validering og databasetilkoblinger i konstruktøren og da kan det være lurt å ha en helt egen konstruktør for det. Når det er sagt, så kan det være ryddigst å bruke klasser for å kun holde på data og da er **Data classes** veien å gå.
