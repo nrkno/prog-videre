@@ -26,4 +26,4 @@ enable = false
 
 [output.linkcheck]
 follow-web-links = true
-exclude = [ 'marketplace\.visualstudio\.com']
+exclude = [ 'marketplace\.visualstudio\.com', 'tv\.nrk\.no/guide', 'medium\.com/@jdxcode/12-factor-cli-apps-dd3c227a0e46']
