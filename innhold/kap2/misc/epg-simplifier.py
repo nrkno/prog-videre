@@ -14,27 +14,18 @@ def json_from_api():
     month = today.month
     day = today.day
     print(f"Fetching api for date {year}-{month}-{day}")
-    url = f"https://psapi.nrk.no/epg/nrk1,nrk2,nrk3,nrksuper,p1,p2,p3/?date={year}-{month}-{day}"
+    url = f"https://psapi.nrk.no/tv/epg/nrk1,nrk2,nrk3,nrksuper/?date={year}-{month}-{day}"
     request = requests.get(url)
     return request.json()
 
 epg_liste = json_from_api()
 
-epg_simple_keys = ["id"]
-
-channel_simple_keys = [
-    "id", 
+channel_keys = [
+    "channelId",
     "title", 
-    "sourceMedium", 
-    "isLive", 
-    "hasEpg",
-    "isOndemandChannel",
-    "isDistrictChannel",
-    "hasDistrictChannels",
-    "priority"
 ]
 
-entry_simple_keys = [
+entry_keys = [
     "programId",
     "seriesId",
     "category",
@@ -44,30 +35,37 @@ entry_simple_keys = [
     "duration"
 ]
 
-forenkla_epg_liste = []
+valid_item_types = [
+    "program",
+    "episode"
+]
 
-for json_epg in epg_liste:
-    epg = {}
-    for key in epg_simple_keys:
-        epg[key] = json_epg[key]
-    
-    json_channel = json_epg["channel"]
+duration_key = "iso8601"
+
+simplified_epg = []
+
+for json_channel in epg_liste:
     channel = {}
-    for key in channel_simple_keys:
+    for key in channel_keys:
         channel[key] = json_channel[key]
-    epg["channel"] = channel
     
     entries = []
-    for json_entry in json_epg["entries"]:
-        entry = {}
-        if "programId" in json_entry:
-            for key in entry_simple_keys:
-                entry[key] = json_entry[key]
-        entries.append(entry)
-        epg["entries"] = entries
+    for transmission_group in json_channel["transmissionGroups"]:
+        for json_entry in transmission_group["entries"]:
+            if json_entry["itemType"] in valid_item_types:
+                entry = {}
+                for key in entry_keys:
+                    value = json_entry.get(key)
+                    if(value):
+                        if key == "duration":
+                            entry[key] = value[duration_key]
+                        else:     
+                            entry[key] = value
+                entries.append(entry)
+    channel["entries"] = entries
 
-    forenkla_epg_liste.append(epg)
+    simplified_epg.append(channel)
 
 with open("epg.json", "w", encoding="utf-8") as out_file:
-    json.dump(forenkla_epg_liste, fp=out_file, ensure_ascii=False, indent=4)
+    json.dump(simplified_epg, fp=out_file, ensure_ascii=False, indent=4)
     out_file.write("\n")
