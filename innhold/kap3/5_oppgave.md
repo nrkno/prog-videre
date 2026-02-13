@@ -19,7 +19,7 @@ Parameteren `channelIds` er påkrevd, og den må være en kommaseparert liste av
 | `https://psapi.nrk.no/tv/epg/nrk3`| EPG for kanalen NRK3 på dagens dato |
 | `https://psapi.nrk.no/tv/epg/nrk2?date=2026-01-01`| EPG for kanalen NRK2 på datoen 1. januar 2026 |
 | `https://psapi.nrk.no/tv/epg/nrk2,nrksuper`| EPG for kanalene NRK2 og NRK Super på dagens dato |
-| `https://psapi.nrk.no/tv/epg/nrk1,nrk3?date=2026-02-01`| EPG for kanalene P1, P13, NRK Super og NRK1 på datoen 1. januar 2023 |
+| `https://psapi.nrk.no/tv/epg/nrk1,nrk3?date=2026-02-01`| EPG for kanalene NRK1 og NRK3 på datoen 1. februar 2026 |
 
 ## Hent EPG fra API-et
 
