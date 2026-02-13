@@ -25,7 +25,7 @@ Parameteren `channelIds` er påkrevd, og den må være en kommaseparert liste av
 
 Oppdater EPG-programmet ditt fra tidligere til å hente data fra API-et i stedet for å lese fra fil. Bruk API-et uten å bruke parameteren for dato, og med de kanalene du ønsker. 
 
-Formatet på JSON-en som kommer fra API-et er ganske lik som i fila vi brukte tidligere, men noen forksjeller er det. Den største forskjellen er at det er et nivå ekstra mellom kanal og programmer. For å få tak i programmene må man loope over kanalene, for hver kanal loope over `transmissionGroups`, og for hver `transmissionGroup` hente ut `entries`, der programmene er. Men noen av tingene i `entries` er ikke programmer. Det kan man løse ved å filtere så man bare beholder entries med `itemType` lik `program` eller `episode`. Ellers innholder JSON-en fra API-et mange flere felter enn fila vi jobbet med tidligere.
+Formatet på JSON-en som kommer fra API-et er ganske lik som i fila vi brukte tidligere, men det er noen forskjeller. JSON-en fra API-et mange flere felter enn fila vi jobbet med tidligere og det er et nivå ekstra, `transmissionGroup`, mellom kanal og programmer. For å få tak i programmene må man loope over kanalene, for hver kanal loope over `transmissionGroups`, og for hver `transmissionGroup` hente ut `entries`, der programmene er. Men ikke alt under `entries` er programmer. Det kan man løse ved å filtere så man bare beholder entries med `itemType` lik `program` eller `episode`.
 
 ## La bruker angi dato og kanaler
 
