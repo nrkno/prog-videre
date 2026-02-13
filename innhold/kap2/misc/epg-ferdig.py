@@ -39,7 +39,7 @@ with open(filnavn, "r", encoding="utf-8") as jsonFile:
         kanal_id = kanal["channelId"]
 
         for json_program in kanal["entries"]:
-            print(json_program)
+
             kategori = json_program.get("category")
 
             if kategori is not None:
