@@ -5,17 +5,10 @@ import dataclasses
 import datetime
 import sys
 
-
-class Medium(enum.Enum):
-    TV = 1
-    RADIO = 2
-
-
 @dataclasses.dataclass
 class Program:
     kanalnavn: str
     kanalid: str
-    medium: Medium
     kategoriid: str
     tittel: str
     varighet: datetime.timedelta
@@ -41,23 +34,23 @@ with open(filnavn, "r", encoding="utf-8") as jsonFile:
     epg_liste = json.load(jsonFile)
     uthenta_program = []
 
-    for epg in epg_liste:
-        kanalnavn = epg["channel"]["title"]
-        kanalid = epg["channel"]["id"]
-        medium = Medium(epg["sourceMedium"])
+    for kanal in epg_liste:
+        kanalnavn = kanal["title"]
+        kanal_id = kanal["channelId"]
 
-        for json_program in epg["entries"]:
+        for json_program in kanal["entries"]:
+
             kategori = json_program.get("category")
 
             if kategori is not None:
-                kategoriid = json_program["category"]["id"]
+                kategori_id = json_program["category"]["id"]
             else:
-                kategoriid = "Ingen kategori"
-
+                kategori_id = "Ingen kategori"
+    
             tittel = json_program["title"]
             varighet = to_timedelta(json_program["duration"])
 
-            program = Program(kanalnavn, kanalid, medium, kategoriid, tittel, varighet)
+            program = Program(kanalnavn, kanal_id, kategori_id, tittel, varighet)
             uthenta_program.append(program)
 
 antall_pr_kategori = {}

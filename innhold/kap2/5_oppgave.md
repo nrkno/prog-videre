@@ -17,35 +17,33 @@ Vi har også mange andre ideer til ting du kan eksperimentere med når du er fer
 Filen(e) vi skal bruke i programmet vårt inneholder json med følgende struktur for en kanal:
 
 ```json
-{
-    "id": "epg_nrk1",
-    "channel": {
-        "id": "nrk1",
+[
+    {
+        "channelId": "nrk1",
         "title": "NRK1",
-        "sourceMedium": 1,
-        "isLive": true,
-        "hasEpg": true,
-        "isOndemandChannel": true,
-        "isDistrictChannel": false,
-        "hasDistrictChannels": true,
-        "priority": 1
-    },
-    "entries": [
-        {
-            "programId": "NNFA05022723",
-            "seriesId": "nyhetsmorgen-tv",
-            "category": {
-                "id": "nyheter",
-                "displayValue": "Nyheter",
-                "isTvCategory": true,
-                "isRadioCategory": true
-            },
-            "legalAge": null,
-            "title": "Nyhetsmorgen",
-            "description": "Nyhetsmorgen, Politisk kvarter og Kulturnytt – alt du trenger for en oppdatert start på dagen. Direkte fra studio 50 hver morgen."
-        }
-    ]
-}
+        "entries": [
+            {
+                "programId": "KOID21001320",
+                "seriesId": "med-kjaerlighet-for-kanaler",
+                "category": {
+                    "id": "livsstil",
+                    "displayValue": "Livsstil"
+                },
+                "legalAge": {
+                    "status": "rated",
+                    "rating": {
+                        "code": "A",
+                        "displayAge": "A",
+                        "displayValue": "Tillatt for alle"
+                    }
+                },
+                "title": "Med kjærlighet for kanaler: Wales",
+                "description": "I dag en landlig idyll, men en gang var denne walisiske kanalen en del av den industrielle revolusjon. Hele dalen er gjennomsyret av historie.",
+                "duration": "PT47M14.84S"
+            }
+        ]
+    }
+]
 ```
 Dette formatet er en forenkling av det som brukes i [TV guiden på tv.nrk.no](https://tv.nrk.no/guide), som passer fint for det vi skal lage nå. Filen inneholder en liste av kanaler, og hver kanal har et felt `entries` som igjen inneholder en liste over alle programmene som skal gå på kanalen denne dagen. 
 
@@ -74,7 +72,7 @@ I stedet for å skrive ut jsonen til terminalen må vi hente ut kategorien for h
     "dokumentar": 4
 }
 ```
-For å få til dette må vi iterere over listen av kanaler, og for hver kanal iterere gjennom programmene, og til sist, for hvert program må vi hente ut kategorien. Dette kan for eksempel løses med to `for`-løkker inni hverandre. Når man har fått tak i kategorien må oppslagstabellen oppdateres. Om man bruker kategoriens `id` som nøkkel må man sjekke om iden finnes finnes i oppslagstabellen fra før, i så fall må man øke verdien med 1. Hvis ikke, må den nye nøkkelen legges til i tabellen.
+For å få til dette må vi iterere over listen av kanaler, og for hver kanal iterere gjennom programmene som er listet under `entries`, og til sist, for hvert program må vi hente ut kategorien. Dette kan for eksempel løses med to `for`-løkker inni hverandre. Når man har fått tak i kategorien må oppslagstabellen oppdateres. Om man bruker kategoriens `id` som nøkkel må man sjekke om iden finnes finnes i oppslagstabellen fra før, i så fall må man øke verdien med 1. Hvis ikke, må den nye nøkkelen legges til i tabellen.
 
 __Gratulerer, du har en fiks ferdig kommandolinjeapplikasjon! 🎉__
 

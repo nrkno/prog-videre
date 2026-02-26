@@ -48,7 +48,7 @@ Internett er selvfølgelig fullt av tips og veiledninger til morsomme og nyttige
 
 * Bruk Python og maler til å generere dokumenter. For eksempel å lage en mengde brev i Word der innholdet i hovedsak er det samme, men deler er spesifikt for hvert brev. 
     * [Dokumentasjon av biblioteket docxtpl som kan brukes](https://docxtpl.readthedocs.io/en/latest/) 
-    * [Artikkel som beskriver framgangsmåte](https://towardsdatascience.com/5-python-projects-to-automate-your-life-from-beginner-to-advanced-90fe29a7d664)
+    * [Eksempel på hvordan bibliteket kan brukes](https://baysconsulting.co.uk/generating-word-documents-using-a-template-in-python/)
 * Lær å lage en [blogg-applikasjon med Web-rammeverket Flask](https://flask.palletsprojects.com/en/2.3.x/tutorial/). Bruk det du lærer til å lage din egen web-applikasjon med funksjonaliteten du drømmer om.
 * Lag en desktop-applikasjon for stoppeklokke eller timer, for eksempel for å arbeide etter [Pomodoro-teknikken](https://no.wikipedia.org/wiki/Pomodoro-teknikken)
     * [Eksempel på timer i PySimpleGui](https://www.pysimplegui.org/en/latest/cookbook/#desktop-floating-widget-timer)

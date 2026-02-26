@@ -7,25 +7,25 @@ Nå som vi både har lært om kommandolinjeargumenter, kan hente data fra API , 
 
 Tidligere brukte vi en fil for å arbeide med EPG-data på JSON-format, men disse dataene finnes også i et API, som vi nå vil bruke istedet. 
 
-Det spesifikke endepunktet for EPG-data er `https://psapi.nrk.no/epg/`, og og endepunktet har egen [dokumentasjon](https://psapi.nrk.no/documentation/redoc/epg/). Det kan være litt uvant å lese en slik dokumentasjon i starten, men på høyre side kan vi se urlen til endepunktet, det står at det er en GET-metode med sti `/epg/{channelIds}`, og vi ser hvordan responsen kan se ut. 
+Endepunktet for EPG-data for TV er https://psapi.nrk.no/tv/epg/, og endepunktet har egen [dokumentasjon](https://psapi.nrk.no/documentation/redoc/epg/2.0/). Det kan være litt uvant å lese en slik dokumentasjon i starten, men på høyre side kan vi se urlen til endepunktet, det står at det er en GET-metode med sti `/tv/epg/{channelIds}`, og vi ser hvordan responsen kan se ut.
 
 I midtdelen står det noe om en path-parameter `channelIds` og en query-parameter `date`. 
-Parameteren `channelIds` er påkrevd, og den må være en kommaseparert liste av kanal id-er man vil hente EPG for, for eksempel `nrk1` for bare NRK1, `nrk2,p1,p2` for NRK2, P1 og P2. Siden den er en path-parameter skal den være en del av stien, og settes inn i urlen der det står `{channelIds}`.  Parameteren `date`er en query-parameter på formatet `yyyy-mm-dd`, og om den utelates, får man EPG for dagens dato.
+Parameteren `channelIds` er påkrevd, og den må være en kommaseparert liste av kanal id-er man vil hente EPG for, for eksempel `nrk1` for bare NRK1, `nrk1,nrk2` for NRK1 og NRK2. Siden den er en path-parameter skal den være en del av stien, og settes inn i urlen der det står `{channelIds}`.  Parameteren `date`er en query-parameter på formatet `yyyy-mm-dd`, og om den utelates, får man EPG for dagens dato.
 
 ## Eksempler på bruk av endepunktet
 
 | Url |  Forklaring |
 |-----|-------------|
-| `https://psapi.nrk.no/epg/p1`| EPG for kanalen P1 på dagens dato |
-| `https://psapi.nrk.no/epg/nrk2?date=2023-10-01`| EPG for kanalen NRK2 på datoen 1. oktober 2023 |
-| `https://psapi.nrk.no/epg/nrk2,p1,p2`| EPG for kanalene NRK2, P1 og P2 på dagens dato |
-| `https://psapi.nrk.no/epg/p1,p13,nrksuper,nrk1?date=2023-04`| EPG for kanalene P1, P13, NRK Super og NRK1 på datoen 1. januar 2023 |
+| `https://psapi.nrk.no/tv/epg/nrk3`| EPG for kanalen NRK3 på dagens dato |
+| `https://psapi.nrk.no/tv/epg/nrk2?date=2026-01-01`| EPG for kanalen NRK2 på datoen 1. januar 2026 |
+| `https://psapi.nrk.no/tv/epg/nrk2,nrksuper`| EPG for kanalene NRK2 og NRK Super på dagens dato |
+| `https://psapi.nrk.no/tv/epg/nrk1,nrk3?date=2026-02-01`| EPG for kanalene NRK1 og NRK3 på datoen 1. februar 2026 |
 
 ## Hent EPG fra API-et
 
 Oppdater EPG-programmet ditt fra tidligere til å hente data fra API-et i stedet for å lese fra fil. Bruk API-et uten å bruke parameteren for dato, og med de kanalene du ønsker. 
 
-Formatet på JSON-en som kommer fra API-et matcher med fila vi brukte tidligere, forskjellen er at JSON-en fra API-et inneholder flere felter. Det betyr at koden vi skrev tidligere for å hente ut informasjon fra JSON-strukturen i fila fortsatt bør fungere når vi går over til å bruke API-et i stedet. Men virkelighetens data er ikke like perfekt som dataene i fila, det kan for eksempel hende at et program ikke har kategori. Det kan være at det vil kræsje programmet ditt, så det må du i så fall rette opp i. En mulig løsning er å bruke en jukse-kategori `ukjent` om programmet ikke har kategori.
+Formatet på JSON-en som kommer fra API-et er ganske lik som i fila vi brukte tidligere, men det er noen forskjeller. JSON-en fra API-et mange flere felter enn fila vi jobbet med tidligere og det er et nivå ekstra, `transmissionGroup`, mellom kanal og programmer. For å få tak i programmene må man loope over kanalene, for hver kanal loope over `transmissionGroups`, og for hver `transmissionGroup` hente ut `entries`, der programmene er. Men ikke alt under `entries` er programmer. Det kan man løse ved å filtere så man bare beholder entries med `itemType` lik `program` eller `episode`.
 
 ## La bruker angi dato og kanaler
 
@@ -37,7 +37,7 @@ For å sette datoen som query-parameter når man gjør kall til API-et, kan man 
 parametre = {
     "date": "2023-10-16"
 }
-respons = requests.get("https://psapi.nrk.no/epg/nrk2", params = parametre)
+respons = requests.get("https://psapi.nrk.no/tv/epg/nrk2", params = parametre)
 ```
 
 Kanalene, som er en path-parameter må fortsatt settes med en format-streng.
